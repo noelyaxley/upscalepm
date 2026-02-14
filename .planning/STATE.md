@@ -9,8 +9,8 @@
 ## Current Position
 
 **Phase:** 1 of 7 -- Foundation & Design System
-**Plan:** Not yet planned
-**Status:** PENDING
+**Plan:** `.planning/phases/1/PLAN.md` (7 prompts)
+**Status:** IN PROGRESS (Prompt 2 of 7 complete)
 **Progress:** [..........] 0/7 phases complete
 
 ## Phase Overview
@@ -29,7 +29,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 0 |
+| Plans completed | 2 |
 | Plans failed | 0 |
 | Phases completed | 0 |
 | Total requirements | 64 |
@@ -46,6 +46,9 @@
 | CRO grouped with HubSpot (Phase 4) | Conversion optimisation is inseparable from lead generation machinery | Roadmap |
 | Animation last (Phase 6) | Enhancement layer, not structural -- pages must work before they animate | Roadmap |
 | PSEO + Launch together (Phase 7) | Location pages are the final content; DNS cutover is the final deployment step | Roadmap |
+| shadcn bridge variables preserved | Removing --color-X: var(--X) pattern would break all shadcn components | 1 |
+| @plugin for typography in TW v4 | v0.5.x typography has no CSS entry point; @plugin is the correct directive | 1 |
+| Kept shadcn calc-based radius | Shadcn components expect calc(var(--radius) +/- N) pattern | 1 |
 
 ### Discovered TODOs
 
@@ -61,8 +64,8 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Roadmap created with 7 phases covering 64 v1 requirements
-**Next action:** Run `/gsd:plan-phase 1` to create executable plan for Foundation & Design System
+**Last session:** Phase 1 Prompt 2 (Design System) executed successfully
+**Next action:** Execute Phase 1 Prompt 3 (next step in plan)
 **Context to preserve:** Research recommends `/gsd:research-phase` for Phase 2 (Elementor migration) and Phase 6 (scroll animation performance)
 
 ---
