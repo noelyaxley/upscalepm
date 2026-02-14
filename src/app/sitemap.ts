@@ -1,4 +1,6 @@
 import { type MetadataRoute } from 'next'
+import { getAllCaseStudies, getAllInsights } from '@/lib/content'
+import { getAllServices } from '@/lib/services'
 
 const SITE_URL = 'https://upscalepm.com.au'
 
@@ -40,6 +42,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.9,
     },
+    {
+      url: `${SITE_URL}/privacy-policy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${SITE_URL}/terms-and-conditions`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
   ]
-  return staticPages
+
+  // Service pages
+  const servicePages: MetadataRoute.Sitemap = getAllServices().map((s) => ({
+    url: `${SITE_URL}/services/${s.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
+  // Case study pages
+  const caseStudyPages: MetadataRoute.Sitemap = getAllCaseStudies().map((cs) => ({
+    url: `${SITE_URL}/case-studies/${cs.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'yearly' as const,
+    priority: 0.6,
+  }))
+
+  // Insight pages
+  const insightPages: MetadataRoute.Sitemap = getAllInsights().map((i) => ({
+    url: `${SITE_URL}/insights/${i.slug}`,
+    lastModified: new Date(i.frontmatter.date),
+    changeFrequency: 'yearly' as const,
+    priority: 0.5,
+  }))
+
+  return [...staticPages, ...servicePages, ...caseStudyPages, ...insightPages]
 }
