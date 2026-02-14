@@ -1,6 +1,7 @@
 import { type MetadataRoute } from 'next'
 import { getAllCaseStudies, getAllInsights } from '@/lib/content'
 import { getAllServices } from '@/lib/services'
+import { getAllServiceLocationParams } from '@/lib/locations'
 
 const SITE_URL = 'https://upscalepm.com.au'
 
@@ -80,5 +81,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }))
 
-  return [...staticPages, ...servicePages, ...caseStudyPages, ...insightPages]
+  // Location service pages
+  const locationPages: MetadataRoute.Sitemap = getAllServiceLocationParams().map(
+    (p) => ({
+      url: `${SITE_URL}/services/${p.slug}/${p.location}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })
+  )
+
+  return [
+    ...staticPages,
+    ...servicePages,
+    ...locationPages,
+    ...caseStudyPages,
+    ...insightPages,
+  ]
 }
