@@ -54,7 +54,7 @@
 
 | Prompt | Title | Status | Commit |
 |--------|-------|--------|--------|
-| 1 | Service Page Template & 5 Service Pages | Pending | |
+| 1 | Service Page Template & 5 Service Pages | Done | `38e955e`..`3f9240f` (4 commits) |
 | 2 | Homepage | Pending | |
 | 3 | About / Team Page | Done | `8e0a74e`..`48f111b` (2 commits) |
 | 4 | Contact Page | Done | `351e85f`..`56d3122` (3 commits) |
@@ -67,11 +67,11 @@
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 6 |
+| Plans completed | 7 |
 | Plans failed | 0 |
 | Phases completed | 2 |
 | Total requirements | 64 |
-| Requirements done | 21 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-03, CONT-05, CONT-06, CONT-08, MIG-02, MIG-03, MIG-04, MIG-05; Phase 3: PAGE-07, PAGE-08, PAGE-09, PAGE-10) |
+| Requirements done | 27 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-03, CONT-05, CONT-06, CONT-08, MIG-02, MIG-03, MIG-04, MIG-05; Phase 3: PAGE-02, PAGE-03, PAGE-04, PAGE-05, PAGE-06, PAGE-07, PAGE-08, PAGE-09, PAGE-10, PAGE-12) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
 | P2-P2 duration | 4m (4 tasks, 6 files) |
 | P2-P4 duration | 2m (2 tasks, 8 files) |
@@ -83,6 +83,7 @@
 | P3-P4 duration | 2m (3 tasks, 6 files) |
 | P3-P3 duration | 2m (3 tasks, 2 files) |
 | P3-P6 duration | 2m (3 tasks, 3 files) |
+| P3-P1 duration | 2m (6 tasks, 6 files) |
 
 ## Accumulated Context
 
@@ -128,6 +129,9 @@
 | Inline CTA on about page (not ServiceCta) | ServiceCta component not yet created by Prompt 1 (parallel execution) | 3 |
 | Real WP content for legal pages via curl | Accurate legal content from live site rather than generic fallback | 3 |
 | 4-col footer grid with Legal column | Separate Legal nav section keeps footer organized as links grow | 3 |
+| Service hero images from case study photos | No dedicated service images exist; case study heroes are the most relevant project visuals | 3 |
+| Dual service model as callout + comparison cards | Callout on service pages, side-by-side cards on index -- different contexts need different treatments | 3 |
+| Alternating section backgrounds for service pages | default/muted alternation creates visual rhythm without adding complexity | 3 |
 
 ### WordPress Crawl Results
 
@@ -168,3 +172,4 @@ None currently.
 *Phase 3 Prompt 5 completed: 2026-02-14*
 *Phase 3 Prompt 3 completed: 2026-02-14*
 *Phase 3 Prompt 6 completed: 2026-02-14*
+*Phase 3 Prompt 1 completed: 2026-02-14*
