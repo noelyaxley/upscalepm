@@ -9,9 +9,9 @@
 ## Current Position
 
 **Phase:** 2 of 7 -- Content Infrastructure & Migration
-**Plan:** Prompt 5 of 8 complete, next: Prompt 6 (Case Study Content Migration)
-**Status:** EXECUTING (Prompt 5 complete)
-**Progress:** [#.........] 1/7 phases complete (Phase 2: 5/8 prompts)
+**Plan:** Prompt 6 of 8 next (Case Study Content Migration); 6/8 prompts complete
+**Status:** EXECUTING (Prompt 2 just completed)
+**Progress:** [#.........] 1/7 phases complete (Phase 2: 6/8 prompts)
 
 ## Phase Overview
 
@@ -42,13 +42,13 @@
 | Prompt | Title | Status | Commit |
 |--------|-------|--------|--------|
 | 1 | MDX Pipeline Setup | Done | `9568afc`..`3c4de00` (7 commits) |
-| 2 | Case Study Template & Dynamic Route | Pending | -- |
+| 2 | Case Study Template & Dynamic Route | Done | `cf1967c`..`3d1e042` (5 commits) |
 | 3 | Insights Template & Dynamic Route | Done | `f2b0995`..`2e3630f` (3 commits) |
 | 4 | Interactive MDX Components | Done | `b770f08`..`b6b66a0` (2 commits) |
 | 5 | Image Migration & Organization | Done | `013f119`..`64c8429` (2 commits) |
 | 6 | Case Study Content Migration | Pending | -- |
 | 7 | Insights Content Migration | Pending | -- |
-| 8 | Service Page Copy Extraction | Pending | -- |
+| 8 | Service Page Copy Extraction | Done | `87c8db8`..`2ea0185` (3 commits) |
 
 ## Performance Metrics
 
@@ -58,8 +58,9 @@
 | Plans failed | 0 |
 | Phases completed | 1 |
 | Total requirements | 64 |
-| Requirements done | 11 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-08, MIG-05) |
+| Requirements done | 12 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-08, MIG-05) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
+| P2-P2 duration | 4m (4 tasks, 6 files) |
 | P2-P4 duration | 2m (2 tasks, 8 files) |
 | P2-P5 duration | 3m (3 tasks, 90 files) |
 
@@ -91,6 +92,9 @@
 | `not-prose` on block-level MDX components | Prevents Tailwind typography plugin from overriding component styles inside MDX | 2 |
 | Global MDX component registration | Components registered in mdx-components.tsx so no per-file imports needed in MDX | 2 |
 | Hero/gallery naming convention for images | Largest file = hero.ext, rest = gallery-NN.ext per project directory | 2 |
+| Relative path for MDX dynamic imports | Turbopack cannot resolve @content alias in dynamic imports; use relative path | 2 |
+| turbopack.root in next.config.mjs | Parent lockfile caused incorrect workspace root inference; explicit root fixes it | 2 |
+| Placeholder MDX for empty content dirs | Turbopack requires at least one .mdx to resolve dynamic import glob patterns | 2 |
 | 89 unique images after WP dedup (not 60-70 estimate) | construction-pm has 18 generic photos; all are genuine originals | 2 |
 
 ### WordPress Crawl Results
@@ -114,9 +118,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 2 Prompt 5 (Image Migration & Organization) executed successfully. 2 atomic commits.
-**Next action:** Execute Phase 2 Prompt 6 (Case Study Content Migration)
-**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 6 (scroll animation performance). Turbopack requires string-based plugin refs in next.config.mjs. Untracked files from incomplete P2-P2/P3 execution exist in working tree (not committed). Images organized with hero/gallery naming in public/images/.
+**Last session:** Phase 2 Prompt 2 (Case Study Template & Dynamic Route) executed successfully. 5 atomic commits.
+**Next action:** Execute Phase 2 Prompt 6 (Case Study Content Migration) -- remaining: P6, P7
+**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 6 (scroll animation performance). Turbopack requires string-based plugin refs in next.config.mjs. turbopack.root set to __dirname in next.config.mjs. Dynamic MDX imports must use relative paths (not @content alias). Placeholder .mdx files needed in empty content directories for Turbopack. Images organized with hero/gallery naming in public/images/.
 
 ---
 *State initialized: 2026-02-14*
@@ -124,3 +128,4 @@ None currently.
 *Phase 2 Prompt 1 completed: 2026-02-14*
 *Phase 2 Prompt 4 completed: 2026-02-14*
 *Phase 2 Prompt 5 completed: 2026-02-14*
+*Phase 2 Prompt 2 completed: 2026-02-14*
