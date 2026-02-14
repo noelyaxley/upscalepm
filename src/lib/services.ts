@@ -12,7 +12,11 @@ export const services: ServicePage[] = [
     sections: [
       {
         heading: 'Strategic Insights -- Excellence in Feasibility and Advisory',
-        body: 'At Upscale Project Management, we provide strategic feasibility and advisory services for clients seeking to develop or invest in property.\n\nWith experience across education, health, commercial, and residential sectors, we offer a grounded, design-informed perspective that helps unlock value and reduce risk early in a project\'s lifecycle.\n\nOur services include detailed site feasibility studies, regulatory and planning analysis, and tailored advice on project strategy, delivery options, and capital planning -- ensuring every decision is informed, practical, and aligned with market conditions.\n\nWe work closely with private clients, developers, and institutions across Australia to assess the highest and best use of land, manage uncertainty, and guide projects toward successful and sustainable outcomes.\n\nWhether you\'re evaluating a site for acquisition or refining your development strategy, Upscale\'s advisory process delivers clarity, confidence, and long-term value.',
+        body: 'At Upscale Project Management, we provide strategic feasibility and advisory services for clients seeking to develop or invest in property.\n\nWith experience across education, health, commercial, and residential sectors, we offer a grounded, design-informed perspective that helps unlock value and reduce risk early in a project\'s lifecycle.\n\nOur services include detailed site feasibility studies, regulatory and planning analysis, and tailored advice on project strategy, delivery options, and capital planning -- ensuring every decision is informed, practical, and aligned with market conditions.',
+      },
+      {
+        heading: 'Clarity and Confidence for Every Decision',
+        body: 'We work closely with private clients, developers, and institutions across Australia to assess the highest and best use of land, manage uncertainty, and guide projects toward successful and sustainable outcomes.\n\nWhether you\'re evaluating a site for acquisition or refining your development strategy, Upscale\'s advisory process delivers clarity, confidence, and long-term value.',
       },
     ],
     benefits: [
@@ -67,7 +71,11 @@ export const services: ServicePage[] = [
     sections: [
       {
         heading: 'Expert Design Management for Seamless Project Delivery',
-        body: 'At Upscale, our design management ensures architectural integrity is maintained from concept through delivery.\n\nWe\'ve overseen complex projects like the Vibe Hotel, managing structural and service challenges on a constrained 550 m\u00B2 site in Darling Harbour.\n\nOur experience on the Parramatta school redevelopment included coordinating architects, contractors, and government stakeholders during a live-site transition.\n\nOn the Cooper Street Apartments project, we maintained design intent post-DA, navigating tender changes and delivery-stage adjustments without compromise.\n\nWe led the planning and coordination for Sydney Water\'s $42M laboratory relocation, managing specialist consultants and modular lab requirements.\n\nAcross health, education, and commercial sectors, our team protects your vision -- balancing functionality, cost, and design excellence at every stage.',
+        body: 'At Upscale, our design management ensures architectural integrity is maintained from concept through delivery.\n\nWe\'ve overseen complex projects like the Vibe Hotel, managing structural and service challenges on a constrained 550 m\u00B2 site in Darling Harbour.\n\nOur experience on the Parramatta school redevelopment included coordinating architects, contractors, and government stakeholders during a live-site transition.',
+      },
+      {
+        heading: 'Protecting Your Vision Across Every Sector',
+        body: 'On the Cooper Street Apartments project, we maintained design intent post-DA, navigating tender changes and delivery-stage adjustments without compromise.\n\nWe led the planning and coordination for Sydney Water\'s $42M laboratory relocation, managing specialist consultants and modular lab requirements.\n\nAcross health, education, and commercial sectors, our team protects your vision -- balancing functionality, cost, and design excellence at every stage.',
       },
     ],
     benefits: [
@@ -123,7 +131,11 @@ export const services: ServicePage[] = [
       {
         heading:
           'Streamlined DA Approval Through Clear, Coordinated Project Delivery',
-        body: 'Upscale delivers expert DA guidance grounded in hands-on architectural and project management experience.\n\nWe\'ve navigated approvals for diverse project types -- from the Royal Ambulance Station program and Parramatta school redevelopment, to high-density towers like Cooper Street Apartments and student housing adjacent to the Vibe Hotel.\n\nOur success comes from early risk identification -- addressing site constraints, planning controls, and stakeholder interests before lodgement.\n\nWe lead coordination across consultants -- planners, traffic engineers, heritage advisors -- ensuring all reports align and support a compelling submission.\n\nAt Pottsville and Birmingham Gardens, we secured DA and Crown approvals for rural ambulance stations, balancing modular design with community impact.\n\nFor the Granville Diggers Club redevelopment, we\'re progressing from DA approval to contractor tender, aligning council conditions with buildability.\n\nWe advocate for quality outcomes with strong design justifications, backed by architectural insight and delivery foresight.\n\nUpscale makes DAs achievable -- structured, compliant, and vision-driven.',
+        body: 'Upscale delivers expert DA guidance grounded in hands-on architectural and project management experience.\n\nWe\'ve navigated approvals for diverse project types -- from the Royal Ambulance Station program and Parramatta school redevelopment, to high-density towers like Cooper Street Apartments and student housing adjacent to the Vibe Hotel.\n\nOur success comes from early risk identification -- addressing site constraints, planning controls, and stakeholder interests before lodgement.\n\nWe lead coordination across consultants -- planners, traffic engineers, heritage advisors -- ensuring all reports align and support a compelling submission.',
+      },
+      {
+        heading: 'Proven Results Across Project Types',
+        body: 'At Pottsville and Birmingham Gardens, we secured DA and Crown approvals for rural ambulance stations, balancing modular design with community impact.\n\nFor the Granville Diggers Club redevelopment, we\'re progressing from DA approval to contractor tender, aligning council conditions with buildability.\n\nWe advocate for quality outcomes with strong design justifications, backed by architectural insight and delivery foresight.\n\nUpscale makes DAs achievable -- structured, compliant, and vision-driven.',
       },
     ],
     benefits: [
@@ -178,7 +190,11 @@ export const services: ServicePage[] = [
     sections: [
       {
         heading: 'Experts in Tender Assessment',
-        body: 'At Upscale Project Management, our tender assessment services ensure you select the right delivery partner with confidence. Drawing on our architectural insight and deep project management expertise, we evaluate tenders not only on price -- but on buildability, team capability, program integrity, and alignment with your project goals.\n\nWe represent the client\'s best interests throughout the procurement process, offering clear recommendations based on real-world construction knowledge. Our assessments go beyond compliance checklists to uncover potential risks, cost implications, and coordination issues early -- helping you make informed, strategic decisions.\n\nWhether you\'re running a competitive tender, negotiating a D&C contract, or reviewing ECI proposals, our approach delivers clarity, fairness, and value -- protecting your investment and ensuring the selected team is fit for purpose.',
+        body: 'At Upscale Project Management, our tender assessment services ensure you select the right delivery partner with confidence. Drawing on our architectural insight and deep project management expertise, we evaluate tenders not only on price -- but on buildability, team capability, program integrity, and alignment with your project goals.\n\nWe represent the client\'s best interests throughout the procurement process, offering clear recommendations based on real-world construction knowledge.',
+      },
+      {
+        heading: 'Beyond Compliance Checklists',
+        body: 'Our assessments go beyond compliance checklists to uncover potential risks, cost implications, and coordination issues early -- helping you make informed, strategic decisions.\n\nWhether you\'re running a competitive tender, negotiating a D&C contract, or reviewing ECI proposals, our approach delivers clarity, fairness, and value -- protecting your investment and ensuring the selected team is fit for purpose.',
       },
     ],
     benefits: [
@@ -233,7 +249,11 @@ export const services: ServicePage[] = [
     sections: [
       {
         heading: 'Leadership in Delivery and On-Site Coordination',
-        body: 'At Upscale Project Management, our Construction Superintendent service is led by seasoned professionals who bring both architectural understanding and project delivery expertise to the site. With Noel Yaxley\'s background in architecture and project management across diverse building typologies -- including education, health, commercial, and high-end residential -- our site leadership is uniquely positioned to uphold design integrity while driving delivery outcomes.\n\nWe take a proactive, detail-oriented approach to managing the complexities of construction. From day one, our goal is clear: to protect the client\'s interests by ensuring quality, safety, and program certainty -- while mitigating risk and maintaining clear communication among all stakeholders.\n\nBy combining technical knowledge with on-site pragmatism, we provide leadership that keeps the project moving forward, aligned with your objectives and vision. Whether working with developers, institutions, or private clients, we bring clarity to the construction process -- and confidence to your investment.',
+        body: 'At Upscale Project Management, our Construction Superintendent service is led by seasoned professionals who bring both architectural understanding and project delivery expertise to the site. With Noel Yaxley\'s background in architecture and project management across diverse building typologies -- including education, health, commercial, and high-end residential -- our site leadership is uniquely positioned to uphold design integrity while driving delivery outcomes.\n\nWe take a proactive, detail-oriented approach to managing the complexities of construction. From day one, our goal is clear: to protect the client\'s interests by ensuring quality, safety, and program certainty -- while mitigating risk and maintaining clear communication among all stakeholders.',
+      },
+      {
+        heading: 'Clarity and Confidence on Every Project',
+        body: 'By combining technical knowledge with on-site pragmatism, we provide leadership that keeps the project moving forward, aligned with your objectives and vision.\n\nWhether working with developers, institutions, or private clients, we bring clarity to the construction process -- and confidence to your investment.',
       },
     ],
     benefits: [
