@@ -50,6 +50,19 @@
 | 7 | Insights Content Migration | Done | `0db2389`..`abd2751` (3 commits) |
 | 8 | Service Page Copy Extraction | Done | `87c8db8`..`2ea0185` (3 commits) |
 
+## Phase 3 Prompt Status
+
+| Prompt | Title | Status | Commit |
+|--------|-------|--------|--------|
+| 1 | Service Page Template & 5 Service Pages | Pending | |
+| 2 | Homepage | Pending | |
+| 3 | About / Team Page | Pending | |
+| 4 | Contact Page | Pending | |
+| 5 | Client Logo Bar Component | Done | `ca77633` |
+| 6 | Privacy Policy & Terms of Service | Pending | |
+| 7 | Enhance Existing Pages | Pending | |
+| 8 | Navigation Audit & Cross-linking | Pending | |
+
 ## Performance Metrics
 
 | Metric | Value |
@@ -66,6 +79,7 @@
 | P2-P8 duration | 6m (3 tasks, 2 files) |
 | P2-P6 duration | 8m (1 task, 15 files) |
 | P2-P7 duration | 7m (3 tasks, 15 files) |
+| P3-P5 duration | 1m (1 task, 1 file) |
 
 ## Accumulated Context
 
@@ -106,6 +120,7 @@
 | Insight content reconstructed from 500-char previews | Crawl data only has bodyTextPreview; full articles written from metadata + domain knowledge | 2 |
 | construction-pm images reused for Quick Bites without dedicated dirs | 7 of 10 Quick Bites articles lack dedicated image directories; construction-pm gallery provides contextual hero images | 2 |
 | Publication dates inferred from WP image upload timestamps | No explicit publish dates in crawl data; image upload paths (2025/08, 2025/09, etc.) used as proxy | 2 |
+| Consistent h-10/h-12 height for logo bar | Responsive scaling with Tailwind classes instead of fixed pixel dimensions; muted background keeps logos unobtrusive | 3 |
 
 ### WordPress Crawl Results
 
@@ -128,9 +143,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 2 complete, Phase 3 planned with 8 prompts across 4 waves.
-**Next action:** Execute Phase 3 prompts (start with Wave 1: P1, P3, P4, P5, P6 in parallel)
-**Context to preserve:** Service heroImages in services.ts need updating to case study images (specified in plan). Contact form is UI only — HubSpot wired in Phase 4. About page and legal pages may need WebFetch from live WordPress site. Research recommends `/gsd:research-phase` for Phase 6. Turbopack requires string-based plugin refs and relative MDX import paths.
+**Last session:** Phase 3 Prompt 5 (Client Logo Bar) completed.
+**Next action:** Continue Phase 3 Wave 1 (P1, P3, P4, P6) then Wave 2 (P2), Wave 3 (P7), Wave 4 (P8).
+**Context to preserve:** ClientLogos component ready at `src/components/sections/client-logos.tsx` for homepage integration in P2. Service heroImages in services.ts need updating to case study images (specified in plan). Contact form is UI only -- HubSpot wired in Phase 4. About page and legal pages may need WebFetch from live WordPress site. Research recommends `/gsd:research-phase` for Phase 6. Turbopack requires string-based plugin refs and relative MDX import paths.
 
 ---
 *State initialized: 2026-02-14*
@@ -143,3 +158,4 @@ None currently.
 *Phase 2 Prompt 6 completed: 2026-02-14*
 *Phase 2 Prompt 7 completed: 2026-02-14*
 *Phase 2 COMPLETE: 2026-02-14*
+*Phase 3 Prompt 5 completed: 2026-02-14*
