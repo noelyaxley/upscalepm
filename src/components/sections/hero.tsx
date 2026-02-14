@@ -69,7 +69,7 @@ export function Hero() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-neutral-600 text-white hover:bg-white/10 hover:text-white"
+                className="border-neutral-400 text-white hover:bg-white/10 hover:text-white"
               >
                 <Link href="/case-studies">See Our Projects</Link>
               </Button>

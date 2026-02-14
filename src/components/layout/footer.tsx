@@ -82,18 +82,10 @@ export function Footer() {
             <ul className="mt-4 flex flex-col gap-2 text-sm text-muted-foreground">
               <li>
                 <a
-                  href="tel:1300000000"
+                  href="mailto:info@upscalepm.com.au"
                   className="transition-colors hover:text-foreground"
                 >
-                  1300 XXX XXX
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:hello@upscalepm.com.au"
-                  className="transition-colors hover:text-foreground"
-                >
-                  hello@upscalepm.com.au
+                  info@upscalepm.com.au
                 </a>
               </li>
               <li>Sydney | Newcastle</li>

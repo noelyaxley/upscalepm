@@ -6,7 +6,7 @@ import { Container } from '@/components/layout/container'
 import { Section } from '@/components/layout/section'
 import { ContactForm } from '@/components/forms/contact-form'
 import { CalendlyInlineDynamic } from '@/components/booking/calendly-inline-dynamic'
-import { CheckCircle2, Clock, Mail, MapPin, Phone } from 'lucide-react'
+import { CheckCircle2, Clock, Mail, MapPin } from 'lucide-react'
 import { JsonLd } from '@/components/seo/json-ld'
 import { localBusinessSchema } from '@/components/seo/schemas'
 
@@ -152,15 +152,6 @@ export default function ContactPage() {
                   Contact details
                 </h3>
                 <ul className="mt-4 space-y-3">
-                  <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Phone className="size-4 shrink-0 text-primary-600" />
-                    <a
-                      href="tel:+61299998888"
-                      className="transition-colors hover:text-foreground"
-                    >
-                      (02) 9999 8888
-                    </a>
-                  </li>
                   <li className="flex items-center gap-3 text-sm text-muted-foreground">
                     <Mail className="size-4 shrink-0 text-primary-600" />
                     <a
