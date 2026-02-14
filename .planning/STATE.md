@@ -56,8 +56,8 @@
 |--------|-------|--------|--------|
 | 1 | Service Page Template & 5 Service Pages | Pending | |
 | 2 | Homepage | Pending | |
-| 3 | About / Team Page | Pending | |
-| 4 | Contact Page | Pending | |
+| 3 | About / Team Page | Done | `8e0a74e`..`48f111b` (2 commits) |
+| 4 | Contact Page | Done | `351e85f`..`56d3122` (3 commits) |
 | 5 | Client Logo Bar Component | Done | `ca77633` |
 | 6 | Privacy Policy & Terms of Service | Pending | |
 | 7 | Enhance Existing Pages | Pending | |
@@ -67,11 +67,11 @@
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 3 |
+| Plans completed | 5 |
 | Plans failed | 0 |
 | Phases completed | 2 |
 | Total requirements | 64 |
-| Requirements done | 17 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-03, CONT-05, CONT-06, CONT-08, MIG-02, MIG-03, MIG-04, MIG-05) |
+| Requirements done | 19 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-03, CONT-05, CONT-06, CONT-08, MIG-02, MIG-03, MIG-04, MIG-05; Phase 3: PAGE-07, PAGE-08) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
 | P2-P2 duration | 4m (4 tasks, 6 files) |
 | P2-P4 duration | 2m (2 tasks, 8 files) |
@@ -80,6 +80,8 @@
 | P2-P6 duration | 8m (1 task, 15 files) |
 | P2-P7 duration | 7m (3 tasks, 15 files) |
 | P3-P5 duration | 1m (1 task, 1 file) |
+| P3-P4 duration | 2m (3 tasks, 6 files) |
+| P3-P3 duration | 2m (3 tasks, 2 files) |
 
 ## Accumulated Context
 
@@ -121,6 +123,8 @@
 | construction-pm images reused for Quick Bites without dedicated dirs | 7 of 10 Quick Bites articles lack dedicated image directories; construction-pm gallery provides contextual hero images | 2 |
 | Publication dates inferred from WP image upload timestamps | No explicit publish dates in crawl data; image upload paths (2025/08, 2025/09, etc.) used as proxy | 2 |
 | Consistent h-10/h-12 height for logo bar | Responsive scaling with Tailwind classes instead of fixed pixel dimensions; muted background keeps logos unobtrusive | 3 |
+| WordPress content fetched via curl for about page | Accurate real content (FJMT, $40M portfolio) rather than generic fallback | 3 |
+| Inline CTA on about page (not ServiceCta) | ServiceCta component not yet created by Prompt 1 (parallel execution) | 3 |
 
 ### WordPress Crawl Results
 
@@ -159,3 +163,4 @@ None currently.
 *Phase 2 Prompt 7 completed: 2026-02-14*
 *Phase 2 COMPLETE: 2026-02-14*
 *Phase 3 Prompt 5 completed: 2026-02-14*
+*Phase 3 Prompt 3 completed: 2026-02-14*
