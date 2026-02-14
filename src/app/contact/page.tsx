@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Image from 'next/image'
 import { generatePageMetadata } from '@/lib/metadata'
-import { PageHeader } from '@/components/layout/page-header'
+import { Container } from '@/components/layout/container'
 import { Section } from '@/components/layout/section'
 import { ContactForm } from '@/components/forms/contact-form'
 import { CalendlyInlineDynamic } from '@/components/booking/calendly-inline-dynamic'
@@ -10,15 +11,15 @@ import { CheckCircle2, Clock, Mail, MapPin, Phone } from 'lucide-react'
 export const metadata: Metadata = generatePageMetadata({
   title: 'Contact',
   description:
-    'Get in touch with Upscale Project Management. Client-side project management for property and construction in Sydney and Newcastle.',
+    'Free 30-minute consultation with an experienced client-side project manager. No obligation — just practical advice for your property or construction project.',
   path: '/contact',
 })
 
 const trustPoints = [
-  'Dedicated client-side representation',
-  'Experienced across residential, commercial, health & education',
-  '14+ successfully delivered projects',
-  'Trusted by government and institutional clients',
+  'Your interests represented, not the contractor\'s',
+  'Architectural insight meets hands-on delivery',
+  '14+ projects delivered across health, education & commercial',
+  'Trusted by Sydney Water, NSW Ambulance & government clients',
 ]
 
 const clientLogos = [
@@ -47,10 +48,28 @@ const clientLogos = [
 export default function ContactPage() {
   return (
     <>
-      <PageHeader
-        title="Get in Touch"
-        breadcrumbs={[{ label: 'Contact' }]}
-      />
+      {/* Benefit-driven hero (CRO-01) */}
+      <section className="border-b bg-neutral-950 text-white">
+        <Container>
+          <div className="py-12 md:py-16">
+            <nav className="mb-6 text-sm text-neutral-400">
+              <Link href="/" className="hover:text-white">
+                Home
+              </Link>
+              <span className="mx-2">/</span>
+              <span>Contact</span>
+            </nav>
+            <h1 className="font-display text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+              Protect Your Next Project
+            </h1>
+            <p className="mt-4 max-w-2xl text-lg text-neutral-300">
+              Free 30-minute consultation with an experienced client-side
+              project manager. No obligation, no sales pitch — just practical
+              advice for your project.
+            </p>
+          </div>
+        </Container>
+      </section>
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
@@ -58,11 +77,10 @@ export default function ContactPage() {
           <div className="lg:col-span-3">
             <div className="mb-8">
               <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
-                Let&apos;s discuss your project
+                Tell Us About Your Project
               </h2>
-              <p className="mt-3 text-muted-foreground">
-                Tell us about your project and we&apos;ll explain how client-side
-                project management can protect your investment.
+              <p className="mt-1 text-sm text-muted-foreground">
+                Takes under 2 minutes. We respond within 1 business day.
               </p>
             </div>
 
@@ -72,6 +90,22 @@ export default function ContactPage() {
           {/* Right column -- Trust signals (40%) */}
           <div className="lg:col-span-2">
             <div className="space-y-8">
+              {/* Metrics bar */}
+              <div className="grid grid-cols-2 gap-4 rounded-lg border bg-muted/50 p-5">
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-primary">14+</p>
+                  <p className="text-xs text-muted-foreground">
+                    Projects Delivered
+                  </p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-primary">5</p>
+                  <p className="text-xs text-muted-foreground">
+                    Sectors Served
+                  </p>
+                </div>
+              </div>
+
               {/* Why choose Upscale */}
               <div>
                 <h3 className="font-display text-lg font-semibold">
@@ -103,10 +137,7 @@ export default function ContactPage() {
               <div className="rounded-lg border bg-primary/5 p-5">
                 <p className="text-sm font-medium">
                   Prefer to book directly?{' '}
-                  <a
-                    href="#booking"
-                    className="text-primary underline"
-                  >
+                  <a href="#booking" className="text-primary underline">
                     Schedule a free consultation
                   </a>
                 </p>
