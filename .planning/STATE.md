@@ -9,7 +9,7 @@
 ## Current Position
 
 **Phase:** 7 of 7 -- Programmatic SEO & Launch
-**Plan:** 1/5 prompts complete
+**Plan:** 2/5 prompts complete
 **Status:** IN PROGRESS
 **Progress:** [######....] 6/7 phases complete (Phase 7 started)
 
@@ -99,7 +99,7 @@
 | Prompt | Title | Status | Commit |
 |--------|-------|--------|--------|
 | 1 | Location Data Module & TypeScript Types | Done | `605dade`..`2307af4` (2 commits) |
-| 2 | Location Service Page Template & Static Generation | Pending | |
+| 2 | Location Service Page Template & Static Generation | Done | `c185c9c`..`d56f761` (3 commits) |
 | 3 | Dynamic OG Images & Social Sharing Optimization | Pending | |
 | 4 | DNS Cutover from WordPress to Vercel | Pending | |
 | 5 | Launch Verification & Search Console Submission | Pending | |
@@ -139,6 +139,7 @@
 | P6-P2 duration | 1m (4 tasks, 4 files) |
 | P6-P3 duration | 2m (3 tasks, 3 files) |
 | P7-P1 duration | 3m (2 tasks, 2 files) |
+| P7-P2 duration | 2m (3 tasks, 3 files) |
 
 ## Accumulated Context
 
@@ -222,6 +223,9 @@
 | SplitText.create() with autoSplit: true | Automatic font-load re-splitting when Playfair Display swap completes | 6 |
 | Explicit case study slug arrays per service-location | Follows services.ts pattern; avoids fuzzy frontmatter matching | 7 |
 | Newcastle includes Central Coast/Regional case studies | Only 1 explicit Newcastle case study; nearby work provides coverage | 7 |
+| Nested dynamic route [slug]/[location] under existing [slug] | Parent service page unaffected; clean URL structure | 7 |
+| dynamicParams = false for strict 404 | No SSR fallback for non-generated paths; prevents thin page indexing | 7 |
+| locationServiceSchema with Service + LocalBusiness provider | City-specific areaServed for local SEO structured data signals | 7 |
 
 ### WordPress Crawl Results
 
@@ -244,10 +248,10 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 7 Prompt 1 complete -- Location Data Module & TypeScript Types.
-**Stopped at:** Completed 7-1-PLAN (Location Data Module & TypeScript Types)
-**Next action:** Execute Phase 7 Prompt 2 (Location Service Page Template & Static Generation).
-**Context to preserve:** locations.types.ts and locations.ts created with Sydney (6 councils, 7 suburbs, 3-paragraph market context) and Newcastle (4 councils, 6 suburbs, 3-paragraph market context). All 10 service-location combinations have unique content. getAllServiceLocationParams() returns 10 entries for generateStaticParams. Build passes with 50 pages. PSEO-04 data layer complete.
+**Last session:** Phase 7 Prompt 2 complete -- Location Service Page Template & Static Generation.
+**Stopped at:** Completed 7-2-PLAN (Location Service Page Template & Static Generation)
+**Next action:** Execute Phase 7 Prompt 3 (Dynamic OG Images & Social Sharing Optimization).
+**Context to preserve:** 10 location pages generated at build time (60 total pages). Location page template at src/app/services/[slug]/[location]/page.tsx combines service + location data. locationServiceSchema added to schemas.ts. Sitemap includes all 10 location URLs. dynamicParams = false enforced. PSEO-01/02/03/04 page layer complete.
 
 ---
 *State initialized: 2026-02-14*
@@ -282,3 +286,4 @@ None currently.
 *Phase 6 Prompt 2 completed: 2026-02-14*
 *Phase 6 Prompt 3 completed: 2026-02-14*
 *Phase 7 Prompt 1 completed: 2026-02-15*
+*Phase 7 Prompt 2 completed: 2026-02-15*
