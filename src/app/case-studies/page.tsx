@@ -26,6 +26,7 @@ const CATEGORY_LABELS: Record<CaseStudyFrontmatter['category'], string> = {
 
 export default function CaseStudiesPage() {
   const studies = getAllCaseStudies()
+  const [featured, ...rest] = studies
 
   return (
     <main>
@@ -38,15 +39,33 @@ export default function CaseStudiesPage() {
       <section className="py-16 md:py-20">
         <Container>
           {studies.length > 0 ? (
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {studies.map((study) => (
-                <CaseStudyCard
-                  key={study.slug}
-                  slug={study.slug}
-                  frontmatter={study.frontmatter}
+            <>
+              {/* Project count */}
+              <p className="mb-8 text-sm font-medium text-muted-foreground">
+                {studies.length} projects
+              </p>
+
+              {/* Featured project -- larger card */}
+              {featured && (
+                <FeaturedCaseStudyCard
+                  slug={featured.slug}
+                  frontmatter={featured.frontmatter}
                 />
-              ))}
-            </div>
+              )}
+
+              {/* Remaining projects grid */}
+              {rest.length > 0 && (
+                <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                  {rest.map((study) => (
+                    <CaseStudyCard
+                      key={study.slug}
+                      slug={study.slug}
+                      frontmatter={study.frontmatter}
+                    />
+                  ))}
+                </div>
+              )}
+            </>
           ) : (
             <div className="py-20 text-center">
               <p className="text-lg text-muted-foreground">
@@ -58,6 +77,72 @@ export default function CaseStudiesPage() {
         </Container>
       </section>
     </main>
+  )
+}
+
+function FeaturedCaseStudyCard({
+  slug,
+  frontmatter,
+}: {
+  slug: string
+  frontmatter: CaseStudyFrontmatter
+}) {
+  const categoryLabel = CATEGORY_LABELS[frontmatter.category] ?? frontmatter.category
+
+  return (
+    <Link
+      href={`/case-studies/${slug}`}
+      className="group block overflow-hidden rounded-lg border bg-card shadow-sm transition-shadow hover:shadow-md md:grid md:grid-cols-2 md:gap-0"
+    >
+      {/* Featured image -- larger */}
+      <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200 md:aspect-auto md:min-h-[320px]">
+        <Image
+          src={frontmatter.heroImage}
+          alt={frontmatter.title}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          priority
+        />
+      </div>
+
+      {/* Featured content */}
+      <div className="flex flex-col justify-center p-6 md:p-10">
+        <span className="mb-2 inline-block self-start rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-700">
+          Featured
+        </span>
+        <span className="mb-3 inline-block self-start rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600">
+          {categoryLabel}
+        </span>
+        <h2 className="font-display text-2xl font-bold tracking-tight group-hover:text-primary-600 md:text-3xl">
+          {frontmatter.title}
+        </h2>
+        <p className="mt-3 text-muted-foreground">
+          {frontmatter.excerpt}
+        </p>
+        {frontmatter.location && (
+          <p className="mt-2 text-sm text-muted-foreground">
+            {frontmatter.location}
+          </p>
+        )}
+        <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary-600">
+          View project
+          <svg
+            className="h-4 w-4 transition-transform group-hover:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </span>
+      </div>
+    </Link>
   )
 }
 
