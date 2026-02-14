@@ -59,14 +59,14 @@ Rebuild upscalepm.com.au from WordPress/Elementor to a high-performance Next.js 
 **Plans:** 8 plans
 
 Plans:
-- [ ] 3-01-PLAN.md -- Service page template and 5 service pages
-- [ ] 3-02-PLAN.md -- Homepage with hero, services, featured case studies, CTA
-- [ ] 3-03-PLAN.md -- About / Team page
-- [ ] 3-04-PLAN.md -- Contact page with CRO-optimised form
-- [ ] 3-05-PLAN.md -- Client logo bar component
-- [ ] 3-06-PLAN.md -- Privacy policy and terms of service pages
-- [ ] 3-07-PLAN.md -- Enhance existing pages (case study index, insights index, 404, sitemap)
-- [ ] 3-08-PLAN.md -- Navigation audit and cross-linking verification
+- [x] 3-01-PLAN.md -- Service page template and 5 service pages
+- [x] 3-02-PLAN.md -- Homepage with hero, services, featured case studies, CTA
+- [x] 3-03-PLAN.md -- About / Team page
+- [x] 3-04-PLAN.md -- Contact page with CRO-optimised form
+- [x] 3-05-PLAN.md -- Client logo bar component
+- [x] 3-06-PLAN.md -- Privacy policy and terms of service pages
+- [x] 3-07-PLAN.md -- Enhance existing pages (case study index, insights index, 404, sitemap)
+- [x] 3-08-PLAN.md -- Navigation audit and cross-linking verification
 
 **Success Criteria:**
 1. Visitor can navigate from homepage through all 5 service pages, about/team page, case study index, insights index, contact page, privacy policy, and terms of service without any dead links or missing pages
@@ -84,6 +84,16 @@ Plans:
 **Dependencies:** Phase 3 (pages must exist before CRO can be applied and forms wired up)
 
 **Requirements:** HUB-01, HUB-02, HUB-03, HUB-04, HUB-05, CRO-01, CRO-02, CRO-03, CRO-04, CRO-05
+
+**Plans:** 6 plans
+
+Plans:
+- [ ] 4-01-PLAN.md -- HubSpot tracking script, UTM capture, root layout wiring
+- [ ] 4-02-PLAN.md -- Contact form Server Action and HubSpot Forms API wiring
+- [ ] 4-03-PLAN.md -- Calendly booking integration (inline widget + popup)
+- [ ] 4-04-PLAN.md -- CRO: Contact page optimisation
+- [ ] 4-05-PLAN.md -- CRO: Homepage and service pages (copy, CTAs, social proof)
+- [ ] 4-06-PLAN.md -- HubSpot email automation documentation and final verification
 
 **Success Criteria:**
 1. Submitting the contact form creates or updates a contact in HubSpot CRM with all form fields, UTM parameters, and page attribution correctly recorded
@@ -154,7 +164,7 @@ Plans:
 | 1 | Foundation & Design System | 8 | Complete |
 | 2 | Content Infrastructure & Migration | 10 | Complete |
 | 3 | Core Pages | 15 | Complete (2026-02-14) |
-| 4 | Lead Generation & CRO | 10 | Pending |
+| 4 | Lead Generation & CRO | 10 | Planned |
 | 5 | Analytics, Tracking & SEO | 9 | Pending |
 | 6 | Animation & Visual Polish | 6 | Pending |
 | 7 | Programmatic SEO & Launch | 6 | Pending |
