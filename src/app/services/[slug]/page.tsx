@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
+import Link from 'next/link'
 import { getServiceBySlug, getAllServices } from '@/lib/services'
 import { generatePageMetadata } from '@/lib/metadata'
 import { PageHeader } from '@/components/layout/page-header'
 import { Section } from '@/components/layout/section'
+import { Button } from '@/components/ui/button'
 import { ServiceBenefits } from '@/components/sections/service-benefits'
 import { ServiceCta } from '@/components/sections/service-cta'
 import { RelatedCaseStudies } from '@/components/sections/related-case-studies'
@@ -83,6 +85,24 @@ export default async function ServicePage({ params }: PageProps) {
         </Section>
       ))}
 
+      {/* Mid-page CTA (CRO-05) */}
+      <Section background="dark">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+            Ready to Discuss {service.title}?
+          </h2>
+          <p className="mt-3 text-neutral-300">
+            Get practical advice on your project from an experienced client-side
+            PM.
+          </p>
+          <div className="mt-6">
+            <Button asChild size="lg">
+              <Link href="/contact">Get a Free Consultation</Link>
+            </Button>
+          </div>
+        </div>
+      </Section>
+
       {/* Benefits grid */}
       <ServiceBenefits benefits={service.benefits} />
 
@@ -103,7 +123,9 @@ export default async function ServicePage({ params }: PageProps) {
       <ServiceCta
         heading={service.ctaText}
         description={service.ctaDescription}
-        buttonText="Get in Touch"
+        buttonText="Send an Enquiry"
+        showBooking={true}
+        bookingText="Book a Call"
       />
 
       {/* Related case studies */}

@@ -16,16 +16,16 @@ export function Hero() {
               Client-Side Project Management for Property &amp; Construction
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-neutral-300 md:text-xl">
-              From feasibility through to handover, we protect your time, budget,
-              and quality. Architectural insight meets hands-on delivery across
-              education, health, commercial, and residential projects.
+              Stop overpaying contractors and missing critical issues. We sit on
+              your side of the table — protecting your budget, timeline, and
+              quality from feasibility through to handover.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Button asChild size="lg">
-                <Link href="/contact">Start a Project</Link>
+                <Link href="/contact">Get a Free Consultation</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-neutral-600 text-white hover:bg-white/10 hover:text-white">
-                <Link href="/case-studies">View Our Work</Link>
+                <Link href="/case-studies">See Our Projects</Link>
               </Button>
             </div>
           </div>

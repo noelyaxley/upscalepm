@@ -2,9 +2,9 @@ import { Section } from '@/components/layout/section'
 
 const propositions = [
   {
-    title: 'Architectural Insight',
+    title: 'Catch Issues Before They Cost You',
     description:
-      'Our background in architecture brings a design-informed perspective to project management. We understand how buildings come together, so we catch issues before they become costly problems.',
+      'Our architectural background means we see problems in drawings that most PMs miss. We catch coordination issues, buildability problems, and compliance gaps before they become expensive site variations.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -24,9 +24,9 @@ const propositions = [
     ),
   },
   {
-    title: 'Client-Side Focus',
+    title: 'Someone in Your Corner',
     description:
-      'We represent your interests, not the contractor\'s. As your dedicated advocate, we ensure every decision protects your investment, timeline, and project vision.',
+      'We represent you, not the contractor. Every progress claim reviewed, every variation challenged, every decision made with your investment protected.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -46,9 +46,9 @@ const propositions = [
     ),
   },
   {
-    title: 'End-to-End Coverage',
+    title: 'One Team, Start to Finish',
     description:
-      'From initial feasibility and DA approval through tender, construction, and handover. One team, one relationship, complete project continuity from start to finish.',
+      'From feasibility and DA through tender, construction, and handover. No handoffs, no lost context, no starting over with someone new.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -72,11 +72,11 @@ export function ValueProposition() {
     <Section background="muted">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-          Why Choose Upscale
+          What You Get With a Client-Side PM
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          We bring a unique combination of architectural knowledge, client-side
-          advocacy, and full-lifecycle project management.
+          Most developers hire the contractor&apos;s PM. That&apos;s like hiring
+          the other side&apos;s lawyer.
         </p>
       </div>
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

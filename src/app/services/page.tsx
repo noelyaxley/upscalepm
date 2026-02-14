@@ -95,15 +95,15 @@ export default function ServicesPage() {
       <Section background="dark">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Ready to Discuss Your Project?
+            Your Project Deserves Expert Representation
           </h2>
           <p className="mt-4 text-lg text-neutral-300">
-            Tell us about your project and we will explain how client-side
-            project management can protect your investment.
+            Tell us about your project and we will recommend the right service
+            for your needs. Free 30-minute consultation, no obligation.
           </p>
           <div className="mt-8">
             <Button asChild size="lg">
-              <Link href="/contact">Get in Touch</Link>
+              <Link href="/contact">Get a Free Consultation</Link>
             </Button>
           </div>
         </div>
