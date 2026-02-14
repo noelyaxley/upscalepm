@@ -56,6 +56,18 @@ Rebuild upscalepm.com.au from WordPress/Elementor to a high-performance Next.js 
 
 **Requirements:** PAGE-01, PAGE-02, PAGE-03, PAGE-04, PAGE-05, PAGE-06, PAGE-07, PAGE-08, PAGE-09, PAGE-10, PAGE-11, PAGE-12, PAGE-13, CONT-04, CONT-07
 
+**Plans:** 8 plans
+
+Plans:
+- [ ] 3-01-PLAN.md -- Service page template and 5 service pages
+- [ ] 3-02-PLAN.md -- Homepage with hero, services, featured case studies, CTA
+- [ ] 3-03-PLAN.md -- About / Team page
+- [ ] 3-04-PLAN.md -- Contact page with CRO-optimised form
+- [ ] 3-05-PLAN.md -- Client logo bar component
+- [ ] 3-06-PLAN.md -- Privacy policy and terms of service pages
+- [ ] 3-07-PLAN.md -- Enhance existing pages (case study index, insights index, 404, sitemap)
+- [ ] 3-08-PLAN.md -- Navigation audit and cross-linking verification
+
 **Success Criteria:**
 1. Visitor can navigate from homepage through all 5 service pages, about/team page, case study index, insights index, contact page, privacy policy, and terms of service without any dead links or missing pages
 2. Homepage displays hero section, value proposition, service overview cards, featured case studies, and at least one visible CTA
@@ -141,7 +153,7 @@ Rebuild upscalepm.com.au from WordPress/Elementor to a high-performance Next.js 
 |-------|------|--------------|--------|
 | 1 | Foundation & Design System | 8 | Complete |
 | 2 | Content Infrastructure & Migration | 10 | Complete |
-| 3 | Core Pages | 15 | Pending |
+| 3 | Core Pages | 15 | Planned (8 prompts) |
 | 4 | Lead Generation & CRO | 10 | Pending |
 | 5 | Analytics, Tracking & SEO | 9 | Pending |
 | 6 | Animation & Visual Polish | 6 | Pending |
