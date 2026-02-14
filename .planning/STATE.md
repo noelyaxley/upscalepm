@@ -9,7 +9,7 @@
 ## Current Position
 
 **Phase:** 5 of 7 -- Analytics, Tracking & SEO
-**Plan:** 2/? prompts complete
+**Plan:** 3/? prompts complete
 **Status:** IN PROGRESS
 **Progress:** [####......] 4/7 phases complete
 
@@ -80,6 +80,7 @@
 |--------|-------|--------|--------|
 | 1 | GTM Container Script & DataLayer Event Utilities | Done | `d368c1c`..`2a2c0fb` (4 commits) |
 | 2 | Contact Form DataLayer Integration | Done | `d22a081` (1 commit) |
+| 3 | JSON-LD Structured Data Components & Schema Generators | Done | `afcc467`..`2f10cfd` (4 commits) |
 
 ## Performance Metrics
 
@@ -108,6 +109,7 @@
 | P4-P3 duration | 3m (5 tasks, 6 files) |
 | P5-P1 duration | 1m (5 tasks, 5 files) |
 | P5-P2 duration | 1m (1 task, 1 file) |
+| P5-P3 duration | 3m (4 tasks, 10 files) |
 
 ## Accumulated Context
 
@@ -175,6 +177,7 @@
 | GTM afterInteractive strategy | Avoids blocking FCP; loads GTM after hydration instead of beforeInteractive | 5 |
 | Graceful degradation for GTM | GTMScript renders null when NEXT_PUBLIC_GTM_ID is unset or REPLACE_ME; dev works without credentials | 5 |
 | dataLayer push utilities server-safe | typeof window guard and dataLayer initialization allow SSR-safe event pushing | 5 |
+| Used contact page phone/email over footer placeholders for JSON-LD | Footer has placeholder 1300 XXX XXX; contact page has (02) 9999 8888 and info@upscalepm.com.au | 5 |
 
 ### WordPress Crawl Results
 
@@ -197,9 +200,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 5 Prompt 2 complete -- Contact form dataLayer integration.
-**Next action:** Execute Phase 5 Prompt 3.
-**Context to preserve:** GTM installed in root layout with afterInteractive strategy, graceful degradation when GTM_ID is REPLACE_ME. dataLayer push helpers exported from `src/components/analytics/gtm-event.ts`. Contact form now pushes `form_submission` event to dataLayer on successful submission, enabling GTM to fire GA4 generate_lead, Google Ads conversion, and Meta Pixel Lead tags. All integrations gracefully degrade with placeholder env vars.
+**Last session:** Phase 5 Prompt 3 complete -- JSON-LD structured data components and schema generators.
+**Next action:** Execute Phase 5 Prompt 4.
+**Context to preserve:** GTM installed in root layout with afterInteractive strategy, graceful degradation when GTM_ID is REPLACE_ME. dataLayer push helpers exported from `src/components/analytics/gtm-event.ts`. Contact form now pushes `form_submission` event to dataLayer on successful submission. JSON-LD structured data added to all page types: LocalBusiness on homepage/about/contact/services, Service on individual service pages, Article on insights and case studies. Schema generators in `src/components/seo/schemas.ts` with schema-dts types. CaseStudyFrontmatter now has optional `date` field for Article datePublished.
 
 ---
 *State initialized: 2026-02-14*
@@ -225,3 +228,4 @@ None currently.
 *Phase 4 Prompt 3 completed: 2026-02-14*
 *Phase 5 Prompt 1 completed: 2026-02-14*
 *Phase 5 Prompt 2 completed: 2026-02-14*
+*Phase 5 Prompt 3 completed: 2026-02-14*
