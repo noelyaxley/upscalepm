@@ -9,9 +9,9 @@
 ## Current Position
 
 **Phase:** 2 of 7 -- Content Infrastructure & Migration
-**Plan:** Prompt 1 of 8 complete, next: Prompt 2 (Case Study Template & Dynamic Route)
-**Status:** EXECUTING (Prompt 1 complete)
-**Progress:** [#.........] 1/7 phases complete (Phase 2: 1/8 prompts)
+**Plan:** Prompt 4 of 8 complete, next: Prompt 5 (Image Migration & Organization)
+**Status:** EXECUTING (Prompt 4 complete)
+**Progress:** [#.........] 1/7 phases complete (Phase 2: 4/8 prompts)
 
 ## Phase Overview
 
@@ -44,7 +44,7 @@
 | 1 | MDX Pipeline Setup | Done | `9568afc`..`3c4de00` (7 commits) |
 | 2 | Case Study Template & Dynamic Route | Pending | -- |
 | 3 | Insights Template & Dynamic Route | Pending | -- |
-| 4 | Interactive MDX Components | Pending | -- |
+| 4 | Interactive MDX Components | Done | `b770f08`..`b6b66a0` (2 commits) |
 | 5 | Image Migration & Organization | Pending | -- |
 | 6 | Case Study Content Migration | Pending | -- |
 | 7 | Insights Content Migration | Pending | -- |
@@ -58,8 +58,9 @@
 | Plans failed | 0 |
 | Phases completed | 1 |
 | Total requirements | 64 |
-| Requirements done | 9 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01) |
+| Requirements done | 10 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-08) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
+| P2-P4 duration | 2m (2 tasks, 8 files) |
 
 ## Accumulated Context
 
@@ -86,6 +87,8 @@
 | All insights under /insights/ URL | Single URL structure with category frontmatter field for filtering | 2 |
 | 3 separate Granville Diggers case studies | Different project phases warrant separate pages | 2 |
 | String-based plugin references for Turbopack | Next.js 16 Turbopack cannot serialize function references in loader options; use string names instead | 2 |
+| `not-prose` on block-level MDX components | Prevents Tailwind typography plugin from overriding component styles inside MDX | 2 |
+| Global MDX component registration | Components registered in mdx-components.tsx so no per-file imports needed in MDX | 2 |
 
 ### WordPress Crawl Results
 
@@ -108,11 +111,12 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 2 Prompt 1 (MDX Pipeline Setup) executed successfully. 7 atomic commits.
-**Next action:** Execute Phase 2 Prompt 2 (Case Study Template & Dynamic Route)
-**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 6 (scroll animation performance). Turbopack requires string-based plugin refs in next.config.mjs.
+**Last session:** Phase 2 Prompt 4 (Interactive MDX Components) executed successfully. 2 atomic commits.
+**Next action:** Execute Phase 2 Prompt 5 (Image Migration & Organization)
+**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 6 (scroll animation performance). Turbopack requires string-based plugin refs in next.config.mjs. Untracked files from incomplete P2-P2/P3 execution exist in working tree (not committed).
 
 ---
 *State initialized: 2026-02-14*
 *Phase 2 planned: 2026-02-14*
 *Phase 2 Prompt 1 completed: 2026-02-14*
+*Phase 2 Prompt 4 completed: 2026-02-14*
