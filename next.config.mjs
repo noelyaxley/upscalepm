@@ -1,4 +1,8 @@
 import createMDX from '@next/mdx'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import remarkGfm from 'remark-gfm'
+import rehypeSlug from 'rehype-slug'
 import { readFileSync } from 'fs'
 
 /** @type {import('next').NextConfig} */
@@ -24,8 +28,14 @@ const nextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
+    remarkPlugins: [
+      remarkFrontmatter,
+      remarkMdxFrontmatter,
+      remarkGfm,
+    ],
+    rehypePlugins: [
+      rehypeSlug,
+    ],
   },
 })
 
