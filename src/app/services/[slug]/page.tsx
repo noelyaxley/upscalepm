@@ -1,0 +1,113 @@
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import Image from 'next/image'
+import { getServiceBySlug, getAllServices } from '@/lib/services'
+import { generatePageMetadata } from '@/lib/metadata'
+import { PageHeader } from '@/components/layout/page-header'
+import { Section } from '@/components/layout/section'
+import { ServiceBenefits } from '@/components/sections/service-benefits'
+import { ServiceCta } from '@/components/sections/service-cta'
+import { RelatedCaseStudies } from '@/components/sections/related-case-studies'
+
+interface PageProps {
+  params: Promise<{ slug: string }>
+}
+
+export function generateStaticParams() {
+  return getAllServices().map((s) => ({ slug: s.slug }))
+}
+
+export const dynamicParams = false
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params
+  const service = getServiceBySlug(slug)
+  if (!service) return { title: 'Not Found' }
+  return generatePageMetadata({
+    title: service.title,
+    description: service.description,
+    path: `/services/${slug}`,
+  })
+}
+
+export default async function ServicePage({ params }: PageProps) {
+  const { slug } = await params
+  const service = getServiceBySlug(slug)
+  if (!service) notFound()
+
+  return (
+    <>
+      {/* Hero with background image */}
+      <div className="relative overflow-hidden border-b">
+        <div className="absolute inset-0">
+          <Image
+            src={service.heroImage}
+            alt={service.title}
+            fill
+            className="object-cover opacity-15"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-background" />
+        </div>
+        <div className="relative">
+          <PageHeader
+            title={service.title}
+            subtitle={service.subtitle}
+            breadcrumbs={[
+              { label: 'Services', href: '/services' },
+              { label: service.title },
+            ]}
+          />
+        </div>
+      </div>
+
+      {/* Content sections with alternating backgrounds */}
+      {service.sections.map((section, index) => (
+        <Section
+          key={section.heading}
+          background={index % 2 === 0 ? 'default' : 'muted'}
+        >
+          <div className="mx-auto max-w-3xl">
+            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+              {section.heading}
+            </h2>
+            <div className="mt-6 space-y-4 text-muted-foreground">
+              {section.body.split('\n\n').map((paragraph, pIndex) => (
+                <p key={pIndex} className="leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </Section>
+      ))}
+
+      {/* Benefits grid */}
+      <ServiceBenefits benefits={service.benefits} />
+
+      {/* Dual service model callout (PAGE-12) */}
+      <Section background="default" spacing="compact">
+        <div className="mx-auto max-w-3xl rounded-lg border-l-4 border-primary bg-muted/50 p-6 md:p-8">
+          <h3 className="text-lg font-semibold">
+            Flexible Engagement Models
+          </h3>
+          <p className="mt-2 text-muted-foreground">
+            Available as a project engagement or as part of our ongoing advisory
+            retainer. Contact us to discuss the right model for your project.
+          </p>
+        </div>
+      </Section>
+
+      {/* CTA */}
+      <ServiceCta
+        heading={service.ctaText}
+        description={service.ctaDescription}
+        buttonText="Get in Touch"
+      />
+
+      {/* Related case studies */}
+      <RelatedCaseStudies slugs={service.relatedCaseStudies} />
+    </>
+  )
+}
