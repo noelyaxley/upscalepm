@@ -9,7 +9,7 @@
 ## Current Position
 
 **Phase:** 6 of 7 -- Animation & Visual Polish
-**Plan:** 4/5 prompts in progress (Wave 1)
+**Plan:** 2/5 prompts complete (Wave 1 done, Wave 2 next)
 **Status:** IN PROGRESS
 **Progress:** [#####.....] 5/7 phases complete
 
@@ -88,7 +88,7 @@
 
 | Prompt | Title | Status | Commit |
 |--------|-------|--------|--------|
-| 1 | GSAP Infrastructure, Lenis Smooth Scroll & Reduced-Motion | Pending | |
+| 1 | GSAP Infrastructure, Lenis Smooth Scroll & Reduced-Motion | Done | `4c33d54`..`e874a53` (4 commits) |
 | 2 | ScrollTrigger Batch Reveal Animations | Pending | |
 | 3 | Hero Entrance Animation -- SplitText & Parallax | Pending | |
 | 4 | Geometric Overlay Design Language | Done | `872d35f`..`bce1749` (5 commits) |
@@ -98,11 +98,11 @@
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 10 |
+| Plans completed | 11 |
 | Plans failed | 0 |
 | Phases completed | 5 |
 | Total requirements | 64 |
-| Requirements done | 51 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01/02/03/05/06/08, MIG-02/03/04/05; Phase 3: PAGE-01/02/03/04/05/06/07/08/09/10/11/12/13, CONT-04/07; Phase 4: HUB-01/02/03/04/05, CRO-01/02/03/04/05; Phase 5: TRACK-01/02/03/04/05, SEO-02/03/04/06) |
+| Requirements done | 53 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01/02/03/05/06/08, MIG-02/03/04/05; Phase 3: PAGE-01/02/03/04/05/06/07/08/09/10/11/12/13, CONT-04/07; Phase 4: HUB-01/02/03/04/05, CRO-01/02/03/04/05; Phase 5: TRACK-01/02/03/04/05, SEO-02/03/04/06; Phase 6: DSGN-07/10) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
 | P2-P2 duration | 4m (4 tasks, 6 files) |
 | P2-P4 duration | 2m (2 tasks, 8 files) |
@@ -125,6 +125,7 @@
 | P5-P4 duration | 1m (1 task, 1 file) |
 | P5-P5 duration | 1m (5 tasks, 0 files -- verification only) |
 | P6-P4 duration | 2m (5 tasks, 5 files) |
+| P6-P1 duration | 2m (4 tasks, 4 files) |
 
 ## Accumulated Context
 
@@ -197,6 +198,9 @@
 | CWV risk assessment: low | GTM afterInteractive, JSON-LD invisible, all images use next/image with fill or dimensions | 5 |
 | GeometricShapes as Server Component | Pure CSS animation needs no JS; border-only wireframe at opacity 0.04 | 6 |
 | Diagonal dividers at 3rem/4rem | Responsive clip-path with negative margin overlap; padding uses --spacing-section | 6 |
+| autoRaf: false on ReactLenis | GSAP ticker drives Lenis to avoid double RAF loop; single RAF for perfect sync | 6 |
+| Default prefersReducedMotion to false (SSR) | Avoids flash of native-then-smooth scroll during hydration | 6 |
+| Centralized GSAP plugin registration | All animation imports from @/lib/gsap, not gsap/* directly; prevents duplicate registration | 6 |
 
 ### WordPress Crawl Results
 
@@ -219,9 +223,10 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 6 PLANNED -- 5 prompts across 3 waves. Research completed (GSAP 3.14.2, Lenis 1.3.17, SplitText all already installed).
-**Next action:** Execute Phase 6 (`/gsd:execute-phase 6`) — GSAP infrastructure, Lenis smooth scroll, ScrollTrigger.batch reveals, SplitText hero, geometric overlays, CWV verification.
-**Context to preserve:** Phase 5 fully complete. GTM installed (afterInteractive), dataLayer events wired, JSON-LD on all page types, metadata exports on all pages, sitemap covers 41 pages, robots.txt correct. CWV baseline established: LCP/CLS/INP all low risk from code analysis. Phase 6 plan uses 3 waves: Wave 1 (Prompt 1 + 4 parallel), Wave 2 (Prompt 2 + 3 parallel), Wave 3 (Prompt 5 verification). All animation packages already installed, zero animation code exists currently.
+**Last session:** Phase 6 Prompt 1 complete -- GSAP infrastructure and Lenis smooth scroll. Prompt 4 (geometric overlays) also complete from parallel Wave 1.
+**Stopped at:** Completed 6-1-PLAN (GSAP Infrastructure, Lenis Smooth Scroll & Reduced-Motion)
+**Next action:** Execute Phase 6 Prompts 2 + 3 (Wave 2) -- ScrollTrigger.batch reveals + SplitText hero entrance. Then Prompt 5 verification.
+**Context to preserve:** Wave 1 complete (Prompt 1 + 4). GSAP registered (ScrollTrigger, SplitText, useGSAP) at @/lib/gsap. Lenis wraps root layout via SmoothScroll. Lenis CSS in globals.css. Geometric overlay CSS + components already exist. Build passes with 50 pages. No scroll-behavior: smooth conflicts.
 
 ---
 *State initialized: 2026-02-14*
@@ -251,4 +256,5 @@ None currently.
 *Phase 5 Prompt 4 completed: 2026-02-14*
 *Phase 5 Prompt 5 completed: 2026-02-14*
 *Phase 5 COMPLETE: 2026-02-14*
+*Phase 6 Prompt 1 completed: 2026-02-14*
 *Phase 6 Prompt 4 completed: 2026-02-14*
