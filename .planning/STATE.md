@@ -9,7 +9,7 @@
 ## Current Position
 
 **Phase:** 6 of 7 -- Animation & Visual Polish
-**Plan:** 2/5 prompts complete (Wave 1 done, Wave 2 next)
+**Plan:** 3/5 prompts complete (Wave 1 + Prompt 2 done, Prompt 3 next)
 **Status:** IN PROGRESS
 **Progress:** [#####.....] 5/7 phases complete
 
@@ -89,7 +89,7 @@
 | Prompt | Title | Status | Commit |
 |--------|-------|--------|--------|
 | 1 | GSAP Infrastructure, Lenis Smooth Scroll & Reduced-Motion | Done | `4c33d54`..`e874a53` (4 commits) |
-| 2 | ScrollTrigger Batch Reveal Animations | Pending | |
+| 2 | ScrollTrigger Batch Reveal Animations | Done | `211f5fe`..`b02502e` (4 commits) |
 | 3 | Hero Entrance Animation -- SplitText & Parallax | Pending | |
 | 4 | Geometric Overlay Design Language | Done | `872d35f`..`bce1749` (5 commits) |
 | 5 | Performance Verification & Cross-Page Animation Audit | Pending | |
@@ -102,7 +102,7 @@
 | Plans failed | 0 |
 | Phases completed | 5 |
 | Total requirements | 64 |
-| Requirements done | 53 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01/02/03/05/06/08, MIG-02/03/04/05; Phase 3: PAGE-01/02/03/04/05/06/07/08/09/10/11/12/13, CONT-04/07; Phase 4: HUB-01/02/03/04/05, CRO-01/02/03/04/05; Phase 5: TRACK-01/02/03/04/05, SEO-02/03/04/06; Phase 6: DSGN-07/10) |
+| Requirements done | 54 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01/02/03/05/06/08, MIG-02/03/04/05; Phase 3: PAGE-01/02/03/04/05/06/07/08/09/10/11/12/13, CONT-04/07; Phase 4: HUB-01/02/03/04/05, CRO-01/02/03/04/05; Phase 5: TRACK-01/02/03/04/05, SEO-02/03/04/06; Phase 6: DSGN-04/07/10) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
 | P2-P2 duration | 4m (4 tasks, 6 files) |
 | P2-P4 duration | 2m (2 tasks, 8 files) |
@@ -126,6 +126,7 @@
 | P5-P5 duration | 1m (5 tasks, 0 files -- verification only) |
 | P6-P4 duration | 2m (5 tasks, 5 files) |
 | P6-P1 duration | 2m (4 tasks, 4 files) |
+| P6-P2 duration | 1m (4 tasks, 4 files) |
 
 ## Accumulated Context
 
@@ -201,6 +202,9 @@
 | autoRaf: false on ReactLenis | GSAP ticker drives Lenis to avoid double RAF loop; single RAF for perfect sync | 6 |
 | Default prefersReducedMotion to false (SSR) | Avoids flash of native-then-smooth scroll during hydration | 6 |
 | Centralized GSAP plugin registration | All animation imports from @/lib/gsap, not gsap/* directly; prevents duplicate registration | 6 |
+| CSS initial state scoped to prefers-reduced-motion: no-preference | Reduced-motion users see content immediately; CSS and JS guards use identical media query | 6 |
+| ScrollReveal in layout.tsx not page.tsx | Works on all pages regardless of entry URL; ScrollTrigger.batch is global | 6 |
+| ScrollTrigger.batch over individual ScrollTriggers | Single watcher for all [data-reveal] elements; more performant for repeating patterns | 6 |
 
 ### WordPress Crawl Results
 
@@ -223,10 +227,10 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 6 Prompt 1 complete -- GSAP infrastructure and Lenis smooth scroll. Prompt 4 (geometric overlays) also complete from parallel Wave 1.
-**Stopped at:** Completed 6-1-PLAN (GSAP Infrastructure, Lenis Smooth Scroll & Reduced-Motion)
-**Next action:** Execute Phase 6 Prompts 2 + 3 (Wave 2) -- ScrollTrigger.batch reveals + SplitText hero entrance. Then Prompt 5 verification.
-**Context to preserve:** Wave 1 complete (Prompt 1 + 4). GSAP registered (ScrollTrigger, SplitText, useGSAP) at @/lib/gsap. Lenis wraps root layout via SmoothScroll. Lenis CSS in globals.css. Geometric overlay CSS + components already exist. Build passes with 50 pages. No scroll-behavior: smooth conflicts.
+**Last session:** Phase 6 Prompt 2 complete -- ScrollTrigger.batch reveal animations on all sections.
+**Stopped at:** Completed 6-2-PLAN (ScrollTrigger Batch Reveal Animations)
+**Next action:** Execute Phase 6 Prompt 3 (Hero Entrance Animation -- SplitText & Parallax). Then Prompt 5 verification.
+**Context to preserve:** Wave 1 complete (Prompt 1 + 4), Prompt 2 complete. ScrollReveal in layout.tsx with ScrollTrigger.batch('[data-reveal]'). Section component has data-reveal attribute. CSS initial state scoped to prefers-reduced-motion: no-preference. Build passes with 50 pages.
 
 ---
 *State initialized: 2026-02-14*
@@ -258,3 +262,4 @@ None currently.
 *Phase 5 COMPLETE: 2026-02-14*
 *Phase 6 Prompt 1 completed: 2026-02-14*
 *Phase 6 Prompt 4 completed: 2026-02-14*
+*Phase 6 Prompt 2 completed: 2026-02-14*
