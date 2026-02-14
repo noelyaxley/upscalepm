@@ -169,11 +169,11 @@ Plans:
 **Plans:** 5 prompts
 
 Plans:
-- [ ] Prompt 1 -- Location Data Module & TypeScript Types (PSEO-04)
-- [ ] Prompt 2 -- Location Service Page Template & Static Generation (PSEO-01, PSEO-02, PSEO-03, PSEO-04)
-- [ ] Prompt 3 -- Dynamic OG Images & Social Sharing Optimization (DEPL-03)
-- [ ] Prompt 4 -- DNS Cutover from WordPress to Vercel (DEPL-02)
-- [ ] Prompt 5 -- Launch Verification & Search Console Submission (DEPL-02, DEPL-03)
+- [x] Prompt 1 -- Location Data Module & TypeScript Types (PSEO-04)
+- [x] Prompt 2 -- Location Service Page Template & Static Generation (PSEO-01, PSEO-02, PSEO-03, PSEO-04)
+- [x] Prompt 3 -- Dynamic OG Images & Social Sharing Optimization (DEPL-03)
+- [~] Prompt 4 -- DNS Cutover from WordPress to Vercel (DEPL-02) — DEFERRED
+- [~] Prompt 5 -- Launch Verification & Search Console Submission (DEPL-02, DEPL-03) — DEFERRED
 
 **Success Criteria:**
 1. "Service in City" template generates pages for all 5 services in Sydney and all 5 services in Newcastle (10 location pages total), each with localised content, relevant case studies, and local CTAs
@@ -194,7 +194,7 @@ Plans:
 | 4 | Lead Generation & CRO | 10 | Complete (2026-02-14) |
 | 5 | Analytics, Tracking & SEO | 9 | Complete (2026-02-14) |
 | 6 | Animation & Visual Polish | 6 | Complete (2026-02-15) |
-| 7 | Programmatic SEO & Launch | 6 | Pending |
+| 7 | Programmatic SEO & Launch | 6 | Code Complete (2026-02-15) — DNS deferred |
 | **Total** | | **64** | |
 
 ## Dependency Graph
