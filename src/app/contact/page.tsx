@@ -4,6 +4,7 @@ import { generatePageMetadata } from '@/lib/metadata'
 import { PageHeader } from '@/components/layout/page-header'
 import { Section } from '@/components/layout/section'
 import { ContactForm } from '@/components/forms/contact-form'
+import { CalendlyInlineDynamic } from '@/components/booking/calendly-inline-dynamic'
 import { CheckCircle2, Clock, Mail, MapPin, Phone } from 'lucide-react'
 
 export const metadata: Metadata = generatePageMetadata({
@@ -98,6 +99,19 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {/* Book directly link */}
+              <div className="rounded-lg border bg-primary/5 p-5">
+                <p className="text-sm font-medium">
+                  Prefer to book directly?{' '}
+                  <a
+                    href="#booking"
+                    className="text-primary underline"
+                  >
+                    Schedule a free consultation
+                  </a>
+                </p>
+              </div>
+
               {/* Contact details */}
               <div>
                 <h3 className="font-display text-lg font-semibold">
@@ -153,6 +167,22 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
+        </div>
+      </Section>
+
+      {/* Booking section */}
+      <Section background="muted" id="booking">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+            Prefer to Book Directly?
+          </h2>
+          <p className="mt-3 text-muted-foreground">
+            Skip the form and schedule a free 30-minute consultation at a time
+            that suits you.
+          </p>
+        </div>
+        <div className="mx-auto mt-8 max-w-3xl">
+          <CalendlyInlineDynamic />
         </div>
       </Section>
     </>
