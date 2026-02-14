@@ -8,7 +8,7 @@ export const services: ServicePage[] = [
       'Strategic insights to unlock potential and guide smarter development decisions',
     description:
       'Upscale PM provides strategic feasibility and advisory services for property development. Site studies, regulatory analysis, and tailored delivery advice across education, health, commercial, and residential sectors.',
-    heroImage: '/images/services/feasibility-advisory.webp',
+    heroImage: '/images/case-studies/granville-diggers/hero.jpg',
     sections: [
       {
         heading: 'Strategic Insights -- Excellence in Feasibility and Advisory',
@@ -67,7 +67,7 @@ export const services: ServicePage[] = [
       'Delivering clarity, alignment, and project success',
     description:
       'Upscale PM delivers expert design management ensuring architectural integrity is maintained from concept through delivery. We coordinate architects, contractors, and stakeholders across complex projects.',
-    heroImage: '/images/services/design-management.webp',
+    heroImage: '/images/case-studies/crosslife-church/hero.jpg',
     sections: [
       {
         heading: 'Expert Design Management for Seamless Project Delivery',
@@ -126,7 +126,7 @@ export const services: ServicePage[] = [
       'Navigating DA approvals with precision, strategy, and insight',
     description:
       'Upscale PM delivers expert DA guidance grounded in hands-on architectural and project management experience. We navigate approvals for diverse project types from ambulance stations to high-density towers.',
-    heroImage: '/images/services/da-approval.webp',
+    heroImage: '/images/case-studies/pete-island/hero.jpg',
     sections: [
       {
         heading:
@@ -186,7 +186,7 @@ export const services: ServicePage[] = [
       'Independent, design-informed advice to assess value, risk, and alignment',
     description:
       'Upscale PM\'s tender assessment service ensures the right construction partner is selected -- balancing cost, quality, and risk for smarter, client-focused outcomes.',
-    heroImage: '/images/services/tender-assessment.webp',
+    heroImage: '/images/case-studies/vibe-hotel/hero.jpg',
     sections: [
       {
         heading: 'Experts in Tender Assessment',
@@ -245,7 +245,7 @@ export const services: ServicePage[] = [
       'Experienced site leadership ensuring quality, clarity, and client-first delivery',
     description:
       'Upscale PM delivers expert site leadership, risk management, and client-focused outcomes across diverse building types and complex construction environments.',
-    heroImage: '/images/services/construction-superintendent.webp',
+    heroImage: '/images/case-studies/sydney-water/hero.jpg',
     sections: [
       {
         heading: 'Leadership in Delivery and On-Site Coordination',
