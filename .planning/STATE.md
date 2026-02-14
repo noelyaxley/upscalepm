@@ -55,7 +55,7 @@
 | Prompt | Title | Status | Commit |
 |--------|-------|--------|--------|
 | 1 | Service Page Template & 5 Service Pages | Done | `38e955e`..`3f9240f` (4 commits) |
-| 2 | Homepage | Pending | |
+| 2 | Homepage | Done | `cbe6895`..`cd92252` (6 commits) |
 | 3 | About / Team Page | Done | `8e0a74e`..`48f111b` (2 commits) |
 | 4 | Contact Page | Done | `351e85f`..`56d3122` (3 commits) |
 | 5 | Client Logo Bar Component | Done | `ca77633` |
@@ -71,7 +71,7 @@
 | Plans failed | 0 |
 | Phases completed | 2 |
 | Total requirements | 64 |
-| Requirements done | 27 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-03, CONT-05, CONT-06, CONT-08, MIG-02, MIG-03, MIG-04, MIG-05; Phase 3: PAGE-02, PAGE-03, PAGE-04, PAGE-05, PAGE-06, PAGE-07, PAGE-08, PAGE-09, PAGE-10, PAGE-12) |
+| Requirements done | 28 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-03, CONT-05, CONT-06, CONT-08, MIG-02, MIG-03, MIG-04, MIG-05; Phase 3: PAGE-01, PAGE-02, PAGE-03, PAGE-04, PAGE-05, PAGE-06, PAGE-07, PAGE-08, PAGE-09, PAGE-10, PAGE-12) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
 | P2-P2 duration | 4m (4 tasks, 6 files) |
 | P2-P4 duration | 2m (2 tasks, 8 files) |
@@ -84,6 +84,7 @@
 | P3-P3 duration | 2m (3 tasks, 2 files) |
 | P3-P6 duration | 2m (3 tasks, 3 files) |
 | P3-P1 duration | 2m (6 tasks, 6 files) |
+| P3-P2 duration | 2m (6 tasks, 6 files) |
 
 ## Accumulated Context
 
@@ -135,6 +136,9 @@
 | Radix Select for project type dropdown | Accessible, keyboard-navigable dropdown instead of native HTML select; consistent shadcn styling | 3 |
 | Form success replaces form with confirmation | Prevents confusion about re-submission; "Send another enquiry" button to reset | 3 |
 | Simulated submit with 1s delay | Demonstrates loading UX; actual HubSpot wiring deferred to Phase 4 | 3 |
+| Hero uses CSS pattern instead of background image | No suitable hero image exists; CSS grid pattern + gradient avoids missing image risk | 3 |
+| Inline SVG icons for value proposition | Avoids Lucide dependency; simple inline SVGs are lighter and self-contained | 3 |
+| FeaturedCaseStudies receives pre-sliced array | Parent controls slice size for flexibility; component renders whatever it receives | 3 |
 
 ### WordPress Crawl Results
 
@@ -157,9 +161,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 3 Prompt 6 (Privacy Policy & Terms of Service) completed.
-**Next action:** Continue Phase 3: P1 (Service Pages), P2 (Homepage), P7 (Enhance Existing), P8 (Nav Audit).
-**Context to preserve:** Legal pages done with real WP content. Footer now has 4-col layout with Legal column. ClientLogos component ready for homepage. Contact form is UI only -- HubSpot wired in Phase 4. Service heroImages in services.ts need updating (specified in plan). Turbopack requires string-based plugin refs and relative MDX import paths.
+**Last session:** Phase 3 Prompt 2 (Homepage) completed.
+**Next action:** Continue Phase 3: P7 (Enhance Existing Pages), P8 (Navigation Audit & Cross-linking).
+**Context to preserve:** Homepage now fully composed with Hero, ClientLogos, ValueProposition, ServicesOverview, FeaturedCaseStudies, HomepageCta sections. All Wave 1 and Wave 2 prompts done. Contact form is UI only -- HubSpot wired in Phase 4. Turbopack requires string-based plugin refs and relative MDX import paths.
 
 ---
 *State initialized: 2026-02-14*
@@ -177,3 +181,4 @@ None currently.
 *Phase 3 Prompt 6 completed: 2026-02-14*
 *Phase 3 Prompt 1 completed: 2026-02-14*
 *Phase 3 Prompt 4 completed: 2026-02-14*
+*Phase 3 Prompt 2 completed: 2026-02-14*
