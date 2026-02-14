@@ -1,4 +1,5 @@
 import { Section } from '@/components/layout/section'
+import { GeometricShapes } from '@/components/animation/geometric-shapes'
 
 const propositions = [
   {
@@ -69,8 +70,9 @@ const propositions = [
 
 export function ValueProposition() {
   return (
-    <Section background="muted">
-      <div className="mx-auto max-w-2xl text-center">
+    <Section background="muted" className="section-diagonal-top relative overflow-hidden">
+      <GeometricShapes />
+      <div className="relative mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
           What You Get With a Client-Side PM
         </h2>
@@ -79,7 +81,7 @@ export function ValueProposition() {
           the other side&apos;s lawyer.
         </p>
       </div>
-      <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="relative mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {propositions.map((prop) => (
           <div
             key={prop.title}
