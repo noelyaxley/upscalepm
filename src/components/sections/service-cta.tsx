@@ -35,7 +35,7 @@ export function ServiceCta({
               asChild
               size="lg"
               variant="outline"
-              className="border-neutral-600 text-white hover:bg-white/10 hover:text-white"
+              className="border-neutral-400 bg-transparent text-white hover:bg-white/10 hover:text-white"
             >
               <a
                 href={
