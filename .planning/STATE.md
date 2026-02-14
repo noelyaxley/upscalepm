@@ -8,10 +8,10 @@
 
 ## Current Position
 
-**Phase:** 3 of 7 -- Core Pages
-**Plan:** 8/8 prompts complete
-**Status:** COMPLETE (verified: 5/5 must-haves passed)
-**Progress:** [###.......] 3/7 phases complete
+**Phase:** 4 of 7 -- Lead Generation & CRO
+**Plan:** 1/6 prompts complete
+**Status:** IN PROGRESS
+**Progress:** [###.......] 3/7 phases complete (Phase 4: 1/6 prompts)
 
 ## Phase Overview
 
@@ -20,7 +20,7 @@
 | 1 | Foundation & Design System | Complete |
 | 2 | Content Infrastructure & Migration | Complete |
 | 3 | Core Pages | Complete |
-| 4 | Lead Generation & CRO | Pending |
+| 4 | Lead Generation & CRO | In Progress (1/6) |
 | 5 | Analytics, Tracking & SEO | Pending |
 | 6 | Animation & Visual Polish | Pending |
 | 7 | Programmatic SEO & Launch | Pending |
@@ -63,6 +63,17 @@
 | 7 | Enhance Existing Pages | Done | `b645e49`..`0b201f1` (3 commits) |
 | 8 | Navigation Audit & Cross-linking | Done | `db494bd` |
 
+## Phase 4 Prompt Status
+
+| Prompt | Title | Status | Commit |
+|--------|-------|--------|--------|
+| 1 | HubSpot Tracking, UTM Capture & Root Layout Wiring | Done | `d1dfe98`..`0e4b053` (5 commits) |
+| 2 | Contact Form Server Action & HubSpot Wiring | Pending | |
+| 3 | Calendly Booking Integration | Pending | |
+| 4 | CRO -- Contact Page Optimisation | Pending | |
+| 5 | CRO -- Homepage & Service Pages | Pending | |
+| 6 | HubSpot Email Automation Documentation & Final Verification | Pending | |
+
 ## Performance Metrics
 
 | Metric | Value |
@@ -86,6 +97,7 @@
 | P3-P1 duration | 2m (6 tasks, 6 files) |
 | P3-P2 duration | 2m (6 tasks, 6 files) |
 | P3-P7 duration | 2m (4 tasks, 3 files) |
+| P4-P1 duration | 2m (5 tasks, 6 files) |
 
 ## Accumulated Context
 
@@ -143,6 +155,10 @@
 | Featured case study as horizontal 2-col card | First case study gets hero treatment; remaining in standard grid for visual hierarchy | 3 |
 | Insights index verified, no changes needed | Existing implementation meets CONT-07 with filtering, responsive grid, and metadata | 3 |
 | Dynamic sitemap from content helpers | getAllServices/CaseStudies/Insights generate URLs at build time; no manual URL maintenance | 3 |
+| First-touch UTM attribution | Only stores UTMs if none already in sessionStorage, preserving original acquisition source | 4 |
+| useRef skip pattern for HubSpot | Prevents double-counting initial page view since HubSpot script auto-fires trackPageView on load | 4 |
+| Graceful degradation for HubSpot | HubSpotTracker renders null when portal ID missing or REPLACE_ME; dev works without credentials | 4 |
+| .env.example via gitignore exception | Added !.env.example to .gitignore since existing .env* pattern would block it | 4 |
 
 ### WordPress Crawl Results
 
@@ -165,9 +181,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 3 complete — all 8 prompts executed and verified.
-**Next action:** Plan Phase 4 (Lead Generation & CRO) — wire contact form to HubSpot, CRO enhancements.
-**Context to preserve:** 50 static pages building cleanly. Contact form is UI-only (simulated submit). HubSpot wiring is Phase 4. Sitemap has 41 URLs. All navigation verified. Service pages use case study hero images. About page has real WordPress content.
+**Last session:** Phase 4 Prompt 1 complete -- HubSpot tracking, UTM capture, root layout wiring.
+**Next action:** Execute Phase 4 Prompt 2 (Contact Form Server Action & HubSpot Wiring) or Prompt 3 (Calendly Booking Integration) -- both are independent.
+**Context to preserve:** 50 static pages building cleanly. HubSpot tracker and UTM provider wired into root layout. UTM utilities in src/lib/utm.ts ready for form submission. .env.local has placeholder values. Graceful degradation when HubSpot not configured.
 
 ---
 *State initialized: 2026-02-14*
@@ -189,3 +205,4 @@ None currently.
 *Phase 3 Prompt 7 completed: 2026-02-14*
 *Phase 3 Prompt 8 completed: 2026-02-14*
 *Phase 3 COMPLETE: 2026-02-14*
+*Phase 4 Prompt 1 completed: 2026-02-14*
