@@ -1,16 +1,24 @@
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { getAllServices } from '@/lib/services'
+import { getAllCaseStudies } from '@/lib/content'
+import { Hero } from '@/components/sections/hero'
+import { ClientLogos } from '@/components/sections/client-logos'
+import { ValueProposition } from '@/components/sections/value-proposition'
+import { ServicesOverview } from '@/components/sections/services-overview'
+import { FeaturedCaseStudies } from '@/components/sections/featured-case-studies'
+import { HomepageCta } from '@/components/sections/homepage-cta'
 
 export default function Home() {
+  const services = getAllServices()
+  const caseStudies = getAllCaseStudies().slice(0, 3)
+
   return (
-    <div className="flex flex-col items-center justify-center gap-8 py-24 md:py-32 lg:py-40">
-      <h1 className="text-5xl font-bold tracking-tight">UpScalePM</h1>
-      <p className="max-w-md text-center text-lg text-muted-foreground">
-        Client-side project management for property and construction.
-      </p>
-      <Button asChild size="lg">
-        <Link href="/contact">Get in Touch</Link>
-      </Button>
-    </div>
+    <>
+      <Hero />
+      <ClientLogos />
+      <ValueProposition />
+      <ServicesOverview services={services} />
+      <FeaturedCaseStudies caseStudies={caseStudies} />
+      <HomepageCta />
+    </>
   )
 }
