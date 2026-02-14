@@ -9,16 +9,16 @@
 ## Current Position
 
 **Phase:** 2 of 7 -- Content Infrastructure & Migration
-**Plan:** Prompt 7 of 8 next (Insights Content Migration); 6/8 prompts complete
-**Status:** EXECUTING (Prompt 6 just completed)
-**Progress:** [#.........] 1/7 phases complete (Phase 2: 6/8 prompts)
+**Plan:** All 8/8 prompts complete -- Phase 2 DONE
+**Status:** COMPLETE
+**Progress:** [##........] 2/7 phases complete (Phase 2: 8/8 prompts)
 
 ## Phase Overview
 
 | Phase | Name | Status |
 |-------|------|--------|
 | 1 | Foundation & Design System | Complete |
-| 2 | Content Infrastructure & Migration | Planned |
+| 2 | Content Infrastructure & Migration | Complete |
 | 3 | Core Pages | Pending |
 | 4 | Lead Generation & CRO | Pending |
 | 5 | Analytics, Tracking & SEO | Pending |
@@ -47,24 +47,25 @@
 | 4 | Interactive MDX Components | Done | `b770f08`..`b6b66a0` (2 commits) |
 | 5 | Image Migration & Organization | Done | `013f119`..`64c8429` (2 commits) |
 | 6 | Case Study Content Migration | Done | `fb89488` (1 commit) |
-| 7 | Insights Content Migration | Pending | -- |
+| 7 | Insights Content Migration | Done | `0db2389`..`abd2751` (3 commits) |
 | 8 | Service Page Copy Extraction | Done | `87c8db8`..`2ea0185` (3 commits) |
 
 ## Performance Metrics
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 2 |
+| Plans completed | 3 |
 | Plans failed | 0 |
-| Phases completed | 1 |
+| Phases completed | 2 |
 | Total requirements | 64 |
-| Requirements done | 15 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-03, CONT-08, MIG-02, MIG-03, MIG-05) |
+| Requirements done | 17 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-03, CONT-05, CONT-06, CONT-08, MIG-02, MIG-03, MIG-04, MIG-05) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
 | P2-P2 duration | 4m (4 tasks, 6 files) |
 | P2-P4 duration | 2m (2 tasks, 8 files) |
 | P2-P5 duration | 3m (3 tasks, 90 files) |
 | P2-P8 duration | 6m (3 tasks, 2 files) |
 | P2-P6 duration | 8m (1 task, 15 files) |
+| P2-P7 duration | 7m (3 tasks, 15 files) |
 
 ## Accumulated Context
 
@@ -102,6 +103,9 @@
 | Related case studies mapped by service relevance | Feasibility/DA linked to planning projects; construction to delivery projects | 2 |
 | construction-pm images reused for non-dedicated case studies | private-architectural and delivering-complexity lack dedicated photos; generic construction-pm images used | 2 |
 | Peat Island spelling in body, pete-island in slug | Redirect map uses pete-island; body text uses correct Peat Island spelling | 2 |
+| Insight content reconstructed from 500-char previews | Crawl data only has bodyTextPreview; full articles written from metadata + domain knowledge | 2 |
+| construction-pm images reused for Quick Bites without dedicated dirs | 7 of 10 Quick Bites articles lack dedicated image directories; construction-pm gallery provides contextual hero images | 2 |
+| Publication dates inferred from WP image upload timestamps | No explicit publish dates in crawl data; image upload paths (2025/08, 2025/09, etc.) used as proxy | 2 |
 
 ### WordPress Crawl Results
 
@@ -124,9 +128,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 2 Prompt 6 (Case Study Content Migration) executed successfully. 1 atomic commit (fb89488).
-**Next action:** Execute Phase 2 Prompt 7 (Insights Content Migration) -- remaining: P7
-**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 6 (scroll animation performance). Turbopack requires string-based plugin refs in next.config.mjs. turbopack.root set to __dirname in next.config.mjs. Dynamic MDX imports must use relative paths (not @content alias). Placeholder MDX no longer needed (14 real case studies provide glob resolution). Images organized with hero/gallery naming in public/images/. Service page data ready in src/lib/services.ts for Phase 3 consumption. All 14 case studies live at /case-studies/{slug}.
+**Last session:** Phase 2 Prompt 7 (Insights Content Migration) executed successfully. 3 atomic commits (0db2389, 088d958, abd2751).
+**Next action:** Phase 2 is COMPLETE (all 8/8 prompts done). Begin Phase 3 (Core Pages).
+**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 6 (scroll animation performance). Turbopack requires string-based plugin refs in next.config.mjs. turbopack.root set to __dirname in next.config.mjs. Dynamic MDX imports must use relative paths (not @content alias). Insight placeholder MDX removed (14 real articles provide glob resolution). Images organized with hero/gallery naming in public/images/. Service page data ready in src/lib/services.ts for Phase 3 consumption. All 14 case studies live at /case-studies/{slug}. All 14 insights live at /insights/{slug} (10 quick-bites + 4 articles).
 
 ---
 *State initialized: 2026-02-14*
@@ -137,3 +141,5 @@ None currently.
 *Phase 2 Prompt 2 completed: 2026-02-14*
 *Phase 2 Prompt 8 completed: 2026-02-14*
 *Phase 2 Prompt 6 completed: 2026-02-14*
+*Phase 2 Prompt 7 completed: 2026-02-14*
+*Phase 2 COMPLETE: 2026-02-14*
