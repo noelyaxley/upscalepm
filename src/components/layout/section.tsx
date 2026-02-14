@@ -21,6 +21,7 @@ export function Section({
   return (
     <section
       id={id}
+      data-reveal=""
       className={cn(
         {
           'py-16 md:py-20 lg:py-24': spacing === 'default',
