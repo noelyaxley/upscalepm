@@ -206,9 +206,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 5 COMPLETE -- All 5 prompts done. Sitemap/robots verified, CWV audit passed.
-**Next action:** Plan Phase 6 (Animation & Visual Polish) — GSAP ScrollTrigger, Lenis smooth scroll, parallax effects, geometric overlays.
-**Context to preserve:** Phase 5 fully complete. GTM installed (afterInteractive), dataLayer events wired, JSON-LD on all page types, metadata exports on all pages, sitemap covers 41 pages, robots.txt correct. CWV baseline established: LCP/CLS/INP all low risk from code analysis. Phase 6 will add GSAP -- more significant CWV consideration. Build produces 50 static pages with zero errors.
+**Last session:** Phase 6 PLANNED -- 5 prompts across 3 waves. Research completed (GSAP 3.14.2, Lenis 1.3.17, SplitText all already installed).
+**Next action:** Execute Phase 6 (`/gsd:execute-phase 6`) — GSAP infrastructure, Lenis smooth scroll, ScrollTrigger.batch reveals, SplitText hero, geometric overlays, CWV verification.
+**Context to preserve:** Phase 5 fully complete. GTM installed (afterInteractive), dataLayer events wired, JSON-LD on all page types, metadata exports on all pages, sitemap covers 41 pages, robots.txt correct. CWV baseline established: LCP/CLS/INP all low risk from code analysis. Phase 6 plan uses 3 waves: Wave 1 (Prompt 1 + 4 parallel), Wave 2 (Prompt 2 + 3 parallel), Wave 3 (Prompt 5 verification). All animation packages already installed, zero animation code exists currently.
 
 ---
 *State initialized: 2026-02-14*

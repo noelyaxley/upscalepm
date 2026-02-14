@@ -147,6 +147,15 @@ Plans:
 
 **Research flag:** YES -- run `/gsd:research-phase` on scroll-driven animation performance (GSAP ScrollTrigger on mobile, parallax without jank, CWV maintenance)
 
+**Plans:** 5 prompts
+
+Plans:
+- [ ] Prompt 1 -- GSAP Infrastructure, Lenis Smooth Scroll & Reduced-Motion Configuration
+- [ ] Prompt 2 -- ScrollTrigger.batch() Section Reveal Animations
+- [ ] Prompt 3 -- Hero Entrance Animation (SplitText + Parallax)
+- [ ] Prompt 4 -- Geometric Overlays & Diagonal Section Dividers
+- [ ] Prompt 5 -- Performance Verification & CWV Audit
+
 ---
 
 ### Phase 7: Programmatic SEO & Launch
