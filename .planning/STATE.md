@@ -10,7 +10,7 @@
 
 **Phase:** 1 of 7 -- Foundation & Design System
 **Plan:** `.planning/phases/1/PLAN.md` (7 prompts)
-**Status:** IN PROGRESS (Prompt 4 of 7 complete)
+**Status:** IN PROGRESS (Prompt 5 of 7 complete)
 **Progress:** [..........] 0/7 phases complete
 
 ## Phase Overview
@@ -29,7 +29,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 4 |
+| Plans completed | 5 |
 | Plans failed | 0 |
 | Phases completed | 0 |
 | Total requirements | 64 |
@@ -51,6 +51,9 @@
 | Kept shadcn calc-based radius | Shadcn components expect calc(var(--radius) +/- N) pattern | 1 |
 | Header as client component | Sheet (mobile menu) requires client-side interactivity via Radix Dialog | 1 |
 | Nav links as shared const array | Header and footer mirror same links; const array prevents drift | 1 |
+| Removed static favicon.ico for dynamic icon.tsx | Static favicon.ico takes precedence over dynamic route; removal required for branded favicon | 1 |
+| Twitter image duplicated not re-exported | Explicit file ensures Next.js registers the /twitter-image route | 1 |
+| Redirects via readFileSync with try/catch | Build-time loading with graceful fallback if file missing | 1 |
 
 ### Discovered TODOs
 
@@ -66,9 +69,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 1 Prompt 4 (Design System Test Page) executed successfully
-**Next action:** Execute Phase 1 Prompt 5 (next step in plan)
-**Context to preserve:** Design system showcase at `/design-system` (robots noindex) demonstrates typography, colour palette, components, and layout. All layout primitives and UI components working correctly. Research recommends `/gsd:research-phase` for Phase 2 (Elementor migration) and Phase 6 (scroll animation performance).
+**Last session:** Phase 1 Prompt 5 (SEO Metadata, Favicons, and 404) executed successfully
+**Next action:** Execute Phase 1 Prompt 6 (next step in plan)
+**Context to preserve:** Dynamic favicon (icon.tsx), apple touch icon, OG/Twitter images, sitemap.ts, robots.ts, and branded 404 page all in place. 60 WordPress redirects loaded from content/migration/redirects.json into next.config.mjs. Design system showcase at `/design-system` disallowed in robots.txt. Research recommends `/gsd:research-phase` for Phase 2 (Elementor migration) and Phase 6 (scroll animation performance).
 
 ---
 *State initialized: 2026-02-14*
