@@ -1,6 +1,9 @@
 'use client'
 
-import { useState, type FormEvent } from 'react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -13,8 +16,18 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { CheckCircle2, Loader2 } from 'lucide-react'
+import { submitContactForm } from '@/actions/contact'
+import { getStoredUTMParams } from '@/lib/utm'
 
-type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
+const formSchema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  email: z.string().email('Please enter a valid email'),
+  phone: z.string().optional(),
+  projectType: z.string().optional(),
+  message: z.string().min(1, 'Message is required'),
+})
+
+type FormValues = z.infer<typeof formSchema>
 
 const PROJECT_TYPES = [
   'Feasibility & Advisory',
@@ -26,53 +39,55 @@ const PROJECT_TYPES = [
 ] as const
 
 export function ContactForm() {
-  const [status, setStatus] = useState<FormStatus>('idle')
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [projectType, setProjectType] = useState('')
-  const [message, setMessage] = useState('')
-  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
-  function validate(): boolean {
-    const newErrors: Record<string, string> = {}
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+    setValue,
+    watch,
+  } = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      projectType: '',
+      message: '',
+    },
+  })
 
-    if (!name.trim()) {
-      newErrors.name = 'Name is required'
+  const projectType = watch('projectType')
+
+  async function onSubmit(data: FormValues) {
+    setStatus('idle')
+    const utmParams = getStoredUTMParams()
+    const payload: Record<string, string> = {
+      ...data,
+      phone: data.phone ?? '',
+      projectType: data.projectType ?? '',
+      pageUri: window.location.href,
+      pageName: document.title,
+    }
+    if (utmParams) {
+      if (utmParams.utm_source) payload.utmSource = utmParams.utm_source
+      if (utmParams.utm_medium) payload.utmMedium = utmParams.utm_medium
+      if (utmParams.utm_campaign) payload.utmCampaign = utmParams.utm_campaign
+      if (utmParams.utm_term) payload.utmTerm = utmParams.utm_term
+      if (utmParams.utm_content) payload.utmContent = utmParams.utm_content
     }
 
-    if (!email.trim()) {
-      newErrors.email = 'Email is required'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = 'Please enter a valid email address'
-    }
-
-    if (!message.trim()) {
-      newErrors.message = 'Message is required'
-    }
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
-
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault()
-
-    if (status === 'submitting') return
-    if (!validate()) return
-
-    setStatus('submitting')
-
-    // Simulated submission -- HubSpot wiring in Phase 4
-    setTimeout(() => {
+    const result = await submitContactForm(payload)
+    if (result.success) {
       setStatus('success')
-      setName('')
-      setEmail('')
-      setPhone('')
-      setProjectType('')
-      setMessage('')
-      setErrors({})
-    }, 1000)
+      reset()
+    } else {
+      setStatus('error')
+      setErrorMessage(result.error ?? 'Something went wrong.')
+    }
   }
 
   if (status === 'success') {
@@ -97,7 +112,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-5">
+    <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
       {/* Name */}
       <div className="space-y-2">
         <Label htmlFor="contact-name">
@@ -107,18 +122,14 @@ export function ContactForm() {
           id="contact-name"
           type="text"
           placeholder="Your full name"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value)
-            if (errors.name) setErrors((prev) => ({ ...prev, name: '' }))
-          }}
+          {...register('name')}
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? 'name-error' : undefined}
           autoComplete="name"
         />
         {errors.name && (
           <p id="name-error" className="text-sm text-destructive">
-            {errors.name}
+            {errors.name.message}
           </p>
         )}
       </div>
@@ -132,39 +143,43 @@ export function ContactForm() {
           id="contact-email"
           type="email"
           placeholder="you@example.com"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value)
-            if (errors.email) setErrors((prev) => ({ ...prev, email: '' }))
-          }}
+          {...register('email')}
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? 'email-error' : undefined}
           autoComplete="email"
         />
         {errors.email && (
           <p id="email-error" className="text-sm text-destructive">
-            {errors.email}
+            {errors.email.message}
           </p>
         )}
       </div>
 
       {/* Phone */}
       <div className="space-y-2">
-        <Label htmlFor="contact-phone">Phone</Label>
+        <Label htmlFor="contact-phone">
+          Phone{' '}
+          <span className="font-normal text-muted-foreground">(optional)</span>
+        </Label>
         <Input
           id="contact-phone"
           type="tel"
           placeholder="04XX XXX XXX"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          {...register('phone')}
           autoComplete="tel"
         />
       </div>
 
       {/* Project Type */}
       <div className="space-y-2">
-        <Label htmlFor="contact-project-type">Project type</Label>
-        <Select value={projectType} onValueChange={setProjectType}>
+        <Label htmlFor="contact-project-type">
+          Project type{' '}
+          <span className="font-normal text-muted-foreground">(optional)</span>
+        </Label>
+        <Select
+          value={projectType}
+          onValueChange={(value) => setValue('projectType', value)}
+        >
           <SelectTrigger id="contact-project-type" className="w-full">
             <SelectValue placeholder="Select a service (optional)" />
           </SelectTrigger>
@@ -187,17 +202,13 @@ export function ContactForm() {
           id="contact-message"
           placeholder="Tell us about your project..."
           rows={4}
-          value={message}
-          onChange={(e) => {
-            setMessage(e.target.value)
-            if (errors.message) setErrors((prev) => ({ ...prev, message: '' }))
-          }}
+          {...register('message')}
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? 'message-error' : undefined}
         />
         {errors.message && (
           <p id="message-error" className="text-sm text-destructive">
-            {errors.message}
+            {errors.message.message}
           </p>
         )}
       </div>
@@ -207,9 +218,9 @@ export function ContactForm() {
         type="submit"
         size="lg"
         className="w-full"
-        disabled={status === 'submitting'}
+        disabled={isSubmitting}
       >
-        {status === 'submitting' ? (
+        {isSubmitting ? (
           <>
             <Loader2 className="mr-2 size-4 animate-spin" />
             Sending...
@@ -219,9 +230,13 @@ export function ContactForm() {
         )}
       </Button>
 
+      {status === 'error' && (
+        <p className="text-center text-sm text-destructive">{errorMessage}</p>
+      )}
+
       <p className="text-center text-xs text-muted-foreground">
-        We respect your privacy. Your information will only be used to respond to
-        your enquiry.
+        No obligation. We respond within 1 business day. Your information is
+        only used to respond to your enquiry.
       </p>
     </form>
   )
