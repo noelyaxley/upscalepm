@@ -1,6 +1,8 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllServices } from '@/lib/services'
 import { getAllCaseStudies } from '@/lib/content'
+import { generatePageMetadata } from '@/lib/metadata'
 import { Hero } from '@/components/sections/hero'
 import { ClientLogos } from '@/components/sections/client-logos'
 import { ValueProposition } from '@/components/sections/value-proposition'
@@ -11,6 +13,13 @@ import { Section } from '@/components/layout/section'
 import { Button } from '@/components/ui/button'
 import { JsonLd } from '@/components/seo/json-ld'
 import { localBusinessSchema } from '@/components/seo/schemas'
+
+export const metadata: Metadata = generatePageMetadata({
+  title: 'Client-Side Project Management Sydney & Newcastle',
+  description:
+    'Upscale Project Management delivers expert client-side PM for property and construction. Feasibility, design management, DA approval, tender assessment, and construction superintendent services across Sydney and Newcastle.',
+  path: '/',
+})
 
 export default function Home() {
   const services = getAllServices()
