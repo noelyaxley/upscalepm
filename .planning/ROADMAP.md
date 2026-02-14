@@ -166,6 +166,15 @@ Plans:
 
 **Requirements:** PSEO-01, PSEO-02, PSEO-03, PSEO-04, DEPL-02, DEPL-03
 
+**Plans:** 5 prompts
+
+Plans:
+- [ ] Prompt 1 -- Location Data Module & TypeScript Types (PSEO-04)
+- [ ] Prompt 2 -- Location Service Page Template & Static Generation (PSEO-01, PSEO-02, PSEO-03, PSEO-04)
+- [ ] Prompt 3 -- Dynamic OG Images & Social Sharing Optimization (DEPL-03)
+- [ ] Prompt 4 -- DNS Cutover from WordPress to Vercel (DEPL-02)
+- [ ] Prompt 5 -- Launch Verification & Search Console Submission (DEPL-02, DEPL-03)
+
 **Success Criteria:**
 1. "Service in City" template generates pages for all 5 services in Sydney and all 5 services in Newcastle (10 location pages total), each with localised content, relevant case studies, and local CTAs
 2. Visiting upscalepm.com.au in a browser loads the new Next.js site (DNS pointed to Vercel, SSL active)
