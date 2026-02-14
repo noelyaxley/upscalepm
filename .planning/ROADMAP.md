@@ -112,6 +112,15 @@ Plans:
 
 **Requirements:** TRACK-01, TRACK-02, TRACK-03, TRACK-04, TRACK-05, SEO-02, SEO-03, SEO-04, SEO-06
 
+**Plans:** 5 plans
+
+Plans:
+- [ ] Prompt 1 — GTM Container Script & DataLayer Event Utilities (TRACK-01, TRACK-02)
+- [ ] Prompt 2 — Contact Form DataLayer Integration (TRACK-03, TRACK-05)
+- [ ] Prompt 3 — JSON-LD Structured Data Components & Schema Generators (SEO-03)
+- [ ] Prompt 4 — Homepage Metadata & Metadata Audit (SEO-02)
+- [ ] Prompt 5 — Sitemap/Robots Verification & Core Web Vitals Audit (SEO-04, SEO-06)
+
 **Success Criteria:**
 1. Google Tag Manager container is installed and GA4 reports page views for every page, including client-side navigations
 2. A contact form submission registers as a conversion in both Google Ads and GA4, with UTM source/medium/campaign correctly attributed
