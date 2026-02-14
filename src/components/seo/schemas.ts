@@ -16,7 +16,6 @@ export function localBusinessSchema(): WithContext<LocalBusiness> {
     description:
       'Client-side project management for property and construction projects in Sydney and Newcastle.',
     url: SITE_URL,
-    telephone: '+61299998888',
     email: 'info@upscalepm.com.au',
     address: {
       '@type': 'PostalAddress',

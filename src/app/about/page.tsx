@@ -5,6 +5,7 @@ import { generatePageMetadata } from '@/lib/metadata'
 import { PageHeader } from '@/components/layout/page-header'
 import { Section } from '@/components/layout/section'
 import { TeamGrid } from '@/components/sections/team-grid'
+import { Testimonials } from '@/components/sections/testimonials'
 import { Button } from '@/components/ui/button'
 import { JsonLd } from '@/components/seo/json-ld'
 import { localBusinessSchema } from '@/components/seo/schemas'
@@ -191,6 +192,22 @@ export default function AboutPage() {
         </div>
         <div className="mt-12">
           <TeamGrid />
+        </div>
+      </Section>
+
+      {/* Testimonials */}
+      <Section background="muted">
+        <div className="text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+            What Our Clients Say
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            Trusted by developers, government agencies, and industry
+            professionals.
+          </p>
+        </div>
+        <div className="mt-12">
+          <Testimonials />
         </div>
       </Section>
 
