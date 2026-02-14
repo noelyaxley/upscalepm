@@ -8,9 +8,9 @@
 
 ## Current Position
 
-**Phase:** 5 of 7 -- Analytics, Tracking & SEO
-**Plan:** 5/5 prompts complete
-**Status:** PHASE COMPLETE
+**Phase:** 6 of 7 -- Animation & Visual Polish
+**Plan:** 4/5 prompts in progress (Wave 1)
+**Status:** IN PROGRESS
 **Progress:** [#####.....] 5/7 phases complete
 
 ## Phase Overview
@@ -22,7 +22,7 @@
 | 3 | Core Pages | Complete |
 | 4 | Lead Generation & CRO | Complete |
 | 5 | Analytics, Tracking & SEO | Complete |
-| 6 | Animation & Visual Polish | Pending |
+| 6 | Animation & Visual Polish | In Progress |
 | 7 | Programmatic SEO & Launch | Pending |
 
 ## Phase 1 Prompt Status
@@ -84,6 +84,16 @@
 | 4 | Homepage Metadata & Metadata Audit | Done | `c008a69` (1 commit) |
 | 5 | Sitemap/Robots Verification & CWV Audit | Done | (verification only, no code changes) |
 
+## Phase 6 Prompt Status
+
+| Prompt | Title | Status | Commit |
+|--------|-------|--------|--------|
+| 1 | GSAP Infrastructure, Lenis Smooth Scroll & Reduced-Motion | Pending | |
+| 2 | ScrollTrigger Batch Reveal Animations | Pending | |
+| 3 | Hero Entrance Animation -- SplitText & Parallax | Pending | |
+| 4 | Geometric Overlay Design Language | Done | `872d35f`..`bce1749` (5 commits) |
+| 5 | Performance Verification & Cross-Page Animation Audit | Pending | |
+
 ## Performance Metrics
 
 | Metric | Value |
@@ -114,6 +124,7 @@
 | P5-P3 duration | 3m (4 tasks, 10 files) |
 | P5-P4 duration | 1m (1 task, 1 file) |
 | P5-P5 duration | 1m (5 tasks, 0 files -- verification only) |
+| P6-P4 duration | 2m (5 tasks, 5 files) |
 
 ## Accumulated Context
 
@@ -184,6 +195,8 @@
 | Used contact page phone/email over footer placeholders for JSON-LD | Footer has placeholder 1300 XXX XXX; contact page has (02) 9999 8888 and info@upscalepm.com.au | 5 |
 | No sitemap/robots changes needed | Existing implementations already cover all 41 published pages; /design-system correctly excluded | 5 |
 | CWV risk assessment: low | GTM afterInteractive, JSON-LD invisible, all images use next/image with fill or dimensions | 5 |
+| GeometricShapes as Server Component | Pure CSS animation needs no JS; border-only wireframe at opacity 0.04 | 6 |
+| Diagonal dividers at 3rem/4rem | Responsive clip-path with negative margin overlap; padding uses --spacing-section | 6 |
 
 ### WordPress Crawl Results
 
@@ -238,3 +251,4 @@ None currently.
 *Phase 5 Prompt 4 completed: 2026-02-14*
 *Phase 5 Prompt 5 completed: 2026-02-14*
 *Phase 5 COMPLETE: 2026-02-14*
+*Phase 6 Prompt 4 completed: 2026-02-14*
