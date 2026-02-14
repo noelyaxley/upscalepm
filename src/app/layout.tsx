@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { HubSpotTracker } from '@/components/hubspot/hubspot-tracker'
 import { UTMProvider } from '@/components/hubspot/utm-provider'
+import { SmoothScroll } from '@/components/animation/smooth-scroll'
 import './globals.css'
 
 const inter = Inter({
@@ -46,12 +47,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="flex min-h-screen flex-col font-sans antialiased">
-        <GTMScript />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <HubSpotTracker />
-        <UTMProvider />
+        <SmoothScroll>
+          <GTMScript />
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <HubSpotTracker />
+          <UTMProvider />
+        </SmoothScroll>
       </body>
     </html>
   )
