@@ -9,9 +9,9 @@
 ## Current Position
 
 **Phase:** 2 of 7 -- Content Infrastructure & Migration
-**Plan:** Prompt 6 of 8 next (Case Study Content Migration); 6/8 prompts complete
-**Status:** EXECUTING (Prompt 2 just completed)
-**Progress:** [#.........] 1/7 phases complete (Phase 2: 6/8 prompts)
+**Plan:** Prompt 6 of 8 next (Case Study Content Migration); 7/8 prompts complete
+**Status:** EXECUTING (Prompt 8 just completed)
+**Progress:** [#.........] 1/7 phases complete (Phase 2: 7/8 prompts)
 
 ## Phase Overview
 
@@ -58,11 +58,12 @@
 | Plans failed | 0 |
 | Phases completed | 1 |
 | Total requirements | 64 |
-| Requirements done | 12 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-08, MIG-05) |
+| Requirements done | 13 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-08, MIG-02, MIG-05) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
 | P2-P2 duration | 4m (4 tasks, 6 files) |
 | P2-P4 duration | 2m (2 tasks, 8 files) |
 | P2-P5 duration | 3m (3 tasks, 90 files) |
+| P2-P8 duration | 6m (3 tasks, 2 files) |
 
 ## Accumulated Context
 
@@ -96,6 +97,8 @@
 | turbopack.root in next.config.mjs | Parent lockfile caused incorrect workspace root inference; explicit root fixes it | 2 |
 | Placeholder MDX for empty content dirs | Turbopack requires at least one .mdx to resolve dynamic import glob patterns | 2 |
 | 89 unique images after WP dedup (not 60-70 estimate) | construction-pm has 18 generic photos; all are genuine originals | 2 |
+| Content split into 2 sections per service | Structural clarity for rendering; meets 2+ sections requirement | 2 |
+| Related case studies mapped by service relevance | Feasibility/DA linked to planning projects; construction to delivery projects | 2 |
 
 ### WordPress Crawl Results
 
@@ -118,9 +121,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 2 Prompt 2 (Case Study Template & Dynamic Route) executed successfully. 5 atomic commits.
+**Last session:** Phase 2 Prompt 8 (Service Page Copy Extraction) executed successfully. 2 atomic commits.
 **Next action:** Execute Phase 2 Prompt 6 (Case Study Content Migration) -- remaining: P6, P7
-**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 6 (scroll animation performance). Turbopack requires string-based plugin refs in next.config.mjs. turbopack.root set to __dirname in next.config.mjs. Dynamic MDX imports must use relative paths (not @content alias). Placeholder .mdx files needed in empty content directories for Turbopack. Images organized with hero/gallery naming in public/images/.
+**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 6 (scroll animation performance). Turbopack requires string-based plugin refs in next.config.mjs. turbopack.root set to __dirname in next.config.mjs. Dynamic MDX imports must use relative paths (not @content alias). Placeholder .mdx files needed in empty content directories for Turbopack. Images organized with hero/gallery naming in public/images/. Service page data ready in src/lib/services.ts for Phase 3 consumption.
 
 ---
 *State initialized: 2026-02-14*
@@ -129,3 +132,4 @@ None currently.
 *Phase 2 Prompt 4 completed: 2026-02-14*
 *Phase 2 Prompt 5 completed: 2026-02-14*
 *Phase 2 Prompt 2 completed: 2026-02-14*
+*Phase 2 Prompt 8 completed: 2026-02-14*
