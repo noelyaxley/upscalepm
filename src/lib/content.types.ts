@@ -12,6 +12,7 @@ export interface CaseStudyFrontmatter {
     alt: string
   }>
   services?: string[]
+  date?: string
   order: number
   draft: boolean
 }
