@@ -60,18 +60,18 @@
 | 4 | Contact Page | Done | `351e85f`..`56d3122` (3 commits) |
 | 5 | Client Logo Bar Component | Done | `ca77633` |
 | 6 | Privacy Policy & Terms of Service | Done | `2e8ff03`..`6b8847f` (3 commits) |
-| 7 | Enhance Existing Pages | Pending | |
+| 7 | Enhance Existing Pages | Done | `b645e49`..`0b201f1` (3 commits) |
 | 8 | Navigation Audit & Cross-linking | Pending | |
 
 ## Performance Metrics
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 7 |
+| Plans completed | 8 |
 | Plans failed | 0 |
 | Phases completed | 2 |
 | Total requirements | 64 |
-| Requirements done | 28 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-03, CONT-05, CONT-06, CONT-08, MIG-02, MIG-03, MIG-04, MIG-05; Phase 3: PAGE-01, PAGE-02, PAGE-03, PAGE-04, PAGE-05, PAGE-06, PAGE-07, PAGE-08, PAGE-09, PAGE-10, PAGE-12) |
+| Requirements done | 31 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-03, CONT-05, CONT-06, CONT-08, MIG-02, MIG-03, MIG-04, MIG-05; Phase 3: PAGE-01, PAGE-02, PAGE-03, PAGE-04, PAGE-05, PAGE-06, PAGE-07, PAGE-08, PAGE-09, PAGE-10, PAGE-11, PAGE-12, CONT-04, CONT-07) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
 | P2-P2 duration | 4m (4 tasks, 6 files) |
 | P2-P4 duration | 2m (2 tasks, 8 files) |
@@ -85,6 +85,7 @@
 | P3-P6 duration | 2m (3 tasks, 3 files) |
 | P3-P1 duration | 2m (6 tasks, 6 files) |
 | P3-P2 duration | 2m (6 tasks, 6 files) |
+| P3-P7 duration | 2m (4 tasks, 3 files) |
 
 ## Accumulated Context
 
@@ -139,6 +140,9 @@
 | Hero uses CSS pattern instead of background image | No suitable hero image exists; CSS grid pattern + gradient avoids missing image risk | 3 |
 | Inline SVG icons for value proposition | Avoids Lucide dependency; simple inline SVGs are lighter and self-contained | 3 |
 | FeaturedCaseStudies receives pre-sliced array | Parent controls slice size for flexibility; component renders whatever it receives | 3 |
+| Featured case study as horizontal 2-col card | First case study gets hero treatment; remaining in standard grid for visual hierarchy | 3 |
+| Insights index verified, no changes needed | Existing implementation meets CONT-07 with filtering, responsive grid, and metadata | 3 |
+| Dynamic sitemap from content helpers | getAllServices/CaseStudies/Insights generate URLs at build time; no manual URL maintenance | 3 |
 
 ### WordPress Crawl Results
 
@@ -161,9 +165,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 3 Prompt 2 (Homepage) completed.
-**Next action:** Continue Phase 3: P7 (Enhance Existing Pages), P8 (Navigation Audit & Cross-linking).
-**Context to preserve:** Homepage now fully composed with Hero, ClientLogos, ValueProposition, ServicesOverview, FeaturedCaseStudies, HomepageCta sections. All Wave 1 and Wave 2 prompts done. Contact form is UI only -- HubSpot wired in Phase 4. Turbopack requires string-based plugin refs and relative MDX import paths.
+**Last session:** Phase 3 Prompt 7 (Enhance Existing Pages) completed.
+**Next action:** Continue Phase 3: P8 (Navigation Audit & Cross-linking).
+**Context to preserve:** Case study index now has featured hero card for first project. Sitemap covers all 41 URLs dynamically. 404 page links to all key sections. Insights index was already complete. Only P8 (nav audit) remains for Phase 3.
 
 ---
 *State initialized: 2026-02-14*
@@ -182,3 +186,4 @@ None currently.
 *Phase 3 Prompt 1 completed: 2026-02-14*
 *Phase 3 Prompt 4 completed: 2026-02-14*
 *Phase 3 Prompt 2 completed: 2026-02-14*
+*Phase 3 Prompt 7 completed: 2026-02-14*
