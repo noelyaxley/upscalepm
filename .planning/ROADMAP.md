@@ -139,8 +139,8 @@ Rebuild upscalepm.com.au from WordPress/Elementor to a high-performance Next.js 
 
 | Phase | Name | Requirements | Status |
 |-------|------|--------------|--------|
-| 1 | Foundation & Design System | 8 | Pending |
-| 2 | Content Infrastructure & Migration | 10 | Pending |
+| 1 | Foundation & Design System | 8 | Complete |
+| 2 | Content Infrastructure & Migration | 10 | Complete |
 | 3 | Core Pages | 15 | Pending |
 | 4 | Lead Generation & CRO | 10 | Pending |
 | 5 | Analytics, Tracking & SEO | 9 | Pending |
