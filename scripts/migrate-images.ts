@@ -354,9 +354,9 @@ function getOutputFilename(originalFilename: string, dest: string): string {
   const ext = path.extname(originalFilename).toLowerCase()
 
   // Special naming for known single-purpose files
-  if (dest.startsWith('shared/logos/')) {
-    // Clean up logo filenames
-    if (originalFilename.includes('sydney-water-logo')) return `sydney-water-logo${ext}`
+  if (dest.startsWith('shared/logos')) {
+    // Clean up logo filenames -- remove WordPress hash prefixes
+    if (originalFilename.includes('sydney-water-logo')) return `sydney-water${ext}`
     if (originalFilename.includes('Health-Infrastructure')) return `health-infrastructure${ext}`
     if (originalFilename.includes('Blacktown-city-council')) return `blacktown-city-council${ext}`
     if (originalFilename.includes('School_Infrastructure_logo')) return `school-infrastructure${ext}`
