@@ -10,7 +10,7 @@
 
 **Phase:** 1 of 7 -- Foundation & Design System
 **Plan:** `.planning/phases/1/PLAN.md` (7 prompts)
-**Status:** IN PROGRESS (Prompt 2 of 7 complete)
+**Status:** IN PROGRESS (Prompt 3 of 7 complete)
 **Progress:** [..........] 0/7 phases complete
 
 ## Phase Overview
@@ -29,7 +29,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 2 |
+| Plans completed | 3 |
 | Plans failed | 0 |
 | Phases completed | 0 |
 | Total requirements | 64 |
@@ -49,6 +49,8 @@
 | shadcn bridge variables preserved | Removing --color-X: var(--X) pattern would break all shadcn components | 1 |
 | @plugin for typography in TW v4 | v0.5.x typography has no CSS entry point; @plugin is the correct directive | 1 |
 | Kept shadcn calc-based radius | Shadcn components expect calc(var(--radius) +/- N) pattern | 1 |
+| Header as client component | Sheet (mobile menu) requires client-side interactivity via Radix Dialog | 1 |
+| Nav links as shared const array | Header and footer mirror same links; const array prevents drift | 1 |
 
 ### Discovered TODOs
 
@@ -64,9 +66,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 1 Prompt 2 (Design System) executed successfully
-**Next action:** Execute Phase 1 Prompt 3 (next step in plan)
-**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 2 (Elementor migration) and Phase 6 (scroll animation performance)
+**Last session:** Phase 1 Prompt 3 (Layout Primitives) executed successfully
+**Next action:** Execute Phase 1 Prompt 4 (next step in plan)
+**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 2 (Elementor migration) and Phase 6 (scroll animation performance). Layout barrel export at `@/components/layout` provides Container, Section, Header, Footer, PageHeader.
 
 ---
 *State initialized: 2026-02-14*
