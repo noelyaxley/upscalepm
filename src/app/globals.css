@@ -239,6 +239,14 @@ html.lenis body {
   pointer-events: none;
 }
 
+/* ---- Scroll Reveal Initial State ---- */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(2.5rem);
+  }
+}
+
 /* ---- Diagonal Section Dividers ---- */
 .section-diagonal-top {
   clip-path: polygon(0 3rem, 100% 0, 100% 100%, 0 100%);
