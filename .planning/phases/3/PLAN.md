@@ -15,11 +15,12 @@
 **Requirements:** PAGE-02, PAGE-03, PAGE-04, PAGE-05, PAGE-06, PAGE-12
 **Dependencies:** None (service data already exists in src/lib/services.ts)
 **Files created/modified:**
-- `src/app/services/[slug]/page.tsx` (create)
-- `src/app/services/page.tsx` (create)
+- `src/app/services/[slug]/page.tsx` (create — single template handles all 5 services via data from services.ts)
+- `src/app/services/page.tsx` (create — services index)
 - `src/components/sections/service-benefits.tsx` (create)
 - `src/components/sections/service-cta.tsx` (create)
 - `src/components/sections/related-case-studies.tsx` (create)
+- `src/lib/services.ts` (modify — fix heroImage paths to use case study images)
 
 ### Context
 
@@ -32,7 +33,14 @@ Service slugs (from services.ts):
 - `tender-assessment`
 - `construction-superintendent`
 
-Hero images: Only `public/images/services/commercial-government.webp` exists. The `heroImage` paths in services.ts (e.g., `/images/services/feasibility-advisory.webp`) do NOT have corresponding files. Use the existing commercial-government.webp as a shared hero, or use case study hero images that relate to each service. Do NOT reference non-existent image files.
+Hero images: Only `public/images/services/commercial-government.webp` exists. The `heroImage` paths in services.ts reference non-existent files. **Fix:** Update the `heroImage` field in `src/lib/services.ts` for each service to use related case study hero images:
+- `feasibility-advisory` → `/images/case-studies/granville-diggers/hero.jpg`
+- `design-management` → `/images/case-studies/crosslife-church/hero.jpg`
+- `da-approval` → `/images/case-studies/pete-island/hero.jpg`
+- `tender-assessment` → `/images/case-studies/vibe-hotel/hero.jpg`
+- `construction-superintendent` → `/images/case-studies/sydney-water/hero.jpg`
+
+These are the most relevant project images for each service. Do NOT reference non-existent image files.
 
 Case study data available via `getAllCaseStudies()` and `getCaseStudyBySlug()` from `@/lib/content`.
 
@@ -260,7 +268,11 @@ The homepage should NOT have `PageHeader` -- it uses its own Hero section instea
 
 ### Context
 
-The WordPress about page content is available at `upscalepm.com.au/about-us/` but the crawl only captured the title (no body text preview). Fetch the live page content during execution.
+The WordPress about page content is at `upscalepm.com.au/about-us/`. The crawl data at `content/migration/crawl-data.json` has a limited preview. **Extraction method:** Use WebFetch to fetch `https://upscalepm.com.au/about-us/` and extract the main content. If WebFetch fails or returns insufficient content, use the fallback company story below and write bios based on team roles.
+
+**Fallback company story:** "Upscale Project Management was founded by Noel Yaxley, whose background in architecture gives him a unique perspective on construction project management. After seeing too many property owners left without expert representation during their builds, Noel created Upscale to provide dedicated client-side project management — ensuring developers, owners, and investors have someone in their corner from feasibility through to handover. Based in Sydney and Newcastle, Upscale works across residential, commercial, health, education, and infrastructure sectors."
+
+**Fallback team bios:** Write professional bios appropriate for project managers in the Australian construction industry if WordPress content is unavailable.
 
 Available images:
 - `public/images/shared/about-upscale.png` -- company/brand image
@@ -373,7 +385,11 @@ Form fields (minimal for low friction):
 Form UX:
 - Use native HTML form elements with shadcn styling (Input, Label, Textarea, Select from shadcn -- install if needed)
 - Client-side validation: required fields, email format
-- On submit: show a success message "Thank you for your enquiry. We'll be in touch within 1 business day." (No actual submission -- Phase 4 wires to HubSpot)
+- Use `useState` for form state management: `status: 'idle' | 'submitting' | 'success' | 'error'`
+- Disable submit button while `status === 'submitting'` (simulate 1s delay with setTimeout)
+- On success: clear form fields, show success message above the form: "Thank you for your enquiry. We'll be in touch within 1 business day."
+- Prevent double submission by checking status before handling submit
+- No actual API submission -- Phase 4 wires to HubSpot
 - No CAPTCHA in this phase
 
 Install shadcn form components if not already available:
@@ -509,6 +525,8 @@ Both pages exist on the WordPress site:
 - `upscalepm.com.au/privacy-policy/` -- last updated 05/07/2025, covers information collection, use, storage, disclosure
 - `upscalepm.com.au/terms-and-conditions/` -- last updated 05/07/2025, covers site use, services, liability
 
+**Extraction method:** Use WebFetch to fetch `https://upscalepm.com.au/privacy-policy/` and `https://upscalepm.com.au/terms-and-conditions/` and extract the prose content. Also check `content/migration/crawl-data.json` for these page entries. If neither source provides full content, write standard Australian privacy policy and terms of service content appropriate for a project management consultancy, covering the section headings listed below. Legal content must be professional and complete.
+
 Redirects already mapped:
 - `/privacy-policy/` -> `/privacy-policy`
 - `/terms-and-conditions/` -> `/terms-and-conditions`
@@ -603,6 +621,8 @@ These pages already exist from Phase 2 and Phase 1. The requirement is to verify
 **404 page** (`src/app/not-found.tsx`): Already has branded layout with "Go home" and "Contact us" buttons. PAGE-11 requires "navigation back to key pages" -- currently has home and contact. Could add more navigation options.
 
 **Sitemap** (`src/app/sitemap.ts`): Currently only has static pages (/, /services, /case-studies, /insights, /about, /contact). Needs service pages, case study pages, insight pages, and new legal pages added.
+
+**Phase 2 functions available:** `getAllServices()` from `@/lib/services`, `getAllCaseStudies()` and `getAllInsights()` from `@/lib/content` — all verified working from Phase 2 execution.
 
 ### Actions
 

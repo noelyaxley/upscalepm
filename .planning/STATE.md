@@ -8,10 +8,10 @@
 
 ## Current Position
 
-**Phase:** 2 of 7 -- Content Infrastructure & Migration
-**Plan:** All 8/8 prompts complete -- Phase 2 DONE
-**Status:** COMPLETE
-**Progress:** [##........] 2/7 phases complete (Phase 2: 8/8 prompts)
+**Phase:** 3 of 7 -- Core Pages
+**Plan:** 8 prompts planned, ready for execution
+**Status:** PLANNED (checker passed after fixes)
+**Progress:** [##........] 2/7 phases complete
 
 ## Phase Overview
 
@@ -128,9 +128,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 2 Prompt 7 (Insights Content Migration) executed successfully. 3 atomic commits (0db2389, 088d958, abd2751).
-**Next action:** Phase 2 is COMPLETE (all 8/8 prompts done). Begin Phase 3 (Core Pages).
-**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 6 (scroll animation performance). Turbopack requires string-based plugin refs in next.config.mjs. turbopack.root set to __dirname in next.config.mjs. Dynamic MDX imports must use relative paths (not @content alias). Insight placeholder MDX removed (14 real articles provide glob resolution). Images organized with hero/gallery naming in public/images/. Service page data ready in src/lib/services.ts for Phase 3 consumption. All 14 case studies live at /case-studies/{slug}. All 14 insights live at /insights/{slug} (10 quick-bites + 4 articles).
+**Last session:** Phase 2 complete, Phase 3 planned with 8 prompts across 4 waves.
+**Next action:** Execute Phase 3 prompts (start with Wave 1: P1, P3, P4, P5, P6 in parallel)
+**Context to preserve:** Service heroImages in services.ts need updating to case study images (specified in plan). Contact form is UI only — HubSpot wired in Phase 4. About page and legal pages may need WebFetch from live WordPress site. Research recommends `/gsd:research-phase` for Phase 6. Turbopack requires string-based plugin refs and relative MDX import paths.
 
 ---
 *State initialized: 2026-02-14*
