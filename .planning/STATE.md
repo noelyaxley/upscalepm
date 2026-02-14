@@ -9,9 +9,9 @@
 ## Current Position
 
 **Phase:** 2 of 7 -- Content Infrastructure & Migration
-**Plan:** Prompt 4 of 8 complete, next: Prompt 5 (Image Migration & Organization)
-**Status:** EXECUTING (Prompt 4 complete)
-**Progress:** [#.........] 1/7 phases complete (Phase 2: 4/8 prompts)
+**Plan:** Prompt 5 of 8 complete, next: Prompt 6 (Case Study Content Migration)
+**Status:** EXECUTING (Prompt 5 complete)
+**Progress:** [#.........] 1/7 phases complete (Phase 2: 5/8 prompts)
 
 ## Phase Overview
 
@@ -45,7 +45,7 @@
 | 2 | Case Study Template & Dynamic Route | Pending | -- |
 | 3 | Insights Template & Dynamic Route | Pending | -- |
 | 4 | Interactive MDX Components | Done | `b770f08`..`b6b66a0` (2 commits) |
-| 5 | Image Migration & Organization | Pending | -- |
+| 5 | Image Migration & Organization | Done | `013f119`..`64c8429` (2 commits) |
 | 6 | Case Study Content Migration | Pending | -- |
 | 7 | Insights Content Migration | Pending | -- |
 | 8 | Service Page Copy Extraction | Pending | -- |
@@ -58,9 +58,10 @@
 | Plans failed | 0 |
 | Phases completed | 1 |
 | Total requirements | 64 |
-| Requirements done | 10 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-08) |
+| Requirements done | 11 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-08, MIG-05) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
 | P2-P4 duration | 2m (2 tasks, 8 files) |
+| P2-P5 duration | 3m (3 tasks, 90 files) |
 
 ## Accumulated Context
 
@@ -89,6 +90,8 @@
 | String-based plugin references for Turbopack | Next.js 16 Turbopack cannot serialize function references in loader options; use string names instead | 2 |
 | `not-prose` on block-level MDX components | Prevents Tailwind typography plugin from overriding component styles inside MDX | 2 |
 | Global MDX component registration | Components registered in mdx-components.tsx so no per-file imports needed in MDX | 2 |
+| Hero/gallery naming convention for images | Largest file = hero.ext, rest = gallery-NN.ext per project directory | 2 |
+| 89 unique images after WP dedup (not 60-70 estimate) | construction-pm has 18 generic photos; all are genuine originals | 2 |
 
 ### WordPress Crawl Results
 
@@ -111,12 +114,13 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 2 Prompt 4 (Interactive MDX Components) executed successfully. 2 atomic commits.
-**Next action:** Execute Phase 2 Prompt 5 (Image Migration & Organization)
-**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 6 (scroll animation performance). Turbopack requires string-based plugin refs in next.config.mjs. Untracked files from incomplete P2-P2/P3 execution exist in working tree (not committed).
+**Last session:** Phase 2 Prompt 5 (Image Migration & Organization) executed successfully. 2 atomic commits.
+**Next action:** Execute Phase 2 Prompt 6 (Case Study Content Migration)
+**Context to preserve:** Research recommends `/gsd:research-phase` for Phase 6 (scroll animation performance). Turbopack requires string-based plugin refs in next.config.mjs. Untracked files from incomplete P2-P2/P3 execution exist in working tree (not committed). Images organized with hero/gallery naming in public/images/.
 
 ---
 *State initialized: 2026-02-14*
 *Phase 2 planned: 2026-02-14*
 *Phase 2 Prompt 1 completed: 2026-02-14*
 *Phase 2 Prompt 4 completed: 2026-02-14*
+*Phase 2 Prompt 5 completed: 2026-02-14*
