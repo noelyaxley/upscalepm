@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/layout/section'
+import { GeometricShapes } from '@/components/animation/geometric-shapes'
 
 export function HomepageCta() {
   return (
-    <Section background="dark">
-      <div className="mx-auto max-w-2xl text-center">
+    <Section background="dark" className="section-diagonal-top-reverse relative overflow-hidden">
+      <GeometricShapes variant="dark" />
+      <div className="relative mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
           Your Project Deserves Expert Representation
         </h2>
