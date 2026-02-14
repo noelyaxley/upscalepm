@@ -18,6 +18,7 @@ import {
 import { CheckCircle2, Loader2 } from 'lucide-react'
 import { submitContactForm } from '@/actions/contact'
 import { getStoredUTMParams } from '@/lib/utm'
+import { trackFormSubmission } from '@/components/analytics/gtm-event'
 
 const formSchema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -82,6 +83,7 @@ export function ContactForm() {
 
     const result = await submitContactForm(payload)
     if (result.success) {
+      trackFormSubmission('contact_form')
       setStatus('success')
       reset()
     } else {
