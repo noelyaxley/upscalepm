@@ -13,6 +13,7 @@ import { Section } from '@/components/layout/section'
 import { Button } from '@/components/ui/button'
 import { JsonLd } from '@/components/seo/json-ld'
 import { localBusinessSchema } from '@/components/seo/schemas'
+import { GeometricShapes } from '@/components/animation/geometric-shapes'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Client-Side Project Management Sydney & Newcastle',
@@ -34,8 +35,9 @@ export default function Home() {
       <ServicesOverview services={services} />
 
       {/* Mid-page CTA (CRO-05: CTA at every scroll depth) */}
-      <Section background="dark">
-        <div className="mx-auto max-w-2xl text-center">
+      <Section background="dark" className="relative overflow-hidden">
+        <GeometricShapes variant="dark" />
+        <div className="relative mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
             Not Sure What You Need?
           </h2>
