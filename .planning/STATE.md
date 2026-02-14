@@ -8,9 +8,9 @@
 
 ## Current Position
 
-**Phase:** 4 of 7 -- Lead Generation & CRO
-**Plan:** 6/6 prompts complete
-**Status:** COMPLETE (verified: 7/7 must-haves passed, human verification needed for live credentials)
+**Phase:** 5 of 7 -- Analytics, Tracking & SEO
+**Plan:** 1/? prompts complete
+**Status:** IN PROGRESS
 **Progress:** [####......] 4/7 phases complete
 
 ## Phase Overview
@@ -21,7 +21,7 @@
 | 2 | Content Infrastructure & Migration | Complete |
 | 3 | Core Pages | Complete |
 | 4 | Lead Generation & CRO | Complete |
-| 5 | Analytics, Tracking & SEO | Pending |
+| 5 | Analytics, Tracking & SEO | In Progress |
 | 6 | Animation & Visual Polish | Pending |
 | 7 | Programmatic SEO & Launch | Pending |
 
@@ -74,6 +74,12 @@
 | 5 | CRO -- Homepage & Service Pages | Pending | |
 | 6 | HubSpot Email Automation Documentation & Final Verification | Pending | |
 
+## Phase 5 Prompt Status
+
+| Prompt | Title | Status | Commit |
+|--------|-------|--------|--------|
+| 1 | GTM Container Script & DataLayer Event Utilities | Done | `d368c1c`..`2a2c0fb` (4 commits) |
+
 ## Performance Metrics
 
 | Metric | Value |
@@ -99,6 +105,7 @@
 | P3-P7 duration | 2m (4 tasks, 3 files) |
 | P4-P1 duration | 2m (5 tasks, 6 files) |
 | P4-P3 duration | 3m (5 tasks, 6 files) |
+| P5-P1 duration | 1m (5 tasks, 5 files) |
 
 ## Accumulated Context
 
@@ -163,6 +170,9 @@
 | CalendlyInlineDynamic wrapper pattern | 'use client' wrapper with next/dynamic ssr:false for embedding Calendly in server components | 4 |
 | Anchor link over PopupButton in server context | ServiceCta uses plain <a> to Calendly URL since it's a server component | 4 |
 | Mounted state guard in CalendlyPopup | useState/useEffect pattern instead of dynamic import for PopupButton SSR safety | 4 |
+| GTM afterInteractive strategy | Avoids blocking FCP; loads GTM after hydration instead of beforeInteractive | 5 |
+| Graceful degradation for GTM | GTMScript renders null when NEXT_PUBLIC_GTM_ID is unset or REPLACE_ME; dev works without credentials | 5 |
+| dataLayer push utilities server-safe | typeof window guard and dataLayer initialization allow SSR-safe event pushing | 5 |
 
 ### WordPress Crawl Results
 
@@ -185,9 +195,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 4 complete — all 6 prompts executed and verified (7/7 must-haves, human verification needed for live credentials).
-**Next action:** Plan Phase 5 (Analytics, Tracking & SEO) — GA4, Google Ads, Meta Pixel, JSON-LD structured data, CWV.
-**Context to preserve:** Contact form wired to HubSpot via Server Action with zod validation + UTM attribution. HubSpot tracking with SPA route detection. Calendly booking on contact page + service CTAs. All pages CRO-optimised with benefit-driven copy and mid-page CTAs. docs/hubspot-setup.md has complete HubSpot dashboard configuration guide. All integrations gracefully degrade with placeholder env vars.
+**Last session:** Phase 5 Prompt 1 complete -- GTM container script and dataLayer event utilities.
+**Next action:** Execute Phase 5 Prompt 2.
+**Context to preserve:** GTM installed in root layout with afterInteractive strategy, graceful degradation when GTM_ID is REPLACE_ME. dataLayer push helpers exported from `src/components/analytics/gtm-event.ts`. GA4 enhanced measurement will handle SPA page views automatically -- no manual page_view events needed. Contact form wired to HubSpot via Server Action with zod validation + UTM attribution. All integrations gracefully degrade with placeholder env vars.
 
 ---
 *State initialized: 2026-02-14*
@@ -211,3 +221,4 @@ None currently.
 *Phase 3 COMPLETE: 2026-02-14*
 *Phase 4 Prompt 1 completed: 2026-02-14*
 *Phase 4 Prompt 3 completed: 2026-02-14*
+*Phase 5 Prompt 1 completed: 2026-02-14*
