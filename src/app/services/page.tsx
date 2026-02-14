@@ -6,6 +6,8 @@ import { generatePageMetadata } from '@/lib/metadata'
 import { PageHeader } from '@/components/layout/page-header'
 import { Section } from '@/components/layout/section'
 import { Button } from '@/components/ui/button'
+import { JsonLd } from '@/components/seo/json-ld'
+import { localBusinessSchema } from '@/components/seo/schemas'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Services',
@@ -19,6 +21,7 @@ export default function ServicesPage() {
 
   return (
     <>
+      <JsonLd data={localBusinessSchema()} />
       <PageHeader
         title="Services"
         subtitle="Comprehensive client-side project management from feasibility through to handover. We protect your time, budget, and quality at every stage."

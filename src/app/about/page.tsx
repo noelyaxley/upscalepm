@@ -6,6 +6,8 @@ import { PageHeader } from '@/components/layout/page-header'
 import { Section } from '@/components/layout/section'
 import { TeamGrid } from '@/components/sections/team-grid'
 import { Button } from '@/components/ui/button'
+import { JsonLd } from '@/components/seo/json-ld'
+import { localBusinessSchema } from '@/components/seo/schemas'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'About',
@@ -40,6 +42,7 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={localBusinessSchema()} />
       <PageHeader
         title="About Upscale Project Management"
         subtitle="Design-led. Delivery-focused. Purpose-driven project management for complex builds."

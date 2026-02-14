@@ -4,6 +4,8 @@ import { getAllCaseStudies, getCaseStudyBySlug } from '@/lib/content'
 import { generatePageMetadata } from '@/lib/metadata'
 import { CaseStudyHeader } from '@/components/case-study-header'
 import { Container } from '@/components/layout/container'
+import { JsonLd } from '@/components/seo/json-ld'
+import { articleSchema } from '@/components/seo/schemas'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -40,6 +42,15 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
   return (
     <article>
+      <JsonLd data={articleSchema({
+        title: study.frontmatter.title,
+        excerpt: study.frontmatter.excerpt,
+        slug: study.slug,
+        date: study.frontmatter.date ?? '2024-01-01',
+        author: 'Noel Yaxley',
+        heroImage: study.frontmatter.heroImage,
+        path: `/case-studies/${study.slug}`,
+      })} />
       <CaseStudyHeader frontmatter={study.frontmatter} />
       <Container>
         <div className="prose prose-lg prose-neutral mx-auto max-w-3xl

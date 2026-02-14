@@ -4,6 +4,8 @@ import { getAllInsights, getInsightBySlug } from '@/lib/content'
 import { generatePageMetadata } from '@/lib/metadata'
 import { InsightHeader } from '@/components/insight-header'
 import { Container } from '@/components/layout/container'
+import { JsonLd } from '@/components/seo/json-ld'
+import { articleSchema } from '@/components/seo/schemas'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -52,6 +54,16 @@ export default async function InsightPage({ params }: PageProps) {
 
   return (
     <article>
+      <JsonLd data={articleSchema({
+        title: insight.frontmatter.title,
+        excerpt: insight.frontmatter.excerpt,
+        slug: insight.slug,
+        date: insight.frontmatter.date,
+        updated: insight.frontmatter.updated,
+        author: insight.frontmatter.author,
+        heroImage: insight.frontmatter.heroImage,
+        path: `/insights/${insight.slug}`,
+      })} />
       <InsightHeader
         frontmatter={insight.frontmatter}
         readingTime={insight.readingTime}

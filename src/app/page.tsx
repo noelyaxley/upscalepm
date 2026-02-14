@@ -9,6 +9,8 @@ import { FeaturedCaseStudies } from '@/components/sections/featured-case-studies
 import { HomepageCta } from '@/components/sections/homepage-cta'
 import { Section } from '@/components/layout/section'
 import { Button } from '@/components/ui/button'
+import { JsonLd } from '@/components/seo/json-ld'
+import { localBusinessSchema } from '@/components/seo/schemas'
 
 export default function Home() {
   const services = getAllServices()
@@ -16,6 +18,7 @@ export default function Home() {
 
   return (
     <>
+      <JsonLd data={localBusinessSchema()} />
       <Hero />
       <ClientLogos />
       <ValueProposition />

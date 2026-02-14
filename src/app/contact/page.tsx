@@ -7,6 +7,8 @@ import { Section } from '@/components/layout/section'
 import { ContactForm } from '@/components/forms/contact-form'
 import { CalendlyInlineDynamic } from '@/components/booking/calendly-inline-dynamic'
 import { CheckCircle2, Clock, Mail, MapPin, Phone } from 'lucide-react'
+import { JsonLd } from '@/components/seo/json-ld'
+import { localBusinessSchema } from '@/components/seo/schemas'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Contact',
@@ -48,6 +50,7 @@ const clientLogos = [
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={localBusinessSchema()} />
       {/* Benefit-driven hero (CRO-01) */}
       <section className="border-b bg-neutral-950 text-white">
         <Container>

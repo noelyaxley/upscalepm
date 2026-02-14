@@ -10,6 +10,8 @@ import { Button } from '@/components/ui/button'
 import { ServiceBenefits } from '@/components/sections/service-benefits'
 import { ServiceCta } from '@/components/sections/service-cta'
 import { RelatedCaseStudies } from '@/components/sections/related-case-studies'
+import { JsonLd } from '@/components/seo/json-ld'
+import { serviceSchema } from '@/components/seo/schemas'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -39,6 +41,7 @@ export default async function ServicePage({ params }: PageProps) {
 
   return (
     <>
+      <JsonLd data={serviceSchema({ title: service.title, description: service.description, slug: service.slug })} />
       {/* Hero with background image */}
       <div className="relative overflow-hidden border-b">
         <div className="absolute inset-0">
