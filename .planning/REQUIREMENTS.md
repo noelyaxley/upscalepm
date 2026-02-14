@@ -146,13 +146,76 @@ Deferred to future release. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| *(populated during roadmap creation)* | | |
+| DSGN-01 | Phase 1 - Foundation & Design System | Pending |
+| DSGN-02 | Phase 1 - Foundation & Design System | Pending |
+| DSGN-03 | Phase 1 - Foundation & Design System | Pending |
+| DSGN-09 | Phase 1 - Foundation & Design System | Pending |
+| SEO-01 | Phase 1 - Foundation & Design System | Pending |
+| SEO-05 | Phase 1 - Foundation & Design System | Pending |
+| DEPL-01 | Phase 1 - Foundation & Design System | Pending |
+| MIG-01 | Phase 1 - Foundation & Design System | Pending |
+| CONT-01 | Phase 2 - Content Infrastructure & Migration | Pending |
+| CONT-02 | Phase 2 - Content Infrastructure & Migration | Pending |
+| CONT-03 | Phase 2 - Content Infrastructure & Migration | Pending |
+| CONT-05 | Phase 2 - Content Infrastructure & Migration | Pending |
+| CONT-06 | Phase 2 - Content Infrastructure & Migration | Pending |
+| CONT-08 | Phase 2 - Content Infrastructure & Migration | Pending |
+| MIG-02 | Phase 2 - Content Infrastructure & Migration | Pending |
+| MIG-03 | Phase 2 - Content Infrastructure & Migration | Pending |
+| MIG-04 | Phase 2 - Content Infrastructure & Migration | Pending |
+| MIG-05 | Phase 2 - Content Infrastructure & Migration | Pending |
+| PAGE-01 | Phase 3 - Core Pages | Pending |
+| PAGE-02 | Phase 3 - Core Pages | Pending |
+| PAGE-03 | Phase 3 - Core Pages | Pending |
+| PAGE-04 | Phase 3 - Core Pages | Pending |
+| PAGE-05 | Phase 3 - Core Pages | Pending |
+| PAGE-06 | Phase 3 - Core Pages | Pending |
+| PAGE-07 | Phase 3 - Core Pages | Pending |
+| PAGE-08 | Phase 3 - Core Pages | Pending |
+| PAGE-09 | Phase 3 - Core Pages | Pending |
+| PAGE-10 | Phase 3 - Core Pages | Pending |
+| PAGE-11 | Phase 3 - Core Pages | Pending |
+| PAGE-12 | Phase 3 - Core Pages | Pending |
+| PAGE-13 | Phase 3 - Core Pages | Pending |
+| CONT-04 | Phase 3 - Core Pages | Pending |
+| CONT-07 | Phase 3 - Core Pages | Pending |
+| HUB-01 | Phase 4 - Lead Generation & CRO | Pending |
+| HUB-02 | Phase 4 - Lead Generation & CRO | Pending |
+| HUB-03 | Phase 4 - Lead Generation & CRO | Pending |
+| HUB-04 | Phase 4 - Lead Generation & CRO | Pending |
+| HUB-05 | Phase 4 - Lead Generation & CRO | Pending |
+| CRO-01 | Phase 4 - Lead Generation & CRO | Pending |
+| CRO-02 | Phase 4 - Lead Generation & CRO | Pending |
+| CRO-03 | Phase 4 - Lead Generation & CRO | Pending |
+| CRO-04 | Phase 4 - Lead Generation & CRO | Pending |
+| CRO-05 | Phase 4 - Lead Generation & CRO | Pending |
+| TRACK-01 | Phase 5 - Analytics, Tracking & SEO | Pending |
+| TRACK-02 | Phase 5 - Analytics, Tracking & SEO | Pending |
+| TRACK-03 | Phase 5 - Analytics, Tracking & SEO | Pending |
+| TRACK-04 | Phase 5 - Analytics, Tracking & SEO | Pending |
+| TRACK-05 | Phase 5 - Analytics, Tracking & SEO | Pending |
+| SEO-02 | Phase 5 - Analytics, Tracking & SEO | Pending |
+| SEO-03 | Phase 5 - Analytics, Tracking & SEO | Pending |
+| SEO-04 | Phase 5 - Analytics, Tracking & SEO | Pending |
+| SEO-06 | Phase 5 - Analytics, Tracking & SEO | Pending |
+| DSGN-04 | Phase 6 - Animation & Visual Polish | Pending |
+| DSGN-05 | Phase 6 - Animation & Visual Polish | Pending |
+| DSGN-06 | Phase 6 - Animation & Visual Polish | Pending |
+| DSGN-07 | Phase 6 - Animation & Visual Polish | Pending |
+| DSGN-08 | Phase 6 - Animation & Visual Polish | Pending |
+| DSGN-10 | Phase 6 - Animation & Visual Polish | Pending |
+| PSEO-01 | Phase 7 - Programmatic SEO & Launch | Pending |
+| PSEO-02 | Phase 7 - Programmatic SEO & Launch | Pending |
+| PSEO-03 | Phase 7 - Programmatic SEO & Launch | Pending |
+| PSEO-04 | Phase 7 - Programmatic SEO & Launch | Pending |
+| DEPL-02 | Phase 7 - Programmatic SEO & Launch | Pending |
+| DEPL-03 | Phase 7 - Programmatic SEO & Launch | Pending |
 
 **Coverage:**
-- v1 requirements: 48 total
-- Mapped to phases: 0
-- Unmapped: 48
+- v1 requirements: 64 total
+- Mapped to phases: 64
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-14*
-*Last updated: 2026-02-14 after initial definition*
+*Last updated: 2026-02-14 after roadmap creation*
