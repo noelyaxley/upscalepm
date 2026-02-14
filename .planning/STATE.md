@@ -59,7 +59,7 @@
 | 3 | About / Team Page | Done | `8e0a74e`..`48f111b` (2 commits) |
 | 4 | Contact Page | Done | `351e85f`..`56d3122` (3 commits) |
 | 5 | Client Logo Bar Component | Done | `ca77633` |
-| 6 | Privacy Policy & Terms of Service | Pending | |
+| 6 | Privacy Policy & Terms of Service | Done | `2e8ff03`..`6b8847f` (3 commits) |
 | 7 | Enhance Existing Pages | Pending | |
 | 8 | Navigation Audit & Cross-linking | Pending | |
 
@@ -67,11 +67,11 @@
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 5 |
+| Plans completed | 6 |
 | Plans failed | 0 |
 | Phases completed | 2 |
 | Total requirements | 64 |
-| Requirements done | 19 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-03, CONT-05, CONT-06, CONT-08, MIG-02, MIG-03, MIG-04, MIG-05; Phase 3: PAGE-07, PAGE-08) |
+| Requirements done | 21 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01, CONT-02, CONT-03, CONT-05, CONT-06, CONT-08, MIG-02, MIG-03, MIG-04, MIG-05; Phase 3: PAGE-07, PAGE-08, PAGE-09, PAGE-10) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
 | P2-P2 duration | 4m (4 tasks, 6 files) |
 | P2-P4 duration | 2m (2 tasks, 8 files) |
@@ -82,6 +82,7 @@
 | P3-P5 duration | 1m (1 task, 1 file) |
 | P3-P4 duration | 2m (3 tasks, 6 files) |
 | P3-P3 duration | 2m (3 tasks, 2 files) |
+| P3-P6 duration | 2m (3 tasks, 3 files) |
 
 ## Accumulated Context
 
@@ -125,6 +126,8 @@
 | Consistent h-10/h-12 height for logo bar | Responsive scaling with Tailwind classes instead of fixed pixel dimensions; muted background keeps logos unobtrusive | 3 |
 | WordPress content fetched via curl for about page | Accurate real content (FJMT, $40M portfolio) rather than generic fallback | 3 |
 | Inline CTA on about page (not ServiceCta) | ServiceCta component not yet created by Prompt 1 (parallel execution) | 3 |
+| Real WP content for legal pages via curl | Accurate legal content from live site rather than generic fallback | 3 |
+| 4-col footer grid with Legal column | Separate Legal nav section keeps footer organized as links grow | 3 |
 
 ### WordPress Crawl Results
 
@@ -147,9 +150,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 3 Prompt 5 (Client Logo Bar) completed.
-**Next action:** Continue Phase 3 Wave 1 (P1, P3, P4, P6) then Wave 2 (P2), Wave 3 (P7), Wave 4 (P8).
-**Context to preserve:** ClientLogos component ready at `src/components/sections/client-logos.tsx` for homepage integration in P2. Service heroImages in services.ts need updating to case study images (specified in plan). Contact form is UI only -- HubSpot wired in Phase 4. About page and legal pages may need WebFetch from live WordPress site. Research recommends `/gsd:research-phase` for Phase 6. Turbopack requires string-based plugin refs and relative MDX import paths.
+**Last session:** Phase 3 Prompt 6 (Privacy Policy & Terms of Service) completed.
+**Next action:** Continue Phase 3: P1 (Service Pages), P2 (Homepage), P7 (Enhance Existing), P8 (Nav Audit).
+**Context to preserve:** Legal pages done with real WP content. Footer now has 4-col layout with Legal column. ClientLogos component ready for homepage. Contact form is UI only -- HubSpot wired in Phase 4. Service heroImages in services.ts need updating (specified in plan). Turbopack requires string-based plugin refs and relative MDX import paths.
 
 ---
 *State initialized: 2026-02-14*
@@ -164,3 +167,4 @@ None currently.
 *Phase 2 COMPLETE: 2026-02-14*
 *Phase 3 Prompt 5 completed: 2026-02-14*
 *Phase 3 Prompt 3 completed: 2026-02-14*
+*Phase 3 Prompt 6 completed: 2026-02-14*
