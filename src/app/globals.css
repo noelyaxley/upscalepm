@@ -216,3 +216,67 @@
     border-radius: var(--radius-sm);
   }
 }
+
+/* ---- Diagonal Section Dividers ---- */
+.section-diagonal-top {
+  clip-path: polygon(0 3rem, 100% 0, 100% 100%, 0 100%);
+  margin-top: -3rem;
+  padding-top: calc(3rem + var(--spacing-section));
+}
+
+.section-diagonal-top-reverse {
+  clip-path: polygon(0 0, 100% 3rem, 100% 100%, 0 100%);
+  margin-top: -3rem;
+  padding-top: calc(3rem + var(--spacing-section));
+}
+
+@media (min-width: 768px) {
+  .section-diagonal-top {
+    clip-path: polygon(0 4rem, 100% 0, 100% 100%, 0 100%);
+    margin-top: -4rem;
+    padding-top: calc(4rem + var(--spacing-section));
+  }
+
+  .section-diagonal-top-reverse {
+    clip-path: polygon(0 0, 100% 4rem, 100% 100%, 0 100%);
+    margin-top: -4rem;
+    padding-top: calc(4rem + var(--spacing-section));
+  }
+}
+
+/* ---- Floating Geometric Shapes ---- */
+.geo-shape {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.04;
+  animation: geo-float 25s ease-in-out infinite;
+}
+
+.geo-shape-alt {
+  animation-direction: alternate-reverse;
+  animation-duration: 30s;
+}
+
+.geo-shape-slow {
+  animation-duration: 35s;
+}
+
+@keyframes geo-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-15px) rotate(1.5deg);
+  }
+  66% {
+    transform: translateY(-8px) rotate(-1deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .geo-shape,
+  .geo-shape-alt,
+  .geo-shape-slow {
+    animation: none;
+  }
+}
