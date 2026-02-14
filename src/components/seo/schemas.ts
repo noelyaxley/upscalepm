@@ -95,6 +95,37 @@ export function articleSchema(article: {
   }
 }
 
+export function locationServiceSchema(service: {
+  title: string
+  description: string
+  slug: string
+  location: { name: string; region: string }
+}): WithContext<Service> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: `${service.title} ${service.location.name}`,
+    description: service.description,
+    url: `${SITE_URL}/services/${service.slug}/${service.location.name.toLowerCase()}`,
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Upscale Project Management',
+      url: SITE_URL,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: service.location.name,
+        addressRegion: 'NSW',
+        addressCountry: 'AU',
+      },
+    },
+    areaServed: {
+      '@type': 'City',
+      name: service.location.name,
+    },
+    serviceType: 'Project Management',
+  }
+}
+
 export function faqSchema(
   questions: Array<{ question: string; answer: string }>
 ): WithContext<FAQPage> {
