@@ -164,7 +164,7 @@ Plans:
 | 1 | Foundation & Design System | 8 | Complete |
 | 2 | Content Infrastructure & Migration | 10 | Complete |
 | 3 | Core Pages | 15 | Complete (2026-02-14) |
-| 4 | Lead Generation & CRO | 10 | Planned |
+| 4 | Lead Generation & CRO | 10 | Complete (2026-02-14) |
 | 5 | Analytics, Tracking & SEO | 9 | Pending |
 | 6 | Animation & Visual Polish | 6 | Pending |
 | 7 | Programmatic SEO & Launch | 6 | Pending |

@@ -9,9 +9,9 @@
 ## Current Position
 
 **Phase:** 4 of 7 -- Lead Generation & CRO
-**Plan:** 1/6 prompts complete
-**Status:** IN PROGRESS
-**Progress:** [###.......] 3/7 phases complete (Phase 4: 1/6 prompts)
+**Plan:** 6/6 prompts complete
+**Status:** COMPLETE (verified: 7/7 must-haves passed, human verification needed for live credentials)
+**Progress:** [####......] 4/7 phases complete
 
 ## Phase Overview
 
@@ -20,7 +20,7 @@
 | 1 | Foundation & Design System | Complete |
 | 2 | Content Infrastructure & Migration | Complete |
 | 3 | Core Pages | Complete |
-| 4 | Lead Generation & CRO | In Progress (1/6) |
+| 4 | Lead Generation & CRO | Complete |
 | 5 | Analytics, Tracking & SEO | Pending |
 | 6 | Animation & Visual Polish | Pending |
 | 7 | Programmatic SEO & Launch | Pending |
@@ -185,9 +185,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 4 Prompt 3 complete -- Calendly booking integration.
-**Next action:** Execute Phase 4 Prompt 2 (Contact Form Server Action & HubSpot Wiring) or Prompt 5 (CRO Homepage & Service Pages).
-**Context to preserve:** 50 static pages building cleanly. Calendly InlineWidget on contact page with #booking anchor. ServiceCta has showBooking/bookingText props. CalendlyInlineDynamic wrapper pattern for server components. .env.local has NEXT_PUBLIC_CALENDLY_URL placeholder. Graceful fallback when URL not configured.
+**Last session:** Phase 4 complete — all 6 prompts executed and verified (7/7 must-haves, human verification needed for live credentials).
+**Next action:** Plan Phase 5 (Analytics, Tracking & SEO) — GA4, Google Ads, Meta Pixel, JSON-LD structured data, CWV.
+**Context to preserve:** Contact form wired to HubSpot via Server Action with zod validation + UTM attribution. HubSpot tracking with SPA route detection. Calendly booking on contact page + service CTAs. All pages CRO-optimised with benefit-driven copy and mid-page CTAs. docs/hubspot-setup.md has complete HubSpot dashboard configuration guide. All integrations gracefully degrade with placeholder env vars.
 
 ---
 *State initialized: 2026-02-14*
