@@ -43,7 +43,7 @@
 |--------|-------|--------|--------|
 | 1 | MDX Pipeline Setup | Done | `9568afc`..`3c4de00` (7 commits) |
 | 2 | Case Study Template & Dynamic Route | Pending | -- |
-| 3 | Insights Template & Dynamic Route | Pending | -- |
+| 3 | Insights Template & Dynamic Route | Done | `f2b0995`..`2e3630f` (3 commits) |
 | 4 | Interactive MDX Components | Done | `b770f08`..`b6b66a0` (2 commits) |
 | 5 | Image Migration & Organization | Done | `013f119`..`64c8429` (2 commits) |
 | 6 | Case Study Content Migration | Pending | -- |
