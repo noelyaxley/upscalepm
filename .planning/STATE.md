@@ -98,6 +98,7 @@
 | P3-P2 duration | 2m (6 tasks, 6 files) |
 | P3-P7 duration | 2m (4 tasks, 3 files) |
 | P4-P1 duration | 2m (5 tasks, 6 files) |
+| P4-P3 duration | 3m (5 tasks, 6 files) |
 
 ## Accumulated Context
 
@@ -159,6 +160,9 @@
 | useRef skip pattern for HubSpot | Prevents double-counting initial page view since HubSpot script auto-fires trackPageView on load | 4 |
 | Graceful degradation for HubSpot | HubSpotTracker renders null when portal ID missing or REPLACE_ME; dev works without credentials | 4 |
 | .env.example via gitignore exception | Added !.env.example to .gitignore since existing .env* pattern would block it | 4 |
+| CalendlyInlineDynamic wrapper pattern | 'use client' wrapper with next/dynamic ssr:false for embedding Calendly in server components | 4 |
+| Anchor link over PopupButton in server context | ServiceCta uses plain <a> to Calendly URL since it's a server component | 4 |
+| Mounted state guard in CalendlyPopup | useState/useEffect pattern instead of dynamic import for PopupButton SSR safety | 4 |
 
 ### WordPress Crawl Results
 
@@ -181,9 +185,9 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 4 Prompt 1 complete -- HubSpot tracking, UTM capture, root layout wiring.
-**Next action:** Execute Phase 4 Prompt 2 (Contact Form Server Action & HubSpot Wiring) or Prompt 3 (Calendly Booking Integration) -- both are independent.
-**Context to preserve:** 50 static pages building cleanly. HubSpot tracker and UTM provider wired into root layout. UTM utilities in src/lib/utm.ts ready for form submission. .env.local has placeholder values. Graceful degradation when HubSpot not configured.
+**Last session:** Phase 4 Prompt 3 complete -- Calendly booking integration.
+**Next action:** Execute Phase 4 Prompt 2 (Contact Form Server Action & HubSpot Wiring) or Prompt 5 (CRO Homepage & Service Pages).
+**Context to preserve:** 50 static pages building cleanly. Calendly InlineWidget on contact page with #booking anchor. ServiceCta has showBooking/bookingText props. CalendlyInlineDynamic wrapper pattern for server components. .env.local has NEXT_PUBLIC_CALENDLY_URL placeholder. Graceful fallback when URL not configured.
 
 ---
 *State initialized: 2026-02-14*
@@ -206,3 +210,4 @@ None currently.
 *Phase 3 Prompt 8 completed: 2026-02-14*
 *Phase 3 COMPLETE: 2026-02-14*
 *Phase 4 Prompt 1 completed: 2026-02-14*
+*Phase 4 Prompt 3 completed: 2026-02-14*
