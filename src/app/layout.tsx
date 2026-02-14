@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout/footer'
 import { HubSpotTracker } from '@/components/hubspot/hubspot-tracker'
 import { UTMProvider } from '@/components/hubspot/utm-provider'
 import { SmoothScroll } from '@/components/animation/smooth-scroll'
+import { ScrollReveal } from '@/components/animation/scroll-reveal'
 import './globals.css'
 
 const inter = Inter({
@@ -54,6 +55,7 @@ export default function RootLayout({
           <Footer />
           <HubSpotTracker />
           <UTMProvider />
+          <ScrollReveal />
         </SmoothScroll>
       </body>
     </html>
