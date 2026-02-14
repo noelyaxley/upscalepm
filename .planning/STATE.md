@@ -9,7 +9,7 @@
 ## Current Position
 
 **Phase:** 6 of 7 -- Animation & Visual Polish
-**Plan:** 3/5 prompts complete (Wave 1 + Prompt 2 done, Prompt 3 next)
+**Plan:** 4/5 prompts complete (Wave 1 + Wave 2 done, Prompt 5 verification next)
 **Status:** IN PROGRESS
 **Progress:** [#####.....] 5/7 phases complete
 
@@ -90,7 +90,7 @@
 |--------|-------|--------|--------|
 | 1 | GSAP Infrastructure, Lenis Smooth Scroll & Reduced-Motion | Done | `4c33d54`..`e874a53` (4 commits) |
 | 2 | ScrollTrigger Batch Reveal Animations | Done | `211f5fe`..`b02502e` (4 commits) |
-| 3 | Hero Entrance Animation -- SplitText & Parallax | Pending | |
+| 3 | Hero Entrance Animation -- SplitText & Parallax | Done | `67dfe7e`..`caa9ec6` (3 commits) |
 | 4 | Geometric Overlay Design Language | Done | `872d35f`..`bce1749` (5 commits) |
 | 5 | Performance Verification & Cross-Page Animation Audit | Pending | |
 
@@ -98,11 +98,11 @@
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 11 |
+| Plans completed | 12 |
 | Plans failed | 0 |
 | Phases completed | 5 |
 | Total requirements | 64 |
-| Requirements done | 54 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01/02/03/05/06/08, MIG-02/03/04/05; Phase 3: PAGE-01/02/03/04/05/06/07/08/09/10/11/12/13, CONT-04/07; Phase 4: HUB-01/02/03/04/05, CRO-01/02/03/04/05; Phase 5: TRACK-01/02/03/04/05, SEO-02/03/04/06; Phase 6: DSGN-04/07/10) |
+| Requirements done | 56 (Phase 1: DSGN-01/02/03/09, SEO-01/05, DEPL-01, MIG-01; Phase 2: CONT-01/02/03/05/06/08, MIG-02/03/04/05; Phase 3: PAGE-01/02/03/04/05/06/07/08/09/10/11/12/13, CONT-04/07; Phase 4: HUB-01/02/03/04/05, CRO-01/02/03/04/05; Phase 5: TRACK-01/02/03/04/05, SEO-02/03/04/06; Phase 6: DSGN-04/06/07/08/10) |
 | P2-P1 duration | 3m (7 tasks, 8 files) |
 | P2-P2 duration | 4m (4 tasks, 6 files) |
 | P2-P4 duration | 2m (2 tasks, 8 files) |
@@ -127,6 +127,7 @@
 | P6-P4 duration | 2m (5 tasks, 5 files) |
 | P6-P1 duration | 2m (4 tasks, 4 files) |
 | P6-P2 duration | 1m (4 tasks, 4 files) |
+| P6-P3 duration | 2m (3 tasks, 3 files) |
 
 ## Accumulated Context
 
@@ -205,6 +206,9 @@
 | CSS initial state scoped to prefers-reduced-motion: no-preference | Reduced-motion users see content immediately; CSS and JS guards use identical media query | 6 |
 | ScrollReveal in layout.tsx not page.tsx | Works on all pages regardless of entry URL; ScrollTrigger.batch is global | 6 |
 | ScrollTrigger.batch over individual ScrollTriggers | Single watcher for all [data-reveal] elements; more performant for repeating patterns | 6 |
+| gsap.from() for hero heading (not gsap.to) | Heading visible before JS loads, protecting LCP; animation runs FROM offset TO natural | 6 |
+| Parallax desktop-only via compound matchMedia | Mobile parallax janky due to touch scroll physics and address bar; min-width 768px + no-preference | 6 |
+| SplitText.create() with autoSplit: true | Automatic font-load re-splitting when Playfair Display swap completes | 6 |
 
 ### WordPress Crawl Results
 
@@ -227,10 +231,10 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** Phase 6 Prompt 2 complete -- ScrollTrigger.batch reveal animations on all sections.
-**Stopped at:** Completed 6-2-PLAN (ScrollTrigger Batch Reveal Animations)
-**Next action:** Execute Phase 6 Prompt 3 (Hero Entrance Animation -- SplitText & Parallax). Then Prompt 5 verification.
-**Context to preserve:** Wave 1 complete (Prompt 1 + 4), Prompt 2 complete. ScrollReveal in layout.tsx with ScrollTrigger.batch('[data-reveal]'). Section component has data-reveal attribute. CSS initial state scoped to prefers-reduced-motion: no-preference. Build passes with 50 pages.
+**Last session:** Phase 6 Prompt 3 complete -- Hero entrance animation with SplitText and parallax.
+**Stopped at:** Completed 6-3-PLAN (Hero Entrance Animation -- SplitText & Parallax)
+**Next action:** Execute Phase 6 Prompt 5 (Performance Verification & Cross-Page Animation Audit). All 4 implementation prompts done.
+**Context to preserve:** All Wave 1 + Wave 2 prompts complete (1, 2, 3, 4). Hero converted to client component with SplitHeading (character reveal), ParallaxHero (desktop-only scrub), subtitle/CTA fade-in. All animations use gsap.matchMedia for reduced-motion. Build passes with 50 pages. DSGN-06 (SplitText) and DSGN-08 (parallax) now satisfied.
 
 ---
 *State initialized: 2026-02-14*
@@ -263,3 +267,4 @@ None currently.
 *Phase 6 Prompt 1 completed: 2026-02-14*
 *Phase 6 Prompt 4 completed: 2026-02-14*
 *Phase 6 Prompt 2 completed: 2026-02-14*
+*Phase 6 Prompt 3 completed: 2026-02-14*
