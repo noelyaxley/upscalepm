@@ -9,13 +9,18 @@ const navLinks = [
   { href: '/contact', label: 'Contact' },
 ] as const
 
+const legalLinks = [
+  { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/terms-and-conditions', label: 'Terms & Conditions' },
+] as const
+
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
     <footer className="border-t bg-muted">
       <Container>
-        <div className="grid gap-8 py-12 md:grid-cols-3 md:py-16">
+        <div className="grid gap-8 py-12 sm:grid-cols-2 md:grid-cols-4 md:py-16">
           {/* Company info */}
           <div>
             <Link href="/" className="text-xl font-bold tracking-tight">
@@ -35,6 +40,27 @@ export function Footer() {
             <nav aria-label="Footer navigation">
               <ul className="mt-4 flex flex-col gap-2">
                 {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider">
+              Legal
+            </h3>
+            <nav aria-label="Legal links">
+              <ul className="mt-4 flex flex-col gap-2">
+                {legalLinks.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
@@ -76,10 +102,21 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t py-6">
-          <p className="text-center text-sm text-muted-foreground">
+        <div className="flex flex-col items-center gap-2 border-t py-6 sm:flex-row sm:justify-between">
+          <p className="text-sm text-muted-foreground">
             &copy; {currentYear} UpScalePM. All rights reserved.
           </p>
+          <nav aria-label="Legal" className="flex gap-4">
+            {legalLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </Container>
     </footer>
