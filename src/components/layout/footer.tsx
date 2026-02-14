@@ -1,5 +1,29 @@
 import Link from 'next/link'
+import { Linkedin, Instagram, Facebook, Youtube } from 'lucide-react'
 import { Container } from './container'
+
+const socialLinks = [
+  {
+    href: 'https://www.linkedin.com/company/upscalepm/',
+    label: 'LinkedIn',
+    icon: Linkedin,
+  },
+  {
+    href: 'https://www.instagram.com/upscale.pm/',
+    label: 'Instagram',
+    icon: Instagram,
+  },
+  {
+    href: 'https://www.facebook.com/UpScalePM/',
+    label: 'Facebook',
+    icon: Facebook,
+  },
+  {
+    href: 'https://www.youtube.com/@upscale_pm',
+    label: 'YouTube',
+    icon: Youtube,
+  },
+] as const
 
 const navLinks = [
   { href: '/services', label: 'Services' },
@@ -90,6 +114,20 @@ export function Footer() {
               </li>
               <li>Sydney | Newcastle</li>
             </ul>
+            <div className="mt-4 flex gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <social.icon className="size-5" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 

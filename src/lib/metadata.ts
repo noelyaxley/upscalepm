@@ -41,11 +41,5 @@ export function generatePageMetadata({
       locale: 'en_AU',
       type: 'website',
     },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [image],
-    },
   }
 }
