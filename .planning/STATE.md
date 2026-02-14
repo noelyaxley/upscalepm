@@ -132,6 +132,9 @@
 | Service hero images from case study photos | No dedicated service images exist; case study heroes are the most relevant project visuals | 3 |
 | Dual service model as callout + comparison cards | Callout on service pages, side-by-side cards on index -- different contexts need different treatments | 3 |
 | Alternating section backgrounds for service pages | default/muted alternation creates visual rhythm without adding complexity | 3 |
+| Radix Select for project type dropdown | Accessible, keyboard-navigable dropdown instead of native HTML select; consistent shadcn styling | 3 |
+| Form success replaces form with confirmation | Prevents confusion about re-submission; "Send another enquiry" button to reset | 3 |
+| Simulated submit with 1s delay | Demonstrates loading UX; actual HubSpot wiring deferred to Phase 4 | 3 |
 
 ### WordPress Crawl Results
 
@@ -173,3 +176,4 @@ None currently.
 *Phase 3 Prompt 3 completed: 2026-02-14*
 *Phase 3 Prompt 6 completed: 2026-02-14*
 *Phase 3 Prompt 1 completed: 2026-02-14*
+*Phase 3 Prompt 4 completed: 2026-02-14*
