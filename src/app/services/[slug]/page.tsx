@@ -73,18 +73,44 @@ export default async function ServicePage({ params }: PageProps) {
           key={section.heading}
           background={index % 2 === 0 ? 'default' : 'muted'}
         >
-          <div className="mx-auto max-w-3xl">
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
-              {section.heading}
-            </h2>
-            <div className="mt-6 space-y-4 text-muted-foreground">
-              {section.body.split('\n\n').map((paragraph, pIndex) => (
-                <p key={pIndex} className="leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
+          {section.image ? (
+            <div className={`mx-auto flex max-w-6xl flex-col items-center gap-8 md:gap-12 lg:flex-row ${section.imagePosition === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+              <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-lg lg:w-1/2">
+                <Image
+                  src={section.image}
+                  alt={section.heading}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              <div className="w-full lg:w-1/2">
+                <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+                  {section.heading}
+                </h2>
+                <div className="mt-6 space-y-4 text-muted-foreground">
+                  {section.body.split('\n\n').map((paragraph, pIndex) => (
+                    <p key={pIndex} className="leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+                {section.heading}
+              </h2>
+              <div className="mt-6 space-y-4 text-muted-foreground">
+                {section.body.split('\n\n').map((paragraph, pIndex) => (
+                  <p key={pIndex} className="leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
         </Section>
       ))}
 

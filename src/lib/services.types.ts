@@ -8,6 +8,7 @@ export interface ServicePage {
     heading: string
     body: string // Can contain simple HTML (paragraphs, lists)
     image?: string
+    imagePosition?: 'left' | 'right'
   }>
   benefits: Array<{
     title: string
