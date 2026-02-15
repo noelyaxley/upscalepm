@@ -1,0 +1,486 @@
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Container } from '@/components/layout/container'
+import { LandingForm } from '@/components/forms/landing-form'
+import { Phone, CheckCircle2, Clock, Shield, Users, ArrowRight, Star } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+
+export const metadata: Metadata = {
+  title: 'Sydney Project Management | Free Consultation | UpScalePM',
+  description:
+    'Expert client-side project management in Sydney. From feasibility through handover, we protect your budget, timeline, and quality. Free 30-min consultation.',
+  robots: { index: false, follow: false },
+}
+
+const PHONE_NUMBER = '+61290904480'
+const PHONE_DISPLAY = '02 9090 4480'
+
+const testimonials = [
+  {
+    quote:
+      'We only trust Upscale Project Management. Their unwavering commitment to our projects has made them an indispensable partner.',
+    name: 'Nathan McCullum',
+    role: 'Director',
+    company: 'McCullum Advisory & Society Real Estate',
+  },
+  {
+    quote:
+      'Dedication and professionalism define everything Upscale delivers. They bring a level of care and rigour that sets them apart.',
+    name: 'Kenny Gunawan',
+    role: 'Construction Manager',
+    company: 'SHAPE',
+  },
+  {
+    quote:
+      'Resilience and focus under pressure. Upscale delivered excellent projects for NSW Government, navigating complexity with clarity.',
+    name: 'Michael Russel',
+    role: 'Project Director',
+    company: 'NSW Govt. Public Works',
+  },
+]
+
+const trustPoints = [
+  {
+    icon: Shield,
+    title: 'We Represent You',
+    description:
+      'Most developers hire the contractor\'s PM. We sit on your side of the table — protecting your budget and quality.',
+  },
+  {
+    icon: Users,
+    title: 'Architect-Led Team',
+    description:
+      'Our architectural background means we catch design issues, coordination problems, and compliance gaps before they cost you.',
+  },
+  {
+    icon: Clock,
+    title: 'Start to Finish',
+    description:
+      'From feasibility and DA through tender, construction, and handover. No handoffs, no lost context.',
+  },
+]
+
+const services = [
+  'Feasibility & Advisory',
+  'Design Management',
+  'DA Approval',
+  'Tender Assessment',
+  'Construction Superintendent',
+]
+
+export default function SydneyLandingPage() {
+  return (
+    <>
+      {/* Sticky top bar — phone CTA */}
+      <div className="sticky top-0 z-50 border-b bg-neutral-950 text-white">
+        <Container>
+          <div className="flex items-center justify-between py-3">
+            <Link href="/" className="flex items-center gap-2">
+              <Image
+                src="/images/shared/logo/logo-64.png"
+                alt="UpScalePM"
+                width={32}
+                height={32}
+              />
+              <span className="font-display text-lg font-bold">UpScalePM</span>
+            </Link>
+            <a
+              href={`tel:${PHONE_NUMBER}`}
+              className="flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+            >
+              <Phone className="size-4" />
+              <span className="hidden sm:inline">Call Now: {PHONE_DISPLAY}</span>
+              <span className="sm:hidden">Call Now</span>
+            </a>
+          </div>
+        </Container>
+      </div>
+
+      {/* HERO — Form above the fold */}
+      <section className="bg-neutral-950 text-white">
+        <Container>
+          <div className="grid gap-8 py-10 md:py-14 lg:grid-cols-2 lg:gap-12">
+            {/* Left — Value prop */}
+            <div className="flex flex-col justify-center">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">
+                <Clock className="size-3" />
+                2-Hour Callback Guarantee
+              </div>
+              <h1 className="mt-4 font-display text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+                Sydney Project Management You Can Trust
+              </h1>
+              <p className="mt-4 text-lg text-neutral-300">
+                Stop overpaying contractors and missing critical issues. We&apos;re
+                the independent project managers who represent{' '}
+                <strong className="text-white">you</strong> — not the builder.
+              </p>
+              <ul className="mt-6 space-y-3">
+                {[
+                  '14+ projects delivered across Sydney',
+                  'Trusted by Sydney Water, NSW Ambulance & government',
+                  'Free 30-minute consultation — no obligation',
+                ].map((point) => (
+                  <li key={point} className="flex items-start gap-2 text-sm text-neutral-300">
+                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href={`tel:${PHONE_NUMBER}`}
+                  className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+                >
+                  <Phone className="size-4" />
+                  Call Now: {PHONE_DISPLAY}
+                </a>
+                <a
+                  href="#form"
+                  className="inline-flex items-center justify-center gap-2 rounded-md border border-neutral-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                >
+                  Request a Callback
+                  <ArrowRight className="size-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* Right — Form */}
+            <div id="form" className="scroll-mt-20">
+              <div className="rounded-xl border border-neutral-700 bg-neutral-900 p-6 md:p-8">
+                <h2 className="font-display text-xl font-bold">
+                  Get Your Free Consultation
+                </h2>
+                <p className="mt-1 text-sm text-neutral-400">
+                  Tell us about your project. We respond within 2 hours.
+                </p>
+                <div className="mt-6">
+                  <LandingForm />
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Logo bar */}
+      <section className="border-b bg-neutral-100 py-6">
+        <Container>
+          <p className="mb-4 text-center text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Trusted by leading Sydney organisations
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+            {[
+              { src: '/images/shared/logos/sydney-water.webp', alt: 'Sydney Water', w: 120, h: 46 },
+              { src: '/images/shared/logos/health-infrastructure.webp', alt: 'Health Infrastructure', w: 120, h: 40 },
+              { src: '/images/shared/logos/school-infrastructure.webp', alt: 'School Infrastructure', w: 120, h: 38 },
+              { src: '/images/shared/logos/nsw-ambulance.webp', alt: 'NSW Ambulance', w: 50, h: 50 },
+              { src: '/images/shared/logos/tfnsw.png', alt: 'Transport for NSW', w: 120, h: 31 },
+              { src: '/images/shared/logos/dpie.png', alt: 'DPIE', w: 120, h: 34 },
+            ].map((logo) => (
+              <Image
+                key={logo.alt}
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.w}
+                height={logo.h}
+                className="h-8 w-auto object-contain opacity-60 grayscale md:h-10"
+              />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* WHY UPSCALE — Trust points */}
+      <section className="py-14 md:py-20">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+              Why Sydney Property Owners Choose UpScale
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Most project managers work for the contractor. We work for you.
+            </p>
+          </div>
+          <div className="mx-auto mt-10 grid max-w-5xl gap-8 md:grid-cols-3">
+            {trustPoints.map((point) => (
+              <div key={point.title} className="rounded-lg border bg-background p-6 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <point.icon className="size-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold">{point.title}</h3>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  {point.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* SOCIAL PROOF — Testimonials */}
+      <section className="border-y bg-neutral-50 py-14 md:py-20">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="flex items-center justify-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="size-5 fill-primary text-primary" />
+              ))}
+            </div>
+            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight md:text-3xl">
+              100% Client Satisfaction
+            </h2>
+          </div>
+          <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <div key={t.name} className="rounded-xl border bg-white p-6 shadow-sm">
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="size-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="mt-4 border-t pt-4">
+                  <p className="text-sm font-semibold">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {t.role}, {t.company}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* MID-PAGE CTA */}
+      <section className="bg-primary py-10 md:py-14">
+        <Container>
+          <div className="flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
+            <div>
+              <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+                Got a Concept? Let&apos;s Make It Reality.
+              </h2>
+              <p className="mt-2 text-primary-100">
+                2-hour callback guarantee. Our experienced team is ready.
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+              <a
+                href={`tel:${PHONE_NUMBER}`}
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-white px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-neutral-100"
+              >
+                <Phone className="size-4" />
+                Call Now
+              </a>
+              <a
+                href="#form"
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                Request Callback
+              </a>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* EXPERIENCE SECTION — Image + text */}
+      <section className="py-14 md:py-20">
+        <Container>
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+              <Image
+                src="/images/landing/elizabeth-street.jpg"
+                alt="231 Elizabeth Street Sydney fitout — managed by UpScalePM"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div>
+              <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+                Does Experience Matter to You?
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                UpScale Project Management specialises in managing technically
+                demanding projects where stakeholder coordination, regulatory
+                navigation, and design integrity are essential.
+              </p>
+              <p className="mt-3 text-muted-foreground">
+                From specialist laboratory infrastructure to public sector
+                workplaces, heritage hospitality venues to modular emergency
+                services facilities — we offer a steady, experienced hand from
+                conception through to completion.
+              </p>
+              <div className="mt-6">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                  Our Services
+                </h3>
+                <ul className="mt-3 space-y-2">
+                  {services.map((service) => (
+                    <li key={service} className="flex items-center gap-2 text-sm">
+                      <CheckCircle2 className="size-4 shrink-0 text-primary" />
+                      {service}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href={`tel:${PHONE_NUMBER}`}
+                  className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+                >
+                  <Phone className="size-4" />
+                  Speak to an Expert
+                </a>
+                <a
+                  href="#form"
+                  className="inline-flex items-center justify-center gap-2 rounded-md border px-6 py-3 text-sm font-semibold transition-colors hover:bg-accent"
+                >
+                  Get a Free Quote
+                </a>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* PROJECT IMAGE */}
+      <section className="border-y bg-neutral-50 py-14 md:py-20">
+        <Container>
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="order-2 lg:order-1">
+              <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+                Reduce Risk. Increase Returns.
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                Greater experience means greater returns. With over 14 projects
+                delivered across health, education, commercial, and government
+                sectors in Sydney, we know what it takes to deliver on time and
+                on budget.
+              </p>
+              <ul className="mt-6 space-y-3">
+                {[
+                  'Independent cost and variation review',
+                  'Progress claim verification',
+                  'Design coordination and compliance checking',
+                  'Contract administration and risk management',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="#form"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+              >
+                Start your project today
+                <ArrowRight className="size-4" />
+              </a>
+            </div>
+            <div className="relative order-1 aspect-[4/3] overflow-hidden rounded-xl lg:order-2">
+              <Image
+                src="/images/landing/project-delivery.webp"
+                alt="Project management delivery in Sydney"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* FINAL CTA — Form repeat */}
+      <section className="bg-neutral-950 py-14 text-white md:py-20">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="flex flex-col justify-center">
+              <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+                Ready to Start Your Sydney Project?
+              </h2>
+              <p className="mt-4 text-neutral-300">
+                Get a free 30-minute consultation with an experienced client-side
+                project manager. No obligation, no sales pitch — just practical
+                advice for your project.
+              </p>
+              <div className="mt-6 rounded-lg border border-neutral-700 bg-neutral-900 p-5">
+                <div className="flex items-center gap-3">
+                  <Clock className="size-5 text-primary" />
+                  <div>
+                    <p className="text-sm font-semibold">2-Hour Callback Guarantee</p>
+                    <p className="text-xs text-neutral-400">
+                      Submit your details and we&apos;ll call you back within 2 hours
+                      during business hours.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <a
+                href={`tel:${PHONE_NUMBER}`}
+                className="mt-6 inline-flex items-center gap-2 text-lg font-semibold text-primary hover:underline"
+              >
+                <Phone className="size-5" />
+                Or call now: {PHONE_DISPLAY}
+              </a>
+            </div>
+            <div id="form-bottom">
+              <div className="rounded-xl border border-neutral-700 bg-neutral-900 p-6 md:p-8">
+                <h3 className="font-display text-xl font-bold">
+                  Speak to an Expert
+                </h3>
+                <p className="mt-1 text-sm text-neutral-400">
+                  Fill in your details and we&apos;ll be in touch.
+                </p>
+                <div className="mt-6">
+                  <LandingForm />
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Minimal footer */}
+      <footer className="border-t bg-neutral-950 py-6 text-neutral-400">
+        <Container>
+          <div className="flex flex-col items-center justify-between gap-4 text-center text-xs sm:flex-row sm:text-left">
+            <p>&copy; {new Date().getFullYear()} UpScale Project Management. ABN 14 670 459 163.</p>
+            <div className="flex gap-4">
+              <Link href="/privacy-policy" className="hover:text-white">
+                Privacy Policy
+              </Link>
+              <Link href="/terms-and-conditions" className="hover:text-white">
+                Terms
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </footer>
+
+      {/* Mobile sticky CTA bar */}
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t bg-neutral-950 p-3 md:hidden">
+        <div className="flex gap-2">
+          <a
+            href={`tel:${PHONE_NUMBER}`}
+            className="flex flex-1 items-center justify-center gap-2 rounded-md bg-primary py-3 text-sm font-semibold text-white"
+          >
+            <Phone className="size-4" />
+            Call Now
+          </a>
+          <a
+            href="#form"
+            className="flex flex-1 items-center justify-center gap-2 rounded-md border border-neutral-600 py-3 text-sm font-semibold text-white"
+          >
+            Get a Callback
+          </a>
+        </div>
+      </div>
+    </>
+  )
+}
