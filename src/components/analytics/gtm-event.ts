@@ -23,6 +23,15 @@ export function pushToDataLayer(
 }
 
 /**
+ * Track when a form becomes visible to the user.
+ */
+export function trackFormView(formName: string): void {
+  pushToDataLayer('form_view', {
+    form_name: formName,
+  })
+}
+
+/**
  * Track a form submission event in the dataLayer.
  *
  * This fires the `form_submission` event that GTM triggers on
@@ -32,5 +41,15 @@ export function trackFormSubmission(formName: string): void {
   pushToDataLayer('form_submission', {
     form_name: formName,
     form_destination: 'hubspot',
+  })
+}
+
+/**
+ * Track a form submission error (API failure or validation rejection).
+ */
+export function trackFormError(formName: string, errorType: string): void {
+  pushToDataLayer('form_error', {
+    form_name: formName,
+    error_type: errorType,
   })
 }

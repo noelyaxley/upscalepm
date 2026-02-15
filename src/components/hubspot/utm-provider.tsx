@@ -2,7 +2,8 @@
 
 import { useSearchParams } from 'next/navigation'
 import { useEffect, Suspense } from 'react'
-import { captureUTMParams } from '@/lib/utm'
+import { captureUTMParams, getStoredUTMParams } from '@/lib/utm'
+import { pushToDataLayer } from '@/components/analytics/gtm-event'
 
 /**
  * Inner component that reads search params and captures UTMs.
@@ -14,6 +15,12 @@ function UTMCaptureInner() {
 
   useEffect(() => {
     captureUTMParams(searchParams)
+
+    // Push UTM params to GTM dataLayer for GA4 attribution
+    const stored = getStoredUTMParams()
+    if (stored) {
+      pushToDataLayer('utm_params', stored)
+    }
   }, [searchParams])
 
   return null

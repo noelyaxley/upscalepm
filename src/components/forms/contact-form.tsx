@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -18,7 +18,7 @@ import {
 import { CheckCircle2, Loader2 } from 'lucide-react'
 import { submitContactForm } from '@/actions/contact'
 import { getStoredUTMParams } from '@/lib/utm'
-import { trackFormSubmission } from '@/components/analytics/gtm-event'
+import { trackFormSubmission, trackFormView, trackFormError } from '@/components/analytics/gtm-event'
 
 const formSchema = z.object({
   firstName: z.string().min(1, 'First name is required'),
@@ -65,6 +65,10 @@ export function ContactForm() {
 
   const projectType = watch('projectType')
 
+  useEffect(() => {
+    trackFormView('contact_form')
+  }, [])
+
   async function onSubmit(data: FormValues) {
     setStatus('idle')
     const utmParams = getStoredUTMParams()
@@ -90,6 +94,7 @@ export function ContactForm() {
       setStatus('success')
       reset()
     } else {
+      trackFormError('contact_form', 'submit_failed')
       setStatus('error')
       setErrorMessage(result.error ?? 'Something went wrong.')
     }
