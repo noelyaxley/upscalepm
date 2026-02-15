@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
+import { ClientLogos } from '@/components/sections/client-logos'
 import { generatePageMetadata } from '@/lib/metadata'
 import { Container } from '@/components/layout/container'
 import { Section } from '@/components/layout/section'
@@ -24,28 +24,6 @@ const trustPoints = [
   'Trusted by Sydney Water, NSW Ambulance & government clients',
 ]
 
-const clientLogos = [
-  {
-    src: '/images/shared/logos/sydney-water.webp',
-    alt: 'Sydney Water',
-  },
-  {
-    src: '/images/shared/logos/health-infrastructure.webp',
-    alt: 'Health Infrastructure',
-  },
-  {
-    src: '/images/shared/logos/blacktown-city-council.webp',
-    alt: 'Blacktown City Council',
-  },
-  {
-    src: '/images/shared/logos/school-infrastructure.webp',
-    alt: 'School Infrastructure',
-  },
-  {
-    src: '/images/shared/logos/nsw-ambulance.webp',
-    alt: 'NSW Ambulance',
-  },
-]
 
 export default function ContactPage() {
   return (
@@ -177,32 +155,12 @@ export default function ContactPage() {
                 </ul>
               </div>
 
-              {/* Client logos */}
-              <div>
-                <p className="mb-4 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                  Trusted by
-                </p>
-                <div className="grid grid-cols-3 items-center gap-4">
-                  {clientLogos.map((logo) => (
-                    <div
-                      key={logo.alt}
-                      className="flex items-center justify-center"
-                    >
-                      <Image
-                        src={logo.src}
-                        alt={logo.alt}
-                        width={100}
-                        height={40}
-                        className="h-8 w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </Section>
+
+      <ClientLogos />
 
       {/* Booking section */}
       <Section background="muted" id="booking">
