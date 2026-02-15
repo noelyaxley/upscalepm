@@ -21,7 +21,8 @@ import { getStoredUTMParams } from '@/lib/utm'
 import { trackFormSubmission } from '@/components/analytics/gtm-event'
 
 const formSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
+  firstName: z.string().min(1, 'First name is required'),
+  lastName: z.string().min(1, 'Last name is required'),
   email: z.string().email('Please enter a valid email'),
   phone: z.string().min(1, 'Phone number is required'),
   projectType: z.string().optional(),
@@ -53,7 +54,8 @@ export function ContactForm() {
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phone: '',
       projectType: '',
@@ -116,24 +118,45 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
       {/* Name */}
-      <div className="space-y-2">
-        <Label htmlFor="contact-name">
-          Name <span className="text-destructive">*</span>
-        </Label>
-        <Input
-          id="contact-name"
-          type="text"
-          placeholder="Your full name"
-          {...register('name')}
-          aria-invalid={!!errors.name}
-          aria-describedby={errors.name ? 'name-error' : undefined}
-          autoComplete="name"
-        />
-        {errors.name && (
-          <p id="name-error" className="text-sm text-destructive">
-            {errors.name.message}
-          </p>
-        )}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="contact-first-name">
+            First name <span className="text-destructive">*</span>
+          </Label>
+          <Input
+            id="contact-first-name"
+            type="text"
+            placeholder="First name"
+            {...register('firstName')}
+            aria-invalid={!!errors.firstName}
+            aria-describedby={errors.firstName ? 'first-name-error' : undefined}
+            autoComplete="given-name"
+          />
+          {errors.firstName && (
+            <p id="first-name-error" className="text-sm text-destructive">
+              {errors.firstName.message}
+            </p>
+          )}
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="contact-last-name">
+            Last name <span className="text-destructive">*</span>
+          </Label>
+          <Input
+            id="contact-last-name"
+            type="text"
+            placeholder="Last name"
+            {...register('lastName')}
+            aria-invalid={!!errors.lastName}
+            aria-describedby={errors.lastName ? 'last-name-error' : undefined}
+            autoComplete="family-name"
+          />
+          {errors.lastName && (
+            <p id="last-name-error" className="text-sm text-destructive">
+              {errors.lastName.message}
+            </p>
+          )}
+        </div>
       </div>
 
       {/* Email */}

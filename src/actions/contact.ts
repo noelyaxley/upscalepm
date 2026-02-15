@@ -4,7 +4,8 @@ import { cookies, headers } from 'next/headers'
 import { z } from 'zod'
 
 const contactSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
+  firstName: z.string().min(1, 'First name is required'),
+  lastName: z.string().min(1, 'Last name is required'),
   email: z.string().email('Please enter a valid email'),
   phone: z.string().optional(),
   projectType: z.string().optional(),
@@ -39,15 +40,12 @@ export async function submitContactForm(
 
   const portalId = process.env.HUBSPOT_PORTAL_ID
   const formGuid = process.env.HUBSPOT_FORM_GUID
-  const accessToken = process.env.HUBSPOT_ACCESS_TOKEN
 
   if (
     !portalId ||
     !formGuid ||
-    !accessToken ||
     portalId === 'REPLACE_ME' ||
-    formGuid === 'REPLACE_ME' ||
-    accessToken === 'REPLACE_ME'
+    formGuid === 'REPLACE_ME'
   ) {
     console.warn(
       '[contact] HubSpot env vars not configured -- skipping submission.'
@@ -56,7 +54,8 @@ export async function submitContactForm(
   }
 
   const fields = [
-    { objectTypeId: '0-1', name: 'firstname', value: parsed.data.name },
+    { objectTypeId: '0-1', name: 'firstname', value: parsed.data.firstName },
+    { objectTypeId: '0-1', name: 'lastname', value: parsed.data.lastName },
     { objectTypeId: '0-1', name: 'email', value: parsed.data.email },
     { objectTypeId: '0-1', name: 'phone', value: parsed.data.phone ?? '' },
     {
@@ -116,12 +115,11 @@ export async function submitContactForm(
 
   try {
     const response = await fetch(
-      `https://api.hsforms.com/submissions/v3/integration/secure/submit/${portalId}/${formGuid}`,
+      `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify(body),
       }
