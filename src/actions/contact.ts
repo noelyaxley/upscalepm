@@ -1,5 +1,6 @@
 'use server'
 
+import { Client } from '@hubspot/api-client'
 import { z } from 'zod'
 
 const contactSchema = z.object({
@@ -31,107 +32,75 @@ export async function submitContactForm(
     return { success: false, error: 'Invalid form data' }
   }
 
-  const portalId = process.env.HUBSPOT_PORTAL_ID
-  const formGuid = process.env.HUBSPOT_FORM_GUID
+  const accessToken = process.env.HUBSPOT_ACCESS_TOKEN
 
-  if (
-    !portalId ||
-    !formGuid ||
-    portalId === 'REPLACE_ME' ||
-    formGuid === 'REPLACE_ME'
-  ) {
+  if (!accessToken || accessToken === 'REPLACE_ME') {
     console.warn(
-      '[contact] HubSpot env vars not configured -- skipping submission.'
+      '[contact] HUBSPOT_ACCESS_TOKEN not configured -- skipping submission.'
     )
     return { success: true }
   }
 
-  const fields = [
-    { objectTypeId: '0-1', name: 'firstname', value: parsed.data.firstName },
-    { objectTypeId: '0-1', name: 'lastname', value: parsed.data.lastName },
-    { objectTypeId: '0-1', name: 'email', value: parsed.data.email },
-    { objectTypeId: '0-1', name: 'phone', value: parsed.data.phone ?? '' },
-    {
-      objectTypeId: '0-1',
-      name: 'service_interest',
-      value: parsed.data.projectType ?? '',
-    },
-    { objectTypeId: '0-1', name: 'message', value: parsed.data.message },
-  ]
+  const hubspot = new Client({ accessToken })
 
-  const utmFields: Array<{
-    objectTypeId: string
-    name: string
-    value: string
-  }> = []
-  if (parsed.data.utmSource)
-    utmFields.push({
-      objectTypeId: '0-1',
-      name: 'utm_source',
-      value: parsed.data.utmSource,
-    })
-  if (parsed.data.utmMedium)
-    utmFields.push({
-      objectTypeId: '0-1',
-      name: 'utm_medium',
-      value: parsed.data.utmMedium,
-    })
-  if (parsed.data.utmCampaign)
-    utmFields.push({
-      objectTypeId: '0-1',
-      name: 'utm_campaign',
-      value: parsed.data.utmCampaign,
-    })
-  if (parsed.data.utmTerm)
-    utmFields.push({
-      objectTypeId: '0-1',
-      name: 'utm_term',
-      value: parsed.data.utmTerm,
-    })
-  if (parsed.data.utmContent)
-    utmFields.push({
-      objectTypeId: '0-1',
-      name: 'utm_content',
-      value: parsed.data.utmContent,
-    })
-
-  const body = {
-    submittedAt: Date.now().toString(),
-    fields: [...fields, ...utmFields],
-    context: {
-      pageUri: parsed.data.pageUri ?? '',
-      pageName: parsed.data.pageName ?? '',
-    },
+  const properties: Record<string, string> = {
+    firstname: parsed.data.firstName,
+    lastname: parsed.data.lastName,
+    email: parsed.data.email,
+    phone: parsed.data.phone ?? '',
+    service_interest: parsed.data.projectType ?? '',
+    message: parsed.data.message,
   }
 
-  try {
-    const response = await fetch(
-      `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      }
-    )
+  if (parsed.data.utmSource) properties.utm_source = parsed.data.utmSource
+  if (parsed.data.utmMedium) properties.utm_medium = parsed.data.utmMedium
+  if (parsed.data.utmCampaign) properties.utm_campaign = parsed.data.utmCampaign
+  if (parsed.data.utmTerm) properties.utm_term = parsed.data.utmTerm
+  if (parsed.data.utmContent) properties.utm_content = parsed.data.utmContent
 
-    if (!response.ok) {
-      console.error(
-        'HubSpot submission failed:',
-        response.status,
-        await response.text()
-      )
-      return {
-        success: false,
-        error:
-          'Something went wrong. Please try again or call us directly.',
+  try {
+    await hubspot.crm.contacts.basicApi.create({ properties })
+    return { success: true }
+  } catch (error: unknown) {
+    // If contact already exists (409 conflict), update instead
+    if (
+      error &&
+      typeof error === 'object' &&
+      'code' in error &&
+      (error as { code: number }).code === 409
+    ) {
+      try {
+        const searchResponse = await hubspot.crm.contacts.searchApi.doSearch({
+          filterGroups: [
+            {
+              filters: [
+                {
+                  propertyName: 'email',
+                  operator: 'EQ',
+                  value: parsed.data.email,
+                },
+              ],
+            },
+          ],
+          properties: ['email'],
+          limit: 1,
+          after: '0',
+          sorts: [],
+        })
+
+        if (searchResponse.results.length > 0) {
+          await hubspot.crm.contacts.basicApi.update(
+            searchResponse.results[0].id,
+            { properties }
+          )
+          return { success: true }
+        }
+      } catch (updateError) {
+        console.error('HubSpot contact update failed:', updateError)
       }
     }
 
-    return { success: true }
-  } catch (error) {
-    console.error('HubSpot submission error:', error)
+    console.error('HubSpot contact creation failed:', error)
     return {
       success: false,
       error: 'Something went wrong. Please try again or call us directly.',
