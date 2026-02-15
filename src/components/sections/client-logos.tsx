@@ -32,6 +32,18 @@ const logos = [
     width: 150,
     height: 150,
   },
+  {
+    src: '/images/shared/logos/tfnsw.png',
+    alt: 'Transport for NSW',
+    width: 300,
+    height: 78,
+  },
+  {
+    src: '/images/shared/logos/dpie.png',
+    alt: 'Department of Planning, Industry and Environment',
+    width: 300,
+    height: 85,
+  },
 ]
 
 interface ClientLogosProps {
