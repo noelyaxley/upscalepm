@@ -1,6 +1,5 @@
 'use server'
 
-import { cookies, headers } from 'next/headers'
 import { z } from 'zod'
 
 const contactSchema = z.object({
@@ -31,12 +30,6 @@ export async function submitContactForm(
   if (!parsed.success) {
     return { success: false, error: 'Invalid form data' }
   }
-
-  const cookieStore = await cookies()
-  const hutk = cookieStore.get('hubspotutk')?.value
-
-  const headerStore = await headers()
-  const ipAddress = headerStore.get('x-forwarded-for')?.split(',')[0]?.trim()
 
   const portalId = process.env.HUBSPOT_PORTAL_ID
   const formGuid = process.env.HUBSPOT_FORM_GUID
@@ -106,10 +99,8 @@ export async function submitContactForm(
     submittedAt: Date.now().toString(),
     fields: [...fields, ...utmFields],
     context: {
-      hutk: hutk ?? undefined,
       pageUri: parsed.data.pageUri ?? '',
       pageName: parsed.data.pageName ?? '',
-      ...(ipAddress ? { ipAddress } : {}),
     },
   }
 
