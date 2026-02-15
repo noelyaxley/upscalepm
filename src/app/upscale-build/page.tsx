@@ -78,7 +78,7 @@ export default function UpScaleBuildPage() {
                 From feasibility through to handover — everything in one platform.
               </p>
             </div>
-            <div className="flex shrink-0 items-center gap-4">
+            <div className="flex shrink-0 flex-col items-center gap-3">
               <span className="text-sm font-medium text-primary">
                 Try UpScale.build for free
               </span>
@@ -110,11 +110,13 @@ export default function UpScaleBuildPage() {
               key={feature.title}
               className="rounded-lg border bg-background p-6 shadow-sm"
             >
-              <div className="flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                {feature.icon}
+              <div className="flex items-center gap-3">
+                <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  {feature.icon}
+                </div>
+                <h3 className="text-lg font-semibold">{feature.title}</h3>
               </div>
-              <h3 className="mt-4 text-lg font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
+              <p className="mt-3 text-sm text-muted-foreground">
                 {feature.description}
               </p>
             </div>
