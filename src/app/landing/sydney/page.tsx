@@ -3,13 +3,24 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '@/components/layout/container'
 import { LandingForm } from '@/components/forms/landing-form'
-import { Phone, CheckCircle2, Clock, Shield, Users, ArrowRight, Star } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { DynamicHeadline } from '@/components/landing/dynamic-headline'
+import {
+  Phone,
+  CheckCircle2,
+  Clock,
+  Shield,
+  Users,
+  ArrowRight,
+  Star,
+  Building2,
+  FileCheck,
+  HardHat,
+} from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Sydney Project Management | Free Consultation | UpScalePM',
+  title: 'Sydney Project & Construction Management | Free Consultation | UpScalePM',
   description:
-    'Expert client-side project management in Sydney. From feasibility through handover, we protect your budget, timeline, and quality. Free 30-min consultation.',
+    'Expert client-side project management, construction management, and DA approval in Sydney. From feasibility through handover, we protect your budget, timeline, and quality. Free 30-min consultation.',
   robots: { index: false, follow: false },
 }
 
@@ -45,7 +56,7 @@ const trustPoints = [
     icon: Shield,
     title: 'We Represent You',
     description:
-      'Most developers hire the contractor\'s PM. We sit on your side of the table — protecting your budget and quality.',
+      'Most developers hire the contractor\'s PM. We sit on your side of the table — protecting your budget and quality across every stage.',
   },
   {
     icon: Users,
@@ -54,22 +65,51 @@ const trustPoints = [
       'Our architectural background means we catch design issues, coordination problems, and compliance gaps before they cost you.',
   },
   {
-    icon: Clock,
-    title: 'Start to Finish',
+    icon: HardHat,
+    title: 'Construction to Completion',
     description:
-      'From feasibility and DA through tender, construction, and handover. No handoffs, no lost context.',
+      'Experienced construction management and site supervision. We manage contractors, review progress claims, and keep your build on track.',
+  },
+  {
+    icon: FileCheck,
+    title: 'DA & Town Planning',
+    description:
+      'Navigate Sydney\'s complex planning approvals with confidence. We manage the DA process, coordinate consultants, and handle council requirements.',
+  },
+  {
+    icon: Building2,
+    title: 'Commercial Fit-Outs',
+    description:
+      'From 231 Elizabeth Street to government offices — we deliver commercial fit-outs and refurbishments across Sydney\'s CBD and greater metro.',
+  },
+  {
+    icon: Clock,
+    title: 'Feasibility to Handover',
+    description:
+      'Feasibility studies, design management, tender assessment, construction — one team from start to finish. No handoffs, no lost context.',
   },
 ]
 
+// Services list uses searcher language (matching Google Ads ad groups)
 const services = [
-  'Feasibility & Advisory',
-  'Design Management',
-  'DA Approval',
+  'Project Management',
+  'Construction Management',
+  'Town Planning & DA Approval',
+  'Commercial Fit-Outs',
+  'Feasibility Studies',
+  'Contract Administration',
+  'Site Management & Superintendent',
   'Tender Assessment',
-  'Construction Superintendent',
 ]
 
-export default function SydneyLandingPage() {
+interface PageProps {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export default async function SydneyLandingPage({ searchParams }: PageProps) {
+  const params = await searchParams
+  const service = typeof params.service === 'string' ? params.service : undefined
+
   return (
     <>
       {/* Sticky top bar — phone CTA */}
@@ -97,28 +137,34 @@ export default function SydneyLandingPage() {
         </Container>
       </div>
 
+      {/* 2-HOUR CALLBACK GUARANTEE — Full-width banner */}
+      <div className="border-b border-primary/30 bg-primary/10 py-2.5">
+        <Container>
+          <div className="flex items-center justify-center gap-2 text-sm font-medium text-primary">
+            <Clock className="size-4" />
+            <span>2-Hour Callback Guarantee — Speak to a Sydney Expert Today</span>
+          </div>
+        </Container>
+      </div>
+
       {/* HERO — Form above the fold */}
       <section className="bg-neutral-950 text-white">
         <Container>
           <div className="grid gap-8 py-10 md:py-14 lg:grid-cols-2 lg:gap-12">
             {/* Left — Value prop */}
             <div className="flex flex-col justify-center">
-              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">
-                <Clock className="size-3" />
-                2-Hour Callback Guarantee
-              </div>
-              <h1 className="mt-4 font-display text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-                Sydney Project Management You Can Trust
-              </h1>
+              <DynamicHeadline service={service} />
               <p className="mt-4 text-lg text-neutral-300">
                 Stop overpaying contractors and missing critical issues. We&apos;re
-                the independent project managers who represent{' '}
+                Sydney&apos;s independent project managers who represent{' '}
                 <strong className="text-white">you</strong> — not the builder.
               </p>
               <ul className="mt-6 space-y-3">
                 {[
                   '14+ projects delivered across Sydney',
+                  'Project management, construction management & DA approval',
                   'Trusted by Sydney Water, NSW Ambulance & government',
+                  'Feasibility studies to de-risk your investment',
                   'Free 30-minute consultation — no obligation',
                 ].map((point) => (
                   <li key={point} className="flex items-start gap-2 text-sm text-neutral-300">
@@ -152,7 +198,7 @@ export default function SydneyLandingPage() {
                   Get Your Free Consultation
                 </h2>
                 <p className="mt-1 text-sm text-neutral-400">
-                  Tell us about your project. We respond within 2 hours.
+                  Tell us about your Sydney project. We respond within 2 hours.
                 </p>
                 <div className="mt-6">
                   <LandingForm />
@@ -191,7 +237,7 @@ export default function SydneyLandingPage() {
         </Container>
       </section>
 
-      {/* WHY UPSCALE — Trust points */}
+      {/* WHY UPSCALE — Trust points (now 6 cards covering all ad groups) */}
       <section className="py-14 md:py-20">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
@@ -202,7 +248,7 @@ export default function SydneyLandingPage() {
               Most project managers work for the contractor. We work for you.
             </p>
           </div>
-          <div className="mx-auto mt-10 grid max-w-5xl gap-8 md:grid-cols-3">
+          <div className="mx-auto mt-10 grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {trustPoints.map((point) => (
               <div key={point.title} className="rounded-lg border bg-background p-6 shadow-sm">
                 <div className="flex items-center gap-3">
@@ -230,7 +276,7 @@ export default function SydneyLandingPage() {
               ))}
             </div>
             <h2 className="mt-3 font-display text-2xl font-bold tracking-tight md:text-3xl">
-              100% Client Satisfaction
+              100% Client Satisfaction Across Sydney
             </h2>
           </div>
           <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-3">
@@ -256,16 +302,16 @@ export default function SydneyLandingPage() {
         </Container>
       </section>
 
-      {/* MID-PAGE CTA */}
+      {/* MID-PAGE CTA — 2-hour guarantee prominent */}
       <section className="bg-primary py-10 md:py-14">
         <Container>
           <div className="flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
             <div>
               <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
-                Got a Concept? Let&apos;s Make It Reality.
+                Got a Sydney Project? Let&apos;s Make It Reality.
               </h2>
               <p className="mt-2 text-primary-100">
-                2-hour callback guarantee. Our experienced team is ready.
+                2-hour callback guarantee. Construction management, DA approval, feasibility — we cover it all.
               </p>
             </div>
             <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
@@ -294,7 +340,7 @@ export default function SydneyLandingPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
               <Image
                 src="/images/landing/elizabeth-street.jpg"
-                alt="231 Elizabeth Street Sydney fitout — managed by UpScalePM"
+                alt="231 Elizabeth Street Sydney commercial fit-out — managed by UpScalePM"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -302,24 +348,25 @@ export default function SydneyLandingPage() {
             </div>
             <div>
               <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
-                Does Experience Matter to You?
+                Experienced Sydney Project & Construction Management
               </h2>
               <p className="mt-4 text-muted-foreground">
-                UpScale Project Management specialises in managing technically
-                demanding projects where stakeholder coordination, regulatory
-                navigation, and design integrity are essential.
+                UpScale specialises in managing technically demanding Sydney
+                projects — from commercial fit-outs like 231 Elizabeth Street to
+                government facilities, heritage venues, and specialist laboratory
+                infrastructure.
               </p>
               <p className="mt-3 text-muted-foreground">
-                From specialist laboratory infrastructure to public sector
-                workplaces, heritage hospitality venues to modular emergency
-                services facilities — we offer a steady, experienced hand from
-                conception through to completion.
+                Whether you need construction management, town planning and DA
+                approval, contract administration, or a full feasibility study —
+                we offer a steady, experienced hand from conception through to
+                completion.
               </p>
               <div className="mt-6">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                  Our Services
+                  Our Sydney Services
                 </h3>
-                <ul className="mt-3 space-y-2">
+                <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
                   {services.map((service) => (
                     <li key={service} className="flex items-center gap-2 text-sm">
                       <CheckCircle2 className="size-4 shrink-0 text-primary" />
@@ -334,7 +381,7 @@ export default function SydneyLandingPage() {
                   className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
                 >
                   <Phone className="size-4" />
-                  Speak to an Expert
+                  Speak to a Sydney Expert
                 </a>
                 <a
                   href="#form"
@@ -348,13 +395,13 @@ export default function SydneyLandingPage() {
         </Container>
       </section>
 
-      {/* PROJECT IMAGE */}
+      {/* REDUCE RISK SECTION */}
       <section className="border-y bg-neutral-50 py-14 md:py-20">
         <Container>
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="order-2 lg:order-1">
               <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
-                Reduce Risk. Increase Returns.
+                Reduce Risk. Increase Returns. Sydney Delivered.
               </h2>
               <p className="mt-4 text-muted-foreground">
                 Greater experience means greater returns. With over 14 projects
@@ -368,6 +415,8 @@ export default function SydneyLandingPage() {
                   'Progress claim verification',
                   'Design coordination and compliance checking',
                   'Contract administration and risk management',
+                  'Construction management and site supervision',
+                  'Town planning and DA approval navigation',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
@@ -379,14 +428,14 @@ export default function SydneyLandingPage() {
                 href="#form"
                 className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
               >
-                Start your project today
+                Start your Sydney project today
                 <ArrowRight className="size-4" />
               </a>
             </div>
             <div className="relative order-1 aspect-[4/3] overflow-hidden rounded-xl lg:order-2">
               <Image
                 src="/images/landing/project-delivery.webp"
-                alt="Project management delivery in Sydney"
+                alt="Construction and project management delivery in Sydney"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -405,18 +454,19 @@ export default function SydneyLandingPage() {
                 Ready to Start Your Sydney Project?
               </h2>
               <p className="mt-4 text-neutral-300">
-                Get a free 30-minute consultation with an experienced client-side
-                project manager. No obligation, no sales pitch — just practical
-                advice for your project.
+                Get a free 30-minute consultation with an experienced Sydney
+                project manager. Whether it&apos;s construction management, DA
+                approval, a feasibility study, or full project delivery — we&apos;re
+                here to help.
               </p>
-              <div className="mt-6 rounded-lg border border-neutral-700 bg-neutral-900 p-5">
+              <div className="mt-6 rounded-lg border border-primary/40 bg-primary/10 p-5">
                 <div className="flex items-center gap-3">
-                  <Clock className="size-5 text-primary" />
+                  <Clock className="size-6 text-primary" />
                   <div>
-                    <p className="text-sm font-semibold">2-Hour Callback Guarantee</p>
-                    <p className="text-xs text-neutral-400">
+                    <p className="text-base font-bold text-primary">2-Hour Callback Guarantee</p>
+                    <p className="text-sm text-neutral-300">
                       Submit your details and we&apos;ll call you back within 2 hours
-                      during business hours.
+                      during business hours. Every time.
                     </p>
                   </div>
                 </div>
@@ -432,10 +482,10 @@ export default function SydneyLandingPage() {
             <div id="form-bottom">
               <div className="rounded-xl border border-neutral-700 bg-neutral-900 p-6 md:p-8">
                 <h3 className="font-display text-xl font-bold">
-                  Speak to an Expert
+                  Speak to a Sydney Expert
                 </h3>
                 <p className="mt-1 text-sm text-neutral-400">
-                  Fill in your details and we&apos;ll be in touch.
+                  Fill in your details and we&apos;ll be in touch within 2 hours.
                 </p>
                 <div className="mt-6">
                   <LandingForm />
