@@ -15,7 +15,7 @@ import { Container } from './container'
 
 const navLinks = [
   { href: '/services', label: 'Services' },
-  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/case-studies', label: 'Projects' },
   { href: '/upscale-build', label: 'UpScale.build', highlight: true },
   { href: '/insights', label: 'Insights' },
   { href: '/about', label: 'About' },

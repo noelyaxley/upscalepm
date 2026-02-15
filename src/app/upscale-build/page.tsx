@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { generatePageMetadata } from '@/lib/metadata'
-import { PageHeader } from '@/components/layout/page-header'
 import { Section } from '@/components/layout/section'
+import { Container } from '@/components/layout/container'
 import { Button } from '@/components/ui/button'
 import { BarChart3, FileSpreadsheet, DollarSign, Users, Shield, Zap } from 'lucide-react'
 
@@ -55,11 +55,42 @@ const features = [
 export default function UpScaleBuildPage() {
   return (
     <>
-      <PageHeader
-        title="UpScale.build"
-        subtitle="Purpose-built project management software for small property developers. From feasibility through to handover — everything in one platform."
-        breadcrumbs={[{ label: 'UpScale.build' }]}
-      />
+      <div className="border-b bg-muted/50 py-12 md:py-16 lg:py-20">
+        <Container>
+          <nav aria-label="Breadcrumb" className="mb-4">
+            <ol className="flex items-center gap-2 text-sm text-muted-foreground">
+              <li>
+                <a href="/" className="transition-colors hover:text-foreground">Home</a>
+              </li>
+              <li className="flex items-center gap-2">
+                <span aria-hidden="true">/</span>
+                <span className="text-foreground">UpScale.build</span>
+              </li>
+            </ol>
+          </nav>
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+                UpScale.build
+              </h1>
+              <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
+                Purpose-built project management software for small property developers.
+                From feasibility through to handover — everything in one platform.
+              </p>
+            </div>
+            <div className="flex shrink-0 items-center gap-4">
+              <span className="text-sm font-medium text-primary">
+                Try UpScale.build for free
+              </span>
+              <Button asChild>
+                <a href="https://upscale.build/" target="_blank" rel="noopener noreferrer">
+                  LAUNCH
+                </a>
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </div>
 
       <Section>
         <div className="mx-auto max-w-3xl text-center">

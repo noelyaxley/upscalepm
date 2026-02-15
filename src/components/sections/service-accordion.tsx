@@ -59,6 +59,18 @@ export function ServiceAccordion({ services }: ServiceAccordionProps) {
                   ))}
                 </div>
 
+                <div className="mt-6 flex items-center gap-4">
+                  <Button asChild>
+                    <Link href="/contact">Start Now</Link>
+                  </Button>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="text-sm font-medium text-primary hover:underline"
+                  >
+                    Learn more &rarr;
+                  </Link>
+                </div>
+
                 {service.benefits.length > 0 && (
                   <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                     {service.benefits.map((benefit) => (
@@ -76,18 +88,6 @@ export function ServiceAccordion({ services }: ServiceAccordionProps) {
                     ))}
                   </div>
                 )}
-
-                <div className="mt-6 flex items-center gap-4">
-                  <Button asChild>
-                    <Link href="/contact">Start Now</Link>
-                  </Button>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="text-sm font-medium text-primary hover:underline"
-                  >
-                    Learn more &rarr;
-                  </Link>
-                </div>
               </div>
             )}
           </div>

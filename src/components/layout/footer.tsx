@@ -28,7 +28,7 @@ const socialLinks = [
 
 const navLinks = [
   { href: '/services', label: 'Services' },
-  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/case-studies', label: 'Projects' },
   { href: '/insights', label: 'Insights' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
