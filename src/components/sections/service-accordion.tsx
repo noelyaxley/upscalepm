@@ -77,10 +77,16 @@ export function ServiceAccordion({ services }: ServiceAccordionProps) {
                   </div>
                 )}
 
-                <div className="mt-6">
+                <div className="mt-6 flex items-center gap-4">
                   <Button asChild>
                     <Link href="/contact">Start Now</Link>
                   </Button>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="text-sm font-medium text-primary hover:underline"
+                  >
+                    Learn more &rarr;
+                  </Link>
                 </div>
               </div>
             )}

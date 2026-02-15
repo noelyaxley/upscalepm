@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu } from 'lucide-react'
+import { Menu, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Sheet,
@@ -16,6 +16,7 @@ import { Container } from './container'
 const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/case-studies', label: 'Case Studies' },
+  { href: '/upscale-build', label: 'UpScale.build', highlight: true },
   { href: '/insights', label: 'Insights' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
@@ -47,7 +48,11 @@ export function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  className={
+                    'highlight' in link && link.highlight
+                      ? 'text-sm font-medium text-primary transition-colors hover:text-primary/80'
+                      : 'text-sm font-medium text-muted-foreground transition-colors hover:text-foreground'
+                  }
                 >
                   {link.label}
                 </Link>
@@ -62,18 +67,27 @@ export function Header() {
             </Button>
           </div>
 
-          {/* Mobile menu */}
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="lg:hidden"
-                aria-label="Open menu"
-              >
-                <Menu className="size-5" />
-              </Button>
-            </SheetTrigger>
+          {/* Mobile actions */}
+          <div className="flex items-center gap-1 lg:hidden">
+            <a
+              href="tel:+61290904480"
+              aria-label="Call us"
+              className="inline-flex size-10 items-center justify-center rounded-md text-primary transition-colors hover:bg-accent"
+            >
+              <Phone className="size-5" />
+            </a>
+
+            {/* Mobile menu */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label="Open menu"
+                >
+                  <Menu className="size-5" />
+                </Button>
+              </SheetTrigger>
             <SheetContent side="right" className="w-80">
               <SheetHeader>
                 <SheetTitle className="text-left">
@@ -95,7 +109,11 @@ export function Header() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="block rounded-md px-3 py-2 text-base font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                        className={
+                          'highlight' in link && link.highlight
+                            ? 'block rounded-md px-3 py-2 text-base font-medium text-primary transition-colors hover:bg-accent'
+                            : 'block rounded-md px-3 py-2 text-base font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground'
+                        }
                       >
                         {link.label}
                       </Link>
@@ -110,6 +128,7 @@ export function Header() {
               </nav>
             </SheetContent>
           </Sheet>
+          </div>
         </nav>
       </Container>
     </header>
