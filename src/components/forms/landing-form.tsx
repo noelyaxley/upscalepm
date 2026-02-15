@@ -56,6 +56,7 @@ export function LandingForm() {
       if (utmParams.utm_campaign) payload.utmCampaign = utmParams.utm_campaign
       if (utmParams.utm_term) payload.utmTerm = utmParams.utm_term
       if (utmParams.utm_content) payload.utmContent = utmParams.utm_content
+      if (utmParams.gclid) payload.gclid = utmParams.gclid
     }
 
     const result = await submitContactForm(payload)

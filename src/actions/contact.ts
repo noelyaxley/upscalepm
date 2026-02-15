@@ -16,6 +16,7 @@ const contactSchema = z.object({
   utmCampaign: z.string().optional(),
   utmTerm: z.string().optional(),
   utmContent: z.string().optional(),
+  gclid: z.string().optional(),
   pageUri: z.string().optional(),
   pageName: z.string().optional(),
 })
@@ -58,6 +59,7 @@ export async function submitContactForm(
   if (parsed.data.utmCampaign) properties.utm_campaign = parsed.data.utmCampaign
   if (parsed.data.utmTerm) properties.utm_term = parsed.data.utmTerm
   if (parsed.data.utmContent) properties.utm_content = parsed.data.utmContent
+  if (parsed.data.gclid) properties.gclid = parsed.data.gclid
 
   try {
     await hubspot.crm.contacts.basicApi.create({ properties })

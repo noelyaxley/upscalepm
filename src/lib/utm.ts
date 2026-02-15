@@ -6,30 +6,35 @@ export const UTM_PARAMS = [
   'utm_content',
 ] as const
 
-export type UTMParams = Partial<Record<(typeof UTM_PARAMS)[number], string>>
+export type UTMParams = Partial<Record<(typeof UTM_PARAMS)[number] | 'gclid', string>>
 
 const STORAGE_KEY = 'utm_params'
 
 /**
- * Captures UTM parameters from the URL and stores them in sessionStorage.
+ * Captures UTM parameters and GCLID from the URL and stores them in sessionStorage.
  * Uses first-touch attribution: only stores if no UTMs are already saved.
  */
 export function captureUTMParams(searchParams: URLSearchParams): void {
   if (typeof window === 'undefined') return
 
-  // Check if any UTM params exist in the URL
   const utmValues: UTMParams = {}
-  let hasUtm = false
+  let hasParams = false
 
   for (const param of UTM_PARAMS) {
     const value = searchParams.get(param)
     if (value) {
       utmValues[param] = value
-      hasUtm = true
+      hasParams = true
     }
   }
 
-  if (!hasUtm) return
+  const gclid = searchParams.get('gclid')
+  if (gclid) {
+    utmValues.gclid = gclid
+    hasParams = true
+  }
+
+  if (!hasParams) return
 
   // First-touch attribution: only store if nothing is already saved
   const existing = sessionStorage.getItem(STORAGE_KEY)
