@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
-import { GTMScript } from '@/components/analytics/gtm-script'
+import { GTMScript, GTMNoScript } from '@/components/analytics/gtm-script'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { HubSpotTracker } from '@/components/hubspot/hubspot-tracker'
@@ -47,9 +47,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <GTMScript />
+      </head>
       <body className="flex min-h-screen flex-col font-sans antialiased">
+        <GTMNoScript />
         <SmoothScroll>
-          <GTMScript />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
