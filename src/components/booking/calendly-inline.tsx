@@ -1,6 +1,6 @@
 'use client'
 
-import { InlineWidget } from 'react-calendly'
+import { useEffect } from 'react'
 
 interface CalendlyInlineProps {
   url?: string
@@ -10,9 +10,19 @@ interface CalendlyInlineProps {
 export function CalendlyInline({ url, styles }: CalendlyInlineProps) {
   const calendlyUrl = url || process.env.NEXT_PUBLIC_CALENDLY_URL
 
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = 'https://assets.calendly.com/assets/external/widget.js'
+    script.async = true
+    document.body.appendChild(script)
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, [])
+
   if (!calendlyUrl || calendlyUrl === 'https://calendly.com/REPLACE_ME') {
     return (
-      <div className="flex h-[630px] items-center justify-center rounded-lg border border-dashed border-muted-foreground/30 bg-muted/50">
+      <div className="flex h-[700px] items-center justify-center rounded-lg border border-dashed border-muted-foreground/30 bg-muted/50">
         <div className="text-center">
           <p className="text-sm font-medium text-muted-foreground">
             Booking widget not configured
@@ -25,10 +35,13 @@ export function CalendlyInline({ url, styles }: CalendlyInlineProps) {
     )
   }
 
+  const embedUrl = `${calendlyUrl}?hide_event_type_details=1&hide_gdpr_banner=1`
+
   return (
-    <InlineWidget
-      url={calendlyUrl}
-      styles={styles ?? { height: '630px', minWidth: '320px' }}
+    <div
+      className="calendly-inline-widget"
+      data-url={embedUrl}
+      style={styles ?? { minWidth: '320px', height: '700px' }}
     />
   )
 }
