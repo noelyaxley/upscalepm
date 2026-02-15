@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import { getAllServices } from '@/lib/services'
 import { generatePageMetadata } from '@/lib/metadata'
 import { PageHeader } from '@/components/layout/page-header'
@@ -8,6 +7,7 @@ import { Section } from '@/components/layout/section'
 import { Button } from '@/components/ui/button'
 import { JsonLd } from '@/components/seo/json-ld'
 import { localBusinessSchema } from '@/components/seo/schemas'
+import { ServiceAccordion } from '@/components/sections/service-accordion'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Services',
@@ -28,37 +28,9 @@ export default function ServicesPage() {
         breadcrumbs={[{ label: 'Services' }]}
       />
 
-      {/* Service cards grid */}
+      {/* Service accordion */}
       <Section>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => {
-            const excerpt =
-              service.sections[0]?.body.slice(0, 120).replace(/\n/g, ' ') +
-              '...'
-
-            return (
-              <Link
-                key={service.slug}
-                href={`/services/${service.slug}`}
-                className="group flex flex-col rounded-lg border bg-background p-6 shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
-              >
-                <h2 className="text-xl font-semibold tracking-tight group-hover:text-primary">
-                  {service.title}
-                </h2>
-                <p className="mt-1 text-sm font-medium text-primary/80">
-                  {service.subtitle}
-                </p>
-                <p className="mt-3 flex-1 text-sm text-muted-foreground">
-                  {excerpt}
-                </p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                  Learn more
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-            )
-          })}
-        </div>
+        <ServiceAccordion services={services} />
       </Section>
 
       {/* Dual service model section (PAGE-12) */}

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllServices } from '@/lib/services'
-import { getAllCaseStudies } from '@/lib/content'
 import { generatePageMetadata } from '@/lib/metadata'
 import { Hero } from '@/components/sections/hero'
 import { ClientLogos } from '@/components/sections/client-logos'
@@ -25,8 +24,6 @@ export const metadata: Metadata = generatePageMetadata({
 
 export default function Home() {
   const services = getAllServices()
-  const caseStudies = getAllCaseStudies().slice(0, 3)
-
   return (
     <>
       <JsonLd data={localBusinessSchema()} />
@@ -54,7 +51,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <FeaturedCaseStudies caseStudies={caseStudies} />
+      <FeaturedCaseStudies />
 
       {/* Testimonials marquee */}
       <Section>

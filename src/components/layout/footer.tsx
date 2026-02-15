@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Linkedin, Instagram, Facebook, Youtube } from 'lucide-react'
 import { Container } from './container'
 
@@ -47,7 +48,8 @@ export function Footer() {
         <div className="grid gap-8 py-12 sm:grid-cols-2 md:grid-cols-4 md:py-16">
           {/* Company info */}
           <div>
-            <Link href="/" className="text-xl font-bold tracking-tight">
+            <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
+              <Image src="/images/shared/logo/logo-64.png" alt="" width={32} height={32} className="size-8" />
               UpScalePM
             </Link>
             <p className="mt-3 text-sm text-muted-foreground">
