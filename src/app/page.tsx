@@ -8,6 +8,7 @@ import { ClientLogos } from '@/components/sections/client-logos'
 import { ValueProposition } from '@/components/sections/value-proposition'
 import { ServicesOverview } from '@/components/sections/services-overview'
 import { FeaturedCaseStudies } from '@/components/sections/featured-case-studies'
+import { TestimonialsMarquee } from '@/components/sections/testimonials'
 import { HomepageCta } from '@/components/sections/homepage-cta'
 import { Section } from '@/components/layout/section'
 import { Button } from '@/components/ui/button'
@@ -54,6 +55,19 @@ export default function Home() {
       </Section>
 
       <FeaturedCaseStudies caseStudies={caseStudies} />
+
+      {/* Testimonials marquee */}
+      <Section>
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+            What Our Clients Say
+          </h2>
+        </div>
+        <div className="mt-8">
+          <TestimonialsMarquee />
+        </div>
+      </Section>
+
       <HomepageCta />
     </>
   )

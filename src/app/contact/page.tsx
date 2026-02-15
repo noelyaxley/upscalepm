@@ -63,7 +63,7 @@ export default function ContactPage() {
               <span>Contact</span>
             </nav>
             <h1 className="font-display text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-              Protect Your Next Project
+              Deliver Your Next Project
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-neutral-300">
               Free 30-minute consultation with an experienced client-side
@@ -155,15 +155,15 @@ export default function ContactPage() {
                   <li className="flex items-center gap-3 text-sm text-muted-foreground">
                     <Mail className="size-4 shrink-0 text-primary-600" />
                     <a
-                      href="mailto:info@upscalepm.com.au"
+                      href="mailto:noel@upscalepm.com.au"
                       className="transition-colors hover:text-foreground"
                     >
-                      info@upscalepm.com.au
+                      noel@upscalepm.com.au
                     </a>
                   </li>
                   <li className="flex items-start gap-3 text-sm text-muted-foreground">
                     <MapPin className="mt-0.5 size-4 shrink-0 text-primary-600" />
-                    <span>Sydney &amp; Newcastle, NSW</span>
+                    <span>Level 2/89 Macquarie St, Sydney NSW 2000</span>
                   </li>
                 </ul>
               </div>

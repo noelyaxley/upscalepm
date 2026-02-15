@@ -23,7 +23,7 @@ import { trackFormSubmission } from '@/components/analytics/gtm-event'
 const formSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   email: z.string().email('Please enter a valid email'),
-  phone: z.string().optional(),
+  phone: z.string().min(1, 'Phone number is required'),
   projectType: z.string().optional(),
   message: z.string().min(1, 'Message is required'),
 })
@@ -160,16 +160,22 @@ export function ContactForm() {
       {/* Phone */}
       <div className="space-y-2">
         <Label htmlFor="contact-phone">
-          Phone{' '}
-          <span className="font-normal text-muted-foreground">(optional)</span>
+          Phone <span className="text-destructive">*</span>
         </Label>
         <Input
           id="contact-phone"
           type="tel"
           placeholder="04XX XXX XXX"
           {...register('phone')}
+          aria-invalid={!!errors.phone}
+          aria-describedby={errors.phone ? 'phone-error' : undefined}
           autoComplete="tel"
         />
+        {errors.phone && (
+          <p id="phone-error" className="text-sm text-destructive">
+            {errors.phone.message}
+          </p>
+        )}
       </div>
 
       {/* Project Type */}

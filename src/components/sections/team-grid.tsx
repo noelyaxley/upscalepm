@@ -18,25 +18,27 @@ const team: TeamMember[] = [
 
 export function TeamGrid() {
   return (
-    <div className="mx-auto max-w-md">
+    <div className="mx-auto max-w-3xl">
       {team.map((member) => (
-        <div key={member.name} className="text-center">
-          <div className="relative mx-auto mb-6 h-64 w-64 overflow-hidden rounded-2xl">
+        <div key={member.name} className="flex flex-col items-center gap-8 md:flex-row md:items-start">
+          <div className="relative h-80 w-64 shrink-0 overflow-hidden rounded-2xl md:w-56">
             <Image
               src={member.image}
               alt={member.name}
               fill
               className="object-cover"
-              sizes="256px"
+              sizes="(max-width: 768px) 256px, 224px"
             />
           </div>
-          <h3 className="text-xl font-semibold">{member.name}</h3>
-          <p className="mt-1 text-sm font-medium text-muted-foreground">
-            {member.role}
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            {member.bio}
-          </p>
+          <div>
+            <h3 className="text-xl font-semibold">{member.name}</h3>
+            <p className="mt-1 text-sm font-medium text-muted-foreground">
+              {member.role}
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {member.bio}
+            </p>
+          </div>
         </div>
       ))}
     </div>

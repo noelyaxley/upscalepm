@@ -106,13 +106,21 @@ export function Footer() {
             <ul className="mt-4 flex flex-col gap-2 text-sm text-muted-foreground">
               <li>
                 <a
-                  href="mailto:info@upscalepm.com.au"
+                  href="tel:+61290904480"
                   className="transition-colors hover:text-foreground"
                 >
-                  info@upscalepm.com.au
+                  +61 2 9090 4480
                 </a>
               </li>
-              <li>Sydney | Newcastle</li>
+              <li>
+                <a
+                  href="mailto:noel@upscalepm.com.au"
+                  className="transition-colors hover:text-foreground"
+                >
+                  noel@upscalepm.com.au
+                </a>
+              </li>
+              <li>Level 2/89 Macquarie St, Sydney NSW 2000</li>
             </ul>
             <div className="mt-4 flex gap-3">
               {socialLinks.map((social) => (

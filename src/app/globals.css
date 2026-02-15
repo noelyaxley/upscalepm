@@ -303,10 +303,42 @@ html.lenis body {
   }
 }
 
+/* Logo marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee-testimonials {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-testimonials {
+  animation: marquee-testimonials 40s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .geo-shape,
   .geo-shape-alt,
   .geo-shape-slow {
+    animation: none;
+  }
+
+  .animate-marquee,
+  .animate-marquee-testimonials {
     animation: none;
   }
 }

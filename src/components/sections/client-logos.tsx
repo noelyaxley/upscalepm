@@ -48,18 +48,33 @@ export function ClientLogos({
           {heading}
         </p>
       )}
-      <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-        {logos.map((logo) => (
-          <div key={logo.alt} className="flex items-center">
-            <Image
-              src={logo.src}
-              alt={logo.alt}
-              width={logo.width}
-              height={logo.height}
-              className="h-10 w-auto opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 md:h-12"
-            />
-          </div>
-        ))}
+      <div className="relative overflow-hidden">
+        <div className="flex animate-marquee items-center gap-12">
+          {/* First set */}
+          {logos.map((logo) => (
+            <div key={logo.alt} className="flex shrink-0 items-center">
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+                className="h-10 w-auto opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 md:h-12"
+              />
+            </div>
+          ))}
+          {/* Duplicate set for seamless loop */}
+          {logos.map((logo) => (
+            <div key={`${logo.alt}-dup`} className="flex shrink-0 items-center">
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+                className="h-10 w-auto opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 md:h-12"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </Section>
   )

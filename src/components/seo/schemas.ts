@@ -16,11 +16,13 @@ export function localBusinessSchema(): WithContext<LocalBusiness> {
     description:
       'Client-side project management for property and construction projects in Sydney and Newcastle.',
     url: SITE_URL,
-    email: 'info@upscalepm.com.au',
+    email: 'noel@upscalepm.com.au',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: 'Level 2/89 Macquarie St',
       addressLocality: 'Sydney',
       addressRegion: 'NSW',
+      postalCode: '2000',
       addressCountry: 'AU',
     },
     areaServed: [

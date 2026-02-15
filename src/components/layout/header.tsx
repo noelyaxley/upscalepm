@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -28,8 +29,15 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-xl font-bold tracking-tight"
+            className="flex items-center gap-2 text-xl font-bold tracking-tight"
           >
+            <Image
+              src="/images/shared/logo/logo-64.png"
+              alt=""
+              width={32}
+              height={32}
+              className="size-8"
+            />
             UpScalePM
           </Link>
 
@@ -69,7 +77,14 @@ export function Header() {
             <SheetContent side="right" className="w-80">
               <SheetHeader>
                 <SheetTitle className="text-left">
-                  <Link href="/" className="text-xl font-bold tracking-tight">
+                  <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
+                    <Image
+                      src="/images/shared/logo/logo-64.png"
+                      alt=""
+                      width={32}
+                      height={32}
+                      className="size-8"
+                    />
                     UpScalePM
                   </Link>
                 </SheetTitle>

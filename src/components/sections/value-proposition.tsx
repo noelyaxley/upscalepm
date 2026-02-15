@@ -87,11 +87,13 @@ export function ValueProposition() {
             key={prop.title}
             className="rounded-lg border bg-background p-6 shadow-sm"
           >
-            <div className="flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              {prop.icon}
+            <div className="flex items-center gap-3">
+              <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                {prop.icon}
+              </div>
+              <h3 className="text-lg font-semibold">{prop.title}</h3>
             </div>
-            <h3 className="mt-4 text-lg font-semibold">{prop.title}</h3>
-            <p className="mt-2 text-muted-foreground">{prop.description}</p>
+            <p className="mt-3 text-muted-foreground">{prop.description}</p>
           </div>
         ))}
       </div>
