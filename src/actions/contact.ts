@@ -1,6 +1,7 @@
 'use server'
 
 import { Client } from '@hubspot/api-client'
+import { FilterOperatorEnum } from '@hubspot/api-client/lib/codegen/crm/contacts/models/Filter'
 import { z } from 'zod'
 
 const contactSchema = z.object({
@@ -76,7 +77,7 @@ export async function submitContactForm(
               filters: [
                 {
                   propertyName: 'email',
-                  operator: 'EQ',
+                  operator: FilterOperatorEnum.Eq,
                   value: parsed.data.email,
                 },
               ],
