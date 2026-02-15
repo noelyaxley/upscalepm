@@ -10,7 +10,7 @@ const CalendlyInlineWidget = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="h-[700px] animate-pulse rounded-lg bg-muted" />
+      <div className="h-[1000px] animate-pulse rounded-lg bg-muted" />
     ),
   }
 )

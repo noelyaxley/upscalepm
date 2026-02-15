@@ -22,7 +22,7 @@ export function CalendlyInline({ url, styles }: CalendlyInlineProps) {
 
   if (!calendlyUrl || calendlyUrl === 'https://calendly.com/REPLACE_ME') {
     return (
-      <div className="flex h-[700px] items-center justify-center rounded-lg border border-dashed border-muted-foreground/30 bg-muted/50">
+      <div className="flex h-[1000px] items-center justify-center rounded-lg border border-dashed border-muted-foreground/30 bg-muted/50">
         <div className="text-center">
           <p className="text-sm font-medium text-muted-foreground">
             Booking widget not configured
@@ -41,7 +41,7 @@ export function CalendlyInline({ url, styles }: CalendlyInlineProps) {
     <div
       className="calendly-inline-widget"
       data-url={embedUrl}
-      style={styles ?? { minWidth: '320px', height: '700px' }}
+      style={styles ?? { minWidth: '320px', height: '1000px' }}
     />
   )
 }
