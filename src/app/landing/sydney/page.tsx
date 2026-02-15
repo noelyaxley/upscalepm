@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import { Container } from '@/components/layout/container'
 import { LandingForm } from '@/components/forms/landing-form'
 import { DynamicHeadline } from '@/components/landing/dynamic-headline'
@@ -102,14 +103,7 @@ const services = [
   'Tender Assessment',
 ]
 
-interface PageProps {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
-
-export default async function SydneyLandingPage({ searchParams }: PageProps) {
-  const params = await searchParams
-  const service = typeof params.service === 'string' ? params.service : undefined
-
+export default function SydneyLandingPage() {
   return (
     <>
       {/* Sticky top bar — phone CTA */}
@@ -153,7 +147,9 @@ export default async function SydneyLandingPage({ searchParams }: PageProps) {
           <div className="grid gap-8 py-10 md:py-14 lg:grid-cols-2 lg:gap-12">
             {/* Left — Value prop */}
             <div className="flex flex-col justify-center">
-              <DynamicHeadline service={service} />
+              <Suspense>
+                <DynamicHeadline />
+              </Suspense>
               <p className="mt-4 text-lg text-neutral-300">
                 Stop overpaying contractors and missing critical issues. We&apos;re
                 Sydney&apos;s independent project managers who represent{' '}

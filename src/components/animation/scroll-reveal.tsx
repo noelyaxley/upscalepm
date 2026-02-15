@@ -6,6 +6,15 @@ import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap'
 export function ScrollReveal() {
   const pathname = usePathname()
 
+  // Skip on landing pages — no [data-reveal] elements, saves GSAP overhead
+  if (pathname.startsWith('/landing/')) {
+    return null
+  }
+
+  return <ScrollRevealInner pathname={pathname} />
+}
+
+function ScrollRevealInner({ pathname }: { pathname: string }) {
   useGSAP(
     () => {
       const mm = gsap.matchMedia()
@@ -35,3 +44,6 @@ export function ScrollReveal() {
 
   return null
 }
+
+// Keep default export name for root layout import
+

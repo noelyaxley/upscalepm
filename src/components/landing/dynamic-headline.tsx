@@ -1,9 +1,12 @@
+'use client'
+
+import { useSearchParams } from 'next/navigation'
+
 /**
  * Dynamic headline component for Google Ads landing pages.
  *
- * Swaps the H1 based on the ?service= URL parameter to match
- * the ad group the visitor clicked from. This improves message
- * match and quality score.
+ * Reads ?service= from the URL client-side via useSearchParams(),
+ * keeping the parent page statically generated for fast TTFB.
  *
  * Usage in Google Ads Final URLs:
  *   /landing/sydney?service=construction
@@ -60,11 +63,9 @@ const defaultHeadline = {
   subtitle: 'Project management, construction management, DA approval — all under one roof.',
 }
 
-interface DynamicHeadlineProps {
-  service?: string
-}
-
-export function DynamicHeadline({ service }: DynamicHeadlineProps) {
+export function DynamicHeadline() {
+  const searchParams = useSearchParams()
+  const service = searchParams.get('service')
   const headline = (service && headlines[service]) || defaultHeadline
 
   return (

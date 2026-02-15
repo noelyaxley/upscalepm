@@ -2,6 +2,7 @@
 
 import { ReactLenis, useLenis } from 'lenis/react'
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 /**
@@ -44,7 +45,9 @@ function LenisGSAPSync() {
  * - autoRaf is explicitly false — GSAP ticker drives Lenis, not its own RAF
  */
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const isLandingPage = pathname.startsWith('/landing/')
 
   useEffect(() => {
     const mql = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -60,8 +63,9 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
-  // When reduced motion is preferred, render children without smooth scroll
-  if (prefersReducedMotion) {
+  // Skip smooth scroll on landing pages (saves ~400KB GSAP+Lenis payload)
+  // and when reduced motion is preferred
+  if (isLandingPage || prefersReducedMotion) {
     return <>{children}</>
   }
 
