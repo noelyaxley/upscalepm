@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '@/components/layout/container'
 import { CheckCircle2, Phone } from 'lucide-react'
+import { ThankYouRedirect } from '@/components/landing/thank-you-redirect'
 
 export const metadata: Metadata = {
   title: 'Thank You | UpScalePM Sydney',
@@ -65,12 +66,13 @@ export default function ThankYouPage() {
                 Call Now: {PHONE_DISPLAY}
               </a>
               <Link
-                href="/landing/sydney"
+                href="/"
                 className="inline-flex items-center gap-2 rounded-md border border-neutral-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
               >
                 Back to Home
               </Link>
             </div>
+            <ThankYouRedirect />
           </div>
         </Container>
       </section>
