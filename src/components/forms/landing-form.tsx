@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { CheckCircle2, Loader2, Phone } from 'lucide-react'
+import { Loader2, Phone } from 'lucide-react'
 import { submitContactForm } from '@/actions/contact'
 import { getStoredUTMParams } from '@/lib/utm'
 import { trackFormSubmission, trackFormView, trackFormError } from '@/components/analytics/gtm-event'
@@ -20,7 +21,8 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>
 
 export function LandingForm() {
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const router = useRouter()
+  const [status, setStatus] = useState<'idle' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
 
   const {
@@ -66,30 +68,13 @@ export function LandingForm() {
     const result = await submitContactForm(payload)
     if (result.success) {
       trackFormSubmission('landing_form_sydney')
-      setStatus('success')
-      reset()
+      router.push('/landing/sydney/thank-you')
+      return
     } else {
       trackFormError('landing_form_sydney', 'submit_failed')
       setStatus('error')
       setErrorMessage(result.error ?? 'Something went wrong.')
     }
-  }
-
-  if (status === 'success') {
-    return (
-      <div className="rounded-lg border border-green-700 bg-green-950/50 p-6 text-center">
-        <CheckCircle2 className="mx-auto mb-3 size-10 text-green-400" />
-        <h3 className="text-lg font-semibold text-green-100">
-          Thank you! We&apos;ll call you back within 2 hours.
-        </h3>
-        <p className="mt-2 text-sm text-green-300">
-          Or call us now:{' '}
-          <a href="tel:+61290904480" className="font-semibold underline">
-            02 9090 4480
-          </a>
-        </p>
-      </div>
-    )
   }
 
   return (

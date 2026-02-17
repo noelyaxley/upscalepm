@@ -5,13 +5,13 @@ import { Suspense } from 'react'
 import { Container } from '@/components/layout/container'
 import { LandingForm } from '@/components/forms/landing-form'
 import { DynamicHeadline } from '@/components/landing/dynamic-headline'
+import { ProjectCarousel } from '@/components/landing/project-carousel'
 import {
   Phone,
   CheckCircle2,
   Clock,
   Shield,
   Users,
-  ArrowRight,
   Star,
   Building2,
   FileCheck,
@@ -35,6 +35,7 @@ const testimonials = [
     name: 'Nathan McCullum',
     role: 'Director',
     company: 'McCullum Advisory & Society Real Estate',
+    image: '/images/shared/testimonials/nathan-mccullum.jpg',
   },
   {
     quote:
@@ -42,6 +43,7 @@ const testimonials = [
     name: 'Kenny Gunawan',
     role: 'Construction Manager',
     company: 'SHAPE',
+    image: '/images/shared/testimonials/kenny-gunawan.jpg',
   },
   {
     quote:
@@ -49,6 +51,13 @@ const testimonials = [
     name: 'Michael Russel',
     role: 'Project Director',
     company: 'NSW Govt. Public Works',
+  },
+  {
+    quote:
+      'Noel brings experienced, collaborative leadership to every project. His ability to coordinate across stakeholders and drive delivery outcomes is exceptional.',
+    name: 'Steven Latham',
+    role: 'Commercial Manager',
+    company: 'SHAPE Australia',
   },
 ]
 
@@ -169,20 +178,13 @@ export default function SydneyLandingPage() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-6">
                 <a
                   href={`tel:${PHONE_NUMBER}`}
                   className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
                 >
                   <Phone className="size-4" />
                   Call Now: {PHONE_DISPLAY}
-                </a>
-                <a
-                  href="#form"
-                  className="inline-flex items-center justify-center gap-2 rounded-md border border-neutral-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-                >
-                  Request a Callback
-                  <ArrowRight className="size-4" />
                 </a>
               </div>
             </div>
@@ -233,6 +235,72 @@ export default function SydneyLandingPage() {
         </Container>
       </section>
 
+      {/* SOCIAL PROOF — Testimonials (below trust logos) */}
+      <section className="border-b bg-neutral-50 py-10 md:py-14">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+              100% Client Satisfaction Across Sydney
+            </h2>
+          </div>
+          <div className="mx-auto mt-8 grid max-w-6xl grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
+            {testimonials.map((t) => (
+              <div key={t.name} className="rounded-xl border bg-white p-5 shadow-sm">
+                <div className="flex items-center gap-2">
+                  {t.image ? (
+                    <Image
+                      src={t.image}
+                      alt={t.name}
+                      width={32}
+                      height={32}
+                      className="size-8 rounded-full object-cover object-top"
+                    />
+                  ) : (
+                    <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary">
+                      {t.name.split(' ').map((n) => n[0]).join('')}
+                    </div>
+                  )}
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="size-3.5 fill-primary text-primary" />
+                    ))}
+                  </div>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="mt-3 border-t pt-3">
+                  <p className="text-sm font-semibold">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {t.role}, {t.company}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* PROJECT CAROUSEL — Auto-sliding project images */}
+      <ProjectCarousel />
+
+      {/* MID-PAGE CTA — Floating consultation form */}
+      <section className="bg-neutral-950 py-14 text-white md:py-20">
+        <Container size="narrow">
+          <div className="rounded-xl border border-neutral-700 bg-neutral-900 p-6 md:p-8">
+            <h3 className="font-display text-xl font-bold">
+              Get Your Free Consultation
+            </h3>
+            <p className="mt-1 text-sm text-neutral-400">
+              Tell us about your Sydney project. We respond within 2 hours.
+            </p>
+            <div className="mt-6">
+              <LandingForm />
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* WHY UPSCALE — Trust points (now 6 cards covering all ad groups) */}
       <section className="py-14 md:py-20">
         <Container>
@@ -256,42 +324,6 @@ export default function SydneyLandingPage() {
                 <p className="mt-3 text-sm text-muted-foreground">
                   {point.description}
                 </p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* SOCIAL PROOF — Testimonials */}
-      <section className="border-y bg-neutral-50 py-14 md:py-20">
-        <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <div className="flex items-center justify-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="size-5 fill-primary text-primary" />
-              ))}
-            </div>
-            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight md:text-3xl">
-              100% Client Satisfaction Across Sydney
-            </h2>
-          </div>
-          <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <div key={t.name} className="rounded-xl border bg-white p-6 shadow-sm">
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="size-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="mt-4 border-t pt-4">
-                  <p className="text-sm font-semibold">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {t.role}, {t.company}
-                  </p>
-                </div>
               </div>
             ))}
           </div>
@@ -421,11 +453,11 @@ export default function SydneyLandingPage() {
                 ))}
               </ul>
               <a
-                href="#form"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+                href={`tel:${PHONE_NUMBER}`}
+                className="mt-6 inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
               >
-                Start your Sydney project today
-                <ArrowRight className="size-4" />
+                <Phone className="size-4" />
+                Call Now: {PHONE_DISPLAY}
               </a>
             </div>
             <div className="relative order-1 aspect-[4/3] overflow-hidden rounded-xl lg:order-2">
@@ -439,6 +471,49 @@ export default function SydneyLandingPage() {
             </div>
           </div>
         </Container>
+      </section>
+
+      {/* ABOUT NOEL — Founder hero */}
+      <section className="bg-neutral-950 py-14 text-white md:py-20">
+        <div className="mx-auto flex max-w-4xl items-center justify-center gap-8 px-4 max-lg:flex-col lg:gap-10">
+            <div className="relative aspect-[3/4] w-full max-w-xs shrink-0 overflow-hidden rounded-xl lg:w-72">
+              <Image
+                src="/images/landing/noel-portrait.jpg"
+                alt="Noel Yaxley — Founder of UpScale Project Management"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 288px"
+              />
+            </div>
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+                Your Project Manager
+              </p>
+              <h2 className="mt-2 font-display text-2xl font-bold tracking-tight md:text-3xl">
+                Noel Yaxley
+              </h2>
+              <p className="mt-4 text-neutral-300">
+                With over 15 years of project delivery experience across
+                commercial, government, health, and residential sectors, Noel
+                founded UpScale to give property owners what they actually
+                need — an independent project manager who sits on their side
+                of the table.
+              </p>
+              <p className="mt-3 text-neutral-300">
+                From Sydney Water laboratories to heritage club redevelopments,
+                Noel has managed complex builds worth millions, navigating
+                council approvals, contract negotiations, and construction
+                delivery with a hands-on, no-shortcuts approach.
+              </p>
+              <a
+                href={`tel:${PHONE_NUMBER}`}
+                className="mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+              >
+                <Phone className="size-4" />
+                Speak to Noel Now
+              </a>
+            </div>
+        </div>
       </section>
 
       {/* FINAL CTA — Form repeat */}
