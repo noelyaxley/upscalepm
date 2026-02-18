@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Plus, Minus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -10,18 +10,51 @@ interface ServiceAccordionProps {
   services: ServicePage[]
 }
 
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const mql = window.matchMedia('(min-width: 1024px)')
+    setIsDesktop(mql.matches)
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+    mql.addEventListener('change', handler)
+    return () => mql.removeEventListener('change', handler)
+  }, [])
+
+  return isDesktop
+}
+
 export function ServiceAccordion({ services }: ServiceAccordionProps) {
-  const [openSlug, setOpenSlug] = useState<string | null>(null)
+  const isDesktop = useIsDesktop()
+  const allSlugs = services.map((s) => s.slug)
+  const [openSlugs, setOpenSlugs] = useState<Set<string>>(new Set())
+
+  // When viewport changes, reset: desktop = all open, mobile = all closed
+  useEffect(() => {
+    setOpenSlugs(isDesktop ? new Set(allSlugs) : new Set())
+  }, [isDesktop]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  function toggle(slug: string) {
+    setOpenSlugs((prev) => {
+      const next = new Set(prev)
+      if (next.has(slug)) {
+        next.delete(slug)
+      } else {
+        next.add(slug)
+      }
+      return next
+    })
+  }
 
   return (
     <div className="divide-y border-y">
       {services.map((service) => {
-        const isOpen = openSlug === service.slug
+        const isOpen = openSlugs.has(service.slug)
 
         return (
           <div key={service.slug}>
             <button
-              onClick={() => setOpenSlug(isOpen ? null : service.slug)}
+              onClick={() => toggle(service.slug)}
               className="flex w-full items-center justify-between gap-4 py-6 text-left transition-colors hover:bg-muted/50"
               aria-expanded={isOpen}
             >
