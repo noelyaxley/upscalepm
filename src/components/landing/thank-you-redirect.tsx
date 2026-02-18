@@ -3,9 +3,24 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
 export function ThankYouRedirect() {
   const router = useRouter()
   const [seconds, setSeconds] = useState(5)
+
+  // Fire Google Ads conversion event on mount
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-10851484907/OhIDCJaQifkbEOuJsrYo',
+      })
+    }
+  }, [])
 
   useEffect(() => {
     const timer = setInterval(() => {
