@@ -23,18 +23,15 @@ export function ThankYouRedirect() {
   }, [])
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setSeconds((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer)
-          router.push('/')
-          return 0
-        }
-        return prev - 1
-      })
+    if (seconds <= 0) {
+      router.push('/')
+      return
+    }
+    const timer = setTimeout(() => {
+      setSeconds((prev) => prev - 1)
     }, 1000)
-    return () => clearInterval(timer)
-  }, [router])
+    return () => clearTimeout(timer)
+  }, [seconds, router])
 
   return (
     <p className="mt-4 text-sm text-neutral-500">
