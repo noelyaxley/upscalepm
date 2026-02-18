@@ -34,6 +34,7 @@ const testimonials: Testimonial[] = [
     name: 'Michael Russel',
     role: 'Project Director',
     company: 'NSW Govt. Public Works',
+    image: '/images/shared/testimonials/michael-russel.jpg',
   },
   {
     quote:
@@ -41,6 +42,23 @@ const testimonials: Testimonial[] = [
     name: 'Steven Latham',
     role: 'Commercial Manager',
     company: 'SHAPE Australia',
+    image: '/images/shared/testimonials/steven-latham.jpg',
+  },
+  {
+    quote:
+      'Noel has been instrumental in turning our vision into reality. His hands-on approach and deep understanding of construction delivery gave our board complete confidence throughout the redevelopment.',
+    name: 'Steve Rodriguez',
+    role: 'CEO',
+    company: 'Granville Diggers Club',
+    image: '/images/shared/testimonials/steve-rodriguez.jpg',
+  },
+  {
+    quote:
+      'It was a pleasure working with Noel on Sydney Water\'s new admin building in Quakers Hill. His collaborative approach and attention to detail made for a smooth delivery across all stakeholders.',
+    name: 'Marcus Blanco',
+    role: 'Project Director',
+    company: 'Intermain Construction',
+    image: '/images/shared/testimonials/marcus-blanco.jpg',
   },
 ]
 
@@ -124,13 +142,28 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
 export function TestimonialsMarquee() {
   return (
-    <div className="overflow-hidden py-2">
-      <div className="animate-marquee-testimonials flex gap-6">
-        {/* Duplicate the set for seamless loop */}
-        {[...testimonials, ...testimonials].map((testimonial, i) => (
-          <TestimonialCard key={`${testimonial.name}-${i}`} testimonial={testimonial} />
-        ))}
-      </div>
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {testimonials.map((testimonial) => (
+        <div
+          key={testimonial.name}
+          className="rounded-xl border bg-card p-6 shadow-sm"
+        >
+          <div className="flex gap-4">
+            <div className="pt-1">
+              <Avatar name={testimonial.name} image={testimonial.image} />
+            </div>
+            <blockquote className="text-sm leading-relaxed text-muted-foreground">
+              &ldquo;{testimonial.quote}&rdquo;
+            </blockquote>
+          </div>
+          <div className="mt-4 border-t pt-4">
+            <p className="text-sm font-semibold">{testimonial.name}</p>
+            <p className="text-xs text-muted-foreground">
+              {testimonial.role}, {testimonial.company}
+            </p>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

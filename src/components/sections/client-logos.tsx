@@ -44,6 +44,18 @@ const logos = [
     width: 300,
     height: 85,
   },
+  {
+    src: '/images/shared/logos/crosslife-church.png',
+    alt: 'CrossLife Church',
+    width: 300,
+    height: 300,
+  },
+  {
+    src: '/images/shared/logos/granville-diggers.png',
+    alt: 'Granville Diggers Club',
+    width: 300,
+    height: 250,
+  },
 ]
 
 interface ClientLogosProps {

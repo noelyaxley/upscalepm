@@ -51,6 +51,7 @@ const testimonials = [
     name: 'Michael Russel',
     role: 'Project Director',
     company: 'NSW Govt. Public Works',
+    image: '/images/shared/testimonials/michael-russel.jpg',
   },
   {
     quote:
@@ -58,6 +59,23 @@ const testimonials = [
     name: 'Steven Latham',
     role: 'Commercial Manager',
     company: 'SHAPE Australia',
+    image: '/images/shared/testimonials/steven-latham.jpg',
+  },
+  {
+    quote:
+      'Noel has been instrumental in turning our vision into reality. His hands-on approach and deep understanding of construction delivery gave our board complete confidence throughout the redevelopment.',
+    name: 'Steve Rodriguez',
+    role: 'CEO',
+    company: 'Granville Diggers Club',
+    image: '/images/shared/testimonials/steve-rodriguez.jpg',
+  },
+  {
+    quote:
+      'It was a pleasure working with Noel on Sydney Water\'s new admin building in Quakers Hill. His collaborative approach and attention to detail made for a smooth delivery across all stakeholders.',
+    name: 'Marcus Blanco',
+    role: 'Project Director',
+    company: 'Intermain Construction',
+    image: '/images/shared/testimonials/marcus-blanco.jpg',
   },
 ]
 
@@ -243,7 +261,7 @@ export default function SydneyLandingPage() {
               100% Client Satisfaction Across Sydney
             </h2>
           </div>
-          <div className="mx-auto mt-8 grid max-w-6xl grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
+          <div className="mx-auto mt-8 grid grid-cols-2 gap-4 lg:grid-cols-6 lg:gap-4">
             {testimonials.map((t) => (
               <div key={t.name} className="rounded-xl border bg-white p-5 shadow-sm">
                 <div className="flex items-center gap-2">
