@@ -45,7 +45,7 @@ export function FeaturedCaseStudies() {
     <Section background="muted">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-          Case Studies
+          Sectors of Expertise
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
           Real results from real projects. See how we have delivered for our
@@ -89,7 +89,7 @@ export function FeaturedCaseStudies() {
           href="/case-studies"
           className="text-sm font-medium text-primary hover:underline"
         >
-          View All Case Studies &rarr;
+          View All Projects &rarr;
         </Link>
       </div>
     </Section>
