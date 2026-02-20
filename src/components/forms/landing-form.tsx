@@ -68,6 +68,7 @@ export function LandingForm() {
     const result = await submitContactForm(payload)
     if (result.success) {
       trackFormSubmission('landing_form_sydney')
+      sessionStorage.setItem('form_submitted', '1')
       router.push('/landing/sydney/thank-you')
       return
     } else {

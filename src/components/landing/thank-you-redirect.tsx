@@ -13,8 +13,12 @@ export function ThankYouRedirect() {
   const router = useRouter()
   const [seconds, setSeconds] = useState(5)
 
-  // Fire Google Ads conversion event on mount
+  // Fire Google Ads conversion only if the user actually submitted a form
   useEffect(() => {
+    const submitted = sessionStorage.getItem('form_submitted')
+    if (!submitted) return
+
+    sessionStorage.removeItem('form_submitted')
     if (window.gtag) {
       window.gtag('event', 'conversion', {
         send_to: 'AW-10851484907/OhIDCJaQifkbEOuJsrYo',
