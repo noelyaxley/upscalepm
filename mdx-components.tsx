@@ -7,6 +7,8 @@ import { ImageGallery } from '@/components/mdx/image-gallery'
 import { Timeline, TimelineItem } from '@/components/mdx/timeline'
 import { StatCard } from '@/components/mdx/stat-card'
 import { BeforeAfter } from '@/components/mdx/before-after'
+import { YouTubeEmbed } from '@/components/mdx/youtube-embed'
+import { InstagramEmbed } from '@/components/mdx/instagram-embed'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -34,6 +36,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     TimelineItem,
     StatCard,
     BeforeAfter,
+    YouTubeEmbed,
+    InstagramEmbed,
     ...components,
   }
 }
