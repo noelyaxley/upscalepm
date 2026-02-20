@@ -445,19 +445,13 @@ export default function SydneyLandingPage() {
                   ))}
                 </ul>
               </div>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-6">
                 <a
                   href={`tel:${PHONE_NUMBER}`}
                   className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
                 >
                   <Phone className="size-4" />
-                  Speak to a Sydney Expert
-                </a>
-                <a
-                  href="#form"
-                  className="inline-flex items-center justify-center gap-2 rounded-md border px-6 py-3 text-sm font-semibold transition-colors hover:bg-accent"
-                >
-                  Get a Free Quote
+                  Call Now: {PHONE_DISPLAY}
                 </a>
               </div>
             </div>

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { Menu, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -23,6 +24,9 @@ const navLinks = [
 ] as const
 
 export function Header() {
+  const pathname = usePathname()
+  if (pathname.startsWith('/landing/')) return null
+
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <Container>
