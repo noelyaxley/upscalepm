@@ -47,5 +47,8 @@ next-env.d.ts
 # Moat task system
 .moat/
 
+# Source content (originals copied to public/images/)
+content/
+
 # Claude Code configuration
 .claude/
