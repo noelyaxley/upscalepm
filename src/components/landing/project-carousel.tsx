@@ -79,7 +79,7 @@ export function ProjectCarousel() {
   }, [next])
 
   return (
-    <div className="relative h-64 w-full overflow-hidden md:h-80">
+    <div className="relative h-80 w-full overflow-hidden md:h-96">
       {slides.map((slide, i) => (
         <div
           key={slide.src}
@@ -100,7 +100,7 @@ export function ProjectCarousel() {
             <>
               <div className="absolute inset-0 bg-black/40" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <p className="px-4 text-center font-display text-2xl font-bold tracking-tight text-white md:text-3xl">
+                <p className="px-4 text-center font-display text-2xl font-bold tracking-tight text-primary md:text-3xl">
                   {slide.text}
                 </p>
               </div>

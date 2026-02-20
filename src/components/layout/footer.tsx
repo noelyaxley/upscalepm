@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { Linkedin, Instagram, Facebook, Youtube } from 'lucide-react'
 import { Container } from './container'
 
@@ -40,6 +43,8 @@ const legalLinks = [
 ] as const
 
 export function Footer() {
+  const pathname = usePathname()
+  const isLanding = pathname.startsWith('/landing/')
   const currentYear = new Date().getFullYear()
 
   return (
@@ -124,20 +129,22 @@ export function Footer() {
               </li>
               <li>Level 2/89 Macquarie St, Sydney NSW 2000</li>
             </ul>
-            <div className="mt-4 flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  <social.icon className="size-5" />
-                </a>
-              ))}
-            </div>
+            {!isLanding && (
+              <div className="mt-4 flex gap-3">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <social.icon className="size-5" />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 

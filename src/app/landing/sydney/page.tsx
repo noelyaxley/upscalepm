@@ -184,7 +184,7 @@ export default function SydneyLandingPage() {
               </p>
               <ul className="mt-6 space-y-3">
                 {[
-                  '14+ projects delivered across Sydney',
+                  'Over 30+ projects delivered across Sydney',
                   'Project management, construction management & DA approval',
                   'Trusted by Sydney Water, NSW Ambulance & government',
                   'Feasibility studies to de-risk your investment',
@@ -261,40 +261,64 @@ export default function SydneyLandingPage() {
               100% Client Satisfaction Across Sydney
             </h2>
           </div>
-          <div className="mx-auto mt-8 grid grid-cols-2 gap-4 lg:grid-cols-6 lg:gap-4">
-            {testimonials.map((t) => (
-              <div key={t.name} className="rounded-xl border bg-white p-5 shadow-sm">
-                <div className="flex items-center gap-2">
-                  {t.image ? (
-                    <Image
-                      src={t.image}
-                      alt={t.name}
-                      width={32}
-                      height={32}
-                      className="size-8 rounded-full object-cover object-top"
-                    />
-                  ) : (
-                    <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary">
-                      {t.name.split(' ').map((n) => n[0]).join('')}
+          <div className="relative mt-8">
+            {/* Fade edges to create carousel-like appearance */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-neutral-50 to-transparent lg:w-24" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-neutral-50 to-transparent lg:w-24" />
+
+            <div className="flex items-center gap-4 overflow-hidden px-4 lg:justify-center lg:px-12">
+              {/* Reorder: peripheral cards on edges, featured in center */}
+              {(() => {
+                const featured = ['Steven Latham', 'Marcus Blanco', 'Steve Rodriguez']
+                const peripheral = testimonials.filter((t) => !featured.includes(t.name))
+                const center = testimonials.filter((t) => featured.includes(t.name))
+                const ordered = [...peripheral.slice(0, 2), ...center, ...peripheral.slice(2)]
+
+                return ordered.map((t) => {
+                  const isFeatured = featured.includes(t.name)
+                  return (
+                    <div
+                      key={t.name}
+                      className={`shrink-0 rounded-xl border bg-white p-5 shadow-sm transition-all ${
+                        isFeatured
+                          ? 'w-[280px] opacity-100 lg:w-[300px]'
+                          : 'w-[220px] scale-[0.92] opacity-40 lg:w-[240px]'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        {t.image ? (
+                          <Image
+                            src={t.image}
+                            alt={t.name}
+                            width={32}
+                            height={32}
+                            className="size-8 rounded-full object-cover object-top"
+                          />
+                        ) : (
+                          <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary">
+                            {t.name.split(' ').map((n: string) => n[0]).join('')}
+                          </div>
+                        )}
+                        <div className="flex gap-0.5">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="size-3.5 fill-primary text-primary" />
+                          ))}
+                        </div>
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                        &ldquo;{t.quote}&rdquo;
+                      </p>
+                      <div className="mt-3 border-t pt-3">
+                        <p className="text-sm font-semibold">{t.name}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {t.role}, {t.company}
+                        </p>
+                      </div>
                     </div>
-                  )}
-                  <div className="flex gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="size-3.5 fill-primary text-primary" />
-                    ))}
-                  </div>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="mt-3 border-t pt-3">
-                  <p className="text-sm font-semibold">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {t.role}, {t.company}
-                  </p>
-                </div>
-              </div>
-            ))}
+                  )
+                })
+              })()}
+            </div>
           </div>
         </Container>
       </section>
@@ -332,7 +356,7 @@ export default function SydneyLandingPage() {
           </div>
           <div className="mx-auto mt-10 grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {trustPoints.map((point) => (
-              <div key={point.title} className="rounded-lg border bg-background p-6 shadow-sm">
+              <div key={point.title} className="rounded-lg border border-primary/30 bg-background p-6 shadow-sm">
                 <div className="flex items-center gap-3">
                   <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <point.icon className="size-6" />
@@ -505,7 +529,7 @@ export default function SydneyLandingPage() {
             </div>
             <div>
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">
-                Your Project Manager
+                UpScale Team Director
               </p>
               <h2 className="mt-2 font-display text-2xl font-bold tracking-tight md:text-3xl">
                 Noel Yaxley
