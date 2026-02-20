@@ -53,3 +53,14 @@ export function trackFormError(formName: string, errorType: string): void {
     error_type: errorType,
   })
 }
+
+/**
+ * Track a phone call click (tel: link).
+ * Fires `phone_click` event for GTM → Google Ads conversion tracking.
+ */
+export function trackPhoneClick(phoneNumber: string, location: string): void {
+  pushToDataLayer('phone_click', {
+    phone_number: phoneNumber,
+    click_location: location,
+  })
+}

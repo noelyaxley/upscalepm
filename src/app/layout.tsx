@@ -4,6 +4,7 @@ import { GTMScript, GTMNoScript } from '@/components/analytics/gtm-script'
 import { GoogleAdsTag } from '@/components/analytics/google-ads'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { PhoneClickTracker } from '@/components/analytics/phone-click-tracker'
 import { HubSpotTracker } from '@/components/hubspot/hubspot-tracker'
 import { UTMProvider } from '@/components/hubspot/utm-provider'
 import { SmoothScroll } from '@/components/animation/smooth-scroll'
@@ -58,6 +59,7 @@ export default function RootLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <PhoneClickTracker />
           <HubSpotTracker />
           <UTMProvider />
           <ScrollReveal />
