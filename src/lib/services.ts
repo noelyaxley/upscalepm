@@ -13,13 +13,13 @@ export const services: ServicePage[] = [
       {
         heading: 'Strategic Insights -- Excellence in Feasibility and Advisory',
         body: 'At Upscale Project Management, we provide strategic feasibility and advisory services for clients seeking to develop or invest in property.\n\nWith experience across education, health, commercial, and residential sectors, we offer a grounded, design-informed perspective that helps unlock value and reduce risk early in a project\'s lifecycle.\n\nOur services include detailed site feasibility studies, regulatory and planning analysis, and tailored advice on project strategy, delivery options, and capital planning -- ensuring every decision is informed, practical, and aligned with market conditions.',
-        image: '/images/services/231-Elizabeth-Street.jpg',
+        image: '/images/case-studies/231-elizabeth-street/gallery-02.jpg',
         imagePosition: 'right',
       },
       {
         heading: 'Clarity and Confidence for Every Decision',
         body: 'We work closely with private clients, developers, and institutions across Australia to assess the highest and best use of land, manage uncertainty, and guide projects toward successful and sustainable outcomes.\n\nWhether you\'re evaluating a site for acquisition or refining your development strategy, Upscale\'s advisory process delivers clarity, confidence, and long-term value.',
-        image: '/images/services/A7406034.jpg',
+        image: '/images/home/catch-issues.jpg',
         imagePosition: 'left',
       },
     ],
@@ -76,13 +76,13 @@ export const services: ServicePage[] = [
       {
         heading: 'Expert Design Management for Seamless Project Delivery',
         body: 'At Upscale, our design management ensures architectural integrity is maintained from concept through delivery.\n\nWe\'ve overseen complex projects like the Vibe Hotel, managing structural and service challenges on a constrained 550 m\u00B2 site in Darling Harbour.\n\nOur experience on the Parramatta school redevelopment included coordinating architects, contractors, and government stakeholders during a live-site transition.',
-        image: '/images/services/Mac-Park-02.jpg',
+        image: '/images/case-studies/glass-house-macquarie-park/gallery-01.jpg',
         imagePosition: 'right',
       },
       {
         heading: 'Protecting Your Vision Across Every Sector',
         body: 'On the Cooper Street Apartments project, we maintained design intent post-DA, navigating tender changes and delivery-stage adjustments without compromise.\n\nWe led the planning and coordination for Sydney Water\'s $42M laboratory relocation, managing specialist consultants and modular lab requirements.\n\nAcross health, education, and commercial sectors, our team protects your vision -- balancing functionality, cost, and design excellence at every stage.',
-        image: '/images/services/sydney-water-filtration-04-1.jpg',
+        image: '/images/case-studies/sydney-water/gallery-03.jpg',
         imagePosition: 'left',
       },
     ],

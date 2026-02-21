@@ -47,19 +47,19 @@ const slides: { src: string; alt: string; text: string | null; grayscale: boolea
     grayscale: false,
   },
   {
-    src: '/images/landing/granville-diggers-commencement.jpg',
+    src: '/images/insights/granville-diggers-commencement/hero.jpg',
     alt: 'Granville Diggers Club project commencement handshake',
     text: 'Partnerships that deliver results.',
     grayscale: false,
   },
   {
-    src: '/images/landing/calibre-cooper-interior.jpg',
+    src: '/images/case-studies/calibre-cooper/gallery-04.jpg',
     alt: 'Calibre Cooper residential balcony and interior',
     text: 'Quality finishes, every detail.',
     grayscale: false,
   },
   {
-    src: '/images/landing/passion-for-delivering.jpg',
+    src: '/images/insights/passion-for-delivering/hero.jpg',
     alt: 'Noel Yaxley, Founder of UpScale PM',
     text: null,
     grayscale: false,

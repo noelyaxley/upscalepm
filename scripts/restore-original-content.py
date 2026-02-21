@@ -67,7 +67,7 @@ WP_TO_LOCAL = {
     "Strategic-Rezoning-Planning-Proposal-Pete-Island-and-Mooney-Mooney-03.jpg": "/images/case-studies/pete-island/hero.jpg",
     "Vibe-01.jpg": "/images/case-studies/vibe-hotel/hero.jpg",
     "Vibe-02.jpg": "/images/case-studies/vibe-hotel/gallery-06.jpg",
-    "Vibe-03-1.jpg": "/images/case-studies/vibe-hotel/gallery-05.jpg",
+    "Vibe-03-1.jpg": "/images/case-studies/vibe-hotel/construction-bw.jpg",
     "Vibe-06.jpg": "/images/case-studies/vibe-hotel/gallery-03.jpg",
     "Vibe-07.jpg": "/images/case-studies/vibe-hotel/gallery-02.jpg",
     "Vibe-08.jpg": "/images/case-studies/vibe-hotel/gallery-01.jpg",
