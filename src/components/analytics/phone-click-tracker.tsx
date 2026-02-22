@@ -13,7 +13,7 @@ declare global {
  *
  * Fires two things:
  * 1. GTM dataLayer `phone_click` event (for GA4 / GTM triggers)
- * 2. Google Ads conversion via gtag (AW-10851484907/VAyPCMPOkuobEOuJsrYo)
+ * 2. Google Ads conversion via gtag (AW-10851484907/ZE_hCJaxlv0bEOuJsrYo)
  *
  * Mount once in the layout — works across all pages.
  */
@@ -36,7 +36,7 @@ export function PhoneClickTracker() {
       // Google Ads conversion — "Click to call" conversion action
       if (typeof gtag === 'function') {
         gtag('event', 'conversion', {
-          send_to: 'AW-10851484907/VAyPCMPOkuobEOuJsrYo',
+          send_to: 'AW-10851484907/ZE_hCJaxlv0bEOuJsrYo',
         })
       }
     }
