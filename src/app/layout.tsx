@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import { GTMScript, GTMNoScript } from '@/components/analytics/gtm-script'
-import { GoogleAdsTag } from '@/components/analytics/google-ads'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { PhoneClickTracker } from '@/components/analytics/phone-click-tracker'
@@ -51,7 +50,6 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
         <GTMScript />
-        <GoogleAdsTag />
       </head>
       <body className="flex min-h-screen flex-col font-sans antialiased">
         <GTMNoScript />

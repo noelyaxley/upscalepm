@@ -3,17 +3,11 @@
 import { useEffect } from 'react'
 import { trackPhoneClick } from './gtm-event'
 
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function gtag(...args: any[]): void
-}
-
 /**
  * Global listener that tracks clicks on any `tel:` link.
  *
- * Fires two things:
- * 1. GTM dataLayer `phone_click` event (for GA4 / GTM triggers)
- * 2. Google Ads conversion via gtag (AW-10851484907/ZE_hCJaxlv0bEOuJsrYo)
+ * Pushes `phone_click` to the GTM dataLayer. The Google Ads conversion
+ * is fired by the "Click to Call - Landing" tag in GTM.
  *
  * Mount once in the layout — works across all pages.
  */
@@ -30,15 +24,8 @@ export function PhoneClickTracker() {
         anchor.closest('section')?.querySelector('h2, h3')?.textContent?.trim() ??
         'unknown'
 
-      // GTM dataLayer event
+      // GTM dataLayer event — triggers "Click to Call" conversion tag in GTM
       trackPhoneClick(phoneNumber, section)
-
-      // Google Ads conversion — "Click to call" conversion action
-      if (typeof gtag === 'function') {
-        gtag('event', 'conversion', {
-          send_to: 'AW-10851484907/ZE_hCJaxlv0bEOuJsrYo',
-        })
-      }
     }
 
     document.addEventListener('click', handleClick)

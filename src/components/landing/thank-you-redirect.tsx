@@ -3,27 +3,13 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void
-  }
-}
-
 export function ThankYouRedirect() {
   const router = useRouter()
   const [seconds, setSeconds] = useState(5)
 
-  // Fire Google Ads conversion only if the user actually submitted a form
+  // Clear the form_submitted flag (conversion is tracked by GTM)
   useEffect(() => {
-    const submitted = sessionStorage.getItem('form_submitted')
-    if (!submitted) return
-
     sessionStorage.removeItem('form_submitted')
-    if (window.gtag) {
-      window.gtag('event', 'conversion', {
-        send_to: 'AW-10851484907/OhIDCJaQifkbEOuJsrYo',
-      })
-    }
   }, [])
 
   useEffect(() => {
