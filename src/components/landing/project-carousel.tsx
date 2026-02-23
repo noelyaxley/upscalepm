@@ -124,3 +124,57 @@ export function ProjectCarousel() {
     </div>
   )
 }
+
+/**
+ * Hero background variant — fills positioned parent, slower transitions,
+ * no text overlays (gradient handled by parent wrapper).
+ */
+export function HeroCarouselBackground({ interval = 4500 }: { interval?: number }) {
+  const [current, setCurrent] = useState(0)
+
+  const next = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % slides.length)
+  }, [])
+
+  useEffect(() => {
+    const timer = setInterval(next, interval)
+    return () => clearInterval(timer)
+  }, [next, interval])
+
+  return (
+    <>
+      <div className="absolute inset-0 overflow-hidden">
+        {slides.map((slide, i) => (
+          <div
+            key={slide.src}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              i === current ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              className={`object-cover ${slide.grayscale ? 'grayscale' : ''}`}
+              sizes="100vw"
+              priority={i === 0}
+            />
+          </div>
+        ))}
+      </div>
+      {/* Progress dots */}
+      <div className="absolute inset-x-0 bottom-4 z-20 flex items-center justify-center gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`size-2 rounded-full transition-all ${
+              i === current ? 'scale-125 bg-white' : 'bg-white/50'
+            }`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+    </>
+  )
+}

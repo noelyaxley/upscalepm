@@ -20,7 +20,11 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>
 
-export function LandingForm() {
+interface LandingFormProps {
+  variant?: 'dark' | 'light'
+}
+
+export function LandingForm({ variant = 'dark' }: LandingFormProps) {
   const router = useRouter()
   const [status, setStatus] = useState<'idle' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
@@ -78,6 +82,19 @@ export function LandingForm() {
     }
   }
 
+  const inputClass =
+    variant === 'light'
+      ? 'w-full rounded-md border border-neutral-300 bg-white px-3 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary'
+      : 'w-full rounded-md border border-neutral-700 bg-neutral-800 px-3 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary'
+
+  const errorClass =
+    variant === 'light' ? 'mt-1 text-xs text-red-600' : 'mt-1 text-xs text-red-400'
+
+  const statusErrorClass =
+    variant === 'light'
+      ? 'text-center text-sm text-red-600'
+      : 'text-center text-sm text-red-400'
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
@@ -86,11 +103,11 @@ export function LandingForm() {
             type="text"
             placeholder="First name *"
             {...register('firstName')}
-            className="w-full rounded-md border border-neutral-700 bg-neutral-800 px-3 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            className={inputClass}
             autoComplete="given-name"
           />
           {errors.firstName && (
-            <p className="mt-1 text-xs text-red-400">{errors.firstName.message}</p>
+            <p className={errorClass}>{errors.firstName.message}</p>
           )}
         </div>
         <div>
@@ -98,11 +115,11 @@ export function LandingForm() {
             type="text"
             placeholder="Last name *"
             {...register('lastName')}
-            className="w-full rounded-md border border-neutral-700 bg-neutral-800 px-3 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            className={inputClass}
             autoComplete="family-name"
           />
           {errors.lastName && (
-            <p className="mt-1 text-xs text-red-400">{errors.lastName.message}</p>
+            <p className={errorClass}>{errors.lastName.message}</p>
           )}
         </div>
       </div>
@@ -112,11 +129,11 @@ export function LandingForm() {
           type="email"
           placeholder="Email *"
           {...register('email')}
-          className="w-full rounded-md border border-neutral-700 bg-neutral-800 px-3 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          className={inputClass}
           autoComplete="email"
         />
         {errors.email && (
-          <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>
+          <p className={errorClass}>{errors.email.message}</p>
         )}
       </div>
 
@@ -125,11 +142,11 @@ export function LandingForm() {
           type="tel"
           placeholder="Phone *"
           {...register('phone')}
-          className="w-full rounded-md border border-neutral-700 bg-neutral-800 px-3 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          className={inputClass}
           autoComplete="tel"
         />
         {errors.phone && (
-          <p className="mt-1 text-xs text-red-400">{errors.phone.message}</p>
+          <p className={errorClass}>{errors.phone.message}</p>
         )}
       </div>
 
@@ -138,7 +155,7 @@ export function LandingForm() {
           placeholder="Tell us about your project (optional)"
           rows={3}
           {...register('message')}
-          className="w-full rounded-md border border-neutral-700 bg-neutral-800 px-3 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          className={inputClass}
         />
       </div>
 
@@ -158,7 +175,7 @@ export function LandingForm() {
       </button>
 
       {status === 'error' && (
-        <p className="text-center text-sm text-red-400">{errorMessage}</p>
+        <p className={statusErrorClass}>{errorMessage}</p>
       )}
 
       <div className="flex items-center justify-center gap-2 text-xs text-neutral-500">

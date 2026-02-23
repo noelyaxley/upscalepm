@@ -1,11 +1,9 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Suspense } from 'react'
 import { Container } from '@/components/layout/container'
 import { LandingForm } from '@/components/forms/landing-form'
-import { DynamicHeadline } from '@/components/landing/dynamic-headline'
-import { ProjectCarousel } from '@/components/landing/project-carousel'
+import { HeroSection } from '@/components/landing/hero-section'
 import {
   Phone,
   CheckCircle2,
@@ -168,62 +166,8 @@ export default function SydneyLandingPage() {
         </Container>
       </div>
 
-      {/* HERO — Form above the fold */}
-      <section className="bg-neutral-950 text-white">
-        <Container>
-          <div className="grid gap-8 py-10 md:py-14 lg:grid-cols-2 lg:gap-12">
-            {/* Left — Value prop */}
-            <div className="flex flex-col justify-center">
-              <Suspense>
-                <DynamicHeadline />
-              </Suspense>
-              <p className="mt-4 text-lg text-neutral-300">
-                Stop overpaying contractors and missing critical issues. We&apos;re
-                Sydney&apos;s independent project managers who represent{' '}
-                <strong className="text-white">you</strong> — not the builder.
-              </p>
-              <ul className="mt-6 space-y-3">
-                {[
-                  'Over 30+ projects delivered across Sydney',
-                  'Project management, construction management & DA approval',
-                  'Trusted by Sydney Water, NSW Ambulance & government',
-                  'Feasibility studies to de-risk your investment',
-                  'Free 30-minute consultation — no obligation',
-                ].map((point) => (
-                  <li key={point} className="flex items-start gap-2 text-sm text-neutral-300">
-                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6">
-                <a
-                  href={`tel:${PHONE_NUMBER}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
-                >
-                  <Phone className="size-4" />
-                  Call Now: {PHONE_DISPLAY}
-                </a>
-              </div>
-            </div>
-
-            {/* Right — Form */}
-            <div id="form" className="scroll-mt-20">
-              <div className="rounded-xl border border-neutral-700 bg-neutral-900 p-6 md:p-8">
-                <h2 className="font-display text-xl font-bold">
-                  Get Your Free Consultation
-                </h2>
-                <p className="mt-1 text-sm text-neutral-400">
-                  Tell us about your Sydney project. We respond within 2 hours.
-                </p>
-                <div className="mt-6">
-                  <LandingForm />
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+      {/* HERO — Carousel background + frosted glass form */}
+      <HeroSection />
 
       {/* Logo bar */}
       <section className="border-b bg-neutral-100 py-6">
@@ -318,26 +262,6 @@ export default function SydneyLandingPage() {
                   )
                 })
               })()}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* PROJECT CAROUSEL — Auto-sliding project images */}
-      <ProjectCarousel />
-
-      {/* MID-PAGE CTA — Floating consultation form */}
-      <section className="bg-neutral-950 py-14 text-white md:py-20">
-        <Container size="narrow">
-          <div className="rounded-xl border border-neutral-700 bg-neutral-900 p-6 md:p-8">
-            <h3 className="font-display text-xl font-bold">
-              Get Your Free Consultation
-            </h3>
-            <p className="mt-1 text-sm text-neutral-400">
-              Tell us about your Sydney project. We respond within 2 hours.
-            </p>
-            <div className="mt-6">
-              <LandingForm />
             </div>
           </div>
         </Container>
@@ -553,14 +477,14 @@ export default function SydneyLandingPage() {
       </section>
 
       {/* FINAL CTA — Form repeat */}
-      <section className="bg-neutral-950 py-14 text-white md:py-20">
+      <section className="border-t bg-neutral-50 py-14 md:py-20">
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="flex flex-col justify-center">
               <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
                 Ready to Start Your Sydney Project?
               </h2>
-              <p className="mt-4 text-neutral-300">
+              <p className="mt-4 text-muted-foreground">
                 Get a free 30-minute consultation with an experienced Sydney
                 project manager. Whether it&apos;s construction management, DA
                 approval, a feasibility study, or full project delivery — we&apos;re
@@ -571,7 +495,7 @@ export default function SydneyLandingPage() {
                   <Clock className="size-6 text-primary" />
                   <div>
                     <p className="text-base font-bold text-primary">2-Hour Callback Guarantee</p>
-                    <p className="text-sm text-neutral-300">
+                    <p className="text-sm text-neutral-600">
                       Submit your details and we&apos;ll call you back within 2 hours
                       during business hours. Every time.
                     </p>
@@ -587,15 +511,15 @@ export default function SydneyLandingPage() {
               </a>
             </div>
             <div id="form-bottom">
-              <div className="rounded-xl border border-neutral-700 bg-neutral-900 p-6 md:p-8">
+              <div className="rounded-xl border border-neutral-200 bg-white p-6 shadow-md md:p-8">
                 <h3 className="font-display text-xl font-bold">
                   Speak to a Sydney Expert
                 </h3>
-                <p className="mt-1 text-sm text-neutral-400">
+                <p className="mt-1 text-sm text-muted-foreground">
                   Fill in your details and we&apos;ll be in touch within 2 hours.
                 </p>
                 <div className="mt-6">
-                  <LandingForm />
+                  <LandingForm variant="light" />
                 </div>
               </div>
             </div>
