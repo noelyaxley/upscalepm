@@ -1,11 +1,13 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
 import { DraftImagePanel } from '@/components/draft/draft-image-panel'
+
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/noelyaxley/upscalepm'
 
 // Dynamically import the markdown editor to avoid SSR issues
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
@@ -42,6 +44,26 @@ export default function DraftEditPage() {
   const [lastSaved, setLastSaved] = useState<Date | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [showPublishConfirm, setShowPublishConfirm] = useState(false)
+
+  // Rewrite local image paths to raw GitHub URLs for the editor preview
+  const previewOptions = useMemo(
+    () => ({
+      components: {
+        img: (
+          props: React.ImgHTMLAttributes<HTMLImageElement>
+        ) => {
+          let src = typeof props.src === 'string' ? props.src : ''
+          // Rewrite /images/insights/... paths to raw GitHub URLs on the draft branch
+          if (draft?.branch && src.startsWith('/images/insights/')) {
+            src = `${GITHUB_RAW_BASE}/${draft.branch}/public${src}`
+          }
+          /* eslint-disable-next-line @next/next/no-img-element */
+          return <img {...props} src={src} style={{ maxWidth: '100%', height: 'auto', borderRadius: 8 }} />
+        },
+      },
+    }),
+    [draft?.branch]
+  )
 
   // Fetch draft content
   useEffect(() => {
@@ -252,7 +274,7 @@ export default function DraftEditPage() {
       )}
 
       {/* MDX Editor */}
-      <div className="flex-1 overflow-hidden" data-color-mode="light">
+      <div className="min-h-0 flex-1" data-color-mode="light" data-lenis-prevent>
         <MDEditor
           value={mdxContent}
           onChange={handleContentChange}
@@ -260,6 +282,7 @@ export default function DraftEditPage() {
           preview="live"
           visibleDragbar={true}
           hideToolbar={false}
+          previewOptions={previewOptions}
         />
       </div>
 

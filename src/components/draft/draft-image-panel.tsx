@@ -19,6 +19,7 @@ export function DraftImagePanel({
   const [expanded, setExpanded] = useState(initialImages.length > 0)
   const [uploading, setUploading] = useState(false)
   const [deletingFile, setDeletingFile] = useState<string | null>(null)
+  const [replacingFile, setReplacingFile] = useState<string | null>(null)
   const [showDeleteConfirm, setShowDeleteConfirm] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [copied, setCopied] = useState<string | null>(null)
@@ -103,6 +104,42 @@ export function DraftImagePanel({
       setError(e instanceof Error ? e.message : 'Delete failed')
     } finally {
       setDeletingFile(null)
+    }
+  }
+
+  async function handleReplace(filePath: string, file: File) {
+    const filename = filePath.split('/').pop()!
+    setReplacingFile(filePath)
+    setError(null)
+    try {
+      if (!file.type.startsWith('image/')) {
+        throw new Error('Not an image file')
+      }
+      if (file.size > 10 * 1024 * 1024) {
+        throw new Error('File exceeds 10MB limit')
+      }
+      // Delete old file first
+      const delRes = await fetch(`/api/draft/posts/${slug}/images`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename }),
+      })
+      if (!delRes.ok) throw new Error('Failed to remove old image')
+
+      // Upload new file with same name
+      const base64 = await fileToBase64(file)
+      const uploadRes = await fetch(`/api/draft/posts/${slug}/images`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename, base64 }),
+      })
+      if (!uploadRes.ok) throw new Error('Failed to upload replacement')
+
+      await refreshImages()
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Replace failed')
+    } finally {
+      setReplacingFile(null)
     }
   }
 
@@ -317,6 +354,37 @@ export function DraftImagePanel({
                           </>
                         )}
                       </button>
+                      <label
+                        className={`flex flex-1 cursor-pointer items-center justify-center gap-1 border-r py-1.5 text-[10px] font-medium text-amber-600 transition-colors hover:bg-amber-50 ${
+                          replacingFile === filePath ? 'opacity-50' : ''
+                        }`}
+                        title="Replace image"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                          className="h-3 w-3"
+                        >
+                          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                          <polyline points="17 8 12 3 7 8" />
+                          <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                        {replacingFile === filePath ? 'Replacing...' : 'Replace'}
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0]
+                            if (file) {
+                              handleReplace(filePath, file)
+                              e.target.value = ''
+                            }
+                          }}
+                        />
+                      </label>
                       <button
                         onClick={() => setShowDeleteConfirm(filePath)}
                         disabled={isDeleting}
