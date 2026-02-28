@@ -1,10 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 
 export default function DraftLoginPage() {
-  const router = useRouter()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -23,7 +21,8 @@ export default function DraftLoginPage() {
       })
 
       if (res.ok) {
-        router.push('/insights/draft')
+        // Full page navigation to ensure the cookie is sent with the request
+        window.location.href = '/insights/draft'
       } else {
         const data = await res.json()
         setError(data.error || 'Login failed')

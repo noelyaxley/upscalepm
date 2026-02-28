@@ -84,7 +84,7 @@ export async function listDraftPRs(): Promise<DraftPR[]> {
 /**
  * Get the list of files in a PR
  */
-export async function getPRFiles(prNumber: number): Promise<Array<{ filename: string; sha: string }>> {
+export async function getPRFiles(prNumber: number): Promise<Array<{ filename: string; sha: string; status: string }>> {
   const res = await fetch(
     `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/pulls/${prNumber}/files`,
     { headers: getHeaders() }
@@ -171,6 +171,111 @@ export async function mergePR(
 }
 
 /**
+ * Create a new file on a branch (no existing SHA needed)
+ */
+export async function createFile(
+  branch: string,
+  filePath: string,
+  base64Content: string,
+  message: string
+): Promise<{ sha: string }> {
+  const res = await fetch(
+    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}`,
+    {
+      method: 'PUT',
+      headers: getHeaders(),
+      body: JSON.stringify({
+        message,
+        content: base64Content,
+        branch,
+      }),
+    }
+  )
+  if (!res.ok) {
+    const err = await res.text()
+    throw new Error(`GitHub API error: ${res.status} — ${err}`)
+  }
+  const data = await res.json()
+  return { sha: data.content.sha }
+}
+
+/**
+ * Delete a file from a branch
+ */
+export async function deleteFile(
+  branch: string,
+  filePath: string,
+  sha: string,
+  message: string
+): Promise<void> {
+  const res = await fetch(
+    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}`,
+    {
+      method: 'DELETE',
+      headers: getHeaders(),
+      body: JSON.stringify({
+        message,
+        sha,
+        branch,
+      }),
+    }
+  )
+  if (!res.ok) {
+    const err = await res.text()
+    throw new Error(`GitHub API error: ${res.status} — ${err}`)
+  }
+}
+
+/**
+ * Get the SHA of a file on a branch (for deletion)
+ */
+export async function getFileSha(
+  branch: string,
+  filePath: string
+): Promise<string> {
+  const res = await fetch(
+    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}?ref=${branch}`,
+    { headers: getHeaders() }
+  )
+  if (!res.ok) throw new Error(`GitHub API error: ${res.status}`)
+  const data = await res.json()
+  return data.sha
+}
+
+/**
+ * Close a PR and delete its branch
+ */
+export async function deleteDraft(
+  prNumber: number,
+  branch: string
+): Promise<void> {
+  // Close the PR
+  const closeRes = await fetch(
+    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/pulls/${prNumber}`,
+    {
+      method: 'PATCH',
+      headers: getHeaders(),
+      body: JSON.stringify({ state: 'closed' }),
+    }
+  )
+  if (!closeRes.ok) {
+    throw new Error(`Failed to close PR: ${closeRes.status} ${closeRes.statusText}`)
+  }
+
+  // Delete the branch
+  const branchRes = await fetch(
+    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/git/refs/heads/${branch}`,
+    {
+      method: 'DELETE',
+      headers: getHeaders(),
+    }
+  )
+  if (!branchRes.ok) {
+    throw new Error(`Failed to delete branch: ${branchRes.status} ${branchRes.statusText}`)
+  }
+}
+
+/**
  * Find a draft PR by slug
  */
 export async function findPRBySlug(slug: string): Promise<DraftPR | null> {
@@ -191,10 +296,12 @@ export async function getDraftContent(slug: string): Promise<DraftContent | null
   // Get image files from the PR
   const files = await getPRFiles(pr.prNumber)
   const imageFiles = files
-    .filter((f: { filename: string }) =>
-      f.filename.startsWith(`public/images/insights/${slug}/`)
+    .filter(
+      (f) =>
+        f.filename.startsWith(`public/images/insights/${slug}/`) &&
+        f.status !== 'removed'
     )
-    .map((f: { filename: string }) => f.filename)
+    .map((f) => f.filename)
 
   // Parse frontmatter
   const fmMatch = content.match(/^---\n([\s\S]*?)\n---/)

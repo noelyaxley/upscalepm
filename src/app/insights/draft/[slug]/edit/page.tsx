@@ -5,6 +5,8 @@ import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
+import { DraftImagePanel } from '@/components/draft/draft-image-panel'
+
 // Dynamically import the markdown editor to avoid SSR issues
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
   ssr: false,
@@ -238,6 +240,15 @@ export default function DraftEditPage() {
             Dismiss
           </button>
         </div>
+      )}
+
+      {/* Image panel */}
+      {draft && (
+        <DraftImagePanel
+          slug={slug}
+          branch={draft.branch}
+          initialImages={draft.imageFiles}
+        />
       )}
 
       {/* MDX Editor */}

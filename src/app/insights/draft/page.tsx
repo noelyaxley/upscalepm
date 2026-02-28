@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { listDraftPRs } from '@/lib/github'
 import type { DraftPR } from '@/lib/github'
+import { DeleteDraftButton } from '@/components/draft/delete-draft-button'
 
 export const dynamic = 'force-dynamic'
 
@@ -135,7 +136,7 @@ function DraftCard({ draft }: { draft: DraftPR }) {
         </Link>
         <Link
           href={`/insights/draft/${draft.slug}/edit`}
-          className="flex flex-1 items-center justify-center gap-1.5 py-2.5 text-xs font-medium text-amber-600 transition-colors hover:bg-amber-50 hover:text-amber-700"
+          className="flex flex-1 items-center justify-center gap-1.5 border-r py-2.5 text-xs font-medium text-amber-600 transition-colors hover:bg-amber-50 hover:text-amber-700"
         >
           <svg
             viewBox="0 0 24 24"
@@ -149,6 +150,7 @@ function DraftCard({ draft }: { draft: DraftPR }) {
           </svg>
           Edit
         </Link>
+        <DeleteDraftButton slug={draft.slug} prNumber={draft.prNumber} />
       </div>
     </div>
   )

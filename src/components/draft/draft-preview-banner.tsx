@@ -12,7 +12,29 @@ interface DraftPreviewBannerProps {
 export function DraftPreviewBanner({ slug, prNumber }: DraftPreviewBannerProps) {
   const router = useRouter()
   const [publishing, setPublishing] = useState(false)
+  const [deleting, setDeleting] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
+
+  async function handleDelete() {
+    setDeleting(true)
+    try {
+      const res = await fetch(`/api/draft/posts/${slug}`, {
+        method: 'DELETE',
+      })
+      const data = await res.json()
+      if (res.ok) {
+        window.location.href = '/insights/draft'
+      } else {
+        alert(`Delete failed: ${data.error}`)
+      }
+    } catch {
+      alert('Network error during delete')
+    } finally {
+      setDeleting(false)
+      setShowDeleteConfirm(false)
+    }
+  }
 
   async function handlePublish() {
     setPublishing(true)
@@ -49,6 +71,13 @@ export function DraftPreviewBanner({ slug, prNumber }: DraftPreviewBannerProps) 
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowDeleteConfirm(true)}
+              disabled={deleting}
+              className="rounded-lg border border-red-300 bg-white px-3 py-1.5 text-xs font-medium text-red-700 transition-colors hover:bg-red-50 disabled:opacity-60"
+            >
+              {deleting ? 'Deleting...' : 'Delete'}
+            </button>
             <Link
               href={`/insights/draft/${slug}/edit`}
               className="rounded-lg border border-amber-300 bg-white px-3 py-1.5 text-xs font-medium text-amber-800 transition-colors hover:bg-amber-100"
@@ -65,6 +94,36 @@ export function DraftPreviewBanner({ slug, prNumber }: DraftPreviewBannerProps) 
           </div>
         </div>
       </div>
+
+      {/* Delete confirmation dialog */}
+      {showDeleteConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="mx-4 w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+            <h3 className="text-lg font-semibold text-neutral-900">
+              Delete this draft?
+            </h3>
+            <p className="mt-2 text-sm text-neutral-600">
+              This will close PR #{prNumber} and delete its branch. The draft
+              post will be permanently removed. This cannot be undone.
+            </p>
+            <div className="mt-6 flex justify-end gap-3">
+              <button
+                onClick={() => setShowDeleteConfirm(false)}
+                className="rounded-lg border px-4 py-2 text-sm font-medium text-neutral-600 hover:bg-neutral-50"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDelete}
+                disabled={deleting}
+                className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 disabled:opacity-60"
+              >
+                {deleting ? 'Deleting...' : 'Yes, delete it'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Publish confirmation dialog */}
       {showConfirm && (
