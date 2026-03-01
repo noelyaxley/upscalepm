@@ -4,6 +4,11 @@ import Link from 'next/link'
 import { Container } from '@/components/layout/container'
 import { LandingForm } from '@/components/forms/landing-form'
 import { HeroSection } from '@/components/landing/hero-section'
+import { PainPointsSection } from '@/components/landing/pain-points-section'
+import { CostSection } from '@/components/landing/cost-section'
+import { ProofCarousel } from '@/components/landing/proof-carousel'
+import { HowWeWorkSection } from '@/components/landing/how-we-work-section'
+import { FAQSection } from '@/components/landing/faq-section'
 import {
   Phone,
   CheckCircle2,
@@ -202,7 +207,7 @@ export default function SydneyLandingPage() {
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
-              100% Client Satisfaction Across Sydney
+              We Don&apos;t Just Promise Results. Our Clients Confirm Them.
             </h2>
           </div>
           <div className="relative mt-8">
@@ -267,12 +272,18 @@ export default function SydneyLandingPage() {
         </Container>
       </section>
 
+      {/* PROOF — Project image carousel */}
+      <ProofCarousel />
+
+      {/* PAIN POINTS — "Does This Sound Familiar?" */}
+      <PainPointsSection />
+
       {/* WHY UPSCALE — Trust points (now 6 cards covering all ad groups) */}
       <section className="py-14 md:py-20">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
-              Why Sydney Property Owners Choose UpScale
+              We&apos;re Not Just Another PM. We&apos;re Your Independent Advantage.
             </h2>
             <p className="mt-3 text-muted-foreground">
               Most project managers work for the contractor. We work for you.
@@ -296,13 +307,19 @@ export default function SydneyLandingPage() {
         </Container>
       </section>
 
+      {/* HOW WE WORK — 6-step process with scroll animations */}
+      <HowWeWorkSection />
+
+      {/* COST OF INACTION — What poor PM costs you */}
+      <CostSection />
+
       {/* MID-PAGE CTA — 2-hour guarantee prominent */}
       <section className="bg-primary py-10 md:py-14">
         <Container>
           <div className="flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
             <div>
               <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
-                Got a Sydney Project? Let&apos;s Make It Reality.
+                You&apos;re One Conversation Away From Taking Control of Your Build.
               </h2>
               <p className="mt-2 text-primary-100">
                 2-hour callback guarantee. Construction management, DA approval, feasibility — we cover it all.
@@ -314,13 +331,13 @@ export default function SydneyLandingPage() {
                 className="inline-flex items-center justify-center gap-2 rounded-md bg-white px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-neutral-100"
               >
                 <Phone className="size-4" />
-                Call Now
+                Speak to an Expert
               </a>
               <a
-                href="#form"
+                href="#form-bottom"
                 className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
               >
-                Request Callback
+                Request a Strategy Call
               </a>
             </div>
           </div>
@@ -342,7 +359,7 @@ export default function SydneyLandingPage() {
             </div>
             <div>
               <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
-                Experienced Sydney Project & Construction Management
+                We Don&apos;t Just Manage Projects. We Deliver Them.
               </h2>
               <p className="mt-4 text-muted-foreground">
                 UpScale specialises in managing technically demanding Sydney
@@ -371,11 +388,10 @@ export default function SydneyLandingPage() {
               </div>
               <div className="mt-6">
                 <a
-                  href={`tel:${PHONE_NUMBER}`}
+                  href="#form-bottom"
                   className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
                 >
-                  <Phone className="size-4" />
-                  Call Now: {PHONE_DISPLAY}
+                  Discuss Your Project
                 </a>
               </div>
             </div>
@@ -389,7 +405,7 @@ export default function SydneyLandingPage() {
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="order-2 lg:order-1">
               <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
-                Reduce Risk. Increase Returns. Sydney Delivered.
+                Every Dollar You Overpay Is a Dollar You Don&apos;t Get Back.
               </h2>
               <p className="mt-4 text-muted-foreground">
                 Greater experience means greater returns. With over 14 projects
@@ -413,11 +429,10 @@ export default function SydneyLandingPage() {
                 ))}
               </ul>
               <a
-                href={`tel:${PHONE_NUMBER}`}
+                href="#form-bottom"
                 className="mt-6 inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
               >
-                <Phone className="size-4" />
-                Call Now: {PHONE_DISPLAY}
+                Book Your Free Consultation
               </a>
             </div>
             <div className="relative order-1 aspect-[4/3] overflow-hidden rounded-xl lg:order-2">
@@ -432,6 +447,9 @@ export default function SydneyLandingPage() {
           </div>
         </Container>
       </section>
+
+      {/* FAQ — Sydney-specific questions */}
+      <FAQSection />
 
       {/* ABOUT NOEL — Founder hero */}
       <section className="bg-neutral-950 py-14 text-white md:py-20">
@@ -482,7 +500,7 @@ export default function SydneyLandingPage() {
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="flex flex-col justify-center">
               <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
-                Ready to Start Your Sydney Project?
+                You&apos;re One Call Away From Independent Eyes on Your Project.
               </h2>
               <p className="mt-4 text-muted-foreground">
                 Get a free 30-minute consultation with an experienced Sydney

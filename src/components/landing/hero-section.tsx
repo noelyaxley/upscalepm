@@ -1,10 +1,10 @@
 'use client'
 
 import { Suspense } from 'react'
+import Image from 'next/image'
 import { Phone, CheckCircle2 } from 'lucide-react'
-import { HeroCarouselBackground } from './project-carousel'
 import { DynamicHeadline } from './dynamic-headline'
-import { LandingForm } from '@/components/forms/landing-form'
+import { SurveyForm } from '@/components/forms/survey-form'
 
 const PHONE_NUMBER = '+61290904480'
 const PHONE_DISPLAY = '02 9090 4480'
@@ -12,8 +12,17 @@ const PHONE_DISPLAY = '02 9090 4480'
 export function HeroSection() {
   return (
     <section className="relative min-h-[500px] text-white md:min-h-[680px]">
-      {/* Layer 1: Auto-rotating project photos */}
-      <HeroCarouselBackground />
+      {/* Layer 1: Static hero image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/case-studies/231-elizabeth-street/hero.jpg"
+          alt="231 Elizabeth Street commercial fit-out — managed by UpScalePM"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+      </div>
 
       {/* Layer 2: Gradient overlay — dark left (text), moderate right (form has frosted glass) */}
       <div
@@ -35,13 +44,13 @@ export function HeroSection() {
               <DynamicHeadline />
             </Suspense>
             <p className="mt-4 text-lg text-neutral-200">
-              Stop overpaying contractors and missing critical issues. We&apos;re
-              Sydney&apos;s independent project managers who represent{' '}
-              <strong className="text-white">you</strong> &mdash; not the builder.
+              Most project managers work for the builder. We work for{' '}
+              <strong className="text-white">you</strong>. One independent team
+              from feasibility to handover — no conflicts, no surprises.
             </p>
             <ul className="mt-6 space-y-3">
               {[
-                'Over 30+ projects delivered across Sydney',
+                '30+ projects delivered across Sydney',
                 'Project management, construction management & DA approval',
                 'Trusted by Sydney Water, NSW Ambulance & government',
                 'Feasibility studies to de-risk your investment',
@@ -68,13 +77,13 @@ export function HeroSection() {
           <div id="form" className="scroll-mt-20">
             <div className="rounded-xl border border-white/15 bg-neutral-900/80 p-6 backdrop-blur-xl md:p-8">
               <h2 className="font-display text-xl font-bold text-white">
-                Get Your Free Consultation
+                Tell Us About Your Project
               </h2>
               <p className="mt-1 text-sm text-neutral-400">
-                Tell us about your Sydney project. We respond within 2 hours.
+                Answer 5 quick questions — we&apos;ll match you with the right expert.
               </p>
               <div className="mt-6">
-                <LandingForm variant="dark" />
+                <SurveyForm />
               </div>
             </div>
           </div>

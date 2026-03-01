@@ -21,46 +21,46 @@ import { useSearchParams } from 'next/navigation'
 
 const headlines: Record<string, { title: string; subtitle?: string }> = {
   construction: {
-    title: 'Sydney Construction Management You Can Trust',
-    subtitle: 'Experienced site supervision, contractor management, and progress claim review.',
+    title: 'Your Builder Works for Themselves. Your PM Should Work for You.',
+    subtitle: 'We don\u2019t just watch the build. We challenge every claim, variation, and programme update.',
   },
   townplanner: {
-    title: 'Sydney DA Approval & Town Planning Experts',
-    subtitle: 'Navigate council requirements with confidence. We manage the full DA process.',
+    title: 'Don\u2019t Let Council Delays Kill Your Sydney Project',
+    subtitle: 'We don\u2019t just lodge your DA. We manage the entire approval process so nothing stalls.',
   },
   commercial: {
-    title: 'Sydney Commercial Fit-Out & Project Management',
-    subtitle: 'From CBD offices to government facilities — delivered on time and on budget.',
+    title: 'Your Commercial Fit-Out Shouldn\u2019t Cost More Than It Has To',
+    subtitle: 'We don\u2019t just manage the fit-out. We protect your budget from day one to handover.',
   },
   feasibility: {
-    title: 'Sydney Feasibility Studies & Advisory',
-    subtitle: 'De-risk your investment with independent feasibility analysis before you commit.',
+    title: 'Don\u2019t Commit $2M Before You Know the Real Numbers',
+    subtitle: 'We don\u2019t just run numbers. We tell you what others won\u2019t \u2014 before you commit.',
   },
   development: {
-    title: 'Sydney Development Project Management',
-    subtitle: 'Expert guidance from concept through to completion for your development project.',
+    title: 'Your Development Is Too Important to Manage From Your Inbox',
+    subtitle: 'We don\u2019t just coordinate meetings. We own the delivery from feasibility through handover.',
   },
   contracts: {
-    title: 'Sydney Contract Administration Experts',
-    subtitle: 'Independent contract review, variation management, and progress claim verification.',
+    title: 'Stop Signing Contracts You Haven\u2019t Properly Reviewed',
+    subtitle: 'We don\u2019t just review paperwork. We make sure every dollar you pay is justified.',
   },
   sitemanager: {
-    title: 'Sydney Site Management & Superintendent',
-    subtitle: 'Experienced on-site leadership ensuring quality, safety, and client-first delivery.',
+    title: 'Your Site Needs a Leader Who Answers to You \u2014 Not the Builder',
+    subtitle: 'We don\u2019t just supervise. We hold contractors accountable on your behalf.',
   },
   superintendent: {
-    title: 'Sydney Construction Superintendent',
-    subtitle: 'Experienced on-site leadership ensuring quality, safety, and client-first delivery.',
+    title: 'Your Site Needs a Leader Who Answers to You \u2014 Not the Builder',
+    subtitle: 'We don\u2019t just supervise. We hold contractors accountable on your behalf.',
   },
   property: {
-    title: 'Sydney Property Project Management',
-    subtitle: 'Protect your property investment with independent, client-side project management.',
+    title: 'Protect Your Property Investment Before It\u2019s Too Late',
+    subtitle: 'We don\u2019t just manage your project. We sit on your side of the table.',
   },
 }
 
 const defaultHeadline = {
-  title: 'Sydney Project & Construction Management You Can Trust',
-  subtitle: 'Project management, construction management, DA approval — all under one roof.',
+  title: 'We Don\u2019t Just Manage Your Project. We Protect Your Investment.',
+  subtitle: 'Client-side oversight that catches costly mistakes before they hit your bottom line.',
 }
 
 export function DynamicHeadline() {
