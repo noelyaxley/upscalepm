@@ -83,6 +83,7 @@ export function StatsV2() {
               width={1200}
               height={500}
               className="h-64 w-full object-cover md:h-96"
+              sizes="(max-width: 768px) 95vw, 1100px"
             />
           </div>
 

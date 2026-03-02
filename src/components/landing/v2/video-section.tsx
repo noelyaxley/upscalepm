@@ -32,6 +32,7 @@ export function VideoSection() {
               width={1200}
               height={600}
               className="h-72 w-full object-cover brightness-75 md:h-[500px]"
+              sizes="(max-width: 768px) 95vw, 1100px"
             />
             <div className="absolute inset-0 flex items-center justify-center">
               {/* Pulsing rings */}
