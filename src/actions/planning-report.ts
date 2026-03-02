@@ -6,9 +6,9 @@ import { z } from 'zod'
 
 const schema = z.object({
   name: z.string().min(1, 'Please enter your name'),
-  phone: z.string().optional(),
+  phone: z.string().min(1, 'Please enter your phone number'),
   email: z.string().email('Please enter a valid email'),
-  siteAddress: z.string().min(3, 'Please enter a site address'),
+  siteAddress: z.string().optional(),
   utmSource: z.string().optional(),
   utmMedium: z.string().optional(),
   utmCampaign: z.string().optional(),
@@ -52,7 +52,7 @@ export async function submitPlanningReport(
     lastname: lastName,
     email: parsed.data.email,
     phone: parsed.data.phone ?? '',
-    message: `FREE PLANNING REPORT REQUEST\nSite address: ${parsed.data.siteAddress}`,
+    message: `FREE PLANNING REPORT REQUEST${parsed.data.siteAddress ? `\nSite address: ${parsed.data.siteAddress}` : ''}`,
     service_interest: 'Planning report',
   }
 

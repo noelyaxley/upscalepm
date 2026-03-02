@@ -6,32 +6,50 @@ import { submitPlanningReport } from '@/actions/planning-report'
 import { getStoredUTMParams } from '@/lib/utm'
 import { trackFormSubmission } from '@/components/analytics/gtm-event'
 
+const inputBase =
+  'w-full rounded-md border bg-white/10 py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-neutral-400 backdrop-blur-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary'
+
 export function PlanningReportCapture() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [siteAddress, setSiteAddress] = useState('')
   const [email, setEmail] = useState('')
+  const [invalidFields, setInvalidFields] = useState<Set<string>>(new Set())
   const [error, setError] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+
+  function clearField(field: string) {
+    setInvalidFields((prev) => {
+      const next = new Set(prev)
+      next.delete(field)
+      return next
+    })
+  }
+
+  function inputClass(field: string) {
+    return `${inputBase} ${
+      invalidFields.has(field)
+        ? 'animate-[shake_0.4s_ease-in-out] border-red-500'
+        : 'border-white/20'
+    }`
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setError('')
 
-    if (!name.trim()) {
-      setError('Please enter your name')
-      return
-    }
-    if (!siteAddress.trim()) {
-      setError('Please enter your site address')
-      return
-    }
-    if (!email.trim() || !email.includes('@')) {
-      setError('Please enter a valid email')
+    const missing = new Set<string>()
+    if (!name.trim()) missing.add('name')
+    if (!phone.trim()) missing.add('phone')
+    if (!email.trim() || !email.includes('@')) missing.add('email')
+
+    if (missing.size > 0) {
+      setInvalidFields(missing)
       return
     }
 
+    setInvalidFields(new Set())
     setSubmitting(true)
 
     try {
@@ -84,9 +102,9 @@ export function PlanningReportCapture() {
             <input
               type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your name"
-              className="w-full rounded-md border border-white/20 bg-white/10 py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-neutral-400 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+              onChange={(e) => { setName(e.target.value); clearField('name') }}
+              placeholder="Your name *"
+              className={inputClass('name')}
               autoComplete="name"
             />
           </div>
@@ -95,9 +113,9 @@ export function PlanningReportCapture() {
             <input
               type="tel"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Phone (optional)"
-              className="w-full rounded-md border border-white/20 bg-white/10 py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-neutral-400 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+              onChange={(e) => { setPhone(e.target.value); clearField('phone') }}
+              placeholder="Phone *"
+              className={inputClass('phone')}
               autoComplete="tel"
             />
           </div>
@@ -108,8 +126,8 @@ export function PlanningReportCapture() {
             type="text"
             value={siteAddress}
             onChange={(e) => setSiteAddress(e.target.value)}
-            placeholder="Site address"
-            className="w-full rounded-md border border-white/20 bg-white/10 py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-neutral-400 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            placeholder="Site address (optional)"
+            className={`${inputBase} border-white/20`}
             autoComplete="street-address"
           />
         </div>
@@ -119,9 +137,9 @@ export function PlanningReportCapture() {
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email"
-              className="w-full rounded-md border border-white/20 bg-white/10 py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-neutral-400 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+              onChange={(e) => { setEmail(e.target.value); clearField('email') }}
+              placeholder="Your email *"
+              className={inputClass('email')}
               autoComplete="email"
             />
           </div>
