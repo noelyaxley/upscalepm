@@ -3,7 +3,7 @@
 import { Suspense } from 'react'
 import Image from 'next/image'
 import { DynamicHeadline } from '@/components/landing/dynamic-headline'
-import { EmailCapture } from './email-capture'
+import { PlanningReportCapture } from './planning-report-capture'
 import { StarRating } from './star-rating'
 import { StripeOverlay } from './stripe-overlay'
 
@@ -42,15 +42,10 @@ export function HeroV2() {
           Managing a build is hard. We make it predictable.
         </p>
 
-        {/* Email capture */}
+        {/* Planning report capture */}
         <div className="relative mt-10">
-          <EmailCapture />
+          <PlanningReportCapture />
         </div>
-
-        {/* Disclaimer */}
-        <p className="mt-4 text-xs text-neutral-500">
-          We&apos;ll never spam you. That&apos;s a promise.
-        </p>
 
         {/* Star rating */}
         <div className="mt-6 flex justify-center">
