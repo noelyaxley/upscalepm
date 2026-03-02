@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Phone, Star } from 'lucide-react'
+import { Phone, Star, Clock } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { LogoMarquee } from '@/components/landing/logo-marquee'
 import { SalesLetter } from '@/components/landing/sales-letter'
@@ -32,9 +32,9 @@ export default function SydneyV2LandingPage() {
   return (
     <>
       {/* ─── HEADER — Sticky top bar ─── */}
-      <div className="sticky top-0 z-50 border-b border-white/10 bg-[#0a0404] text-white">
+      <div className="sticky top-0 z-50 bg-[#0a0404] text-white">
         <Container>
-          <div className="flex items-center justify-between py-3">
+          <div className="flex items-center justify-between border-b border-white/10 py-3">
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/images/shared/logo/logo-64.png"
@@ -54,6 +54,14 @@ export default function SydneyV2LandingPage() {
             </a>
           </div>
         </Container>
+        <div className="border-b border-white/10 bg-primary/10 py-1.5">
+          <Container>
+            <p className="flex items-center justify-center gap-2 text-center text-sm font-semibold text-primary">
+              <Clock className="size-3.5" />
+              Two-hour call-back guarantee
+            </p>
+          </Container>
+        </div>
       </div>
 
       {/* ─── S1: HERO — Full-screen, centered, massive headline ─── */}
