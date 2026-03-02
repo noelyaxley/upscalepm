@@ -44,17 +44,13 @@ export function HeroSection() {
               <DynamicHeadline />
             </Suspense>
             <p className="mt-4 text-lg text-neutral-200">
-              Most project managers work for the builder. We work for{' '}
-              <strong className="text-white">you</strong>. One independent team
-              from feasibility to handover — no conflicts, no surprises.
+              We work for <strong className="text-white">you</strong>. Not the builder.
             </p>
             <ul className="mt-6 space-y-3">
               {[
-                '30+ projects delivered across Sydney',
-                'Project management, construction management & DA approval',
-                'Trusted by Sydney Water, NSW Ambulance & government',
-                'Feasibility studies to de-risk your investment',
-                'Free 30-minute consultation — no obligation',
+                '30+ Sydney projects delivered',
+                'Government & commercial',
+                'Free 30-min consultation',
               ].map((point) => (
                 <li key={point} className="flex items-start gap-2 text-sm text-neutral-200">
                   <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
@@ -79,9 +75,6 @@ export function HeroSection() {
               <h2 className="font-display text-xl font-bold text-white">
                 Tell Us About Your Project
               </h2>
-              <p className="mt-1 text-sm text-neutral-400">
-                Answer 5 quick questions — we&apos;ll match you with the right expert.
-              </p>
               <div className="mt-6">
                 <SurveyForm />
               </div>

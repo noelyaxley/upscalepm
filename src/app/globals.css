@@ -303,6 +303,18 @@ html.lenis body {
   }
 }
 
+/* Pulsing play button */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
 /* Logo marquee */
 @keyframes marquee {
   0% {

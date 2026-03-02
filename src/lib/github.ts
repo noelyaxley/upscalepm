@@ -294,11 +294,12 @@ export async function getDraftContent(slug: string): Promise<DraftContent | null
   const { content, sha } = await getFileFromBranch(pr.branch, filePath)
 
   // Get image files from the PR
+  // Match any image under public/images/insights/ (image folder uses shortened slug, not full MDX slug)
   const files = await getPRFiles(pr.prNumber)
   const imageFiles = files
     .filter(
       (f) =>
-        f.filename.startsWith(`public/images/insights/${slug}/`) &&
+        f.filename.startsWith('public/images/insights/') &&
         f.status !== 'removed'
     )
     .map((f) => f.filename)
