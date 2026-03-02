@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { MapPin, Mail, Loader2, CheckCircle2 } from 'lucide-react'
+import { MapPin, Mail, Phone, User, Loader2, CheckCircle2 } from 'lucide-react'
 import { submitPlanningReport } from '@/actions/planning-report'
 import { getStoredUTMParams } from '@/lib/utm'
 import { trackFormSubmission } from '@/components/analytics/gtm-event'
 
 export function PlanningReportCapture() {
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
   const [siteAddress, setSiteAddress] = useState('')
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
@@ -17,6 +19,10 @@ export function PlanningReportCapture() {
     e.preventDefault()
     setError('')
 
+    if (!name.trim()) {
+      setError('Please enter your name')
+      return
+    }
     if (!siteAddress.trim()) {
       setError('Please enter your site address')
       return
@@ -31,6 +37,8 @@ export function PlanningReportCapture() {
     try {
       const utm = getStoredUTMParams()
       const result = await submitPlanningReport({
+        name,
+        phone,
         email,
         siteAddress,
         pageUri: window.location.href,
@@ -69,15 +77,39 @@ export function PlanningReportCapture() {
       <p className="mb-4 text-base font-semibold text-primary">
         Free Planning Report — 24 Hour Turnaround
       </p>
-      <form onSubmit={handleSubmit} className="space-y-3">
+      <form onSubmit={handleSubmit} className="space-y-2.5">
+        <div className="flex gap-2">
+          <div className="relative flex-1">
+            <User className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Your name"
+              className="w-full rounded-md border border-white/20 bg-white/10 py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-neutral-400 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+              autoComplete="name"
+            />
+          </div>
+          <div className="relative flex-1">
+            <Phone className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+            <input
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Phone (optional)"
+              className="w-full rounded-md border border-white/20 bg-white/10 py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-neutral-400 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+              autoComplete="tel"
+            />
+          </div>
+        </div>
         <div className="relative">
           <MapPin className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
           <input
             type="text"
             value={siteAddress}
             onChange={(e) => setSiteAddress(e.target.value)}
-            placeholder="Enter your site address"
-            className="w-full rounded-md border border-white/20 bg-white/10 py-3 pl-10 pr-4 text-base text-white placeholder:text-neutral-400 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            placeholder="Site address"
+            className="w-full rounded-md border border-white/20 bg-white/10 py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-neutral-400 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
             autoComplete="street-address"
           />
         </div>
@@ -89,14 +121,14 @@ export function PlanningReportCapture() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email"
-              className="w-full rounded-md border border-white/20 bg-white/10 py-3 pl-10 pr-4 text-base text-white placeholder:text-neutral-400 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+              className="w-full rounded-md border border-white/20 bg-white/10 py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-neutral-400 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
               autoComplete="email"
             />
           </div>
           <button
             type="submit"
             disabled={submitting}
-            className="rounded-md bg-primary px-6 py-3 text-base font-bold text-white transition-colors hover:bg-primary/90 disabled:opacity-60"
+            className="whitespace-nowrap rounded-md bg-primary px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-primary/90 disabled:opacity-60"
           >
             {submitting ? (
               <Loader2 className="size-5 animate-spin" />

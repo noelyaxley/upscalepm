@@ -5,6 +5,8 @@ import { FilterOperatorEnum } from '@hubspot/api-client/lib/codegen/crm/contacts
 import { z } from 'zod'
 
 const schema = z.object({
+  name: z.string().min(1, 'Please enter your name'),
+  phone: z.string().optional(),
   email: z.string().email('Please enter a valid email'),
   siteAddress: z.string().min(3, 'Please enter a site address'),
   utmSource: z.string().optional(),
@@ -41,8 +43,15 @@ export async function submitPlanningReport(
 
   const hubspot = new Client({ accessToken })
 
+  const nameParts = parsed.data.name.trim().split(/\s+/)
+  const firstName = nameParts[0] ?? ''
+  const lastName = nameParts.slice(1).join(' ') || '-'
+
   const properties: Record<string, string> = {
+    firstname: firstName,
+    lastname: lastName,
     email: parsed.data.email,
+    phone: parsed.data.phone ?? '',
     message: `FREE PLANNING REPORT REQUEST\nSite address: ${parsed.data.siteAddress}`,
     service_interest: 'Planning report',
   }
