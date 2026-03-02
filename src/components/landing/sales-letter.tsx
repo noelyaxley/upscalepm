@@ -13,12 +13,12 @@ export function SalesLetter() {
     <section className="bg-neutral-100 py-16 md:py-24">
       <Container>
         <div className="mx-auto max-w-2xl">
-          <p className="text-sm font-semibold text-muted-foreground">
+          <p className="text-base font-semibold text-muted-foreground">
             Updated: {today}
           </p>
 
-          <div className="mt-8 space-y-6 text-base leading-relaxed text-neutral-700">
-            <p className="font-display text-lg font-bold text-neutral-900">
+          <div className="mt-8 space-y-6 text-lg leading-relaxed text-neutral-700 md:text-xl">
+            <p className="font-display text-2xl font-bold text-neutral-900 md:text-3xl">
               Dear property owner,
             </p>
 

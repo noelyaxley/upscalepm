@@ -17,7 +17,7 @@ export function FounderV2() {
             />
           </div>
           <div>
-            <h2 className="font-display text-4xl font-bold tracking-tight md:text-6xl">
+            <h2 className="font-display text-5xl font-bold tracking-tight md:text-7xl">
               Not Another Faceless Firm.
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-neutral-600">

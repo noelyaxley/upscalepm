@@ -73,7 +73,7 @@ export default function SydneyV2LandingPage() {
 
         <Container>
           <div className="relative z-10">
-            <p className="text-center text-sm font-semibold uppercase tracking-wider text-primary">
+            <p className="text-center text-base font-semibold uppercase tracking-wider text-primary md:text-lg">
               Two Ways We Help
             </p>
 
@@ -88,13 +88,13 @@ export default function SydneyV2LandingPage() {
                     height={28}
                   />
                 </div>
-                <p className="mt-4 text-sm font-semibold text-primary">
+                <p className="mt-4 text-base font-semibold text-primary">
                   We run it for you
                 </p>
-                <h3 className="mt-1 font-display text-2xl font-bold">
+                <h3 className="mt-1 font-display text-3xl font-bold md:text-4xl">
                   Full Project Delivery
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-400">
+                <p className="mt-3 text-base leading-relaxed text-neutral-400">
                   Managed delivery from feasibility to handover. Construction
                   management, DA approval, contract admin &mdash; one team, no excuses.
                 </p>
@@ -124,13 +124,13 @@ export default function SydneyV2LandingPage() {
                     height={28}
                   />
                 </div>
-                <p className="mt-4 text-sm font-semibold text-primary">
+                <p className="mt-4 text-base font-semibold text-primary">
                   We check their work
                 </p>
-                <h3 className="mt-1 font-display text-2xl font-bold">
+                <h3 className="mt-1 font-display text-3xl font-bold md:text-4xl">
                   Independent Oversight
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-400">
+                <p className="mt-3 text-base leading-relaxed text-neutral-400">
                   Already have a builder? We&apos;ll review every progress claim,
                   challenge every variation, and make sure the programme actually means something.
                 </p>

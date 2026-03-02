@@ -13,7 +13,7 @@ export function PainPointsV2() {
     <section className="py-20 md:py-28">
       <Container>
         <div className="text-center">
-          <h2 className="font-display text-4xl font-bold tracking-tight md:text-6xl">
+          <h2 className="font-display text-5xl font-bold tracking-tight md:text-7xl">
             Does This Sound Familiar?
           </h2>
         </div>
@@ -22,10 +22,10 @@ export function PainPointsV2() {
           {painPoints.map((point) => (
             <div
               key={point}
-              className="flex items-start gap-4 rounded-lg border border-neutral-200 bg-neutral-50 p-6"
+              className="flex items-start gap-4 rounded-lg border-2 border-primary/60 bg-neutral-50 p-6 md:p-8"
             >
-              <AlertTriangle className="mt-0.5 size-5 shrink-0 text-primary" />
-              <p className="text-sm font-medium leading-relaxed text-neutral-700">
+              <AlertTriangle className="mt-0.5 size-6 shrink-0 text-primary" />
+              <p className="text-base font-bold leading-relaxed text-neutral-700">
                 {point}
               </p>
             </div>

@@ -75,7 +75,7 @@ export function TestimonialsV2() {
 
       <Container>
         <div className="relative z-10">
-          <h2 className="text-center font-display text-4xl font-bold tracking-tight md:text-6xl">
+          <h2 className="text-center font-display text-5xl font-bold tracking-tight md:text-7xl">
             Don&apos;t Take Our Word For It.
           </h2>
 
@@ -97,12 +97,12 @@ export function TestimonialsV2() {
               <Image
                 src={t.image}
                 alt={t.name}
-                width={56}
-                height={56}
-                className="size-14 rounded-full object-cover object-top"
+                width={80}
+                height={80}
+                className="size-20 rounded-full object-cover object-top"
               />
               <div className="text-left">
-                <p className="font-bold">{t.name}</p>
+                <p className="text-lg font-bold">{t.name}</p>
                 <p className="text-sm text-neutral-400">
                   {t.role}, {t.company}
                 </p>

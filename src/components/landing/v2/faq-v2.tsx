@@ -84,7 +84,7 @@ export function FAQV2() {
       <Container>
         <div className="mx-auto max-w-3xl">
           <div className="text-center">
-            <h2 className="font-display text-4xl font-bold uppercase tracking-tight md:text-6xl">
+            <h2 className="font-display text-5xl font-bold uppercase tracking-tight md:text-7xl">
               You&apos;ve Got Questions.<br className="hidden sm:block" /> We&apos;ve Got Answers.
             </h2>
           </div>
@@ -102,7 +102,7 @@ export function FAQV2() {
                     onClick={() => setOpenIndex(isOpen ? null : index)}
                     className="flex w-full items-center justify-between px-6 py-5 text-left"
                   >
-                    <h3 className="pr-4 text-sm font-semibold text-neutral-900">
+                    <h3 className="pr-4 text-base font-semibold text-neutral-900">
                       {faq.question}
                     </h3>
                     <ChevronDown
