@@ -31,6 +31,7 @@ export function VideoSection() {
               alt="Vibe Hotel Sydney"
               width={1200}
               height={600}
+              quality={90}
               className="h-72 w-full object-cover brightness-75 md:h-[500px]"
               sizes="(max-width: 768px) 95vw, 1100px"
             />

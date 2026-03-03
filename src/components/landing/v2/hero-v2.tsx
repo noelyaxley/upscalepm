@@ -16,6 +16,7 @@ export function HeroV2() {
           src="/images/landing/brand/calibre-cooper-facade-night.jpg"
           alt=""
           fill
+          quality={90}
           className="object-cover"
           sizes="100vw"
           priority

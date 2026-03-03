@@ -79,8 +79,9 @@ export function CaseStudiesV2() {
                 src={cs.image}
                 alt={cs.name}
                 fill
+                quality={90}
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 288px, (max-width: 1024px) 320px, 384px"
+                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 384px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 p-5">

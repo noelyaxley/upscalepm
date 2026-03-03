@@ -82,6 +82,7 @@ export function StatsV2() {
               alt="Macquarie Park commercial lobby"
               width={1200}
               height={500}
+              quality={90}
               className="h-64 w-full object-cover md:h-96"
               sizes="(max-width: 768px) 95vw, 1100px"
             />

@@ -12,6 +12,7 @@ export function FounderV2() {
               src="/images/landing/noel-portrait.jpg"
               alt="Noel Yaxley — Founder of UpScale Project Management"
               fill
+              quality={90}
               className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, 500px"
             />
