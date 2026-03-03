@@ -37,17 +37,17 @@ export function CaseStudiesV2() {
   }
 
   return (
-    <section className="bg-[#373737] py-20 text-white md:py-28">
+    <section className="bg-white py-20 md:py-28">
       <Container>
         <div className="flex items-end justify-between">
-          <h2 className="font-display text-5xl font-bold tracking-tight md:text-7xl">
+          <h2 className="font-display text-5xl font-bold tracking-tight text-neutral-900 md:text-7xl">
             Become Our Next<br className="hidden sm:block" /> Success Story.
           </h2>
           <div className="hidden gap-2 sm:flex">
             <button
               type="button"
               onClick={() => scroll('left')}
-              className="flex size-11 items-center justify-center rounded-full border border-white/20 transition-colors hover:bg-white/10"
+              className="flex size-11 items-center justify-center rounded-full border border-neutral-300 text-neutral-700 transition-colors hover:bg-neutral-100"
               aria-label="Scroll left"
             >
               <ChevronLeft className="size-5" />
@@ -55,7 +55,7 @@ export function CaseStudiesV2() {
             <button
               type="button"
               onClick={() => scroll('right')}
-              className="flex size-11 items-center justify-center rounded-full border border-white/20 transition-colors hover:bg-white/10"
+              className="flex size-11 items-center justify-center rounded-full border border-neutral-300 text-neutral-700 transition-colors hover:bg-neutral-100"
               aria-label="Scroll right"
             >
               <ChevronRight className="size-5" />

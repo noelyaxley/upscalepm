@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { Phone, Star, Clock } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { LogoMarquee } from '@/components/landing/logo-marquee'
-import { SalesLetter } from '@/components/landing/sales-letter'
 import { HeroV2 } from '@/components/landing/v2/hero-v2'
 import { StatsV2 } from '@/components/landing/v2/stats-v2'
 import { PainPointsV2 } from '@/components/landing/v2/pain-points-v2'
@@ -72,8 +71,8 @@ export default function SydneyV2LandingPage() {
         <LogoMarquee />
       </section>
 
-      {/* ─── S3: SALES LETTER — "Dear property owner" ─── */}
-      <SalesLetter />
+      {/* ─── S3: CASE STUDIES — "Become Our Next Success Story" ─── */}
+      <CaseStudiesV2 />
 
       {/* ─── S4: SERVICE CARDS — "Two Ways We Help" ─── */}
       <section className="relative bg-[#373737] py-20 text-white md:py-28">
@@ -173,10 +172,7 @@ export default function SydneyV2LandingPage() {
       {/* ─── S6: PAIN POINTS — "Does This Sound Familiar?" ─── */}
       <PainPointsV2 />
 
-      {/* ─── S7: CASE STUDIES — Horizontal slider ─── */}
-      <CaseStudiesV2 />
-
-      {/* ─── S8: VIDEO/PROCESS — "The Power Is In The Process" ─── */}
+      {/* ─── S7: VIDEO/PROCESS — "The Power Is In The Process" ─── */}
       <VideoSection />
 
       {/* ─── S9: FOUNDER — "Not Another Faceless Firm" ─── */}
