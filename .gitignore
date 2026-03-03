@@ -23,6 +23,11 @@
 # misc
 .DS_Store
 *.pem
+*.eps
+*.psd
+
+# Large source logo files
+public/images/shared/logo/logo-2048 Text*
 
 # debug
 npm-debug.log*
