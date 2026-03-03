@@ -199,18 +199,6 @@ export default function SydneyV2LandingPage() {
           ]}
           reverse
         />
-        <div className="mt-4">
-          <LogoMarquee
-            logos={[
-              { src: '/images/shared/logos/granville-diggers.png', alt: 'Granville Diggers', w: 120, h: 40 },
-              { src: '/images/shared/logos/blacktown-city-council.webp', alt: 'Blacktown City Council', w: 120, h: 40 },
-              { src: '/images/shared/logos/crosslife-church.png', alt: 'Crosslife Church', w: 120, h: 40 },
-              { src: '/images/shared/logos/sydney-water.webp', alt: 'Sydney Water', w: 120, h: 46 },
-              { src: '/images/shared/logos/health-infrastructure.webp', alt: 'Health Infrastructure', w: 120, h: 40 },
-              { src: '/images/shared/logos/tfnsw.png', alt: 'Transport for NSW', w: 120, h: 31 },
-            ]}
-          />
-        </div>
       </section>
 
       {/* ─── S12: SECTOR MARQUEE — Scrolling text ─── */}
