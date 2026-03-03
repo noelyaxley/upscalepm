@@ -21,31 +21,31 @@ import { useSearchParams } from 'next/navigation'
 
 const headlines: Record<string, { title: string; subtitle?: string }> = {
   construction: {
-    title: 'Your PM Should Work for You.',
+    title: 'Your Builder Answers to Us.',
   },
   townplanner: {
     title: 'Don\u2019t Let Council Kill Your Project.',
   },
   commercial: {
-    title: 'Your Fit-Out Shouldn\u2019t Cost More.',
+    title: 'Fit-Outs That Don\u2019t Blow Out.',
   },
   feasibility: {
     title: 'Know the Real Numbers First.',
   },
   development: {
-    title: 'Too Important for Your Inbox.',
+    title: 'Your Build Deserves Better.',
   },
   contracts: {
     title: 'Stop Signing Blind.',
   },
   sitemanager: {
-    title: 'Your Site. Your Leader.',
+    title: 'Boots on Ground. Eyes on Budget.',
   },
   superintendent: {
-    title: 'Your Site. Your Leader.',
+    title: 'We Run the Site. You Run the Business.',
   },
   property: {
-    title: 'Protect Your Investment.',
+    title: 'Don\u2019t Leave Your Build to Chance.',
   },
 }
 
