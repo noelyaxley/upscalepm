@@ -19,6 +19,13 @@ const faqs: FAQItem[] = [
       'You avoid costly mistakes, overpayments, and delays.',
   },
   {
+    question: 'What is the difference between a builder\'s PM and an independent PM?',
+    shortAnswer:
+      'A builder\'s PM works for the builder. Their job is to protect the builder\'s margin. An independent PM works for you — reviewing every dollar, every claim, every programme update.',
+    result:
+      'Independent oversight that protects your investment, not the builder\'s profit.',
+  },
+  {
     question: 'How long does the DA approval process take in Sydney?',
     shortAnswer:
       'Timelines vary from 3 to 12+ months depending on the council, project complexity, and neighbour objections.',
@@ -40,11 +47,25 @@ const faqs: FAQItem[] = [
       'A fraction of your build cost to protect the full investment.',
   },
   {
+    question: 'What types of projects do you work on?',
+    shortAnswer:
+      'Commercial fit-outs, government infrastructure, health facilities, education, residential developments, and hospitality. We\'ve delivered $85M+ across 6 sectors.',
+    result:
+      'Sector-agnostic expertise. If it\'s being built, we manage it.',
+  },
+  {
     question: 'Can you help if my project is already underway?',
     shortAnswer:
       'Yes. We regularly step into projects mid-stream — stabilising delivery and getting things back on track.',
     result:
       'The sooner we step in, the more we can protect.',
+  },
+  {
+    question: 'Do you work with residential property owners or just commercial?',
+    shortAnswer:
+      'Both. We work with private property owners on residential builds and with corporates on large commercial projects. The process is the same — independent oversight that protects you.',
+    result:
+      'Whether it\'s a $500K home or a $50M fit-out, we protect the client.',
   },
   {
     question: 'How quickly can you start?',
@@ -55,20 +76,20 @@ const faqs: FAQItem[] = [
   },
 ]
 
-export function FAQSection() {
+export function FAQV2() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="border-y bg-neutral-50 py-14 md:py-20">
+    <section className="border-y bg-neutral-50 py-20 md:py-28">
       <Container>
         <div className="mx-auto max-w-3xl">
           <div className="text-center">
-            <h2 className="font-display text-2xl font-bold uppercase tracking-tight md:text-3xl">
-              You&apos;ve Got Questions. We&apos;ve Got Answers.
+            <h2 className="font-display text-5xl font-bold uppercase tracking-tight md:text-7xl">
+              You&apos;ve Got Questions.<br className="hidden sm:block" /> We&apos;ve Got Answers.
             </h2>
           </div>
 
-          <div className="mt-10 space-y-3">
+          <div className="mt-12 space-y-3">
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index
               return (
@@ -79,11 +100,11 @@ export function FAQSection() {
                   <button
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="flex w-full items-center justify-between px-5 py-4 text-left"
+                    className="flex w-full items-center justify-between px-6 py-5 text-left"
                   >
-                    <span className="pr-4 text-sm font-semibold text-neutral-900">
+                    <h3 className="pr-4 text-base font-semibold text-neutral-900">
                       {faq.question}
-                    </span>
+                    </h3>
                     <ChevronDown
                       className={`size-5 shrink-0 text-neutral-400 transition-transform duration-200 ${
                         isOpen ? 'rotate-180' : ''
@@ -96,7 +117,7 @@ export function FAQSection() {
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <div className="border-t px-5 pb-5 pt-4">
+                      <div className="border-t px-6 pb-5 pt-4">
                         <p className="text-sm leading-relaxed text-muted-foreground">
                           <span className="font-semibold text-neutral-700">
                             Short answer:{' '}

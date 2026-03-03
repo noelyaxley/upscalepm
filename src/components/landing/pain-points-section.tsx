@@ -3,16 +3,16 @@ import { Container } from '@/components/layout/container'
 
 const painPoints = [
   {
-    text: 'Your builder says it\u2019s \u201Con track\u201D \u2014 but you haven\u2019t seen a programme update in weeks.',
+    text: 'Builder says \u201Con track.\u201D No update in weeks.',
   },
   {
-    text: 'You\u2019re approving variations by email with no idea of the cumulative budget impact.',
+    text: 'Approving variations with no idea of budget impact.',
   },
   {
-    text: 'You\u2019re about to start a $3M project and don\u2019t have independent eyes on the contract.',
+    text: 'Starting a $3M project with no independent eyes on the contract.',
   },
   {
-    text: 'You got a progress claim that doesn\u2019t match what you actually saw on site.',
+    text: 'Progress claim doesn\u2019t match what you saw on site.',
   },
 ]
 
@@ -38,14 +38,10 @@ export function PainPointsSection() {
             </div>
           ))}
         </div>
-        <div className="mx-auto mt-10 max-w-2xl text-center">
-          <p className="text-neutral-400">
-            You&apos;re not alone. These are the exact problems we solve &mdash;
-            every day, across Sydney.
-          </p>
+        <div className="mx-auto mt-10 text-center">
           <a
             href="#form"
-            className="mt-6 inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
           >
             See How We Can Help
           </a>

@@ -86,7 +86,13 @@ const contactSchema = z.object({
 
 type ContactValues = z.infer<typeof contactSchema>
 
-export function SurveyForm() {
+export function SurveyForm({
+  thankYouPath = '/landing/sydney/thank-you',
+  initialEmail,
+}: {
+  thankYouPath?: string
+  initialEmail?: string
+}) {
   const router = useRouter()
   const [step, setStep] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
@@ -96,11 +102,23 @@ export function SurveyForm() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<ContactValues>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { firstName: '', lastName: '', email: '', phone: '' },
+    defaultValues: { firstName: '', lastName: '', email: initialEmail ?? '', phone: '' },
   })
+
+  // Pre-fill email from sessionStorage (set by hero email capture)
+  useEffect(() => {
+    if (!initialEmail) {
+      const captured = sessionStorage.getItem('captured_email')
+      if (captured) {
+        setValue('email', captured)
+        sessionStorage.removeItem('captured_email')
+      }
+    }
+  }, [initialEmail, setValue])
 
   useEffect(() => {
     trackFormView('survey_form_sydney')
@@ -151,7 +169,7 @@ export function SurveyForm() {
     if (result.success) {
       trackFormSubmission('survey_form_sydney')
       sessionStorage.setItem('form_submitted', '1')
-      router.push('/landing/sydney/thank-you')
+      router.push(thankYouPath)
     } else {
       trackFormError('survey_form_sydney', 'submit_failed')
       setStatus('error')
