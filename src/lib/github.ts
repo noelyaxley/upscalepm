@@ -144,6 +144,24 @@ export async function updateFile(
 }
 
 /**
+ * Update a PR branch with the latest from the base branch
+ */
+export async function updatePRBranch(prNumber: number): Promise<void> {
+  const res = await fetch(
+    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/pulls/${prNumber}/update-branch`,
+    {
+      method: 'PUT',
+      headers: getHeaders(),
+    }
+  )
+  // 202 = update queued, 422 = already up to date (both are fine)
+  if (!res.ok && res.status !== 422) {
+    const data = await res.json().catch(() => ({}))
+    throw new Error(`Branch update failed: ${(data as { message?: string }).message || res.statusText}`)
+  }
+}
+
+/**
  * Squash-merge a PR
  */
 export async function mergePR(
