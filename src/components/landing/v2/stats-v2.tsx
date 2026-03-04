@@ -62,7 +62,7 @@ export function StatsV2() {
       <Container>
         <div className="relative z-10">
           <div className="text-center">
-            <h2 className="font-display text-3xl font-bold tracking-tight sm:text-5xl md:text-7xl">
+            <h2 className="font-display text-[3.25rem] font-bold tracking-tight leading-[0.95] sm:text-5xl md:text-7xl">
               $85M+ In Project Value.<br className="hidden sm:block" /> Zero Guesswork.
             </h2>
           </div>

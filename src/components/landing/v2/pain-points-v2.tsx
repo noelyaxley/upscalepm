@@ -13,7 +13,7 @@ export function PainPointsV2() {
     <section className="py-20 md:py-28">
       <Container>
         <div className="text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-5xl md:text-7xl">
+          <h2 className="font-display text-[3.25rem] font-bold tracking-tight leading-[0.95] sm:text-5xl md:text-7xl">
             Does This Sound Familiar?
           </h2>
         </div>

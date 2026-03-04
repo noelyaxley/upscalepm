@@ -15,7 +15,7 @@ export function VideoSection() {
             <p className="text-sm font-semibold text-primary">
               No more hoping for the best
             </p>
-            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-5xl md:text-7xl">
+            <h2 className="mt-3 font-display text-[3.25rem] font-bold tracking-tight leading-[0.95] sm:text-5xl md:text-7xl">
               The Power Is In The Process.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-neutral-400">

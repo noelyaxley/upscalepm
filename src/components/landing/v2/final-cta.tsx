@@ -31,7 +31,7 @@ export function FinalCTA() {
       <Container>
         <div className="relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-display text-3xl font-bold tracking-tight sm:text-5xl md:text-7xl lg:text-8xl">
+            <h2 className="font-display text-[3.25rem] font-bold tracking-tight leading-[0.95] sm:text-5xl md:text-7xl lg:text-8xl">
               Let&apos;s Talk About Your Build.
             </h2>
             <p className="mt-4 text-neutral-400">
