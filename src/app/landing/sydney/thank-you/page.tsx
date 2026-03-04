@@ -6,7 +6,7 @@ import { CheckCircle2, Phone } from 'lucide-react'
 import { ThankYouRedirect } from '@/components/landing/thank-you-redirect'
 
 export const metadata: Metadata = {
-  title: 'Thank You | UpScalePM Sydney',
+  title: 'Thank You | UpScale Project Management Sydney',
   description: 'Thank you for your enquiry. We will call you back within 2 hours.',
   robots: { index: false, follow: false },
 }
@@ -23,11 +23,11 @@ export default function ThankYouPage() {
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/images/shared/logo/logo-64.png"
-                alt="UpScalePM"
+                alt="UpScale Project Management"
                 width={32}
                 height={32}
               />
-              <span className="font-display text-lg font-bold">UpScalePM</span>
+              <span className="font-display text-lg font-bold">UpScale Project Management</span>
             </Link>
             <a
               href={`tel:${PHONE_NUMBER}`}

@@ -27,7 +27,7 @@ export function FounderV2() {
                 $85M+ in project value. Commercial, government, health, residential.
               </p>
               <p>
-                Founded UpScale because property owners deserve a PM who picks up the phone,
+                Founded UpScale because property owners deserve a Project Manager who picks up the phone,
                 who&apos;s been on 200+ sites, and who works for{' '}
                 <strong className="text-neutral-900">you</strong> &mdash; not the builder.
               </p>

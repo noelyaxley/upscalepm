@@ -14,14 +14,14 @@ const faqs: FAQItem[] = [
   {
     question: 'Do I really need an independent project manager?',
     shortAnswer:
-      'Most builders manage projects in their own interest — not yours. An independent PM reviews costs, challenges claims, and ensures quality.',
+      'Most builders manage projects in their own interest — not yours. An independent Project Manager reviews costs, challenges claims, and ensures quality.',
     result:
       'You avoid costly mistakes, overpayments, and delays.',
   },
   {
-    question: 'What is the difference between a builder\'s PM and an independent PM?',
+    question: 'What is the difference between a builder\'s Project Manager and an independent Project Manager?',
     shortAnswer:
-      'A builder\'s PM works for the builder. Their job is to protect the builder\'s margin. An independent PM works for you — reviewing every dollar, every claim, every programme update.',
+      'A builder\'s Project Manager works for the builder. Their job is to protect the builder\'s margin. An independent Project Manager works for you — reviewing every dollar, every claim, every programme update.',
     result:
       'Independent oversight that protects your investment, not the builder\'s profit.',
   },
