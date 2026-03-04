@@ -88,7 +88,7 @@ export function CaseStudiesV2() {
                 <span className="rounded-full bg-primary/90 px-3 py-1 text-xs font-semibold">
                   {cs.sector}
                 </span>
-                <p className="mt-2 text-base font-bold">{cs.name}</p>
+                <p className="mt-2 text-base font-bold text-primary">{cs.name}</p>
               </div>
             </div>
           </div>

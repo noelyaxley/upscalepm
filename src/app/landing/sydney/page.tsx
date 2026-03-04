@@ -41,7 +41,7 @@ export default function SydneyV2LandingPage() {
                 width={32}
                 height={32}
               />
-              <span className="font-display text-lg font-bold">UpScalePM</span>
+              <span className="font-display text-lg font-bold">UpScale Project Management</span>
             </Link>
             <a
               href={`tel:${PHONE_NUMBER}`}
