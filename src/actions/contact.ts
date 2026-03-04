@@ -45,12 +45,21 @@ export async function submitContactForm(
 
   const hubspot = new Client({ accessToken })
 
+  // Map survey project types to valid HubSpot service_interest dropdown values
+  const serviceInterestMap: Record<string, string> = {
+    'New build or extension': 'Construction Superintendent',
+    'Commercial fit-out or refurbishment': 'Design Management',
+    'DA approval or town planning': 'DA Approval',
+    'Feasibility study': 'Feasibility & Advisory',
+    'Something else': 'Not sure yet',
+  }
+
   const properties: Record<string, string> = {
     firstname: parsed.data.firstName,
     lastname: parsed.data.lastName,
     email: parsed.data.email,
     phone: parsed.data.phone ?? '',
-    service_interest: parsed.data.projectType ?? '',
+    service_interest: serviceInterestMap[parsed.data.projectType ?? ''] || 'Not sure yet',
     message: parsed.data.message,
   }
 
