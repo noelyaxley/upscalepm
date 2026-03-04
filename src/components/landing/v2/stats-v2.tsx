@@ -62,7 +62,7 @@ export function StatsV2() {
       <Container>
         <div className="relative z-10">
           <div className="text-center">
-            <h2 className="font-display text-5xl font-bold tracking-tight md:text-7xl">
+            <h2 className="font-display text-[3.25rem] font-bold tracking-tight leading-[0.95] sm:text-5xl md:text-7xl">
               $85M+ In Project Value.<br className="hidden sm:block" /> Zero Guesswork.
             </h2>
           </div>
@@ -82,6 +82,7 @@ export function StatsV2() {
               alt="Macquarie Park commercial lobby"
               width={1200}
               height={500}
+              quality={90}
               className="h-64 w-full object-cover md:h-96"
               sizes="(max-width: 768px) 95vw, 1100px"
             />

@@ -37,17 +37,17 @@ export function CaseStudiesV2() {
   }
 
   return (
-    <section className="bg-[#373737] py-20 text-white md:py-28">
+    <section className="bg-white py-20 md:py-28">
       <Container>
         <div className="flex items-end justify-between">
-          <h2 className="font-display text-5xl font-bold tracking-tight md:text-7xl">
+          <h2 className="font-display text-[3.25rem] font-bold tracking-tight text-neutral-900 sm:text-5xl md:text-7xl">
             Become Our Next<br className="hidden sm:block" /> Success Story.
           </h2>
           <div className="hidden gap-2 sm:flex">
             <button
               type="button"
               onClick={() => scroll('left')}
-              className="flex size-11 items-center justify-center rounded-full border border-white/20 transition-colors hover:bg-white/10"
+              className="flex size-11 items-center justify-center rounded-full border border-neutral-300 text-neutral-700 transition-colors hover:bg-neutral-100"
               aria-label="Scroll left"
             >
               <ChevronLeft className="size-5" />
@@ -55,7 +55,7 @@ export function CaseStudiesV2() {
             <button
               type="button"
               onClick={() => scroll('right')}
-              className="flex size-11 items-center justify-center rounded-full border border-white/20 transition-colors hover:bg-white/10"
+              className="flex size-11 items-center justify-center rounded-full border border-neutral-300 text-neutral-700 transition-colors hover:bg-neutral-100"
               aria-label="Scroll right"
             >
               <ChevronRight className="size-5" />
@@ -79,15 +79,16 @@ export function CaseStudiesV2() {
                 src={cs.image}
                 alt={cs.name}
                 fill
+                quality={90}
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 288px, (max-width: 1024px) 320px, 384px"
+                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 384px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 p-5">
                 <span className="rounded-full bg-primary/90 px-3 py-1 text-xs font-semibold">
                   {cs.sector}
                 </span>
-                <p className="mt-2 text-base font-bold">{cs.name}</p>
+                <p className="mt-2 text-base font-bold text-primary">{cs.name}</p>
               </div>
             </div>
           </div>

@@ -82,6 +82,7 @@ const contactSchema = z.object({
   lastName: z.string().min(1, 'Required'),
   email: z.string().email('Enter a valid email'),
   phone: z.string().min(1, 'Required'),
+  siteAddress: z.string().optional(),
 })
 
 type ContactValues = z.infer<typeof contactSchema>
@@ -106,7 +107,7 @@ export function SurveyForm({
     formState: { errors, isSubmitting },
   } = useForm<ContactValues>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { firstName: '', lastName: '', email: initialEmail ?? '', phone: '' },
+    defaultValues: { firstName: '', lastName: '', email: initialEmail ?? '', phone: '', siteAddress: '' },
   })
 
   // Pre-fill email from sessionStorage (set by hero email capture)
@@ -169,6 +170,21 @@ export function SurveyForm({
     if (result.success) {
       trackFormSubmission('survey_form_sydney')
       sessionStorage.setItem('form_submitted', '1')
+
+      // Fire n8n planning report webhook if site address provided
+      if (data.siteAddress) {
+        fetch(process.env.NEXT_PUBLIC_N8N_PLANNING_WEBHOOK_URL || '', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            clientName: `${data.firstName} ${data.lastName}`,
+            clientEmail: data.email,
+            clientPhone: data.phone,
+            propertyAddress: data.siteAddress,
+          }),
+        }).catch(() => {}) // fire-and-forget
+      }
+
       router.push(thankYouPath)
     } else {
       trackFormError('survey_form_sydney', 'submit_failed')
@@ -305,6 +321,16 @@ export function SurveyForm({
             {errors.email && (
               <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>
             )}
+          </div>
+
+          <div>
+            <input
+              type="text"
+              placeholder="Site address (optional)"
+              {...register('siteAddress')}
+              className={inputClass}
+              autoComplete="street-address"
+            />
           </div>
 
           <button

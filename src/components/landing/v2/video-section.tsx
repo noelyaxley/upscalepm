@@ -15,7 +15,7 @@ export function VideoSection() {
             <p className="text-sm font-semibold text-primary">
               No more hoping for the best
             </p>
-            <h2 className="mt-3 font-display text-5xl font-bold tracking-tight md:text-7xl">
+            <h2 className="mt-3 font-display text-[3.25rem] font-bold tracking-tight leading-[0.95] sm:text-5xl md:text-7xl">
               The Power Is In The Process.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-neutral-400">
@@ -31,6 +31,7 @@ export function VideoSection() {
               alt="Vibe Hotel Sydney"
               width={1200}
               height={600}
+              quality={90}
               className="h-72 w-full object-cover brightness-75 md:h-[500px]"
               sizes="(max-width: 768px) 95vw, 1100px"
             />

@@ -1,15 +1,17 @@
 'use client'
 
 import { useState } from 'react'
-import { MapPin, Mail, Phone, User, Loader2, CheckCircle2 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { MapPin, Mail, Phone, User, Loader2 } from 'lucide-react'
 import { submitPlanningReport } from '@/actions/planning-report'
 import { getStoredUTMParams } from '@/lib/utm'
 import { trackFormSubmission } from '@/components/analytics/gtm-event'
 
 const inputBase =
-  'w-full rounded-md border bg-white/10 py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-neutral-400 backdrop-blur-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary'
+  'w-full rounded-md border bg-white/10 py-2.5 pl-8 pr-4 text-sm text-white placeholder:text-neutral-400 backdrop-blur-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary'
 
 export function PlanningReportCapture() {
+  const router = useRouter()
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [siteAddress, setSiteAddress] = useState('')
@@ -17,7 +19,6 @@ export function PlanningReportCapture() {
   const [invalidFields, setInvalidFields] = useState<Set<string>>(new Set())
   const [error, setError] = useState('')
   const [submitting, setSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
 
   function clearField(field: string) {
     setInvalidFields((prev) => {
@@ -64,8 +65,25 @@ export function PlanningReportCapture() {
       })
 
       if (result.success) {
-        setSubmitted(true)
         trackFormSubmission('planning_report_hero')
+        sessionStorage.setItem('form_submitted', '1')
+
+        // Fire n8n planning report webhook if site address provided
+        if (siteAddress.trim()) {
+          fetch(process.env.NEXT_PUBLIC_N8N_PLANNING_WEBHOOK_URL || '', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              clientName: name,
+              clientEmail: email,
+              clientPhone: phone,
+              propertyAddress: siteAddress,
+            }),
+          }).catch(() => {}) // fire-and-forget
+        }
+
+        router.push('/landing/sydney/thank-you')
+        return
       } else {
         setError(result.error ?? 'Something went wrong')
       }
@@ -76,20 +94,6 @@ export function PlanningReportCapture() {
     }
   }
 
-  if (submitted) {
-    return (
-      <div className="mx-auto max-w-md rounded-xl border border-primary/30 bg-primary/10 p-6 backdrop-blur-sm">
-        <CheckCircle2 className="mx-auto size-10 text-primary" />
-        <p className="mt-3 text-lg font-bold text-white">
-          Your report is on its way.
-        </p>
-        <p className="mt-1 text-sm text-neutral-300">
-          We&apos;ll email your free planning report within 24 hours.
-        </p>
-      </div>
-    )
-  }
-
   return (
     <div className="mx-auto max-w-lg">
       <p className="mb-4 text-base font-semibold text-primary">
@@ -98,7 +102,7 @@ export function PlanningReportCapture() {
       <form onSubmit={handleSubmit} className="space-y-2.5">
         <div className="flex gap-2">
           <div className="relative flex-1">
-            <User className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+            <User className="absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
             <input
               type="text"
               value={name}
@@ -109,7 +113,7 @@ export function PlanningReportCapture() {
             />
           </div>
           <div className="relative flex-1">
-            <Phone className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+            <Phone className="absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
             <input
               type="tel"
               value={phone}
@@ -121,7 +125,7 @@ export function PlanningReportCapture() {
           </div>
         </div>
         <div className="relative">
-          <MapPin className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+          <MapPin className="absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
           <input
             type="text"
             value={siteAddress}
@@ -133,7 +137,7 @@ export function PlanningReportCapture() {
         </div>
         <div className="flex gap-2">
           <div className="relative flex-1">
-            <Mail className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+            <Mail className="absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
             <input
               type="email"
               value={email}

@@ -16,6 +16,7 @@ export function HeroV2() {
           src="/images/landing/brand/calibre-cooper-facade-night.jpg"
           alt=""
           fill
+          quality={90}
           className="object-cover"
           sizes="100vw"
           priority
@@ -32,7 +33,7 @@ export function HeroV2() {
       <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-20 text-center sm:px-6 lg:px-8">
         {/* Massive headline */}
         <Suspense fallback={<div className="h-24" />}>
-          <div className="[&_h1]:text-7xl [&_h1]:sm:text-8xl [&_h1]:md:text-8xl [&_h1]:lg:text-9xl [&_h1]:font-display [&_h1]:font-bold [&_h1]:leading-[0.95] [&_h1]:tracking-tight">
+          <div className="[&_h1]:text-[3.5rem] [&_h1]:sm:text-6xl [&_h1]:md:text-7xl [&_h1]:lg:text-9xl [&_h1]:font-display [&_h1]:font-bold [&_h1]:leading-[0.95] [&_h1]:tracking-tight">
             <DynamicHeadline />
           </div>
         </Suspense>
