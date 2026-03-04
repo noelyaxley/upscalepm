@@ -53,7 +53,7 @@ export async function submitPlanningReport(
     email: parsed.data.email,
     phone: parsed.data.phone ?? '',
     message: `FREE PLANNING REPORT REQUEST${parsed.data.siteAddress ? `\nSite address: ${parsed.data.siteAddress}` : ''}`,
-    service_interest: 'Planning report',
+    service_interest: 'Feasibility & Advisory',
   }
 
   if (parsed.data.utmSource) properties.utm_source = parsed.data.utmSource
