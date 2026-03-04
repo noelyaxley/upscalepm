@@ -75,7 +75,7 @@ export function TestimonialsV2() {
 
       <Container>
         <div className="relative z-10">
-          <h2 className="text-center font-display text-5xl font-bold tracking-tight md:text-7xl">
+          <h2 className="text-center font-display text-3xl font-bold tracking-tight sm:text-5xl md:text-7xl">
             Don&apos;t Take Our Word For It.
           </h2>
 

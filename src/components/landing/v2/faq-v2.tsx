@@ -84,7 +84,7 @@ export function FAQV2() {
       <Container>
         <div className="mx-auto max-w-3xl">
           <div className="text-center">
-            <h2 className="font-display text-5xl font-bold uppercase tracking-tight md:text-7xl">
+            <h2 className="font-display text-3xl font-bold uppercase tracking-tight sm:text-5xl md:text-7xl">
               You&apos;ve Got Questions.<br className="hidden sm:block" /> We&apos;ve Got Answers.
             </h2>
           </div>

@@ -40,7 +40,7 @@ export function CaseStudiesV2() {
     <section className="bg-white py-20 md:py-28">
       <Container>
         <div className="flex items-end justify-between">
-          <h2 className="font-display text-5xl font-bold tracking-tight text-neutral-900 md:text-7xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl md:text-7xl">
             Become Our Next<br className="hidden sm:block" /> Success Story.
           </h2>
           <div className="hidden gap-2 sm:flex">

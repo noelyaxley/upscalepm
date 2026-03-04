@@ -59,7 +59,7 @@ export function DynamicHeadline() {
   const headline = (service && headlines[service]) || defaultHeadline
 
   return (
-    <h1 className="font-display text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+    <h1>
       {headline.title}
     </h1>
   )
