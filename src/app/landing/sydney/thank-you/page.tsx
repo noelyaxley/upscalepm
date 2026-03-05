@@ -6,7 +6,7 @@ import { CheckCircle2, Phone } from 'lucide-react'
 import { ThankYouRedirect } from '@/components/landing/thank-you-redirect'
 
 export const metadata: Metadata = {
-  title: 'Thank You | UpScalePM Sydney',
+  title: 'Thank You | UpScale Project Management Sydney',
   description: 'Thank you for your enquiry. We will call you back within 2 hours.',
   robots: { index: false, follow: false },
 }
@@ -17,18 +17,17 @@ const PHONE_DISPLAY = '02 9090 4480'
 export default function ThankYouPage() {
   return (
     <>
-      {/* Sticky top bar */}
-      <div className="sticky top-0 z-50 border-b bg-neutral-950 text-white">
+      <div className="sticky top-0 z-50 border-b bg-[#0a0404] text-white">
         <Container>
           <div className="flex items-center justify-between py-3">
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/images/shared/logo/logo-64.png"
-                alt="UpScalePM"
+                alt="UpScale Project Management"
                 width={32}
                 height={32}
               />
-              <span className="font-display text-lg font-bold">UpScalePM</span>
+              <span className="font-display text-lg font-bold">UpScale Project Management</span>
             </Link>
             <a
               href={`tel:${PHONE_NUMBER}`}
@@ -42,8 +41,7 @@ export default function ThankYouPage() {
         </Container>
       </div>
 
-      {/* Thank you content */}
-      <section className="flex min-h-[60vh] items-center bg-neutral-950 text-white">
+      <section className="flex min-h-[60vh] items-center bg-[#0a0404] text-white">
         <Container>
           <div className="mx-auto max-w-lg text-center">
             <CheckCircle2 className="mx-auto size-16 text-green-400" />
@@ -77,18 +75,13 @@ export default function ThankYouPage() {
         </Container>
       </section>
 
-      {/* Minimal footer */}
-      <footer className="border-t bg-neutral-950 py-6 text-neutral-400">
+      <footer className="border-t border-white/10 bg-[#0a0404] py-6 text-neutral-400">
         <Container>
           <div className="flex flex-col items-center justify-between gap-4 text-center text-xs sm:flex-row sm:text-left">
             <p>&copy; {new Date().getFullYear()} UpScale Project Management. ABN 14 670 459 163.</p>
             <div className="flex gap-4">
-              <Link href="/privacy-policy" className="hover:text-white">
-                Privacy Policy
-              </Link>
-              <Link href="/terms-and-conditions" className="hover:text-white">
-                Terms
-              </Link>
+              <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
+              <Link href="/terms-and-conditions" className="hover:text-white">Terms</Link>
             </div>
           </div>
         </Container>

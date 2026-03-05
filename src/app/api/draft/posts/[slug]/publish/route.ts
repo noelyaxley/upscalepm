@@ -3,6 +3,7 @@ import {
   findPRBySlug,
   getFileFromBranch,
   updateFile,
+  updatePRBranch,
   mergePR,
 } from '@/lib/github'
 import { getSessionFromCookies } from '@/lib/draft-auth'
@@ -51,7 +52,10 @@ export async function POST(_request: Request, { params }: RouteParams) {
       )
     }
 
-    // Step 3: Merge the PR
+    // Step 3: Update branch with latest main to avoid merge conflicts
+    await updatePRBranch(pr.prNumber)
+
+    // Step 4: Merge the PR
     const mergeResult = await mergePR(
       pr.prNumber,
       `Publish: ${slug}`
@@ -67,8 +71,9 @@ export async function POST(_request: Request, { params }: RouteParams) {
     })
   } catch (error) {
     console.error(`Error publishing draft "${slug}":`, error)
+    const message = error instanceof Error ? error.message : 'Failed to publish draft'
     return NextResponse.json(
-      { error: 'Failed to publish draft' },
+      { error: message },
       { status: 500 }
     )
   }

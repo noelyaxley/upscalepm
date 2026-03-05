@@ -144,30 +144,65 @@ export async function updateFile(
 }
 
 /**
- * Squash-merge a PR
+ * Update a PR branch with the latest from the base branch
+ */
+export async function updatePRBranch(prNumber: number): Promise<void> {
+  const res = await fetch(
+    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/pulls/${prNumber}/update-branch`,
+    {
+      method: 'PUT',
+      headers: getHeaders(),
+    }
+  )
+  // 202 = update queued, 422 = already up to date (both are fine)
+  if (!res.ok && res.status !== 422) {
+    const data = await res.json().catch(() => ({}))
+    throw new Error(`Branch update failed: ${(data as { message?: string }).message || res.statusText}`)
+  }
+}
+
+/**
+ * Squash-merge a PR, retrying if GitHub hasn't finished updating the branch yet.
+ * After updatePRBranch() returns 202, the merge target may be temporarily
+ * in an UNKNOWN mergeable state — retry up to 5 times with a short delay.
  */
 export async function mergePR(
   prNumber: number,
   commitTitle?: string
 ): Promise<{ merged: boolean; message: string }> {
-  const res = await fetch(
-    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/pulls/${prNumber}/merge`,
-    {
-      method: 'PUT',
-      headers: getHeaders(),
-      body: JSON.stringify({
-        merge_method: 'squash',
-        commit_title: commitTitle || `Publish blog post (PR #${prNumber})`,
-      }),
-    }
-  )
+  const maxAttempts = 5
+  const delayMs = 2000
 
-  const data = await res.json()
-  if (!res.ok) {
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    const res = await fetch(
+      `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/pulls/${prNumber}/merge`,
+      {
+        method: 'PUT',
+        headers: getHeaders(),
+        body: JSON.stringify({
+          merge_method: 'squash',
+          commit_title: commitTitle || `Publish blog post (PR #${prNumber})`,
+        }),
+      }
+    )
+
+    const data = await res.json()
+
+    if (res.ok) {
+      return { merged: true, message: data.message }
+    }
+
+    // "not mergeable" is the transient state after branch update — retry
+    const msg = (data.message || '').toLowerCase()
+    if (attempt < maxAttempts && (msg.includes('not mergeable') || res.status === 405)) {
+      await new Promise((r) => setTimeout(r, delayMs))
+      continue
+    }
+
     throw new Error(`Merge failed: ${data.message || res.statusText}`)
   }
 
-  return { merged: true, message: data.message }
+  throw new Error('Merge failed: exhausted retries waiting for branch to become mergeable')
 }
 
 /**
@@ -294,11 +329,12 @@ export async function getDraftContent(slug: string): Promise<DraftContent | null
   const { content, sha } = await getFileFromBranch(pr.branch, filePath)
 
   // Get image files from the PR
+  // Match any image under public/images/insights/ (image folder uses shortened slug, not full MDX slug)
   const files = await getPRFiles(pr.prNumber)
   const imageFiles = files
     .filter(
       (f) =>
-        f.filename.startsWith(`public/images/insights/${slug}/`) &&
+        f.filename.startsWith('public/images/insights/') &&
         f.status !== 'removed'
     )
     .map((f) => f.filename)

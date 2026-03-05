@@ -8,44 +8,38 @@ const processSteps = [
   {
     step: 1,
     title: 'Free Consultation',
-    description:
-      'We listen to your goals, review your brief, and assess whether we can add value.',
-    result: 'A clear understanding of your options — with no obligation.',
+    description: 'We listen to your goals and assess if we can help.',
+    result: 'Clear options — no obligation.',
   },
   {
     step: 2,
     title: 'Feasibility & Planning',
-    description:
-      'We analyse costs, timelines, and risks to give you an honest picture before you commit.',
-    result: 'Investment decisions based on real numbers, not assumptions.',
+    description: 'Honest picture of costs, timelines, and risks before you commit.',
+    result: 'Real numbers, not assumptions.',
   },
   {
     step: 3,
     title: 'Design Management',
-    description:
-      'We coordinate architects, engineers, and consultants so the design is buildable and compliant.',
-    result: 'Design locked down before construction — no expensive redesigns mid-build.',
+    description: 'Coordinating design so it\u2019s buildable and compliant.',
+    result: 'No expensive redesigns mid-build.',
   },
   {
     step: 4,
     title: 'Approvals & Procurement',
-    description:
-      'We manage the DA process, tender documentation, and contractor selection.',
-    result: 'Faster approvals and competitive pricing from qualified builders.',
+    description: 'DA process, tenders, and contractor selection.',
+    result: 'Faster approvals. Competitive pricing.',
   },
   {
     step: 5,
     title: 'Construction Delivery',
-    description:
-      'We oversee the build, verify progress claims, manage variations, and enforce quality.',
-    result: 'On budget, on schedule, and built to specification.',
+    description: 'Overseeing the build. Verifying every claim and variation.',
+    result: 'On budget. On schedule. Built to spec.',
   },
   {
     step: 6,
     title: 'Handover & Close-out',
-    description:
-      'We manage defects, final inspections, and practical completion to protect your position.',
-    result: 'A completed project with all documentation, warranties, and defects resolved.',
+    description: 'Defects, final inspections, and practical completion.',
+    result: 'Done right. Documented. Defects resolved.',
   },
 ]
 
