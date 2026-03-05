@@ -18,7 +18,7 @@ import { StripeOverlay } from '@/components/landing/v2/stripe-overlay'
 import { StarRating } from '@/components/landing/v2/star-rating'
 
 export const metadata: Metadata = {
-  title: 'Sydney Project & Construction Management | Free Consultation | UpScalePM',
+  title: 'Sydney Project & Construction Management | Free Consultation | UpScale Project Management',
   description:
     'Expert client-side project management, construction management, and DA approval in Sydney. From feasibility through handover, we protect your budget, timeline, and quality. Free 30-min consultation.',
   robots: { index: false, follow: false },
@@ -37,11 +37,11 @@ export default function SydneyV2LandingPage() {
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/images/shared/logo/logo-64.png"
-                alt="UpScalePM"
+                alt="UpScale Project Management"
                 width={32}
                 height={32}
               />
-              <span className="font-display text-lg font-bold">UpScalePM</span>
+              <span className="font-display text-lg font-bold">UpScale Project Management</span>
             </Link>
             <a
               href={`tel:${PHONE_NUMBER}`}

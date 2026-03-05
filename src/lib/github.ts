@@ -162,30 +162,47 @@ export async function updatePRBranch(prNumber: number): Promise<void> {
 }
 
 /**
- * Squash-merge a PR
+ * Squash-merge a PR, retrying if GitHub hasn't finished updating the branch yet.
+ * After updatePRBranch() returns 202, the merge target may be temporarily
+ * in an UNKNOWN mergeable state — retry up to 5 times with a short delay.
  */
 export async function mergePR(
   prNumber: number,
   commitTitle?: string
 ): Promise<{ merged: boolean; message: string }> {
-  const res = await fetch(
-    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/pulls/${prNumber}/merge`,
-    {
-      method: 'PUT',
-      headers: getHeaders(),
-      body: JSON.stringify({
-        merge_method: 'squash',
-        commit_title: commitTitle || `Publish blog post (PR #${prNumber})`,
-      }),
-    }
-  )
+  const maxAttempts = 5
+  const delayMs = 2000
 
-  const data = await res.json()
-  if (!res.ok) {
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    const res = await fetch(
+      `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/pulls/${prNumber}/merge`,
+      {
+        method: 'PUT',
+        headers: getHeaders(),
+        body: JSON.stringify({
+          merge_method: 'squash',
+          commit_title: commitTitle || `Publish blog post (PR #${prNumber})`,
+        }),
+      }
+    )
+
+    const data = await res.json()
+
+    if (res.ok) {
+      return { merged: true, message: data.message }
+    }
+
+    // "not mergeable" is the transient state after branch update — retry
+    const msg = (data.message || '').toLowerCase()
+    if (attempt < maxAttempts && (msg.includes('not mergeable') || res.status === 405)) {
+      await new Promise((r) => setTimeout(r, delayMs))
+      continue
+    }
+
     throw new Error(`Merge failed: ${data.message || res.statusText}`)
   }
 
-  return { merged: true, message: data.message }
+  throw new Error('Merge failed: exhausted retries waiting for branch to become mergeable')
 }
 
 /**

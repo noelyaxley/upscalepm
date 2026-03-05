@@ -40,7 +40,7 @@ export function CaseStudiesV2() {
     <section className="bg-white py-20 md:py-28">
       <Container>
         <div className="flex items-end justify-between">
-          <h2 className="font-display text-5xl font-bold tracking-tight text-neutral-900 md:text-7xl">
+          <h2 className="font-display text-[3.25rem] font-bold tracking-tight text-neutral-900 sm:text-5xl md:text-7xl">
             Become Our Next<br className="hidden sm:block" /> Success Story.
           </h2>
           <div className="hidden gap-2 sm:flex">
@@ -88,7 +88,7 @@ export function CaseStudiesV2() {
                 <span className="rounded-full bg-primary/90 px-3 py-1 text-xs font-semibold">
                   {cs.sector}
                 </span>
-                <p className="mt-2 text-base font-bold">{cs.name}</p>
+                <p className="mt-2 text-base font-bold text-primary">{cs.name}</p>
               </div>
             </div>
           </div>

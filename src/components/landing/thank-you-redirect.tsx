@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-export function ThankYouRedirect() {
+export function ThankYouRedirect({ redirectTo = '/landing/sydney' }: { redirectTo?: string }) {
   const router = useRouter()
-  const [seconds, setSeconds] = useState(5)
+  const [seconds, setSeconds] = useState(3)
 
   // Clear the form_submitted flag (conversion is tracked by GTM)
   useEffect(() => {
@@ -14,7 +14,7 @@ export function ThankYouRedirect() {
 
   useEffect(() => {
     if (seconds <= 0) {
-      router.push('/')
+      router.push(redirectTo)
       return
     }
     const timer = setTimeout(() => {
@@ -25,7 +25,7 @@ export function ThankYouRedirect() {
 
   return (
     <p className="mt-4 text-sm text-neutral-500">
-      Redirecting to home page in {seconds} second{seconds !== 1 ? 's' : ''}...
+      Redirecting in {seconds} second{seconds !== 1 ? 's' : ''}...
     </p>
   )
 }

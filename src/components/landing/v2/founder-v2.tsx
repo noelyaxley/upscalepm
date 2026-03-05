@@ -18,7 +18,7 @@ export function FounderV2() {
             />
           </div>
           <div>
-            <h2 className="font-display text-5xl font-bold tracking-tight md:text-7xl">
+            <h2 className="font-display text-[3.25rem] font-bold tracking-tight leading-[0.95] sm:text-5xl md:text-7xl">
               Not Another Faceless Firm.
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-neutral-600">
@@ -27,7 +27,7 @@ export function FounderV2() {
                 $85M+ in project value. Commercial, government, health, residential.
               </p>
               <p>
-                Founded UpScale because property owners deserve a PM who picks up the phone,
+                Founded UpScale because property owners deserve a Project Manager who picks up the phone,
                 who&apos;s been on 200+ sites, and who works for{' '}
                 <strong className="text-neutral-900">you</strong> &mdash; not the builder.
               </p>
