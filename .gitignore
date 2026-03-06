@@ -57,3 +57,4 @@ content/
 
 # Claude Code configuration
 .claude/
+.env*.local
