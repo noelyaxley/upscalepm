@@ -171,18 +171,19 @@ export function SurveyForm({
       trackFormSubmission('survey_form_sydney')
       sessionStorage.setItem('form_submitted', '1')
 
-      // Fire n8n planning report webhook if site address provided
-      if (data.siteAddress) {
-        fetch(process.env.NEXT_PUBLIC_N8N_PLANNING_WEBHOOK_URL || '', {
+      // Fire n8n planning report webhook
+      const webhookUrl = process.env.NEXT_PUBLIC_N8N_PLANNING_WEBHOOK_URL
+      if (webhookUrl) {
+        fetch(webhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             clientName: `${data.firstName} ${data.lastName}`,
             clientEmail: data.email,
             clientPhone: data.phone,
-            propertyAddress: data.siteAddress,
+            propertyAddress: data.siteAddress || '',
           }),
-        }).catch(() => {}) // fire-and-forget
+        }).catch((err) => console.error('[n8n webhook]', err))
       }
 
       router.push(thankYouPath)
