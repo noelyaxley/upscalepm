@@ -5,13 +5,14 @@ import { Phone, Star, Clock } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { LogoMarquee } from '@/components/landing/logo-marquee'
 import { HeroV2 } from '@/components/landing/v2/hero-v2'
-import { StatsV2 } from '@/components/landing/v2/stats-v2'
 import { PainPointsV2 } from '@/components/landing/v2/pain-points-v2'
-import { CaseStudiesV2 } from '@/components/landing/v2/case-studies-v2'
+import { StatsV2 } from '@/components/landing/v2/stats-v2'
+import { HowItWorks } from '@/components/landing/v2/how-it-works'
 import { VideoSection } from '@/components/landing/v2/video-section'
 import { FounderV2 } from '@/components/landing/v2/founder-v2'
 import { TestimonialsV2 } from '@/components/landing/v2/testimonials-v2'
-import { SectorMarquee } from '@/components/landing/v2/sector-marquee'
+import { CaseStudiesV2 } from '@/components/landing/v2/case-studies-v2'
+import { PricingCards } from '@/components/landing/v2/pricing-cards'
 import { FAQV2 } from '@/components/landing/v2/faq-v2'
 import { FinalCTA } from '@/components/landing/v2/final-cta'
 import { StripeOverlay } from '@/components/landing/v2/stripe-overlay'
@@ -63,18 +64,18 @@ export default function SydneyV2LandingPage() {
         </div>
       </div>
 
-      {/* ─── S1: HERO — Full-screen, centered, massive headline ─── */}
+      {/* ─── S1: HERO — Full-screen, centered, massive headline + form ─── */}
       <HeroV2 />
 
-      {/* ─── S2: LOGO MARQUEE — Pure visual, 0 words ─── */}
+      {/* ─── S2: LOGO MARQUEE — Instant credibility ─── */}
       <section className="bg-white py-6">
         <LogoMarquee />
       </section>
 
-      {/* ─── S3: CASE STUDIES — "Become Our Next Success Story" ─── */}
-      <CaseStudiesV2 />
+      {/* ─── S3: PAIN POINTS — Problem agitation (moved up) ─── */}
+      <PainPointsV2 />
 
-      {/* ─── S4: SERVICE CARDS — "Two Ways We Help" ─── */}
+      {/* ─── S4: SERVICE CARDS — "Two Ways We Help" (solution framing) ─── */}
       <section className="relative bg-[#373737] py-20 text-white md:py-28">
         <StripeOverlay />
 
@@ -86,7 +87,7 @@ export default function SydneyV2LandingPage() {
 
             <div className="mx-auto mt-10 grid max-w-4xl gap-6 md:grid-cols-2">
               {/* Card 1 */}
-              <div className="rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-white/8">
                 <div className="flex size-12 items-center justify-center rounded-lg bg-primary/20">
                   <Image
                     src="/images/shared/logo/logo-64.png"
@@ -111,7 +112,7 @@ export default function SydneyV2LandingPage() {
                       <Star key={i} className="size-3.5 fill-primary text-primary" />
                     ))}
                   </div>
-                  <span className="text-xs text-neutral-500">5.0</span>
+                  <span className="text-xs text-neutral-500">&ldquo;5.0&rdquo;</span>
                 </div>
                 <a
                   href="#survey-form"
@@ -122,7 +123,7 @@ export default function SydneyV2LandingPage() {
               </div>
 
               {/* Card 2 */}
-              <div className="rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-white/8">
                 <div className="flex size-12 items-center justify-center rounded-lg bg-primary/20">
                   <Image
                     src="/images/shared/logo/logo-64.png"
@@ -147,7 +148,7 @@ export default function SydneyV2LandingPage() {
                       <Star key={i} className="size-3.5 fill-primary text-primary" />
                     ))}
                   </div>
-                  <span className="text-xs text-neutral-500">5.0</span>
+                  <span className="text-xs text-neutral-500">&ldquo;5.0&rdquo;</span>
                 </div>
                 <a
                   href="#survey-form"
@@ -157,57 +158,35 @@ export default function SydneyV2LandingPage() {
                 </a>
               </div>
             </div>
-
-            {/* Marquee below cards */}
-            <div className="mt-14">
-              <LogoMarquee reverse />
-            </div>
           </div>
         </Container>
       </section>
 
-      {/* ─── S5: STATS — Count-up + image ─── */}
+      {/* ─── S5: STATS — Proof of results ─── */}
       <StatsV2 />
 
-      {/* ─── S6: PAIN POINTS — "Does This Sound Familiar?" ─── */}
-      <PainPointsV2 />
+      {/* ─── S6: HOW IT WORKS — 3-step process (new) ─── */}
+      <HowItWorks />
 
-      {/* ─── S7: VIDEO/PROCESS — "The Power Is In The Process" ─── */}
+      {/* ─── S7: PROCESS/VIDEO — "The Power Is In The Process" ─── */}
       <VideoSection />
 
-      {/* ─── S9: FOUNDER — "Not Another Faceless Firm" ─── */}
+      {/* ─── S8: FOUNDER — Trust + human connection ─── */}
       <FounderV2 />
 
-      {/* ─── S10: TESTIMONIALS — Large quote carousel ─── */}
+      {/* ─── S9: TESTIMONIALS — Social proof ─── */}
       <TestimonialsV2 />
 
-      {/* ─── S11: BRAND EXPERIENCE MARQUEE ─── */}
-      <section className="bg-white py-8">
-        <Container>
-          <p className="mb-4 text-center text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            Brand Experience
-          </p>
-        </Container>
-        <LogoMarquee
-          logos={[
-            { src: '/images/shared/logos/sydney-water.webp', alt: 'Sydney Water', w: 120, h: 46 },
-            { src: '/images/shared/logos/health-infrastructure.webp', alt: 'Health Infrastructure', w: 120, h: 40 },
-            { src: '/images/shared/logos/school-infrastructure.webp', alt: 'School Infrastructure', w: 120, h: 38 },
-            { src: '/images/shared/logos/nsw-ambulance.webp', alt: 'NSW Ambulance', w: 50, h: 50 },
-            { src: '/images/shared/logos/tfnsw.png', alt: 'Transport for NSW', w: 120, h: 31 },
-            { src: '/images/shared/logos/dpie.png', alt: 'DPIE', w: 120, h: 34 },
-          ]}
-          reverse
-        />
-      </section>
+      {/* ─── S10: CASE STUDIES — Visual proof (moved down) ─── */}
+      <CaseStudiesV2 />
 
-      {/* ─── S12: SECTOR MARQUEE — Scrolling text ─── */}
-      <SectorMarquee />
+      {/* ─── S11: PRICING — Subscription model (new) ─── */}
+      <PricingCards />
 
-      {/* ─── S13: FAQ ACCORDION ─── */}
+      {/* ─── S12: FAQ ACCORDION ─── */}
       <FAQV2 />
 
-      {/* ─── S14: FINAL CTA — Floating icons + SurveyForm ─── */}
+      {/* ─── S13: FINAL CTA — Survey form + call CTA ─── */}
       <FinalCTA />
 
       {/* ─── FOOTER — Minimal ─── */}

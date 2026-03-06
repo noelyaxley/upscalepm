@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Container } from '@/components/layout/container'
 import { StarRating } from './star-rating'
 import { StripeOverlay } from './stripe-overlay'
+import { BlurFade } from './blur-fade'
 
 const stats = [
   { value: 85, prefix: '$', suffix: 'M+', label: 'Project Value Delivered' },
@@ -61,39 +62,45 @@ export function StatsV2() {
 
       <Container>
         <div className="relative z-10">
-          <div className="text-center">
-            <h2 className="font-display text-[3.25rem] font-bold tracking-tight leading-[0.95] sm:text-5xl md:text-7xl">
-              $85M+ In Project Value.<br className="hidden sm:block" /> Zero Guesswork.
-            </h2>
-          </div>
+          <BlurFade>
+            <div className="text-center">
+              <h2 className="font-display text-[3.25rem] font-bold tracking-tight leading-[0.95] sm:text-5xl md:text-7xl">
+                $85M+ In Project Value.<br className="hidden sm:block" /> Zero Guesswork.
+              </h2>
+            </div>
+          </BlurFade>
 
           <div className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat) => (
-              <div key={stat.label} className="rounded-lg border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm">
-                <CountUp value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
-                <p className="mt-2 text-sm font-medium text-neutral-400">{stat.label}</p>
-              </div>
+            {stats.map((stat, i) => (
+              <BlurFade key={stat.label} delay={0.1 + i * 0.1}>
+                <div className="rounded-lg border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm transition-colors hover:border-primary/30">
+                  <CountUp value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
+                  <p className="mt-2 text-sm font-medium text-neutral-400">{stat.label}</p>
+                </div>
+              </BlurFade>
             ))}
           </div>
 
-          <div className="mt-14 overflow-hidden rounded-xl">
-            <Image
-              src="/images/landing/brand/mac-park-lobby.jpg"
-              alt="Macquarie Park commercial lobby"
-              width={1200}
-              height={500}
-              quality={90}
-              className="h-64 w-full object-cover md:h-96"
-              sizes="(max-width: 768px) 95vw, 1100px"
-            />
-          </div>
+          <BlurFade delay={0.5}>
+            <div className="mt-14 overflow-hidden rounded-xl">
+              <Image
+                src="/images/landing/brand/mac-park-lobby.jpg"
+                alt="Macquarie Park commercial lobby"
+                width={1200}
+                height={500}
+                quality={90}
+                className="h-64 w-full object-cover md:h-96"
+                sizes="(max-width: 768px) 95vw, 1100px"
+              />
+            </div>
+          </BlurFade>
 
           <div className="mt-10 flex flex-col items-center gap-4 text-center">
             <a
               href="#survey-form"
               className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-primary/90"
             >
-              Talk To Us
+              See If We&apos;re a Fit
             </a>
             <StarRating className="text-neutral-500" />
           </div>

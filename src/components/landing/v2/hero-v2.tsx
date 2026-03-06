@@ -23,8 +23,8 @@ export function HeroV2() {
         />
       </div>
 
-      {/* Heavy dark overlay */}
-      <div className="absolute inset-0 bg-[#0a0404]/80" />
+      {/* Dark overlay — lightened to let the hero image show through */}
+      <div className="absolute inset-0 bg-[#0a0404]/60" />
 
       {/* Diagonal stripe pattern */}
       <StripeOverlay />

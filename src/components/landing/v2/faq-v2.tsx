@@ -1,8 +1,13 @@
 'use client'
 
-import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
 import { Container } from '@/components/layout/container'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import { BlurFade } from './blur-fade'
 
 type FAQItem = {
   question: string
@@ -42,7 +47,7 @@ const faqs: FAQItem[] = [
   {
     question: 'How much does project management cost?',
     shortAnswer:
-      'Fees typically range from 3–8% of construction cost. For most projects, a single prevented variation pays for the entire engagement.',
+      'Our subscription plans start at $7,990/mo for projects up to $9M, and $10,990/mo for larger developments. For most projects, a single prevented variation pays for the entire engagement.',
     result:
       'A fraction of your build cost to protect the full investment.',
   },
@@ -68,6 +73,13 @@ const faqs: FAQItem[] = [
       'Whether it\'s a $500K home or a $50M fit-out, we protect the client.',
   },
   {
+    question: 'Can I pause or cancel my subscription?',
+    shortAnswer:
+      'Yes. There are no lock-in contracts. You can pause your subscription if your project hits a delay, or cancel anytime.',
+    result:
+      'Full flexibility — pay only when you need us.',
+  },
+  {
     question: 'How quickly can you start?',
     shortAnswer:
       'Typically within 1–2 weeks. For urgent situations, we can mobilise within days.',
@@ -77,66 +89,47 @@ const faqs: FAQItem[] = [
 ]
 
 export function FAQV2() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-
   return (
     <section className="border-y bg-neutral-50 py-20 md:py-28">
       <Container>
         <div className="mx-auto max-w-3xl">
-          <div className="text-center">
-            <h2 className="font-display text-[3.25rem] font-bold uppercase tracking-tight leading-[0.95] sm:text-5xl md:text-7xl">
-              You&apos;ve Got Questions.<br className="hidden sm:block" /> We&apos;ve Got Answers.
-            </h2>
-          </div>
+          <BlurFade>
+            <div className="text-center">
+              <h2 className="font-display text-[3.25rem] font-bold uppercase tracking-tight leading-[0.95] sm:text-5xl md:text-7xl">
+                You&apos;ve Got Questions.<br className="hidden sm:block" /> We&apos;ve Got Answers.
+              </h2>
+            </div>
+          </BlurFade>
 
-          <div className="mt-12 space-y-3">
-            {faqs.map((faq, index) => {
-              const isOpen = openIndex === index
-              return (
-                <div
+          <BlurFade delay={0.15}>
+            <Accordion type="single" collapsible className="mt-12 space-y-3">
+              {faqs.map((faq, index) => (
+                <AccordionItem
                   key={faq.question}
-                  className="overflow-hidden rounded-lg border bg-white"
+                  value={`item-${index}`}
+                  className="rounded-lg border bg-white px-6 data-[state=open]:shadow-sm"
                 >
-                  <button
-                    type="button"
-                    onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="flex w-full items-center justify-between px-6 py-5 text-left"
-                  >
-                    <h3 className="pr-4 text-base font-semibold text-neutral-900">
-                      {faq.question}
-                    </h3>
-                    <ChevronDown
-                      className={`size-5 shrink-0 text-neutral-400 transition-transform duration-200 ${
-                        isOpen ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-                  <div
-                    className={`grid transition-[grid-template-rows] duration-200 ease-out ${
-                      isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-                    }`}
-                  >
-                    <div className="overflow-hidden">
-                      <div className="border-t px-6 pb-5 pt-4">
-                        <p className="text-sm leading-relaxed text-muted-foreground">
-                          <span className="font-semibold text-neutral-700">
-                            Short answer:{' '}
-                          </span>
-                          {faq.shortAnswer}
-                        </p>
-                        <p className="mt-3 text-sm leading-relaxed">
-                          <span className="font-semibold text-primary">
-                            The result:{' '}
-                          </span>
-                          {faq.result}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+                  <AccordionTrigger className="py-5 text-left text-base font-semibold text-neutral-900 hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-5">
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      <span className="font-semibold text-neutral-700">
+                        Short answer:{' '}
+                      </span>
+                      {faq.shortAnswer}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed">
+                      <span className="font-semibold text-primary">
+                        The result:{' '}
+                      </span>
+                      {faq.result}
+                    </p>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </BlurFade>
         </div>
       </Container>
     </section>
