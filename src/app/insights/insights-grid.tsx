@@ -88,7 +88,7 @@ export function InsightsGrid({ insights }: InsightsGridProps) {
             <Link
               key={insight.slug}
               href={`/insights/${insight.slug}`}
-              className="group block overflow-hidden rounded-lg border bg-card shadow-sm transition-shadow hover:shadow-md"
+              className="group block overflow-hidden rounded-xl border-2 border-primary/20 bg-card shadow-sm transition-all hover:border-primary/60 hover:shadow-md"
             >
               {/* Hero image */}
               <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200">

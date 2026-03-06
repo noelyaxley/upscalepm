@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getCaseStudyBySlug } from '@/lib/content'
 import { Section } from '@/components/layout/section'
+import { BlurFade } from '@/components/animation/blur-fade'
 
 interface RelatedCaseStudiesProps {
   slugs: string[]
@@ -16,12 +17,14 @@ export function RelatedCaseStudies({ slugs }: RelatedCaseStudiesProps) {
 
   return (
     <Section>
-      <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+      <BlurFade>
+      <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
         Related Projects
       </h2>
       <p className="mt-3 max-w-2xl text-lg text-muted-foreground">
         See how we have delivered results on similar projects.
       </p>
+      </BlurFade>
       <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {caseStudies.map((cs) => {
           if (!cs) return null
@@ -29,7 +32,7 @@ export function RelatedCaseStudies({ slugs }: RelatedCaseStudiesProps) {
             <Link
               key={cs.slug}
               href={`/case-studies/${cs.slug}`}
-              className="group overflow-hidden rounded-lg border bg-background shadow-sm transition-shadow hover:shadow-md"
+              className="group overflow-hidden rounded-xl border-2 border-primary/20 bg-background shadow-sm transition-all hover:border-primary/60 hover:shadow-md"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image

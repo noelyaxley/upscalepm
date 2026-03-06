@@ -9,15 +9,18 @@ interface PageHeaderProps {
 
 export function PageHeader({ title, subtitle, breadcrumbs }: PageHeaderProps) {
   return (
-    <div className="border-b bg-muted/50 py-12 md:py-16 lg:py-20">
-      <Container>
+    <div className="relative overflow-hidden border-b bg-neutral-950 py-16 text-white md:py-20 lg:py-24">
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
+      <Container className="relative">
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav aria-label="Breadcrumb" className="mb-4">
-            <ol className="flex items-center gap-2 text-sm text-muted-foreground">
+          <nav aria-label="Breadcrumb" className="mb-6">
+            <ol className="flex items-center gap-2 text-sm text-neutral-400">
               <li>
                 <Link
                   href="/"
-                  className="transition-colors hover:text-foreground"
+                  className="transition-colors hover:text-white"
                 >
                   Home
                 </Link>
@@ -28,23 +31,23 @@ export function PageHeader({ title, subtitle, breadcrumbs }: PageHeaderProps) {
                   {crumb.href ? (
                     <Link
                       href={crumb.href}
-                      className="transition-colors hover:text-foreground"
+                      className="transition-colors hover:text-white"
                     >
                       {crumb.label}
                     </Link>
                   ) : (
-                    <span className="text-foreground">{crumb.label}</span>
+                    <span className="text-white">{crumb.label}</span>
                   )}
                 </li>
               ))}
             </ol>
           </nav>
         )}
-        <h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+        <h1 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl lg:text-7xl">
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
+          <p className="mt-6 max-w-2xl text-lg text-neutral-300 md:text-xl">
             {subtitle}
           </p>
         )}

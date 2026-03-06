@@ -9,6 +9,7 @@ import { CalendlyInlineDynamic } from '@/components/booking/calendly-inline-dyna
 import { CheckCircle2, Clock, Mail, MapPin, Phone } from 'lucide-react'
 import { JsonLd } from '@/components/seo/json-ld'
 import { localBusinessSchema } from '@/components/seo/schemas'
+import { BlurFade } from '@/components/animation/blur-fade'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Contact',
@@ -30,20 +31,22 @@ export default function ContactPage() {
     <>
       <JsonLd data={localBusinessSchema()} />
       {/* Benefit-driven hero (CRO-01) */}
-      <section className="border-b bg-neutral-950 text-white">
-        <Container>
-          <div className="py-12 md:py-16">
+      <section className="relative overflow-hidden border-b bg-neutral-950 text-white">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
+        <Container className="relative">
+          <div className="py-16 md:py-20">
             <nav className="mb-6 text-sm text-neutral-400">
               <Link href="/" className="hover:text-white">
                 Home
               </Link>
               <span className="mx-2">/</span>
-              <span>Contact</span>
+              <span className="text-white">Contact</span>
             </nav>
-            <h1 className="font-display text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            <h1 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl lg:text-7xl">
               Deliver Your Next Project
             </h1>
-            <p className="mt-4 max-w-2xl text-lg text-neutral-300">
+            <p className="mt-6 max-w-2xl text-lg text-neutral-300 md:text-xl">
               Free 30-minute consultation with an experienced client-side
               project manager. No obligation, no sales pitch — just practical
               advice for your project.
@@ -55,9 +58,10 @@ export default function ContactPage() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
           {/* Left column -- Form (60%) */}
+          <BlurFade>
           <div className="lg:col-span-3">
             <div className="mb-8">
-              <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+              <h2 className="font-display text-3xl font-bold leading-[0.95] tracking-tight md:text-4xl">
                 Tell Us About Your Project
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
@@ -67,12 +71,14 @@ export default function ContactPage() {
 
             <ContactForm />
           </div>
+          </BlurFade>
 
           {/* Right column -- Trust signals (40%) */}
+          <BlurFade delay={0.2}>
           <div className="lg:col-span-2">
             <div className="space-y-8">
               {/* Metrics bar */}
-              <div className="grid grid-cols-2 gap-4 rounded-lg border bg-muted/50 p-5">
+              <div className="grid grid-cols-2 gap-4 rounded-lg border-2 border-primary/20 bg-muted/50 p-5">
                 <div className="text-center">
                   <p className="text-2xl font-bold text-primary">14+</p>
                   <p className="text-xs text-muted-foreground">
@@ -105,7 +111,7 @@ export default function ContactPage() {
               </div>
 
               {/* Response time commitment */}
-              <div className="rounded-lg border bg-muted/50 p-5">
+              <div className="rounded-lg border-2 border-primary/20 bg-muted/50 p-5">
                 <div className="flex items-center gap-3">
                   <Clock className="size-5 text-primary-600" />
                   <p className="text-sm font-medium">
@@ -157,6 +163,7 @@ export default function ContactPage() {
 
             </div>
           </div>
+          </BlurFade>
         </div>
       </Section>
 
@@ -164,8 +171,9 @@ export default function ContactPage() {
 
       {/* Booking section */}
       <Section background="muted" id="booking">
+        <BlurFade>
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="font-display text-3xl font-bold leading-[0.95] tracking-tight md:text-4xl">
             Prefer to Book Directly?
           </h2>
           <p className="mt-3 text-muted-foreground">
@@ -173,6 +181,7 @@ export default function ContactPage() {
             that suits you.
           </p>
         </div>
+        </BlurFade>
         <div className="mx-auto mt-8 max-w-3xl">
           <CalendlyInlineDynamic />
         </div>

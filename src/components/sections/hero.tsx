@@ -51,12 +51,12 @@ export function Hero() {
       </ParallaxHero>
 
       <Container className="relative">
-        <div className="py-20 md:py-28 lg:py-36">
+        <div className="py-24 md:py-32 lg:py-40">
           <div className="max-w-3xl">
-            <SplitHeading className="font-display text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+            <SplitHeading className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl lg:text-7xl">
               Client-Side Project Management for Property &amp; Construction
             </SplitHeading>
-            <p className="hero-subtitle mt-6 max-w-2xl text-lg text-neutral-300 md:text-xl">
+            <p className="hero-subtitle mt-8 max-w-2xl text-lg leading-relaxed text-neutral-300 md:text-xl">
               Stop overpaying contractors and missing critical issues. We sit on
               your side of the table — protecting your budget, timeline, and
               quality from feasibility through to handover.

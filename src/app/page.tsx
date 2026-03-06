@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button'
 import { JsonLd } from '@/components/seo/json-ld'
 import { localBusinessSchema } from '@/components/seo/schemas'
 import { GeometricShapes } from '@/components/animation/geometric-shapes'
+import { BlurFade } from '@/components/animation/blur-fade'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Client-Side Project Management Sydney & Newcastle',
@@ -35,8 +36,9 @@ export default function Home() {
       {/* Mid-page CTA (CRO-05: CTA at every scroll depth) */}
       <Section background="dark" className="relative overflow-hidden">
         <GeometricShapes variant="dark" />
+        <BlurFade>
         <div className="relative mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="font-display text-3xl font-bold leading-[0.95] tracking-tight md:text-4xl">
             Not Sure What You Need?
           </h2>
           <p className="mt-3 text-neutral-300">
@@ -49,17 +51,20 @@ export default function Home() {
             </Button>
           </div>
         </div>
+        </BlurFade>
       </Section>
 
       <FeaturedCaseStudies />
 
       {/* Testimonials marquee */}
       <Section>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
-            What Our Clients Say
-          </h2>
-        </div>
+        <BlurFade>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-bold leading-[0.95] tracking-tight md:text-4xl">
+              What Our Clients Say
+            </h2>
+          </div>
+        </BlurFade>
         <div className="mt-8">
           <TestimonialsMarquee />
         </div>

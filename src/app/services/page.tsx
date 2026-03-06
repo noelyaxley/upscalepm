@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { JsonLd } from '@/components/seo/json-ld'
 import { localBusinessSchema } from '@/components/seo/schemas'
 import { ServiceAccordion } from '@/components/sections/service-accordion'
+import { BlurFade } from '@/components/animation/blur-fade'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Services',
@@ -35,8 +36,9 @@ export default function ServicesPage() {
 
       {/* Dual service model section (PAGE-12) */}
       <Section background="muted">
+        <BlurFade>
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
             Two Ways to Work With Us
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -46,7 +48,8 @@ export default function ServicesPage() {
             right time.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            <div className="rounded-lg border bg-background p-6 text-left">
+            <BlurFade delay={0.1}>
+            <div className="h-full rounded-lg border-2 border-primary/20 bg-background p-6 text-left transition-all hover:border-primary/60">
               <h3 className="text-lg font-semibold">Project Engagement</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 Dedicated project management for a specific development --
@@ -54,7 +57,9 @@ export default function ServicesPage() {
                 finish.
               </p>
             </div>
-            <div className="rounded-lg border bg-background p-6 text-left">
+            </BlurFade>
+            <BlurFade delay={0.2}>
+            <div className="h-full rounded-lg border-2 border-primary/20 bg-background p-6 text-left transition-all hover:border-primary/60">
               <h3 className="text-lg font-semibold">Advisory Retainer</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 Ongoing expert guidance across your portfolio. Ideal for
@@ -62,14 +67,17 @@ export default function ServicesPage() {
                 strategic oversight.
               </p>
             </div>
+            </BlurFade>
           </div>
         </div>
+        </BlurFade>
       </Section>
 
       {/* Bottom CTA */}
       <Section background="dark">
+        <BlurFade>
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
             Your Project Deserves Expert Representation
           </h2>
           <p className="mt-4 text-lg text-neutral-300">
@@ -82,6 +90,7 @@ export default function ServicesPage() {
             </Button>
           </div>
         </div>
+        </BlurFade>
       </Section>
     </>
   )

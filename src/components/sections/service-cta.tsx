@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/layout/section'
+import { BlurFade } from '@/components/animation/blur-fade'
 
 interface ServiceCtaProps {
   heading: string
@@ -21,8 +22,9 @@ export function ServiceCta({
 }: ServiceCtaProps) {
   return (
     <Section background="dark">
+      <BlurFade>
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+        <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
           {heading}
         </h2>
         <p className="mt-4 text-lg text-neutral-300">{description}</p>
@@ -48,6 +50,7 @@ export function ServiceCta({
           )}
         </div>
       </div>
+      </BlurFade>
     </Section>
   )
 }

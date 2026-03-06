@@ -9,6 +9,7 @@ import { Testimonials } from '@/components/sections/testimonials'
 import { Button } from '@/components/ui/button'
 import { JsonLd } from '@/components/seo/json-ld'
 import { localBusinessSchema } from '@/components/seo/schemas'
+import { BlurFade } from '@/components/animation/blur-fade'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'About',
@@ -53,8 +54,9 @@ export default function AboutPage() {
       {/* Company Story */}
       <Section>
         <div className="grid items-center gap-12 lg:grid-cols-2">
+          <BlurFade>
           <div>
-            <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+            <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
               Built on Architectural Insight
             </h2>
             <div className="mt-6 space-y-4 text-muted-foreground">
@@ -85,6 +87,8 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+          </BlurFade>
+          <BlurFade delay={0.2}>
           <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
             <Image
               src="/images/shared/about-upscale.png"
@@ -95,13 +99,15 @@ export default function AboutPage() {
               priority
             />
           </div>
+          </BlurFade>
         </div>
       </Section>
 
       {/* Specialisations & Services */}
       <Section background="muted">
+        <BlurFade>
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
             Comprehensive Project Leadership
           </h2>
           <div className="mt-6 space-y-4 text-muted-foreground">
@@ -123,38 +129,43 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
+        </BlurFade>
       </Section>
 
       {/* Values */}
       <Section>
+        <BlurFade>
         <div className="text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
             Our Values
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             The principles that guide every project we deliver.
           </p>
         </div>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {values.map((value) => (
+        </BlurFade>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {values.map((value, i) => (
+            <BlurFade key={value.title} delay={0.1 + i * 0.1}>
             <div
-              key={value.title}
-              className="rounded-xl border bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
+              className="h-full rounded-xl border-2 border-primary/20 bg-card p-6 shadow-sm transition-all hover:border-primary/60 hover:shadow-md"
             >
-              <div className="mb-4 h-1 w-10 rounded-full bg-primary-500" />
+              <div className="mb-4 h-1 w-10 rounded-full bg-primary" />
               <h3 className="text-lg font-semibold">{value.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {value.description}
               </p>
             </div>
+            </BlurFade>
           ))}
         </div>
       </Section>
 
       {/* Philosophy */}
       <Section background="muted">
+        <BlurFade>
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
             Our Philosophy
           </h2>
           <div className="mt-6 space-y-4 text-muted-foreground">
@@ -177,12 +188,14 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
+        </BlurFade>
       </Section>
 
       {/* Team */}
       <Section>
+        <BlurFade>
         <div className="text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
             Our Team
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
@@ -190,6 +203,7 @@ export default function AboutPage() {
             precision and care.
           </p>
         </div>
+        </BlurFade>
         <div className="mt-12">
           <TeamGrid />
         </div>
@@ -197,8 +211,9 @@ export default function AboutPage() {
 
       {/* Testimonials */}
       <Section background="muted">
+        <BlurFade>
         <div className="text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
             What Our Clients Say
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
@@ -206,6 +221,7 @@ export default function AboutPage() {
             professionals.
           </p>
         </div>
+        </BlurFade>
         <div className="mt-12">
           <Testimonials />
         </div>
@@ -213,8 +229,9 @@ export default function AboutPage() {
 
       {/* CTA */}
       <Section background="dark">
+        <BlurFade>
         <div className="text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">
+          <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight text-white md:text-5xl">
             Work With Our Team
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-300">
@@ -227,6 +244,7 @@ export default function AboutPage() {
             </Button>
           </div>
         </div>
+        </BlurFade>
       </Section>
     </>
   )

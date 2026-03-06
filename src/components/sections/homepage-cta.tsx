@@ -2,13 +2,15 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/layout/section'
 import { GeometricShapes } from '@/components/animation/geometric-shapes'
+import { BlurFade } from '@/components/animation/blur-fade'
 
 export function HomepageCta() {
   return (
     <Section background="dark" className="section-diagonal-top-reverse relative overflow-hidden">
       <GeometricShapes variant="dark" />
+      <BlurFade>
       <div className="relative mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+        <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
           Your Project Deserves Expert Representation
         </h2>
         <p className="mt-4 text-lg text-neutral-300">
@@ -36,6 +38,7 @@ export function HomepageCta() {
           </Button>
         </div>
       </div>
+      </BlurFade>
     </Section>
   )
 }

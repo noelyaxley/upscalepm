@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { BlurFade } from '@/components/animation/blur-fade'
 import { Section } from '@/components/layout/section'
 
 const sectors = [
@@ -43,8 +44,9 @@ const sectors = [
 export function FeaturedCaseStudies() {
   return (
     <Section background="muted">
+      <BlurFade>
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+        <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
           Sectors of Expertise
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
@@ -52,6 +54,7 @@ export function FeaturedCaseStudies() {
           clients across diverse sectors.
         </p>
       </div>
+      </BlurFade>
       <div className="mt-12 overflow-hidden">
         <div className="animate-marquee-sectors flex gap-6">
           {[...sectors, ...sectors].map((sector, i) => (

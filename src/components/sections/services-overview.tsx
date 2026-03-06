@@ -9,6 +9,7 @@ import {
   ArrowRight,
 } from 'lucide-react'
 import { Section } from '@/components/layout/section'
+import { BlurFade } from '@/components/animation/blur-fade'
 import type { ServicePage } from '@/lib/services.types'
 
 interface ServicesOverviewProps {
@@ -34,8 +35,9 @@ const serviceCardImages: Record<string, string> = {
 export function ServicesOverview({ services }: ServicesOverviewProps) {
   return (
     <Section>
+      <BlurFade>
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+        <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
           Our Services
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
@@ -43,13 +45,14 @@ export function ServicesOverview({ services }: ServicesOverviewProps) {
           through construction delivery.
         </p>
       </div>
+      </BlurFade>
 
       {/* Top row: 3 cards */}
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {services.slice(0, 3).map((service) => {
+        {services.slice(0, 3).map((service, i) => {
           const Icon = serviceIcons[service.slug] ?? BarChart3
           return (
-            <ServiceCard key={service.slug} service={service} Icon={Icon} />
+            <ServiceCard key={service.slug} service={service} Icon={Icon} index={i} />
           )
         })}
       </div>
@@ -57,10 +60,10 @@ export function ServicesOverview({ services }: ServicesOverviewProps) {
       {/* Bottom row: 2 cards centered */}
       {services.length > 3 && (
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:mx-auto lg:max-w-[calc(66.666%+0.75rem)] lg:grid-cols-2">
-          {services.slice(3).map((service) => {
+          {services.slice(3).map((service, i) => {
             const Icon = serviceIcons[service.slug] ?? BarChart3
             return (
-              <ServiceCard key={service.slug} service={service} Icon={Icon} />
+              <ServiceCard key={service.slug} service={service} Icon={Icon} index={i + 3} />
             )
           })}
         </div>
@@ -81,14 +84,17 @@ export function ServicesOverview({ services }: ServicesOverviewProps) {
 function ServiceCard({
   service,
   Icon,
+  index = 0,
 }: {
   service: ServicePage
   Icon: typeof BarChart3
+  index?: number
 }) {
   return (
+    <BlurFade delay={0.1 + index * 0.1}>
     <Link
       href={`/services/${service.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-xl border bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10"
+      className="group relative flex h-full flex-col overflow-hidden rounded-xl border-2 border-primary/20 bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10"
     >
       {/* Image with zoom on hover */}
       <div className="relative h-48 overflow-hidden">
@@ -126,5 +132,6 @@ function ServiceCard({
       {/* Bottom accent bar — grows on hover */}
       <div className="h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
     </Link>
+    </BlurFade>
   )
 }

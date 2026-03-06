@@ -6,6 +6,7 @@ import { generatePageMetadata } from '@/lib/metadata'
 import type { CaseStudyFrontmatter } from '@/lib/content.types'
 import { PageHeader } from '@/components/layout/page-header'
 import { Container } from '@/components/layout/container'
+import { BlurFade } from '@/components/animation/blur-fade'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Projects',
@@ -47,19 +48,22 @@ export default function ProjectsPage() {
       {projects.length > 0 && (
         <section className="py-16 md:py-20">
           <Container>
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+            <BlurFade>
+            <h2 className="font-display text-3xl font-bold leading-[0.95] tracking-tight md:text-4xl">
               Projects
             </h2>
             <p className="mt-2 text-muted-foreground">
               Active and recently completed projects we are delivering.
             </p>
+            </BlurFade>
             <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {projects.map((study) => (
+              {projects.map((study, i) => (
+                <BlurFade key={study.slug} delay={0.1 + i * 0.1}>
                 <CaseStudyCard
-                  key={study.slug}
                   slug={study.slug}
                   frontmatter={study.frontmatter}
                 />
+                </BlurFade>
               ))}
             </div>
           </Container>
@@ -70,19 +74,22 @@ export default function ProjectsPage() {
       {caseStudies.length > 0 && (
         <section className="border-t py-16 md:py-20">
           <Container>
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+            <BlurFade>
+            <h2 className="font-display text-3xl font-bold leading-[0.95] tracking-tight md:text-4xl">
               Case Studies
             </h2>
             <p className="mt-2 text-muted-foreground">
               In-depth look at past projects across diverse sectors.
             </p>
+            </BlurFade>
             <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {caseStudies.map((study) => (
+              {caseStudies.map((study, i) => (
+                <BlurFade key={study.slug} delay={0.1 + i * 0.1}>
                 <CaseStudyCard
-                  key={study.slug}
                   slug={study.slug}
                   frontmatter={study.frontmatter}
                 />
+                </BlurFade>
               ))}
             </div>
           </Container>
@@ -105,7 +112,7 @@ function CaseStudyCard({
   return (
     <Link
       href={`/case-studies/${slug}`}
-      className="group block overflow-hidden rounded-lg border bg-card shadow-sm transition-shadow hover:shadow-md"
+      className="group block h-full overflow-hidden rounded-xl border-2 border-primary/20 bg-card shadow-sm transition-all hover:border-primary/60 hover:shadow-md"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200">
         <Image

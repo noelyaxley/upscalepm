@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { BlurFade } from '@/components/animation/blur-fade'
 import { Section } from '@/components/layout/section'
 import { Eye, ShieldCheck, Users } from 'lucide-react'
 
@@ -29,8 +30,9 @@ const propositions = [
 export function ValueProposition() {
   return (
     <Section background="muted" className="section-diagonal-top">
+      <BlurFade>
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+        <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
           What You Get With a Client-Side PM
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
@@ -39,11 +41,12 @@ export function ValueProposition() {
           momentum with consultants and contractors from day one.
         </p>
       </div>
+      </BlurFade>
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {propositions.map((prop) => (
+        {propositions.map((prop, i) => (
+          <BlurFade key={prop.title} delay={0.1 + i * 0.1}>
           <div
-            key={prop.title}
-            className="group relative flex flex-col overflow-hidden rounded-xl border bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10"
+            className="group relative flex h-full flex-col overflow-hidden rounded-xl border-2 border-primary/20 bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10"
           >
             {/* Image */}
             <div className="relative h-48 overflow-hidden">
@@ -78,6 +81,7 @@ export function ValueProposition() {
             {/* Bottom accent bar */}
             <div className="h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
           </div>
+          </BlurFade>
         ))}
       </div>
     </Section>
