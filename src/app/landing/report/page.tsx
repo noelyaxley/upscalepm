@@ -6,6 +6,9 @@ import { Container } from '@/components/layout/container'
 import { ReportForm } from '@/components/forms/report-form'
 import { ReportFAQ } from '@/components/landing/report-faq'
 import { ReportSalesLetter } from '@/components/landing/report-sales-letter'
+import { LogoMarquee } from '@/components/landing/logo-marquee'
+import { CaseStudySlider } from '@/components/landing/case-study-slider'
+import { StatsSection } from '@/components/landing/stats-section'
 
 export const metadata: Metadata = {
   title: 'Free Property Development Report | UpScale Project Management',
@@ -93,7 +96,7 @@ export default function ReportLandingPage() {
                     <Star key={i} className="size-4 fill-primary text-primary" />
                   ))}
                 </div>
-                <span className="text-sm text-neutral-400">Trusted by property owners across NSW</span>
+                <span className="text-sm text-neutral-400">5.0 from 6 client reviews</span>
               </div>
             </div>
 
@@ -116,12 +119,19 @@ export default function ReportLandingPage() {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          SECTION 2: SALES LETTER — "Dear property owner"
+          SECTION 2: LOGO MARQUEE — Pure visual trust
+      ─────────────────────────────────────────────────────────── */}
+      <section className="bg-white py-6">
+        <LogoMarquee />
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 3: SALES LETTER — "Dear property owner"
       ─────────────────────────────────────────────────────────── */}
       <ReportSalesLetter />
 
       {/* ───────────────────────────────────────────────────────────
-          SECTION 3: WHAT'S IN THE REPORT — 4 cards
+          SECTION 4: WHAT'S IN THE REPORT — 4 cards
       ─────────────────────────────────────────────────────────── */}
       <section className="bg-neutral-900 py-16 text-white md:py-24">
         <Container>
@@ -188,9 +198,14 @@ export default function ReportLandingPage() {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          SECTION 4: HOW IT WORKS — 3 steps
+          SECTION 5: STATS — Count-up numbers + hero image
       ─────────────────────────────────────────────────────────── */}
-      <section className="bg-neutral-100 py-16 md:py-24">
+      <StatsSection />
+
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 6: HOW IT WORKS — 3 steps
+      ─────────────────────────────────────────────────────────── */}
+      <section className="border-y bg-white py-16 md:py-24">
         <Container>
           <div className="text-center">
             <p className="text-sm font-semibold uppercase tracking-wider text-primary">
@@ -232,7 +247,12 @@ export default function ReportLandingPage() {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          SECTION 5: AUTHORITY IMAGE + CTA
+          SECTION 7: CASE STUDIES — Horizontal slider
+      ─────────────────────────────────────────────────────────── */}
+      <CaseStudySlider />
+
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 8: AUTHORITY — Calibre Cooper interior + CTA
       ─────────────────────────────────────────────────────────── */}
       <section className="bg-neutral-100 py-16 md:py-24">
         <Container>
@@ -249,8 +269,8 @@ export default function ReportLandingPage() {
 
           <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-xl">
             <Image
-              src="/images/landing/brand/newcastle-timber-staircase.jpg"
-              alt="Newcastle project delivery"
+              src="/images/landing/brand/calibre-cooper-balcony.jpg"
+              alt="Calibre Cooper Street — completed residential interior, Surry Hills"
               width={1200}
               height={500}
               className="h-64 w-full object-cover md:h-80"
@@ -270,14 +290,36 @@ export default function ReportLandingPage() {
                   <Star key={i} className="size-3.5 fill-primary text-primary" />
                 ))}
               </div>
-              <span className="text-sm text-muted-foreground">Trusted by property owners across NSW</span>
+              <span className="text-sm text-muted-foreground">5.0 from 6 reviews</span>
             </div>
           </div>
         </Container>
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          SECTION 6: DEEP SELL — "Why We Offer This"
+          SECTION 9: CLIENT LOGOS MARQUEE (reverse)
+      ─────────────────────────────────────────────────────────── */}
+      <section className="bg-white py-8">
+        <Container>
+          <p className="mb-4 text-center text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            Trusted By
+          </p>
+        </Container>
+        <LogoMarquee
+          logos={[
+            { src: '/images/shared/logos/sydney-water.webp', alt: 'Sydney Water', w: 120, h: 46 },
+            { src: '/images/shared/logos/health-infrastructure.webp', alt: 'Health Infrastructure', w: 120, h: 40 },
+            { src: '/images/shared/logos/school-infrastructure.webp', alt: 'School Infrastructure', w: 120, h: 38 },
+            { src: '/images/shared/logos/nsw-ambulance.webp', alt: 'NSW Ambulance', w: 50, h: 50 },
+            { src: '/images/shared/logos/tfnsw.png', alt: 'Transport for NSW', w: 120, h: 31 },
+            { src: '/images/shared/logos/dpie.png', alt: 'DPIE', w: 120, h: 34 },
+          ]}
+          reverse
+        />
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 10: DEEP SELL — "Why Is It Free?" + Vibe Hotel
       ─────────────────────────────────────────────────────────── */}
       <section className="bg-neutral-900 py-16 text-white md:py-24">
         <Container>
@@ -299,6 +341,17 @@ export default function ReportLandingPage() {
               ready to move forward, you&apos;re making decisions from a
               position of knowledge, not guesswork.
             </p>
+          </div>
+
+          {/* Image break */}
+          <div className="relative mx-auto mt-10 max-w-4xl overflow-hidden rounded-xl">
+            <Image
+              src="/images/landing/brand/vibe-hotel-entrance.jpg"
+              alt="Vibe Hotel Sydney — project delivered by UpScale PM"
+              width={1200}
+              height={600}
+              className="h-72 w-full object-cover brightness-75 md:h-96"
+            />
           </div>
 
           {/* Trust signals */}
@@ -323,12 +376,20 @@ export default function ReportLandingPage() {
             >
               Request My Free Report
             </a>
+            <div className="mt-3 flex items-center justify-center gap-2">
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="size-3.5 fill-primary text-primary" />
+                ))}
+              </div>
+              <span className="text-sm text-neutral-500">5.0 from 6 reviews</span>
+            </div>
           </div>
         </Container>
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          SECTION 7: ABOUT FOUNDER
+          SECTION 11: ABOUT FOUNDER
       ─────────────────────────────────────────────────────────── */}
       <section className="py-16 md:py-24">
         <Container>
@@ -344,16 +405,15 @@ export default function ReportLandingPage() {
             </div>
             <div>
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">
-                Who&apos;s Behind the Report
+                Meet Your Project Director
               </p>
               <h2 className="mt-2 font-display text-2xl font-bold tracking-tight md:text-3xl">
                 Noel Yaxley
               </h2>
               <p className="mt-4 text-muted-foreground">
-                15+ years in project management and development advisory. Background
-                in architecture (FJMT), government delivery (Property NSW, Sydney
-                Water), and commercial construction. Founded UpScale to give property
-                owners independent, expert advice.
+                15+ years. $85M+ in project value. Commercial, government,
+                health, residential. Founded UpScale because property owners
+                deserve a PM who works for them &mdash; not the builder.
               </p>
               <p className="mt-4 text-muted-foreground">
                 Every report is prepared with the same rigour we apply to our
@@ -366,12 +426,35 @@ export default function ReportLandingPage() {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          SECTION 8: FAQ ACCORDION
+          SECTION 12: SECTORS
+      ─────────────────────────────────────────────────────────── */}
+      <section className="border-y bg-white py-12">
+        <Container>
+          <p className="text-center text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+            We Report on Properties Across All Sectors
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            {['Residential', 'Commercial', 'Industrial', 'Mixed-Use', 'Retail', 'Hospitality'].map(
+              (sector) => (
+                <span
+                  key={sector}
+                  className="rounded-full border bg-neutral-50 px-4 py-2 text-sm font-medium text-neutral-700"
+                >
+                  {sector}
+                </span>
+              ),
+            )}
+          </div>
+        </Container>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 13: FAQ ACCORDION
       ─────────────────────────────────────────────────────────── */}
       <ReportFAQ />
 
       {/* ───────────────────────────────────────────────────────────
-          SECTION 9: FINAL CTA — Dark, form + buttons
+          SECTION 14: FINAL CTA — Dark, form + buttons
       ─────────────────────────────────────────────────────────── */}
       <section id="form-bottom" className="bg-neutral-950 py-16 text-white md:py-24">
         <Container>
