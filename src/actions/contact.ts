@@ -54,6 +54,7 @@ export async function submitContactForm(
     'Seniors Living / Mixed-Use': 'Seniors Living / Mixed-Use',
     'Construction Oversight (project underway)': 'Construction Oversight',
     'Not sure yet': 'Not sure yet',
+    'Property Report': 'Property Report',
     // Legacy mappings from survey form
     'New build or extension': 'Club Redevelopment',
     'Commercial fit-out or refurbishment': 'Club Refurbishment',
