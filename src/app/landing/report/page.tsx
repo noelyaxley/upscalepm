@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Phone, FileText, CheckCircle2, MapPin, BarChart3, Shield } from 'lucide-react'
+import { Phone, Star, FileText, MapPin, BarChart3, Shield, Layers, CheckCircle2 } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { ReportForm } from '@/components/forms/report-form'
+import { ReportFAQ } from '@/components/landing/report-faq'
+import { ReportSalesLetter } from '@/components/landing/report-sales-letter'
 
 export const metadata: Metadata = {
   title: 'Free Property Development Report | UpScale Project Management',
@@ -15,46 +17,23 @@ export const metadata: Metadata = {
 const PHONE_NUMBER = '+61290904480'
 const PHONE_DISPLAY = '02 9090 4480'
 
-const reportIncludes = [
-  {
-    icon: MapPin,
-    title: 'Zoning & Planning Controls',
-    description: 'Land zoning, permitted uses, floor space ratio, height limits, and minimum lot size.',
-  },
-  {
-    icon: BarChart3,
-    title: 'Development Potential',
-    description: 'Buildable area, gross floor area calculations, and indicative yield analysis.',
-  },
-  {
-    icon: FileText,
-    title: 'Key Constraints',
-    description: 'Heritage listings, flood mapping, bushfire, contamination, easements, and other encumbrances.',
-  },
-  {
-    icon: Shield,
-    title: 'Regulatory Overview',
-    description: 'Relevant LEP and DCP provisions, state policies, and authority requirements affecting the site.',
-  },
-]
-
 export default function ReportLandingPage() {
   return (
     <>
-      {/* Header */}
-      <div className="sticky top-0 z-50 bg-neutral-950 text-white">
+      {/* ───────────────────────────────────────────────────────────
+          HEADER — Sticky top bar
+      ─────────────────────────────────────────────────────────── */}
+      <div className="sticky top-0 z-50 border-b bg-neutral-950 text-white">
         <Container>
-          <div className="flex items-center justify-between border-b border-white/10 py-3">
+          <div className="flex items-center justify-between py-3">
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/images/shared/logo/logo-64.png"
-                alt="UpScale Project Management"
+                alt="UpScale PM"
                 width={32}
                 height={32}
               />
-              <span className="font-display text-lg font-bold">
-                UpScale PM
-              </span>
+              <span className="font-display text-lg font-bold">UpScale PM</span>
             </Link>
             <a
               href={`tel:${PHONE_NUMBER}`}
@@ -68,106 +47,267 @@ export default function ReportLandingPage() {
         </Container>
       </div>
 
-      {/* Hero + Form */}
-      <section className="relative overflow-hidden bg-neutral-950 text-white">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
-        <Container className="relative">
-          <div className="grid gap-12 py-16 md:py-20 lg:grid-cols-2">
-            <div>
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 1: HERO — Dark, full-bleed, headline + form
+      ─────────────────────────────────────────────────────────── */}
+      <section className="relative min-h-[600px] text-white md:min-h-[700px]">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/landing/brand/calibre-cooper-facade-night.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+        </div>
+
+        {/* Dark overlay */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background: [
+              'linear-gradient(to right, oklch(0.10 0.01 250 / 0.95) 0%, oklch(0.10 0.01 250 / 0.80) 45%, oklch(0.10 0.01 250 / 0.60) 100%)',
+              'linear-gradient(to top, oklch(0.10 0.01 250 / 0.90) 0%, transparent 30%)',
+            ].join(', '),
+          }}
+        />
+
+        {/* Content */}
+        <div className="relative z-30 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 py-16 md:py-20 lg:grid-cols-2 lg:gap-16">
+            {/* Left — Headline */}
+            <div className="flex flex-col justify-center">
               <h1 className="font-display text-4xl font-bold leading-[0.95] tracking-tight md:text-5xl lg:text-6xl">
                 Free Property Development Report
               </h1>
-              <p className="mt-6 text-lg text-neutral-300">
-                Get a detailed report on your site&apos;s development potential.
-                We&apos;ll analyse the planning controls, zoning, constraints, and
-                key considerations — and send it straight to your inbox.
+              <p className="mt-4 text-lg text-neutral-300">
+                Know what you can build <strong className="text-white">before</strong> you spend a cent on consultants.
               </p>
-              <p className="mt-4 text-lg font-medium text-white">
-                No obligation. No cost. Just useful information to help you
-                make better decisions about your property.
-              </p>
-              <div className="mt-8 flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 p-4">
-                <FileText className="size-5 shrink-0 text-primary" />
-                <span className="text-sm text-neutral-300">
-                  Reports are typically delivered within 3 business days.
-                </span>
-              </div>
-            </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm lg:p-8">
-              <h2 className="text-xl font-bold">
-                Request Your Free Report
-              </h2>
-              <p className="mt-1 text-sm text-neutral-400">
-                Enter the property address and we&apos;ll do the rest.
-              </p>
-              <div className="mt-6">
-                <ReportForm />
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
 
-      {/* What's included */}
-      <section className="border-t border-neutral-800 bg-neutral-950 py-16 text-white">
-        <Container>
-          <div className="mx-auto max-w-3xl">
-            <h2 className="text-center font-display text-3xl font-bold leading-[0.95] tracking-tight md:text-4xl">
-              What&apos;s in the Report
-            </h2>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2">
-              {reportIncludes.map((item) => (
-                <div
-                  key={item.title}
-                  className="flex items-start gap-4 rounded-lg border border-white/10 bg-white/5 p-5"
-                >
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary">
-                    <item.icon className="size-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">{item.title}</h3>
-                    <p className="mt-1 text-sm text-neutral-400">
-                      {item.description}
-                    </p>
-                  </div>
+              {/* Star rating */}
+              <div className="mt-6 flex items-center gap-2">
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="size-4 fill-primary text-primary" />
+                  ))}
                 </div>
-              ))}
+                <span className="text-sm text-neutral-400">Trusted by property owners across NSW</span>
+              </div>
+            </div>
+
+            {/* Right — Form */}
+            <div id="form" className="scroll-mt-20">
+              <div className="rounded-xl border border-white/15 bg-neutral-900/80 p-6 backdrop-blur-xl md:p-8">
+                <h2 className="font-display text-xl font-bold text-white">
+                  Request Your Free Report
+                </h2>
+                <p className="mt-1 text-sm text-neutral-400">
+                  Enter the property address and we&apos;ll do the rest.
+                </p>
+                <div className="mt-6">
+                  <ReportForm />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 2: SALES LETTER — "Dear property owner"
+      ─────────────────────────────────────────────────────────── */}
+      <ReportSalesLetter />
+
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 3: WHAT'S IN THE REPORT — 4 cards
+      ─────────────────────────────────────────────────────────── */}
+      <section className="bg-neutral-900 py-16 text-white md:py-24">
+        <Container>
+          <p className="text-center text-sm font-semibold uppercase tracking-wider text-primary">
+            What You Get
+          </p>
+          <h2 className="mt-2 text-center font-display text-2xl font-bold tracking-tight md:text-3xl">
+            Your Report Includes
+          </h2>
+
+          <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
+            {[
+              {
+                icon: MapPin,
+                title: 'Zoning & Planning Controls',
+                description:
+                  'Land zoning, permitted uses, floor space ratio, height limits, minimum lot size, and key LEP provisions for your site.',
+              },
+              {
+                icon: BarChart3,
+                title: 'Development Potential',
+                description:
+                  'Buildable area, gross floor area calculations, indicative yield analysis, and what the planning controls actually allow.',
+              },
+              {
+                icon: Shield,
+                title: 'Key Constraints',
+                description:
+                  'Heritage listings, flood mapping, bushfire, contamination, easements, and other encumbrances that affect development.',
+              },
+              {
+                icon: Layers,
+                title: 'Regulatory Overview',
+                description:
+                  'Relevant LEP and DCP provisions, state environmental planning policies, and authority requirements affecting the site.',
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm"
+              >
+                <div className="flex size-12 items-center justify-center rounded-lg bg-primary/20">
+                  <item.icon className="size-6 text-primary" />
+                </div>
+                <h3 className="mt-4 font-display text-lg font-bold">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-400">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <a
+              href="#form"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-primary/90"
+            >
+              Request My Free Report
+            </a>
+          </div>
+        </Container>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 4: HOW IT WORKS — 3 steps
+      ─────────────────────────────────────────────────────────── */}
+      <section className="bg-neutral-100 py-16 md:py-24">
+        <Container>
+          <div className="text-center">
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+              Simple Process
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-bold tracking-tight md:text-3xl">
+              Three Steps to Your Report
+            </h2>
+          </div>
+
+          <div className="mx-auto mt-12 grid max-w-4xl gap-8 md:grid-cols-3">
+            {[
+              {
+                step: '01',
+                title: 'Submit Your Address',
+                description: 'Fill out the form with the property address you want us to analyse.',
+              },
+              {
+                step: '02',
+                title: 'We Analyse the Site',
+                description: 'We research planning controls, zoning, constraints, and development potential.',
+              },
+              {
+                step: '03',
+                title: 'Report Delivered',
+                description: 'You receive a detailed PDF report via email within 3 business days.',
+              },
+            ].map((item) => (
+              <div key={item.step} className="text-center">
+                <div className="mx-auto flex size-14 items-center justify-center rounded-xl bg-primary text-xl font-bold text-white shadow-lg shadow-primary/30">
+                  {item.step}
+                </div>
+                <h3 className="mt-4 font-display text-lg font-bold">{item.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 5: AUTHORITY IMAGE + CTA
+      ─────────────────────────────────────────────────────────── */}
+      <section className="bg-neutral-100 py-16 md:py-24">
+        <Container>
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+              Independent. Experienced. Practical.
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              We&apos;ve delivered $85M+ in project value across 6 sectors.
+              This report is built on the same due diligence we apply to
+              every project we advise on.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-xl">
+            <Image
+              src="/images/landing/brand/newcastle-timber-staircase.jpg"
+              alt="Newcastle project delivery"
+              width={1200}
+              height={500}
+              className="h-64 w-full object-cover md:h-80"
+            />
+          </div>
+
+          <div className="mt-8 text-center">
+            <a
+              href="#form-bottom"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-primary/90"
+            >
+              Get Your Free Report
+            </a>
+            <div className="mt-3 flex items-center justify-center gap-2">
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="size-3.5 fill-primary text-primary" />
+                ))}
+              </div>
+              <span className="text-sm text-muted-foreground">Trusted by property owners across NSW</span>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Why we offer this */}
-      <section className="border-t border-neutral-800 bg-neutral-950 py-16 text-white">
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 6: DEEP SELL — "Why We Offer This"
+      ─────────────────────────────────────────────────────────── */}
+      <section className="bg-neutral-900 py-16 text-white md:py-24">
         <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-3xl font-bold leading-[0.95] tracking-tight md:text-4xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold text-primary">
+              No strings attached
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-bold tracking-tight md:text-3xl">
               Why Is It Free?
             </h2>
-            <p className="mt-4 text-neutral-300">
-              We believe better information leads to better projects. This report
-              gives you the planning fundamentals for your site — whether you&apos;re
-              exploring a redevelopment, acquisition, or just want to understand
-              what&apos;s possible.
+            <p className="mx-auto mt-4 max-w-2xl text-neutral-400">
+              We believe better information leads to better projects. Most
+              property owners spend thousands on consultants before they even
+              understand their site&apos;s basic planning controls. That&apos;s
+              backwards.
             </p>
-            <p className="mt-4 text-neutral-400">
-              If you need help beyond the report — feasibility analysis, development
-              advisory, or project management — we&apos;re here to help with that too.
+            <p className="mx-auto mt-4 max-w-2xl text-neutral-400">
+              This report gives you the fundamentals &mdash; so when you&apos;re
+              ready to move forward, you&apos;re making decisions from a
+              position of knowledge, not guesswork.
             </p>
           </div>
-        </Container>
-      </section>
 
-      {/* Trust signals */}
-      <section className="border-t border-neutral-800 bg-neutral-950 py-16 text-white">
-        <Container>
-          <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-neutral-400">
+          {/* Trust signals */}
+          <div className="mx-auto mt-10 flex max-w-2xl flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-neutral-400">
             {[
-              'Independent advisory firm',
-              'Based in Sydney CBD',
-              'Architectural + PM background',
-              'No sales pressure',
+              'No cost',
+              'No obligation',
+              'No follow-up pressure',
+              'Just useful information',
             ].map((signal) => (
               <div key={signal} className="flex items-center gap-2">
                 <CheckCircle2 className="size-4 text-primary" />
@@ -175,33 +315,140 @@ export default function ReportLandingPage() {
               </div>
             ))}
           </div>
+
+          <div className="mt-10 text-center">
+            <a
+              href="#form-bottom"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-primary/90"
+            >
+              Request My Free Report
+            </a>
+          </div>
         </Container>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/10 bg-neutral-950 py-8 text-center text-sm text-neutral-400">
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 7: ABOUT FOUNDER
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-16 md:py-24">
         <Container>
-          <p>
-            &copy; {new Date().getFullYear()} UpScale Project Management
-          </p>
-          <p className="mt-2">
-            Level 2/89 Macquarie St, Sydney NSW 2000 |{' '}
-            <a
-              href={`tel:${PHONE_NUMBER}`}
-              className="text-primary hover:underline"
-            >
-              {PHONE_DISPLAY}
-            </a>{' '}
-            |{' '}
-            <a
-              href="mailto:noel@upscalepm.com.au"
-              className="text-primary hover:underline"
-            >
-              noel@upscalepm.com.au
-            </a>
-          </p>
+          <div className="mx-auto grid max-w-4xl items-center gap-10 md:grid-cols-2 md:gap-16">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
+              <Image
+                src="/images/landing/noel-portrait.jpg"
+                alt="Noel Yaxley — Founder of UpScale Project Management"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 400px"
+              />
+            </div>
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+                Who&apos;s Behind the Report
+              </p>
+              <h2 className="mt-2 font-display text-2xl font-bold tracking-tight md:text-3xl">
+                Noel Yaxley
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                15+ years in project management and development advisory. Background
+                in architecture (FJMT), government delivery (Property NSW, Sydney
+                Water), and commercial construction. Founded UpScale to give property
+                owners independent, expert advice.
+              </p>
+              <p className="mt-4 text-muted-foreground">
+                Every report is prepared with the same rigour we apply to our
+                paid advisory engagements &mdash; because your first impression
+                of us matters.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 8: FAQ ACCORDION
+      ─────────────────────────────────────────────────────────── */}
+      <ReportFAQ />
+
+      {/* ───────────────────────────────────────────────────────────
+          SECTION 9: FINAL CTA — Dark, form + buttons
+      ─────────────────────────────────────────────────────────── */}
+      <section id="form-bottom" className="bg-neutral-950 py-16 text-white md:py-24">
+        <Container>
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+              Get your free report.
+            </h2>
+            <p className="mt-3 text-neutral-400">
+              Enter the property address below. Report delivered within 3 business days.
+            </p>
+
+            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a
+                href={`tel:${PHONE_NUMBER}`}
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-white px-6 py-3 text-sm font-bold text-neutral-950 transition-colors hover:bg-neutral-200"
+              >
+                <Phone className="size-4" />
+                Call Now: {PHONE_DISPLAY}
+              </a>
+              <a
+                href="#form"
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10"
+              >
+                Back to Top
+              </a>
+            </div>
+          </div>
+
+          {/* Inline form */}
+          <div className="mx-auto mt-10 max-w-lg">
+            <div className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm md:p-8">
+              <ReportForm />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          FOOTER — Minimal
+      ─────────────────────────────────────────────────────────── */}
+      <footer className="border-t border-white/10 bg-neutral-950 py-6 text-neutral-400">
+        <Container>
+          <div className="flex flex-col items-center justify-between gap-4 text-center text-xs sm:flex-row sm:text-left">
+            <p>&copy; {new Date().getFullYear()} UpScale Project Management. ABN 14 670 459 163.</p>
+            <div className="flex gap-4">
+              <Link href="/privacy-policy" className="hover:text-white">
+                Privacy Policy
+              </Link>
+              <Link href="/terms-and-conditions" className="hover:text-white">
+                Terms
+              </Link>
+            </div>
+          </div>
         </Container>
       </footer>
+
+      {/* ───────────────────────────────────────────────────────────
+          MOBILE STICKY CTA BAR
+      ─────────────────────────────────────────────────────────── */}
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t bg-neutral-950 p-3 md:hidden">
+        <div className="flex gap-2">
+          <a
+            href={`tel:${PHONE_NUMBER}`}
+            className="flex flex-1 items-center justify-center gap-2 rounded-md bg-primary py-3 text-sm font-semibold text-white"
+          >
+            <Phone className="size-4" />
+            Call Now
+          </a>
+          <a
+            href="#form"
+            className="flex flex-1 items-center justify-center gap-2 rounded-md border border-neutral-600 py-3 text-sm font-semibold text-white"
+          >
+            <FileText className="size-4" />
+            Get Report
+          </a>
+        </div>
+      </div>
     </>
   )
 }
