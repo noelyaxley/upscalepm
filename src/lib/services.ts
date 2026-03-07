@@ -8,18 +8,18 @@ export const services: ServicePage[] = [
       'Helping club boards make confident decisions before committing to a redevelopment',
     description:
       'UpScale provides strategic feasibility and masterplanning services for club redevelopments. Site capacity analysis, financial modelling, gaming floor compliance, and regulatory pathway assessment for RSL, Leagues, and Golf clubs across NSW.',
-    heroImage: '/images/case-studies/granville-diggers/hero.jpg',
+    heroImage: '/images/stock/service-feasibility.jpg',
     sections: [
       {
         heading: 'Know What You Are Getting Into Before You Commit',
         body: "Most club redevelopments that go wrong do so because the board approved a concept before the true costs and constraints were understood.\n\nUpScale's feasibility and masterplanning service gives your board the clarity it needs to make informed decisions. We assess your site's development potential, identify planning and regulatory constraints, and model realistic budgets — so you know what is achievable before you engage an architect or builder.\n\nOur work covers everything from gaming floor compliance and ILGA requirements to staging strategies that keep your club trading throughout construction.",
-        image: '/images/case-studies/granville-diggers/hero.jpg',
+        image: '/images/stock/service-feasibility.jpg',
         imagePosition: 'right',
       },
       {
         heading: 'Built for Club Governance',
         body: "We understand that club boards operate differently to private developers. Decisions require consensus, member consultation, and transparent financial oversight.\n\nOur feasibility reports are structured for board-level presentation — clear, evidence-based, and designed to support confident decision-making. Whether you're exploring a $2M refurbishment or a $50M redevelopment, we help your board understand the full picture before committing.",
-        image: '/images/home/catch-issues.jpg',
+        image: '/images/stock/governance-board-meeting.jpg',
         imagePosition: 'left',
       },
     ],
@@ -67,12 +67,12 @@ export const services: ServicePage[] = [
       'Navigating DA approvals for club redevelopments with precision and strategy',
     description:
       'UpScale manages the development approval process for club redevelopments including DA preparation, heritage assessment, consultant coordination, and council liaison for RSL, Leagues, and Golf clubs across NSW.',
-    heroImage: '/images/case-studies/granville-diggers/hero.jpg',
+    heroImage: '/images/stock/service-planning.jpg',
     sections: [
       {
         heading: 'Getting Your DA Right the First Time',
         body: "Club redevelopments face unique planning challenges. Heritage constraints (particularly for RSL clubs with war memorials), gaming floor regulations, late-night trading impacts, and community sensitivity all need to be addressed in your development application.\n\nUpScale coordinates the full DA process — from assembling the right consultant team (planners, heritage advisors, acoustic engineers, traffic consultants) through to lodgement and determination. We ensure all reports align and support a compelling submission that reflects your club's vision.",
-        image: '/images/case-studies/granville-diggers/hero.jpg',
+        image: '/images/stock/service-planning.jpg',
         imagePosition: 'right',
       },
       {
@@ -125,12 +125,12 @@ export const services: ServicePage[] = [
       'Independent advice to select the right architect and builder for your club project',
     description:
       'UpScale provides independent procurement services for club redevelopments including architect selection, builder prequalification, tender evaluation, and contract negotiation for RSL, Leagues, and Golf clubs across NSW.',
-    heroImage: '/images/case-studies/granville-diggers/hero.jpg',
+    heroImage: '/images/stock/service-procurement.jpg',
     sections: [
       {
         heading: 'Selecting the Right Team for Your Club',
         body: "Choosing the wrong architect or builder is one of the most expensive mistakes a club board can make. Generic construction firms often underestimate the complexity of staged club construction, gaming compliance requirements, and hospitality-grade finishes.\n\nUpScale manages the full procurement process — from developing the brief and shortlisting firms with genuine club experience, through to running a fair tender process, evaluating submissions, and negotiating contracts that protect your club's interests.",
-        image: '/images/case-studies/granville-diggers/hero.jpg',
+        image: '/images/stock/service-procurement.jpg',
         imagePosition: 'right',
       },
       {
@@ -183,12 +183,12 @@ export const services: ServicePage[] = [
       'Independent client-side oversight protecting your club during construction',
     description:
       'UpScale provides independent construction oversight for club redevelopments including budget monitoring, quality assurance, variation control, and board reporting for RSL, Leagues, and Golf clubs across NSW.',
-    heroImage: '/images/case-studies/granville-diggers/hero.jpg',
+    heroImage: '/images/stock/service-construction.jpg',
     sections: [
       {
         heading: 'Your Eyes and Ears During Construction',
         body: "Construction is where club redevelopments are most vulnerable. Variations escalate, programs slip, and quality issues compound — often without the board realising until it is too late.\n\nUpScale provides independent client-side oversight throughout construction. We monitor budgets, review variations before they are approved, track progress against the program, and ensure the builder delivers the quality your members expect. Our reporting keeps the board informed with clear, honest updates — no surprises.",
-        image: '/images/case-studies/granville-diggers/hero.jpg',
+        image: '/images/stock/service-construction.jpg',
         imagePosition: 'right',
       },
       {
@@ -241,12 +241,12 @@ export const services: ServicePage[] = [
       'Ensuring your redeveloped club opens on time, on budget, and ready for members',
     description:
       'UpScale manages the completion and handover of club redevelopments including defect identification, fitout coordination, operational handover, and post-occupancy review for RSL, Leagues, and Golf clubs across NSW.',
-    heroImage: '/images/case-studies/granville-diggers/hero.jpg',
+    heroImage: '/images/stock/service-launch.jpg',
     sections: [
       {
         heading: 'From Construction Site to Opening Night',
         body: "The final stages of a club redevelopment are critical. Defects need to be identified and rectified, fitout and furniture need to be coordinated, technology and gaming systems need to be commissioned, and staff need to be ready for opening.\n\nUpScale manages this transition — ensuring nothing falls through the cracks between the builder finishing and your members walking through the door. We coordinate practical completion, manage defect lists, oversee fitout installation, and support your team through the operational handover.",
-        image: '/images/case-studies/granville-diggers/hero.jpg',
+        image: '/images/stock/service-launch.jpg',
         imagePosition: 'right',
       },
       {

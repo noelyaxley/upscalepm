@@ -1,4 +1,5 @@
-import Image from 'next/image'
+'use client'
+
 import Link from 'next/link'
 import {
   BarChart3,
@@ -8,6 +9,7 @@ import {
   PartyPopper,
   ArrowRight,
 } from 'lucide-react'
+import { StockImage } from '@/components/ui/stock-image'
 import { Section } from '@/components/layout/section'
 import { BlurFade } from '@/components/animation/blur-fade'
 import type { ServicePage } from '@/lib/services.types'
@@ -24,12 +26,27 @@ const serviceIcons: Record<string, typeof BarChart3> = {
   'venue-launch-completion': PartyPopper,
 }
 
-const serviceCardImages: Record<string, string> = {
-  'feasibility-masterplanning': '/images/services/feasibility-advisory-card.jpg',
-  'development-planning-approvals': '/images/services/da-approval-card.jpg',
-  'consultant-builder-procurement': '/images/services/tender-assessment-card.jpg',
-  'construction-oversight': '/images/services/construction-superintendent-card.jpg',
-  'venue-launch-completion': '/images/services/design-management-card.jpg',
+const serviceCardImages: Record<string, { src: string; fallback: string }> = {
+  'feasibility-masterplanning': {
+    src: '/images/stock/service-feasibility.jpg',
+    fallback: '/images/services/feasibility-advisory-card.jpg',
+  },
+  'development-planning-approvals': {
+    src: '/images/stock/service-planning.jpg',
+    fallback: '/images/services/da-approval-card.jpg',
+  },
+  'consultant-builder-procurement': {
+    src: '/images/stock/service-procurement.jpg',
+    fallback: '/images/services/tender-assessment-card.jpg',
+  },
+  'construction-oversight': {
+    src: '/images/stock/service-construction.jpg',
+    fallback: '/images/services/construction-superintendent-card.jpg',
+  },
+  'venue-launch-completion': {
+    src: '/images/stock/service-launch.jpg',
+    fallback: '/images/services/design-management-card.jpg',
+  },
 }
 
 export function ServicesOverview({ services }: ServicesOverviewProps) {
@@ -98,8 +115,9 @@ function ServiceCard({
     >
       {/* Image with zoom on hover */}
       <div className="relative h-48 overflow-hidden">
-        <Image
-          src={serviceCardImages[service.slug] ?? service.heroImage}
+        <StockImage
+          src={serviceCardImages[service.slug]?.src ?? service.heroImage}
+          fallbackSrc={serviceCardImages[service.slug]?.fallback ?? service.heroImage}
           alt={service.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"

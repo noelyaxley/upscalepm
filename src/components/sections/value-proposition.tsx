@@ -1,6 +1,8 @@
-import Image from 'next/image'
+'use client'
+
 import { BlurFade } from '@/components/animation/blur-fade'
 import { Section } from '@/components/layout/section'
+import { StockImage } from '@/components/ui/stock-image'
 import { ShieldCheck, Building2, Users } from 'lucide-react'
 
 const propositions = [
@@ -8,21 +10,24 @@ const propositions = [
     title: 'Independent Advice, Not Competing Interests',
     description:
       'Architects and builders have their own incentives. We represent your club exclusively — every recommendation is made in the board\'s best interest, not the consultant team\'s.',
-    image: '/images/home/your-corner.jpg',
+    image: '/images/stock/value-independent.jpg',
+    fallback: '/images/home/your-corner.jpg',
     Icon: ShieldCheck,
   },
   {
     title: 'We Understand Club Operations',
     description:
       'Gaming compliance, member expectations, staged construction that keeps you trading, board governance — we know the challenges unique to club redevelopments.',
-    image: '/images/home/catch-issues.jpg',
+    image: '/images/stock/value-operations.jpg',
+    fallback: '/images/home/catch-issues.jpg',
     Icon: Building2,
   },
   {
     title: 'From Feasibility to Opening Night',
     description:
       'One advisor across every phase: masterplanning, approvals, procurement, construction oversight, and venue launch. No handoffs, no lost context.',
-    image: '/images/home/one-team.jpg',
+    image: '/images/stock/value-lifecycle.jpg',
+    fallback: '/images/home/one-team.jpg',
     Icon: Users,
   },
 ]
@@ -50,8 +55,9 @@ export function ValueProposition() {
           >
             {/* Image */}
             <div className="relative h-48 overflow-hidden">
-              <Image
+              <StockImage
                 src={prop.image}
+                fallbackSrc={prop.fallback}
                 alt={prop.title}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"

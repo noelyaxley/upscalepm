@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/layout/container'
@@ -41,11 +42,24 @@ export function Hero() {
       className="relative overflow-hidden bg-neutral-950 text-white"
     >
       {/* Background pattern with parallax */}
+      {/* Background image with parallax */}
       <ParallaxHero
         triggerRef={sectionRef}
         speed={0.3}
         className="absolute inset-0"
       >
+        <Image
+          src="/images/stock/hero-club-interior.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-20"
+          sizes="100vw"
+          priority
+          onError={(e) => {
+            // Hide if stock image not yet downloaded
+            e.currentTarget.style.display = 'none'
+          }}
+        />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
       </ParallaxHero>
