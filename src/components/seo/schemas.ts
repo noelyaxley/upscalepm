@@ -12,9 +12,9 @@ export function localBusinessSchema(): WithContext<LocalBusiness> {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'Upscale Project Management',
+    name: 'UpScale Project Management | Club Development Advisory',
     description:
-      'Client-side project management for property and construction projects in Sydney and Newcastle.',
+      'Independent advisors for club and golf club redevelopments across NSW. Helping club boards and CEOs successfully deliver major capital projects.',
     url: SITE_URL,
     email: 'noel@upscalepm.com.au',
     address: {
@@ -25,17 +25,24 @@ export function localBusinessSchema(): WithContext<LocalBusiness> {
       postalCode: '2000',
       addressCountry: 'AU',
     },
-    areaServed: [
-      { '@type': 'City', name: 'Sydney' },
-      { '@type': 'City', name: 'Newcastle' },
-    ],
+    areaServed: {
+      '@type': 'State',
+      name: 'New South Wales',
+    },
     founder: {
       '@type': 'Person',
       name: 'Noel Yaxley',
-      jobTitle: 'Founder & Principal',
+      jobTitle: 'Director',
     },
     image: `${SITE_URL}/images/og-default.jpg`,
     priceRange: '$$',
+    knowsAbout: [
+      'Club redevelopment project management',
+      'RSL club refurbishment',
+      'Golf clubhouse development',
+      'Hospitality venue redevelopment',
+      'Club governance advisory',
+    ],
   }
 }
 
@@ -59,7 +66,7 @@ export function serviceSchema(service: {
       { '@type': 'City', name: 'Sydney' },
       { '@type': 'City', name: 'Newcastle' },
     ],
-    serviceType: 'Project Management',
+    serviceType: 'Club Redevelopment Advisory',
   }
 }
 

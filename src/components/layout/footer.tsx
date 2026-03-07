@@ -32,7 +32,11 @@ const socialLinks = [
 const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/case-studies', label: 'Projects' },
+  { href: '/for-club-boards', label: 'For Club Boards' },
+  { href: '/framework', label: 'Our Framework' },
   { href: '/insights', label: 'Insights' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/nsw-club-redevelopments', label: 'NSW Club Redevelopments' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ] as const
@@ -55,11 +59,14 @@ export function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
               <Image src="/images/shared/logo/logo-64.png" alt="" width={32} height={32} className="size-8" />
-              UpScalePM
+              UpScale PM
             </Link>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Client-side project management for property and construction.
-              From feasibility through to handover.
+            <p className="mt-3 text-sm font-medium text-foreground">
+              Club Development Advisory
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Independent advisors for RSL, Leagues, Workers, Diggers, Bowling
+              &amp; Golf club redevelopments across NSW.
             </p>
           </div>
 
@@ -151,7 +158,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="flex flex-col items-center gap-2 border-t py-6 sm:flex-row sm:justify-between">
           <p className="text-sm text-muted-foreground">
-            &copy; {currentYear} UpScalePM. All rights reserved.
+            &copy; {currentYear} UpScale Project Management. All rights reserved.
           </p>
           <nav aria-label="Legal" className="flex gap-4">
             {legalLinks.map((link) => (

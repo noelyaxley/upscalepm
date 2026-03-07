@@ -2,10 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {
   BarChart3,
-  Compass,
   FileCheck,
   Scale,
   HardHat,
+  PartyPopper,
   ArrowRight,
 } from 'lucide-react'
 import { Section } from '@/components/layout/section'
@@ -17,19 +17,19 @@ interface ServicesOverviewProps {
 }
 
 const serviceIcons: Record<string, typeof BarChart3> = {
-  'feasibility-advisory': BarChart3,
-  'design-management': Compass,
-  'da-approval': FileCheck,
-  'tender-assessment': Scale,
-  'construction-superintendent': HardHat,
+  'feasibility-masterplanning': BarChart3,
+  'development-planning-approvals': FileCheck,
+  'consultant-builder-procurement': Scale,
+  'construction-oversight': HardHat,
+  'venue-launch-completion': PartyPopper,
 }
 
 const serviceCardImages: Record<string, string> = {
-  'feasibility-advisory': '/images/services/feasibility-advisory-card.jpg',
-  'design-management': '/images/services/design-management-card.jpg',
-  'da-approval': '/images/services/da-approval-card.jpg',
-  'tender-assessment': '/images/services/tender-assessment-card.jpg',
-  'construction-superintendent': '/images/services/construction-superintendent-card.jpg',
+  'feasibility-masterplanning': '/images/services/feasibility-advisory-card.jpg',
+  'development-planning-approvals': '/images/services/da-approval-card.jpg',
+  'consultant-builder-procurement': '/images/services/tender-assessment-card.jpg',
+  'construction-oversight': '/images/services/construction-superintendent-card.jpg',
+  'venue-launch-completion': '/images/services/design-management-card.jpg',
 }
 
 export function ServicesOverview({ services }: ServicesOverviewProps) {
@@ -38,11 +38,11 @@ export function ServicesOverview({ services }: ServicesOverviewProps) {
       <BlurFade>
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
-          Our Services
+          The UpScale Club Development Framework
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          Comprehensive client-side project management, from early feasibility
-          through construction delivery.
+          Five stages of independent advisory — protecting your club from
+          feasibility through to opening night.
         </p>
       </div>
       </BlurFade>

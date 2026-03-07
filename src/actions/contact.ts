@@ -45,10 +45,18 @@ export async function submitContactForm(
 
   const hubspot = new Client({ accessToken })
 
-  // Map survey project types to valid HubSpot service_interest dropdown values
+  // Map project types to HubSpot service_interest values
   const serviceInterestMap: Record<string, string> = {
-    'New build or extension': 'Construction Superintendent',
-    'Commercial fit-out or refurbishment': 'Design Management',
+    'New Club Redevelopment': 'Club Redevelopment',
+    'Club Refurbishment': 'Club Refurbishment',
+    'Masterplan / Feasibility Study': 'Feasibility & Advisory',
+    'Golf Clubhouse Development': 'Golf Clubhouse Development',
+    'Seniors Living / Mixed-Use': 'Seniors Living / Mixed-Use',
+    'Construction Oversight (project underway)': 'Construction Oversight',
+    'Not sure yet': 'Not sure yet',
+    // Legacy mappings from survey form
+    'New build or extension': 'Club Redevelopment',
+    'Commercial fit-out or refurbishment': 'Club Refurbishment',
     'DA approval or town planning': 'DA Approval',
     'Feasibility study': 'Feasibility & Advisory',
     'Something else': 'Not sure yet',

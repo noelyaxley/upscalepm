@@ -5,9 +5,9 @@ import { PageHeader } from '@/components/layout/page-header'
 import { InsightsGrid } from './insights-grid'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Insights',
+  title: 'Club Redevelopment Insights',
   description:
-    'Practical insights on property development, construction contracts, project management, and navigating the built environment in Australia.',
+    'Practical insights for club boards planning a redevelopment. Advice on cost management, governance, procurement, and construction oversight for RSL, Leagues, and Golf clubs.',
   path: '/insights',
 })
 
@@ -19,7 +19,7 @@ export default function InsightsPage() {
       <>
         <PageHeader
           title="Insights"
-          subtitle="Practical knowledge from the front line of property development and construction project management."
+          subtitle="Practical advice for club boards and CEOs planning redevelopments. Risk management, cost control, governance, and lessons from real projects."
           breadcrumbs={[{ label: 'Insights' }]}
         />
         <div className="py-24 text-center">

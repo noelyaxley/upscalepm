@@ -1,27 +1,27 @@
 import Image from 'next/image'
 import { BlurFade } from '@/components/animation/blur-fade'
 import { Section } from '@/components/layout/section'
-import { Eye, ShieldCheck, Users } from 'lucide-react'
+import { ShieldCheck, Building2, Users } from 'lucide-react'
 
 const propositions = [
   {
-    title: 'Catch Issues Before They Cost You',
+    title: 'Independent Advice, Not Competing Interests',
     description:
-      'Our architectural background means we see problems in drawings that most PMs miss. We catch coordination issues, buildability problems, and compliance gaps before they become expensive site variations.',
-    image: '/images/home/catch-issues.jpg',
-    Icon: Eye,
-  },
-  {
-    title: 'Someone in Your Corner',
-    description:
-      'We represent you, not the contractor. Every progress claim reviewed, every variation challenged, every decision made with your investment protected.',
+      'Architects and builders have their own incentives. We represent your club exclusively — every recommendation is made in the board\'s best interest, not the consultant team\'s.',
     image: '/images/home/your-corner.jpg',
     Icon: ShieldCheck,
   },
   {
-    title: 'One Team, Start to Finish',
+    title: 'We Understand Club Operations',
     description:
-      'From feasibility and DA through tender, construction, and handover. No handoffs, no lost context, no starting over with someone new.',
+      'Gaming compliance, member expectations, staged construction that keeps you trading, board governance — we know the challenges unique to club redevelopments.',
+    image: '/images/home/catch-issues.jpg',
+    Icon: Building2,
+  },
+  {
+    title: 'From Feasibility to Opening Night',
+    description:
+      'One advisor across every phase: masterplanning, approvals, procurement, construction oversight, and venue launch. No handoffs, no lost context.',
     image: '/images/home/one-team.jpg',
     Icon: Users,
   },
@@ -33,12 +33,12 @@ export function ValueProposition() {
       <BlurFade>
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
-          What You Get With a Client-Side PM
+          Why Clubs Choose an Independent Advisor
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          We run the project for you using UpScale Delivery&#8482; for faster
-          decisions, tighter control, and better outcomes &mdash; driving
-          momentum with consultants and contractors from day one.
+          Club redevelopments are complex projects involving governance,
+          financial risk, and operational disruption. Independent oversight is
+          critical to protecting your club&apos;s long-term success.
         </p>
       </div>
       </BlurFade>

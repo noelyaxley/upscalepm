@@ -2,308 +2,295 @@ import type { ServicePage } from './services.types'
 
 export const services: ServicePage[] = [
   {
-    slug: 'feasibility-advisory',
-    title: 'Feasibility and Advisory',
+    slug: 'feasibility-masterplanning',
+    title: 'Strategic Feasibility & Masterplanning',
     subtitle:
-      'Strategic insights to unlock potential and guide smarter development decisions',
+      'Helping club boards make confident decisions before committing to a redevelopment',
     description:
-      'Upscale PM provides strategic feasibility and advisory services for property development. Site studies, regulatory analysis, and tailored delivery advice across education, health, commercial, and residential sectors.',
+      'UpScale provides strategic feasibility and masterplanning services for club redevelopments. Site capacity analysis, financial modelling, gaming floor compliance, and regulatory pathway assessment for RSL, Leagues, and Golf clubs across NSW.',
     heroImage: '/images/case-studies/granville-diggers/hero.jpg',
     sections: [
       {
-        heading: 'Strategic Insights -- Excellence in Feasibility and Advisory',
-        body: 'At Upscale Project Management, we provide strategic feasibility and advisory services for clients seeking to develop or invest in property.\n\nWith experience across education, health, commercial, and residential sectors, we offer a grounded, design-informed perspective that helps unlock value and reduce risk early in a project\'s lifecycle.\n\nOur services include detailed site feasibility studies, regulatory and planning analysis, and tailored advice on project strategy, delivery options, and capital planning -- ensuring every decision is informed, practical, and aligned with market conditions.',
-        image: '/images/case-studies/231-elizabeth-street/gallery-02.jpg',
+        heading: 'Know What You Are Getting Into Before You Commit',
+        body: "Most club redevelopments that go wrong do so because the board approved a concept before the true costs and constraints were understood.\n\nUpScale's feasibility and masterplanning service gives your board the clarity it needs to make informed decisions. We assess your site's development potential, identify planning and regulatory constraints, and model realistic budgets — so you know what is achievable before you engage an architect or builder.\n\nOur work covers everything from gaming floor compliance and ILGA requirements to staging strategies that keep your club trading throughout construction.",
+        image: '/images/case-studies/granville-diggers/hero.jpg',
         imagePosition: 'right',
       },
       {
-        heading: 'Clarity and Confidence for Every Decision',
-        body: 'We work closely with private clients, developers, and institutions across Australia to assess the highest and best use of land, manage uncertainty, and guide projects toward successful and sustainable outcomes.\n\nWhether you\'re evaluating a site for acquisition or refining your development strategy, Upscale\'s advisory process delivers clarity, confidence, and long-term value.',
+        heading: 'Built for Club Governance',
+        body: "We understand that club boards operate differently to private developers. Decisions require consensus, member consultation, and transparent financial oversight.\n\nOur feasibility reports are structured for board-level presentation — clear, evidence-based, and designed to support confident decision-making. Whether you're exploring a $2M refurbishment or a $50M redevelopment, we help your board understand the full picture before committing.",
         image: '/images/home/catch-issues.jpg',
         imagePosition: 'left',
       },
     ],
     benefits: [
       {
-        title: 'Site Feasibility Studies',
+        title: 'Site Capacity Analysis',
         description:
-          'Assessing development potential, planning constraints, and optimal site use to inform confident, high-value decision-making early.',
+          'Assessing development potential, planning constraints, and optimal use of your club site to inform high-value decisions early.',
       },
       {
-        title: 'Market and Risk Analysis',
+        title: 'Financial Feasibility',
         description:
-          'Identifying market trends, competitor activity, and risk factors to ensure informed and resilient project planning decisions.',
+          'Realistic budget modelling for club-funded projects, including staging costs, temporary works, and operational impact during construction.',
       },
       {
-        title: 'Development Strategy',
+        title: 'Gaming Floor Compliance',
         description:
-          'Crafting tailored project strategies aligned with budget, timing, and vision to guide profitable, achievable development outcomes.',
+          'Ensuring gaming machine thresholds, floor area requirements, and ILGA regulations are addressed from the outset.',
       },
       {
-        title: 'Planning and Approvals',
+        title: 'Regulatory Pathway Assessment',
         description:
-          'Navigating complex planning systems, zoning rules, and consent processes to streamline your development journey from the outset.',
+          'Navigating the Registered Clubs Act, council planning controls, heritage requirements, and member approval processes.',
       },
       {
-        title: 'Design Brief Development',
+        title: 'Staging Strategy',
         description:
-          'Translating goals into clear, actionable briefs to align architects, consultants, and stakeholders from day one.',
+          'Planning construction stages that allow your club to continue trading, minimising revenue disruption and member inconvenience.',
       },
       {
-        title: 'Budget and Delivery Advice',
+        title: 'Member Consultation Support',
         description:
-          'Providing expert advice on budgets, construction methods, and delivery models to help clients build smarter and leaner.',
+          'Preparing clear, transparent materials to support board communications and member votes on capital works.',
       },
     ],
-    ctaText: 'Enquire Now',
+    ctaText: 'Discuss Your Project',
     ctaDescription:
-      'Greater experience means greater returns. Start today.',
-    relatedCaseStudies: [
-      'granville-diggers-club-development',
-      'strategic-rezoning-planning-proposal-pete-island-and-mooney-mooney',
-      'crosslife-church-asquith-development',
-    ],
+      'Get clarity on your club redevelopment before committing to a design.',
+    relatedCaseStudies: ['granville-diggers-club-development'],
   },
   {
-    slug: 'design-management',
-    title: 'Design Management',
+    slug: 'development-planning-approvals',
+    title: 'Development Planning & Approvals',
     subtitle:
-      'Delivering clarity, alignment, and project success',
+      'Navigating DA approvals for club redevelopments with precision and strategy',
     description:
-      'Upscale PM delivers expert design management ensuring architectural integrity is maintained from concept through delivery. We coordinate architects, contractors, and stakeholders across complex projects.',
-    heroImage: '/images/case-studies/crosslife-church/hero.jpg',
+      'UpScale manages the development approval process for club redevelopments including DA preparation, heritage assessment, consultant coordination, and council liaison for RSL, Leagues, and Golf clubs across NSW.',
+    heroImage: '/images/case-studies/granville-diggers/hero.jpg',
     sections: [
       {
-        heading: 'Expert Design Management for Seamless Project Delivery',
-        body: 'At Upscale, our design management ensures architectural integrity is maintained from concept through delivery.\n\nWe\'ve overseen complex projects like the Vibe Hotel, managing structural and service challenges on a constrained 550 m\u00B2 site in Darling Harbour.\n\nOur experience on the Parramatta school redevelopment included coordinating architects, contractors, and government stakeholders during a live-site transition.',
-        image: '/images/case-studies/glass-house-macquarie-park/gallery-01.jpg',
+        heading: 'Getting Your DA Right the First Time',
+        body: "Club redevelopments face unique planning challenges. Heritage constraints (particularly for RSL clubs with war memorials), gaming floor regulations, late-night trading impacts, and community sensitivity all need to be addressed in your development application.\n\nUpScale coordinates the full DA process — from assembling the right consultant team (planners, heritage advisors, acoustic engineers, traffic consultants) through to lodgement and determination. We ensure all reports align and support a compelling submission that reflects your club's vision.",
+        image: '/images/case-studies/granville-diggers/hero.jpg',
         imagePosition: 'right',
       },
       {
-        heading: 'Protecting Your Vision Across Every Sector',
-        body: 'On the Cooper Street Apartments project, we maintained design intent post-DA, navigating tender changes and delivery-stage adjustments without compromise.\n\nWe led the planning and coordination for Sydney Water\'s $42M laboratory relocation, managing specialist consultants and modular lab requirements.\n\nAcross health, education, and commercial sectors, our team protects your vision -- balancing functionality, cost, and design excellence at every stage.',
-        image: '/images/case-studies/sydney-water/gallery-03.jpg',
+        heading: 'From Approval to Construction-Ready',
+        body: "Getting DA approval is only half the battle. We also manage the transition from approval to construction — ensuring council conditions are addressed, construction certificates are obtained, and the project is ready to go to tender.\n\nFor the Granville Diggers Club, we progressed the project from DA approval through to contractor tender, aligning council conditions with buildability and ensuring the heritage-sensitive design could be delivered within budget.",
         imagePosition: 'left',
       },
     ],
     benefits: [
       {
-        title: 'Vision Alignment',
+        title: 'Consultant Team Procurement',
         description:
-          'We ensure design decisions reflect your project\'s core values, goals, and long-term architectural and business vision.',
+          'Selecting and engaging the right architects, planners, heritage advisors, and specialist consultants for your club project.',
       },
       {
-        title: 'Stakeholder Coordination',
+        title: 'Heritage Assessment Management',
         description:
-          'We manage communication between owners, architects, consultants, and builders to maintain clarity and unified direction.',
+          'Coordinating heritage reports and ensuring new work complements significant fabric — critical for RSL clubs with memorial elements.',
       },
       {
-        title: 'Quality Control',
+        title: 'Council & Authority Liaison',
         description:
-          'We implement design standards, reviewing documentation for consistency, constructability, and regulatory compliance at every stage.',
+          'Managing communication with council planners and regulatory authorities throughout the approval process.',
       },
       {
-        title: 'Timeline Oversight',
+        title: 'Member Approval Guidance',
         description:
-          'We align design deliverables with construction milestones, preventing delays through proactive scheduling and accountability tracking.',
+          'Advising on Registered Clubs Act requirements for member votes and core property provisions.',
       },
       {
-        title: 'Budget Management',
+        title: 'Staging & Operational Planning',
         description:
-          'We integrate cost analysis with design development to ensure financial feasibility without compromising architectural intent.',
-      },
-      {
-        title: 'Design Integrity Protection',
-        description:
-          'We safeguard the original design intent through construction, advocating for key elements amid evolving project pressures.',
-      },
-    ],
-    ctaText: 'Enquire Now',
-    ctaDescription:
-      'Greater experience means greater returns. Start today.',
-    relatedCaseStudies: [
-      'crosslife-church-asquith-development',
-      'delivering-modern-government-workspaces-at-231-elizabeth-street',
-      'expanding-government-tenancy-at-glass-house-macquarie-park',
-    ],
-  },
-  {
-    slug: 'da-approval',
-    title: 'DA Approval',
-    subtitle:
-      'Navigating DA approvals with precision, strategy, and insight',
-    description:
-      'Upscale PM delivers expert DA guidance grounded in hands-on architectural and project management experience. We navigate approvals for diverse project types from ambulance stations to high-density towers.',
-    heroImage: '/images/case-studies/pete-island/hero.jpg',
-    sections: [
-      {
-        heading:
-          'Streamlined DA Approval Through Clear, Coordinated Project Delivery',
-        body: 'Upscale delivers expert DA guidance grounded in hands-on architectural and project management experience.\n\nWe\'ve navigated approvals for diverse project types -- from the Royal Ambulance Station program and Parramatta school redevelopment, to high-density towers like Cooper Street Apartments and student housing adjacent to the Vibe Hotel.\n\nOur success comes from early risk identification -- addressing site constraints, planning controls, and stakeholder interests before lodgement.\n\nWe lead coordination across consultants -- planners, traffic engineers, heritage advisors -- ensuring all reports align and support a compelling submission.',
-      },
-      {
-        heading: 'Proven Results Across Project Types',
-        body: 'At Pottsville and Birmingham Gardens, we secured DA and Crown approvals for rural ambulance stations, balancing modular design with community impact.\n\nFor the Granville Diggers Club redevelopment, we\'re progressing from DA approval to contractor tender, aligning council conditions with buildability.\n\nWe advocate for quality outcomes with strong design justifications, backed by architectural insight and delivery foresight.\n\nUpscale makes DAs achievable -- structured, compliant, and vision-driven.',
-      },
-    ],
-    benefits: [
-      {
-        title: 'Planning Strategy',
-        description:
-          'We align design outcomes with local council regulations and planning controls to streamline your DA approval pathway.',
-      },
-      {
-        title: 'Consultant Coordination',
-        description:
-          'We manage reports from planners, heritage, traffic, and other specialists to ensure submission readiness and cohesion.',
+          'Developing construction staging strategies within the DA to protect ongoing club operations.',
       },
       {
         title: 'Risk Identification',
         description:
-          'We assess planning risks early -- heritage, overshadowing, setbacks -- to proactively address issues before lodgement.',
-      },
-      {
-        title: 'Documentation Review',
-        description:
-          'We ensure plans, statements, and studies meet DA requirements, reducing council requests for additional information or changes.',
-      },
-      {
-        title: 'Authority Liaison',
-        description:
-          'We communicate with council planners and stakeholders throughout the process to maintain momentum and clarity.',
-      },
-      {
-        title: 'Design Justification',
-        description:
-          'We prepare rationales and design statements that advocate for the proposal and support any planning variations required.',
+          'Assessing planning risks early — heritage, noise, traffic, overshadowing — to proactively address issues before lodgement.',
       },
     ],
-    ctaText: 'Enquire Now',
+    ctaText: 'Discuss Your Project',
     ctaDescription:
-      'Greater experience means greater returns. Start today.',
-    relatedCaseStudies: [
-      'strategic-rezoning-planning-proposal-pete-island-and-mooney-mooney',
-      'calibre-cooper-street-residential-apartments-surry-hills',
-      'granville-diggers-club-development',
-    ],
+      'Navigate your club redevelopment approval with confidence.',
+    relatedCaseStudies: ['granville-diggers-club-development'],
   },
   {
-    slug: 'tender-assessment',
-    title: 'Tender Assessment',
+    slug: 'consultant-builder-procurement',
+    title: 'Consultant & Builder Procurement',
     subtitle:
-      'Independent, design-informed advice to assess value, risk, and alignment',
+      'Independent advice to select the right architect and builder for your club project',
     description:
-      'Upscale PM\'s tender assessment service ensures the right construction partner is selected -- balancing cost, quality, and risk for smarter, client-focused outcomes.',
-    heroImage: '/images/case-studies/vibe-hotel/hero.jpg',
+      'UpScale provides independent procurement services for club redevelopments including architect selection, builder prequalification, tender evaluation, and contract negotiation for RSL, Leagues, and Golf clubs across NSW.',
+    heroImage: '/images/case-studies/granville-diggers/hero.jpg',
     sections: [
       {
-        heading: 'Experts in Tender Assessment',
-        body: 'At Upscale Project Management, our tender assessment services ensure you select the right delivery partner with confidence. Drawing on our architectural insight and deep project management expertise, we evaluate tenders not only on price -- but on buildability, team capability, program integrity, and alignment with your project goals.\n\nWe represent the client\'s best interests throughout the procurement process, offering clear recommendations based on real-world construction knowledge.',
+        heading: 'Selecting the Right Team for Your Club',
+        body: "Choosing the wrong architect or builder is one of the most expensive mistakes a club board can make. Generic construction firms often underestimate the complexity of staged club construction, gaming compliance requirements, and hospitality-grade finishes.\n\nUpScale manages the full procurement process — from developing the brief and shortlisting firms with genuine club experience, through to running a fair tender process, evaluating submissions, and negotiating contracts that protect your club's interests.",
+        image: '/images/case-studies/granville-diggers/hero.jpg',
+        imagePosition: 'right',
       },
       {
-        heading: 'Beyond Compliance Checklists',
-        body: 'Our assessments go beyond compliance checklists to uncover potential risks, cost implications, and coordination issues early -- helping you make informed, strategic decisions.\n\nWhether you\'re running a competitive tender, negotiating a D&C contract, or reviewing ECI proposals, our approach delivers clarity, fairness, and value -- protecting your investment and ensuring the selected team is fit for purpose.',
+        heading: 'Beyond the Lowest Price',
+        body: "Club boards often feel pressure to accept the lowest tender. But in club construction, the cheapest bid frequently leads to the most expensive outcome — through variations, delays, and quality compromises.\n\nOur tender evaluations go beyond price to assess methodology, program, team capability, relevant experience, and risk allocation. We provide structured evaluation reports designed for board-level decision-making, giving your directors the confidence to approve the right appointment.",
+        imagePosition: 'left',
       },
     ],
     benefits: [
       {
+        title: 'Architect Selection',
+        description:
+          'Identifying architects with genuine club and hospitality experience — firms that understand gaming floor layouts, staged construction, and venue design.',
+      },
+      {
         title: 'Builder Prequalification',
         description:
-          'Identifying capable contractors with relevant experience, capacity, and alignment to project needs.',
+          'Shortlisting builders with proven club construction experience, financial capacity, and the ability to work around live operations.',
       },
       {
-        title: 'Detailed Tender Analysis',
+        title: 'Tender Documentation',
         description:
-          'Reviewing scope, program, methodology, and exclusions to assess value, quality, and risk.',
+          'Preparing clear, comprehensive tender documents that reduce ambiguity and protect against variations.',
       },
       {
-        title: 'Cost and Program Benchmarking',
+        title: 'Tender Evaluation',
         description:
-          'Comparing tender pricing and timelines against industry benchmarks to validate realism and performance.',
+          'Structured assessment of price, program, methodology, and risk — presented in clear reports for board approval.',
+      },
+      {
+        title: 'Contract Negotiation',
+        description:
+          'Negotiating contract terms that protect the club from common risks: cost escalation, delays, and scope disputes.',
       },
       {
         title: 'Value Engineering',
         description:
-          'Highlighting hidden risks and proposing smarter alternatives to improve buildability and cost-efficiency.',
-      },
-      {
-        title: 'Negotiation Support and Recommendations',
-        description:
-          'Supporting client negotiations with clear advice and confident recommendations tailored to delivery models.',
-      },
-      {
-        title: 'Transparent Reporting for Confident Decisions',
-        description:
-          'Providing structured, unbiased tender evaluation reports to support governance and board-level approvals.',
+          'Identifying smarter alternatives that reduce cost without compromising the hospitality experience your members expect.',
       },
     ],
-    ctaText: 'Enquire Now',
+    ctaText: 'Discuss Your Project',
     ctaDescription:
-      'Greater experience means greater returns. Start today.',
-    relatedCaseStudies: [
-      'navigating-encumbrance-vibe-hotel-darling-harbour',
-      'project-management-delivery-in-the-final-stretch-newcastle-office-fit-out',
-      'granville-diggers-club-development',
-    ],
+      'Get independent advice on selecting the right team for your club.',
+    relatedCaseStudies: ['granville-diggers-club-development'],
   },
   {
-    slug: 'construction-superintendent',
-    title: 'Construction Superintendent',
+    slug: 'construction-oversight',
+    title: 'Construction Oversight',
     subtitle:
-      'Experienced site leadership ensuring quality, clarity, and client-first delivery',
+      'Independent client-side oversight protecting your club during construction',
     description:
-      'Upscale PM delivers expert site leadership, risk management, and client-focused outcomes across diverse building types and complex construction environments.',
-    heroImage: '/images/case-studies/sydney-water/hero.jpg',
+      'UpScale provides independent construction oversight for club redevelopments including budget monitoring, quality assurance, variation control, and board reporting for RSL, Leagues, and Golf clubs across NSW.',
+    heroImage: '/images/case-studies/granville-diggers/hero.jpg',
     sections: [
       {
-        heading: 'Leadership in Delivery and On-Site Coordination',
-        body: 'At Upscale Project Management, our Construction Superintendent service is led by seasoned professionals who bring both architectural understanding and project delivery expertise to the site. With Noel Yaxley\'s background in architecture and project management across diverse building typologies -- including education, health, commercial, and high-end residential -- our site leadership is uniquely positioned to uphold design integrity while driving delivery outcomes.\n\nWe take a proactive, detail-oriented approach to managing the complexities of construction. From day one, our goal is clear: to protect the client\'s interests by ensuring quality, safety, and program certainty -- while mitigating risk and maintaining clear communication among all stakeholders.',
+        heading: 'Your Eyes and Ears During Construction',
+        body: "Construction is where club redevelopments are most vulnerable. Variations escalate, programs slip, and quality issues compound — often without the board realising until it is too late.\n\nUpScale provides independent client-side oversight throughout construction. We monitor budgets, review variations before they are approved, track progress against the program, and ensure the builder delivers the quality your members expect. Our reporting keeps the board informed with clear, honest updates — no surprises.",
+        image: '/images/case-studies/granville-diggers/hero.jpg',
+        imagePosition: 'right',
       },
       {
-        heading: 'Clarity and Confidence on Every Project',
-        body: 'By combining technical knowledge with on-site pragmatism, we provide leadership that keeps the project moving forward, aligned with your objectives and vision.\n\nWhether working with developers, institutions, or private clients, we bring clarity to the construction process -- and confidence to your investment.',
+        heading: 'Managing Staged Construction',
+        body: "Club construction is uniquely complex because the venue must keep trading. Members need access to dining, gaming, and entertainment facilities throughout the build. Noise, dust, and disruption must be carefully managed.\n\nWe coordinate with the builder on staging logistics, temporary works, and operational interfaces — ensuring construction progresses without unacceptable impact on your members or revenue.",
+        imagePosition: 'left',
       },
     ],
     benefits: [
       {
-        title: 'Program and Schedule Oversight',
+        title: 'Budget Monitoring',
         description:
-          'Tracking milestones and coordinating progress to keep the build on time and aligned with broader project goals.',
+          'Tracking costs against the approved budget, identifying risks early, and providing the board with regular financial reports.',
       },
       {
-        title: 'Trade and Contractor Coordination',
+        title: 'Variation Assessment',
         description:
-          'Ensuring all parties on site are aligned, sequenced, and accountable -- fostering a collaborative and productive site culture.',
+          'Reviewing every variation claim for legitimacy, cost, and program impact before recommending board approval.',
       },
       {
-        title: 'Site Safety and Compliance',
+        title: 'Quality Assurance',
         description:
-          'Implementing and enforcing WHS protocols, managing inspections, and ensuring compliance with all statutory requirements.',
+          'Monitoring construction quality to ensure hospitality-grade finishes — because club members notice the details.',
       },
       {
-        title: 'Quality Control and Risk Mitigation',
+        title: 'Program Tracking',
         description:
-          'Monitoring construction quality and identifying issues early -- reducing rework, delays, and exposure to risk.',
+          'Monitoring the construction program and flagging delays early, with clear recommendations for recovery.',
       },
       {
-        title: 'Technical Understanding',
+        title: 'Staged Construction Management',
         description:
-          'Drawing on architectural insight to ensure the design is realised with fidelity, and technical solutions are executed effectively.',
+          'Coordinating construction staging to minimise disruption to club operations, gaming, and member amenity.',
       },
       {
-        title: 'Client Advocacy',
+        title: 'Board Reporting',
         description:
-          'Acting as your eyes and ears on site -- keeping you informed, advising with clarity, and ensuring every decision is made in your best interest.',
+          'Providing structured, honest progress reports designed for board meetings — covering cost, time, quality, and risk.',
       },
     ],
-    ctaText: 'Enquire Now',
+    ctaText: 'Discuss Your Project',
     ctaDescription:
-      'Greater experience means greater returns. Start today.',
-    relatedCaseStudies: [
-      'navigating-encumbrance-vibe-hotel-darling-harbour',
-      'major-laboratory-relocation-future-proofing-sydney-waters-filtration-capabilities',
-      'health-project-management-in-regional-emergency-infrastructure',
+      'Protect your club during construction with independent oversight.',
+    relatedCaseStudies: ['granville-diggers-club-development'],
+  },
+  {
+    slug: 'venue-launch-completion',
+    title: 'Venue Launch & Completion',
+    subtitle:
+      'Ensuring your redeveloped club opens on time, on budget, and ready for members',
+    description:
+      'UpScale manages the completion and handover of club redevelopments including defect identification, fitout coordination, operational handover, and post-occupancy review for RSL, Leagues, and Golf clubs across NSW.',
+    heroImage: '/images/case-studies/granville-diggers/hero.jpg',
+    sections: [
+      {
+        heading: 'From Construction Site to Opening Night',
+        body: "The final stages of a club redevelopment are critical. Defects need to be identified and rectified, fitout and furniture need to be coordinated, technology and gaming systems need to be commissioned, and staff need to be ready for opening.\n\nUpScale manages this transition — ensuring nothing falls through the cracks between the builder finishing and your members walking through the door. We coordinate practical completion, manage defect lists, oversee fitout installation, and support your team through the operational handover.",
+        image: '/images/case-studies/granville-diggers/hero.jpg',
+        imagePosition: 'right',
+      },
+      {
+        heading: 'Protecting Your Investment Long-Term',
+        body: "Our involvement does not end at the ribbon cutting. We conduct post-occupancy reviews to identify any issues that emerge in the early months of operation, ensure defect rectification is completed within warranty periods, and document lessons learned for future stages of work.\n\nThis final phase protects the significant investment your club has made — and ensures the board can report a successful outcome to members.",
+        imagePosition: 'left',
+      },
     ],
+    benefits: [
+      {
+        title: 'Defect Identification',
+        description:
+          'Thorough inspection and documentation of defects at practical completion, with structured tracking through to rectification.',
+      },
+      {
+        title: 'Fitout Coordination',
+        description:
+          'Managing furniture, fixtures, equipment, and technology installation to ensure the venue is ready for opening.',
+      },
+      {
+        title: 'Gaming System Commissioning',
+        description:
+          'Coordinating gaming machine installation and ILGA compliance requirements for the new or refurbished gaming floor.',
+      },
+      {
+        title: 'Operational Handover',
+        description:
+          'Supporting the transition from construction to operations, including staff orientation and systems commissioning.',
+      },
+      {
+        title: 'Post-Occupancy Review',
+        description:
+          'Reviewing building performance after opening to identify and resolve any issues within warranty periods.',
+      },
+      {
+        title: 'Member Communication',
+        description:
+          'Supporting the board with communications about the completed project, re-opening plans, and new venue features.',
+      },
+    ],
+    ctaText: 'Discuss Your Project',
+    ctaDescription:
+      'Ensure your club opens successfully with expert handover management.',
+    relatedCaseStudies: ['granville-diggers-club-development'],
   },
 ]
 

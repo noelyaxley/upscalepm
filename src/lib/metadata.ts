@@ -1,9 +1,9 @@
 import { type Metadata } from 'next'
 
 const SITE_URL = 'https://upscalepm.com.au'
-const SITE_NAME = 'UpScalePM'
+const SITE_NAME = 'UpScale PM | Club Development Advisory'
 const DEFAULT_DESCRIPTION =
-  'Client-side project management for property and construction projects. From feasibility through to handover, we protect your time, budget, and quality.'
+  'Independent advisors for club and golf club redevelopments across NSW. Helping club boards and CEOs successfully deliver major capital projects — from feasibility to opening night.'
 
 export function generatePageMetadata({
   title,

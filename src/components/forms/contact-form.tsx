@@ -32,11 +32,12 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>
 
 const PROJECT_TYPES = [
-  'Feasibility & Advisory',
-  'Design Management',
-  'DA Approval',
-  'Tender Assessment',
-  'Construction Superintendent',
+  'New Club Redevelopment',
+  'Club Refurbishment',
+  'Masterplan / Feasibility Study',
+  'Golf Clubhouse Development',
+  'Seniors Living / Mixed-Use',
+  'Construction Oversight (project underway)',
   'Not sure yet',
 ] as const
 
@@ -218,7 +219,7 @@ export function ContactForm() {
           onValueChange={(value) => setValue('projectType', value)}
         >
           <SelectTrigger id="contact-project-type" className="w-full">
-            <SelectValue placeholder="Select a service (optional)" />
+            <SelectValue placeholder="Select project type (optional)" />
           </SelectTrigger>
           <SelectContent>
             {PROJECT_TYPES.map((type) => (
@@ -237,7 +238,7 @@ export function ContactForm() {
         </Label>
         <Textarea
           id="contact-message"
-          placeholder="Tell us about your project..."
+          placeholder="Tell us about your club project..."
           rows={4}
           {...register('message')}
           aria-invalid={!!errors.message}

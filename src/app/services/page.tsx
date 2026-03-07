@@ -11,9 +11,9 @@ import { ServiceAccordion } from '@/components/sections/service-accordion'
 import { BlurFade } from '@/components/animation/blur-fade'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Services',
+  title: 'Club Redevelopment Services',
   description:
-    'Client-side project management services: feasibility advisory, design management, DA approval, tender assessment, and construction superintendent.',
+    'Independent advisory services for club redevelopments: strategic feasibility, development planning, consultant procurement, construction oversight, and venue launch for RSL, Leagues, and Golf clubs across NSW.',
   path: '/services',
 })
 
@@ -24,8 +24,8 @@ export default function ServicesPage() {
     <>
       <JsonLd data={localBusinessSchema()} />
       <PageHeader
-        title="Services"
-        subtitle="Comprehensive client-side project management from feasibility through to handover. We protect your time, budget, and quality at every stage."
+        title="Club Redevelopment Services"
+        subtitle="Independent advisory for every phase of your club redevelopment. From strategic feasibility through to opening night — we protect your club's interests at every stage."
         breadcrumbs={[{ label: 'Services' }]}
       />
 
@@ -43,28 +43,26 @@ export default function ServicesPage() {
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Whether you need project-based support or an ongoing advisory
-            retainer, we tailor our engagement to your project&apos;s needs. Our
-            flexible model means you get the right level of involvement at the
-            right time.
+            retainer, we tailor our engagement to your club&apos;s needs.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             <BlurFade delay={0.1}>
             <div className="h-full rounded-lg border-2 border-primary/20 bg-background p-6 text-left transition-all hover:border-primary/60">
-              <h3 className="text-lg font-semibold">Project Engagement</h3>
+              <h3 className="text-lg font-semibold">Full Project Advisory</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Dedicated project management for a specific development --
-                scoped to your timeline, budget, and deliverables from start to
-                finish.
+                End-to-end independent oversight for your club redevelopment —
+                from feasibility through construction to venue launch. One
+                advisor, the whole journey.
               </p>
             </div>
             </BlurFade>
             <BlurFade delay={0.2}>
             <div className="h-full rounded-lg border-2 border-primary/20 bg-background p-6 text-left transition-all hover:border-primary/60">
-              <h3 className="text-lg font-semibold">Advisory Retainer</h3>
+              <h3 className="text-lg font-semibold">Phase-Specific Support</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Ongoing expert guidance across your portfolio. Ideal for
-                developers managing multiple projects who need consistent
-                strategic oversight.
+                Targeted advice for a specific phase — feasibility review,
+                tender evaluation, or construction oversight. Ideal for clubs
+                that need expert input at a critical stage.
               </p>
             </div>
             </BlurFade>
@@ -78,15 +76,15 @@ export default function ServicesPage() {
         <BlurFade>
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
-            Your Project Deserves Expert Representation
+            Planning a Club Redevelopment?
           </h2>
           <p className="mt-4 text-lg text-neutral-300">
-            Tell us about your project and we will recommend the right service
-            for your needs. Free 30-minute consultation, no obligation.
+            Tell us about your club project and we will recommend the right
+            level of support. Free 30-minute consultation, no obligation.
           </p>
           <div className="mt-8">
             <Button asChild size="lg">
-              <Link href="/contact">Get a Free Consultation</Link>
+              <Link href="/contact">Book a Consultation</Link>
             </Button>
           </div>
         </div>

@@ -1,7 +1,8 @@
 import { type MetadataRoute } from 'next'
 import { getAllCaseStudies, getAllInsights } from '@/lib/content'
 import { getAllServices } from '@/lib/services'
-import { getAllServiceLocationParams } from '@/lib/locations'
+// Location pages disabled during club repositioning
+// import { getAllServiceLocationParams } from '@/lib/locations'
 
 const SITE_URL = 'https://upscalepm.com.au'
 
@@ -44,6 +45,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE_URL}/for-club-boards`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/framework`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/resources`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/nsw-club-redevelopments`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${SITE_URL}/privacy-policy`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
@@ -81,20 +106,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }))
 
-  // Location service pages
-  const locationPages: MetadataRoute.Sitemap = getAllServiceLocationParams().map(
-    (p) => ({
-      url: `${SITE_URL}/services/${p.slug}/${p.location}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    })
-  )
-
   return [
     ...staticPages,
     ...servicePages,
-    ...locationPages,
     ...caseStudyPages,
     ...insightPages,
   ]

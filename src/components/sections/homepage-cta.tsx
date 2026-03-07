@@ -11,16 +11,16 @@ export function HomepageCta() {
       <BlurFade>
       <div className="relative mx-auto max-w-2xl text-center">
         <h2 className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl">
-          Your Project Deserves Expert Representation
+          Planning a Club Redevelopment?
         </h2>
         <p className="mt-4 text-lg text-neutral-300">
-          Whether you are starting a new development or need help with a project
-          already underway, we will give you straight answers in a free
+          Whether you are in early feasibility or ready to appoint a builder,
+          we can help protect your club&apos;s interests. Book a free
           30-minute consultation.
         </p>
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Button asChild size="lg">
-            <Link href="/contact">Send an Enquiry</Link>
+            <Link href="/contact">Book a Consultation</Link>
           </Button>
           <Button
             asChild

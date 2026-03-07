@@ -9,16 +9,14 @@ import { Container } from '@/components/layout/container'
 import { BlurFade } from '@/components/animation/blur-fade'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Projects',
+  title: 'Club Redevelopment Projects',
   description:
-    'Explore our portfolio of property and construction projects across Sydney. From residential developments to commercial fit-outs, see how client-side project management delivers results.',
+    'Club redevelopment projects managed by UpScale Project Management. Independent client-side advisory for RSL, Leagues, and Golf club projects across NSW.',
   path: '/case-studies',
 })
 
 const PROJECT_SLUGS = [
   'granville-diggers-club-development',
-  'crosslife-church-asquith-development',
-  'major-laboratory-relocation-future-proofing-sydney-waters-filtration-capabilities',
 ]
 
 const CATEGORY_LABELS: Record<CaseStudyFrontmatter['category'], string> = {
@@ -39,8 +37,8 @@ export default function ProjectsPage() {
   return (
     <main>
       <PageHeader
-        title="Projects"
-        subtitle="Real projects. Real outcomes. See how experienced client-side project management protects your time, budget, and quality."
+        title="Club Redevelopment Projects"
+        subtitle="Independent advisory for club redevelopments across NSW. See how we protect club boards through every stage of the development process."
         breadcrumbs={[{ label: 'Projects' }]}
       />
 
@@ -50,10 +48,10 @@ export default function ProjectsPage() {
           <Container>
             <BlurFade>
             <h2 className="font-display text-3xl font-bold leading-[0.95] tracking-tight md:text-4xl">
-              Projects
+              Current Projects
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Active and recently completed projects we are delivering.
+              Active club redevelopment projects we are advising on.
             </p>
             </BlurFade>
             <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -79,7 +77,7 @@ export default function ProjectsPage() {
               Case Studies
             </h2>
             <p className="mt-2 text-muted-foreground">
-              In-depth look at past projects across diverse sectors.
+              Detailed case studies from our club redevelopment advisory work.
             </p>
             </BlurFade>
             <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

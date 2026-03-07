@@ -25,13 +25,13 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://upscalepm.com.au'),
   title: {
-    default: 'UpScalePM | Client-Side Project Management',
-    template: '%s | UpScalePM',
+    default: 'UpScale PM | Club Development Advisory',
+    template: '%s | UpScale PM',
   },
   description:
-    'Client-side project management for property and construction projects. From feasibility through to handover, we protect your time, budget, and quality.',
+    'Independent advisors for club and golf club redevelopments across NSW. Helping club boards and CEOs successfully deliver major capital projects — from feasibility to opening night.',
   openGraph: {
-    siteName: 'UpScalePM',
+    siteName: 'UpScale PM | Club Development Advisory',
     locale: 'en_AU',
     type: 'website',
   },

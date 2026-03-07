@@ -54,16 +54,15 @@ export function Hero() {
         <div className="py-24 md:py-32 lg:py-40">
           <div className="max-w-3xl">
             <SplitHeading className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl lg:text-7xl">
-              Client-Side Project Management for Property &amp; Construction
+              Independent Advisors for Club &amp; Golf Club Redevelopments
             </SplitHeading>
             <p className="hero-subtitle mt-8 max-w-2xl text-lg leading-relaxed text-neutral-300 md:text-xl">
-              Stop overpaying contractors and missing critical issues. We sit on
-              your side of the table — protecting your budget, timeline, and
-              quality from feasibility through to handover.
+              Helping club boards and CEOs successfully deliver major capital
+              projects — from feasibility to opening night.
             </p>
             <div className="hero-ctas mt-10 flex flex-col gap-4 sm:flex-row">
               <Button asChild size="lg">
-                <Link href="/contact">Get a Free Consultation</Link>
+                <Link href="/contact">Book a Project Consultation</Link>
               </Button>
               <Button
                 asChild
@@ -71,7 +70,7 @@ export function Hero() {
                 variant="outline"
                 className="border-neutral-400 bg-transparent text-white hover:bg-white/10 hover:text-white"
               >
-                <Link href="/case-studies">See Our Projects</Link>
+                <Link href="/resources">Download the Club Redevelopment Checklist</Link>
               </Button>
             </div>
           </div>

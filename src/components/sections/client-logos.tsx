@@ -63,7 +63,7 @@ interface ClientLogosProps {
 }
 
 export function ClientLogos({
-  heading = 'Trusted by leading organisations',
+  heading = 'Trusted by clubs and organisations across NSW',
 }: ClientLogosProps) {
   return (
     <Section spacing="compact" background="muted">

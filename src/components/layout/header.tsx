@@ -17,8 +17,9 @@ import { Container } from './container'
 const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/case-studies', label: 'Projects' },
-  { href: '/upscale-build', label: 'UpScale.build', highlight: true },
+  { href: '/for-club-boards', label: 'For Club Boards' },
   { href: '/insights', label: 'Insights' },
+  { href: '/resources', label: 'Resources' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ] as const
@@ -43,7 +44,8 @@ export function Header() {
               height={32}
               className="size-8"
             />
-            UpScalePM
+            <span className="hidden sm:inline">UpScale PM <span className="text-xs font-normal text-muted-foreground">| Club Development Advisory</span></span>
+            <span className="sm:hidden">UpScale PM</span>
           </Link>
 
           {/* Desktop nav links */}
@@ -67,7 +69,7 @@ export function Header() {
           {/* Desktop CTA */}
           <div className="hidden lg:block">
             <Button asChild>
-              <Link href="/contact">Get in Touch</Link>
+              <Link href="/contact">Book a Consultation</Link>
             </Button>
           </div>
 
@@ -103,7 +105,7 @@ export function Header() {
                       height={32}
                       className="size-8"
                     />
-                    UpScalePM
+                    UpScale PM
                   </Link>
                 </SheetTitle>
               </SheetHeader>
@@ -126,7 +128,7 @@ export function Header() {
                 </ul>
                 <div className="mt-6 px-3">
                   <Button asChild className="w-full">
-                    <Link href="/contact">Get in Touch</Link>
+                    <Link href="/contact">Book a Consultation</Link>
                   </Button>
                 </div>
               </nav>
