@@ -28,9 +28,9 @@ const faqs: FAQItem[] = [
   {
     question: 'How long does it take?',
     shortAnswer:
-      'Typically 3 business days from submission. If the address is unclear or we need more information, we will be in touch.',
+      'Typically within 1 hour. If the address is unclear or we need more information, we will be in touch.',
     result:
-      'Fast turnaround — useful information in your inbox within the week.',
+      'Fast turnaround — useful information in your inbox the same day.',
   },
   {
     question: 'What properties can you report on?',

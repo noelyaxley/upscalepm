@@ -231,7 +231,7 @@ export default function ReportLandingPage() {
               {
                 step: '03',
                 title: 'Report Delivered',
-                description: 'You receive a detailed PDF report via email within 3 business days.',
+                description: 'You receive a detailed PDF report via email within 1 hour.',
               },
             ].map((item) => (
               <div key={item.step} className="text-center">
@@ -463,7 +463,7 @@ export default function ReportLandingPage() {
               Get your free report.
             </h2>
             <p className="mt-3 text-neutral-400">
-              Enter the property address below. Report delivered within 3 business days.
+              Enter the property address below. Report emailed to you within 1 hour.
             </p>
 
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">

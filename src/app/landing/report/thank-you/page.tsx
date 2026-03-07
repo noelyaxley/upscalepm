@@ -51,7 +51,7 @@ export default function ReportThankYouPage() {
               We&apos;re preparing your property development report.
             </p>
             <p className="mt-2 text-neutral-400">
-              You&apos;ll receive it via email within 3 business days. If we need
+              You&apos;ll receive it via email within 1 hour. If we need
               any clarification on the property address, we&apos;ll be in touch.
             </p>
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

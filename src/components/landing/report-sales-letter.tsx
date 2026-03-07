@@ -58,7 +58,7 @@ export function ReportSalesLetter() {
 
             <p>
               <strong className="text-neutral-900">
-                It&apos;s free. It takes 3 business days. And it might save you
+                It&apos;s free. It&apos;s emailed to you within 1 hour. And it might save you
                 thousands.
               </strong>
             </p>
