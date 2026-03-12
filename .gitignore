@@ -52,8 +52,13 @@ next-env.d.ts
 # Moat task system
 .moat/
 
-# Source content (originals copied to public/images/)
-content/
+# Source content media (originals copied to public/images/)
+content/clubs photos/
+content/Images/
+content/Other Logos/
+content/Random Photos/
+content/migration/
+content/*.jpg
 
 # Claude Code configuration
 .claude/
