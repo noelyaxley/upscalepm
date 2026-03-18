@@ -12,7 +12,10 @@ interface AnimatedImageProps {
 export function AnimatedImage({ src, videoSrc, alt }: AnimatedImageProps) {
   const [videoFailed, setVideoFailed] = useState(false)
 
-  if (videoFailed) {
+  // Hero images stay static — they already appear in the article header
+  const isHero = /\/hero\.\w+$/.test(src)
+
+  if (isHero || videoFailed) {
     return (
       <Image
         src={src}
