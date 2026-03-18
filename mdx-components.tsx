@@ -9,20 +9,23 @@ import { StatCard } from '@/components/mdx/stat-card'
 import { BeforeAfter } from '@/components/mdx/before-after'
 import { YouTubeEmbed } from '@/components/mdx/youtube-embed'
 import { InstagramEmbed } from '@/components/mdx/instagram-embed'
+import { AnimatedImage } from '@/components/mdx/animated-image'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    img: (props) => (
-      <Image
-        src={props.src as string}
-        alt={props.alt || ''}
-        width={1200}
-        height={630}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 720px"
-        className="rounded-lg"
-        style={{ width: '100%', height: 'auto' }}
-      />
-    ),
+    img: (props) => {
+      const src = props.src as string
+      // Derive video path: /images/insights/slug/hero.jpg -> /images/insights/slug/hero.mp4
+      const videoSrc = src.replace(/\.(jpg|jpeg|png|webp)$/i, '.mp4')
+
+      return (
+        <AnimatedImage
+          src={src}
+          videoSrc={videoSrc}
+          alt={props.alt || ''}
+        />
+      )
+    },
     a: ({ href, children, ...props }) => {
       if (href?.startsWith('/')) {
         return <Link href={href} {...props}>{children}</Link>
