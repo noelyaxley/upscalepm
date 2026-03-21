@@ -17,6 +17,7 @@ import { FAQV2 } from '@/components/landing/v2/faq-v2'
 import { FinalCTA } from '@/components/landing/v2/final-cta'
 import { StripeOverlay } from '@/components/landing/v2/stripe-overlay'
 import { StarRating } from '@/components/landing/v2/star-rating'
+import { LandingFooter } from '@/components/landing/v2/landing-footer'
 
 export const metadata: Metadata = {
   title: 'Sydney Project & Construction Management | Free Consultation | UpScale Project Management',
@@ -189,22 +190,8 @@ export default function SydneyV2LandingPage() {
       {/* ─── S13: FINAL CTA — Survey form + call CTA ─── */}
       <FinalCTA />
 
-      {/* ─── FOOTER — Minimal ─── */}
-      <footer className="border-t border-white/10 bg-[#0a0404] py-6 text-neutral-400">
-        <Container>
-          <div className="flex flex-col items-center justify-between gap-4 text-center text-xs sm:flex-row sm:text-left">
-            <p>&copy; {new Date().getFullYear()} UpScale Project Management. ABN 14 670 459 163.</p>
-            <div className="flex gap-4">
-              <Link href="/privacy-policy" className="hover:text-white">
-                Privacy Policy
-              </Link>
-              <Link href="/terms-and-conditions" className="hover:text-white">
-                Terms
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </footer>
+      {/* ─── FOOTER ─── */}
+      <LandingFooter />
 
       {/* ─── MOBILE STICKY CTA BAR ─── */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#0a0404] p-3 md:hidden">

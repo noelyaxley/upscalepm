@@ -16,7 +16,7 @@ import { GeometricShapes } from '@/components/animation/geometric-shapes'
 import { BlurFade } from '@/components/animation/blur-fade'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Club Development Advisory | Independent Advisors for Club Redevelopments',
+  title: 'Independent Advisers for Club Redevelopments',
   description:
     'UpScale Project Management provides independent client-side advisory for RSL, Leagues, Workers, Diggers, Bowling and Golf club redevelopments across NSW. From feasibility to opening night.',
   path: '/',

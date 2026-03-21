@@ -58,11 +58,11 @@ export function Hero() {
         <div className="py-24 md:py-32 lg:py-40">
           <div className="max-w-3xl">
             <SplitHeading className="font-display text-[3.25rem] font-bold leading-[0.95] tracking-tight md:text-5xl lg:text-7xl">
-              Independent Advisors for Club &amp; Golf Club Redevelopments
+              Independent Advice for NSW Club Redevelopments
             </SplitHeading>
             <p className="hero-subtitle mt-8 max-w-2xl text-lg leading-relaxed text-neutral-300 md:text-xl">
-              Helping club boards and CEOs successfully deliver major capital
-              projects — from feasibility to opening night.
+              Client-side project management for club boards planning major
+              capital works, refurbishments and redevelopment projects.
             </p>
             <div className="hero-ctas mt-10 flex flex-col gap-4 sm:flex-row">
               <Button asChild size="lg">

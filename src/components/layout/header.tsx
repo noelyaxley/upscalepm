@@ -44,7 +44,7 @@ export function Header() {
               height={32}
               className="size-8"
             />
-            <span className="hidden sm:inline">UpScale PM <span className="text-xs font-normal text-muted-foreground">| Club Development Advisory</span></span>
+            <span className="hidden sm:inline">UpScale Project Management</span>
             <span className="sm:hidden">UpScale PM</span>
           </Link>
 
@@ -105,7 +105,7 @@ export function Header() {
                       height={32}
                       className="size-8"
                     />
-                    UpScale PM
+                    UpScale Project Management
                   </Link>
                 </SheetTitle>
               </SheetHeader>

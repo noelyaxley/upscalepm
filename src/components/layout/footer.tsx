@@ -59,13 +59,10 @@ export function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
               <Image src="/images/shared/logo/logo-64.png" alt="" width={32} height={32} className="size-8" />
-              UpScale PM
+              UpScale Project Management
             </Link>
-            <p className="mt-3 text-sm font-medium text-foreground">
-              Club Development Advisory
-            </p>
             <p className="mt-2 text-sm text-muted-foreground">
-              Independent advisors for RSL, Leagues, Workers, Diggers, Bowling
+              Independent advisers for RSL, Leagues, Workers, Diggers, Bowling
               &amp; Golf club redevelopments across NSW.
             </p>
           </div>

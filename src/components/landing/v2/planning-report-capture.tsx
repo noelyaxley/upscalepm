@@ -1,8 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { MapPin, Mail, Phone, User, Loader2 } from 'lucide-react'
+import { MapPin, Mail, Phone, User, Loader2, CheckCircle2 } from 'lucide-react'
 import { submitPlanningReport } from '@/actions/planning-report'
 import { getStoredUTMParams } from '@/lib/utm'
 import { trackFormSubmission } from '@/components/analytics/gtm-event'
@@ -11,7 +10,8 @@ const inputBase =
   'w-full rounded-md border bg-white/10 py-2.5 pl-8 pr-4 text-sm text-white placeholder:text-neutral-400 backdrop-blur-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary'
 
 export function PlanningReportCapture() {
-  const router = useRouter()
+  const [submitted, setSubmitted] = useState(false)
+  const [submittedAddress, setSubmittedAddress] = useState('')
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [siteAddress, setSiteAddress] = useState('')
@@ -42,7 +42,7 @@ export function PlanningReportCapture() {
 
     const missing = new Set<string>()
     if (!name.trim()) missing.add('name')
-    if (!phone.trim()) missing.add('phone')
+    if (!siteAddress.trim()) missing.add('siteAddress')
     if (!email.trim() || !email.includes('@')) missing.add('email')
 
     if (missing.size > 0) {
@@ -82,7 +82,8 @@ export function PlanningReportCapture() {
           }).catch(() => {}) // fire-and-forget
         }
 
-        router.push('/landing/sydney/thank-you')
+        setSubmittedAddress(siteAddress)
+        setSubmitted(true)
         return
       } else {
         setError(result.error ?? 'Something went wrong')
@@ -92,6 +93,32 @@ export function PlanningReportCapture() {
     } finally {
       setSubmitting(false)
     }
+  }
+
+  if (submitted) {
+    return (
+      <div className="mx-auto max-w-lg">
+        <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-center backdrop-blur-sm">
+          <CheckCircle2 className="mx-auto size-10 text-emerald-400" />
+          <p className="mt-3 font-display text-xl font-bold text-white">
+            You&apos;re all set!
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-neutral-300">
+            We&apos;re generating your site-specific planning and feasibility
+            report for{' '}
+            <span className="font-semibold text-white">{submittedAddress}</span>.
+            Check your email inbox within 5 minutes.
+          </p>
+          <p className="mt-4 text-xs text-neutral-500">
+            Didn&apos;t receive it? Check your spam folder or call us on{' '}
+            <a href="tel:+61290904480" className="text-primary hover:underline">
+              02 9090 4480
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -117,9 +144,9 @@ export function PlanningReportCapture() {
             <input
               type="tel"
               value={phone}
-              onChange={(e) => { setPhone(e.target.value); clearField('phone') }}
-              placeholder="Phone *"
-              className={inputClass('phone')}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Phone (optional)"
+              className={`${inputBase} border-white/20`}
               autoComplete="tel"
             />
           </div>
@@ -129,9 +156,9 @@ export function PlanningReportCapture() {
           <input
             type="text"
             value={siteAddress}
-            onChange={(e) => setSiteAddress(e.target.value)}
-            placeholder="Site address (optional)"
-            className={`${inputBase} border-white/20`}
+            onChange={(e) => { setSiteAddress(e.target.value); clearField('siteAddress') }}
+            placeholder="Site address *"
+            className={inputClass('siteAddress')}
             autoComplete="street-address"
           />
         </div>
