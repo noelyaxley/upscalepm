@@ -8,21 +8,21 @@ const projects = [
     title: 'Granville Diggers Club Redevelopment',
     description:
       'Heritage-sensitive club refurbishment — full lifecycle advisory from feasibility through to construction delivery under AS4902 D&C.',
-    image: '/images/projects/granville-diggers/hero.jpg',
+    image: '/images/case-studies/granville-diggers/reception.jpg',
     href: '/projects/granville-diggers-club-development',
   },
   {
     title: 'Granville Diggers: Delivery Structure',
     description:
       'Structuring delivery via AS4902 and separable portions with James Clifford Construction — design certification then staged construction.',
-    image: '/images/projects/granville-diggers/gallery-01.webp',
+    image: '/images/case-studies/granville-diggers/bar.jpg',
     href: '/projects/structured-for-success-delivering-granville-diggers-club-via-as4902-and-separable-portions',
   },
   {
     title: 'Granville Diggers: The Origin Story',
     description:
       'How UpScale bridged design ambition and commercial reality on a 1960s heritage club redevelopment in Western Sydney.',
-    image: '/images/projects/granville-diggers/hero.jpg',
+    image: '/images/case-studies/granville-diggers/dining.jpg',
     href: '/projects/granville-diggers-club-development-origin',
   },
 ]
