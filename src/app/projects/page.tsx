@@ -12,7 +12,7 @@ export const metadata: Metadata = generatePageMetadata({
   title: 'Club Redevelopment Projects',
   description:
     'Club redevelopment projects managed by UpScale Project Management. Independent client-side advisory for RSL, Leagues, and Golf club projects across NSW.',
-  path: '/case-studies',
+  path: '/projects',
 })
 
 const PROJECT_SLUGS = [
@@ -109,7 +109,7 @@ function CaseStudyCard({
 
   return (
     <Link
-      href={`/case-studies/${slug}`}
+      href={`/projects/${slug}`}
       className="group block h-full overflow-hidden rounded-xl border-2 border-primary/20 bg-card shadow-sm transition-all hover:border-primary/60 hover:shadow-md"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200">

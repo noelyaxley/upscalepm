@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return generatePageMetadata({
     title: study.frontmatter.title,
     description: study.frontmatter.excerpt,
-    path: `/case-studies/${slug}`,
+    path: `/projects/${slug}`,
     ogImage: study.frontmatter.heroImage,
   })
 }
@@ -37,7 +37,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
   if (!study) notFound()
 
   const { default: MDXContent } = await import(
-    `../../../../content/case-studies/${slug}.mdx`
+    `../../../../content/projects/${slug}.mdx`
   )
 
   return (
@@ -49,7 +49,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         date: study.frontmatter.date ?? '2024-01-01',
         author: 'Noel Yaxley',
         heroImage: study.frontmatter.heroImage,
-        path: `/case-studies/${study.slug}`,
+        path: `/projects/${study.slug}`,
       })} />
       <CaseStudyHeader frontmatter={study.frontmatter} />
       <Container>

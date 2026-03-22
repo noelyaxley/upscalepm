@@ -38,10 +38,10 @@ export function CaseStudyHeader({ frontmatter }: CaseStudyHeaderProps) {
               <li className="flex items-center gap-2">
                 <span aria-hidden="true">/</span>
                 <Link
-                  href="/case-studies"
+                  href="/projects"
                   className="transition-colors hover:text-foreground"
                 >
-                  Case Studies
+                  Projects
                 </Link>
               </li>
               <li className="flex items-center gap-2">

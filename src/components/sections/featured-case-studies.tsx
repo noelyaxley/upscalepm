@@ -8,22 +8,22 @@ const projects = [
     title: 'Granville Diggers Club Redevelopment',
     description:
       'Heritage-sensitive club refurbishment — full lifecycle advisory from feasibility through to construction delivery under AS4902 D&C.',
-    image: '/images/case-studies/granville-diggers/hero.jpg',
-    href: '/case-studies/granville-diggers-club-development',
+    image: '/images/projects/granville-diggers/hero.jpg',
+    href: '/projects/granville-diggers-club-development',
   },
   {
     title: 'Granville Diggers: Delivery Structure',
     description:
       'Structuring delivery via AS4902 and separable portions with James Clifford Construction — design certification then staged construction.',
-    image: '/images/case-studies/granville-diggers/gallery-01.webp',
-    href: '/case-studies/structured-for-success-delivering-granville-diggers-club-via-as4902-and-separable-portions',
+    image: '/images/projects/granville-diggers/gallery-01.webp',
+    href: '/projects/structured-for-success-delivering-granville-diggers-club-via-as4902-and-separable-portions',
   },
   {
     title: 'Granville Diggers: The Origin Story',
     description:
       'How UpScale bridged design ambition and commercial reality on a 1960s heritage club redevelopment in Western Sydney.',
-    image: '/images/case-studies/granville-diggers/hero.jpg',
-    href: '/case-studies/granville-diggers-club-development-origin',
+    image: '/images/projects/granville-diggers/hero.jpg',
+    href: '/projects/granville-diggers-club-development-origin',
   },
 ]
 
@@ -74,7 +74,7 @@ export function FeaturedCaseStudies() {
       </div>
       <div className="mt-10 text-center">
         <Link
-          href="/case-studies"
+          href="/projects"
           className="text-sm font-medium text-primary hover:underline"
         >
           View All Projects &rarr;

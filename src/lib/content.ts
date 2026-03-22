@@ -28,21 +28,21 @@ function parseMDXFile<T>(directory: string, filename: string): ContentItem<T> {
 
 // Case studies
 export function getAllCaseStudies(): ContentItem<CaseStudyFrontmatter>[] {
-  return getMDXFiles('case-studies')
-    .map((file) => parseMDXFile<CaseStudyFrontmatter>('case-studies', file))
+  return getMDXFiles('projects')
+    .map((file) => parseMDXFile<CaseStudyFrontmatter>('projects', file))
     .filter((post) => !post.frontmatter.draft)
     .sort((a, b) => (a.frontmatter.order ?? 99) - (b.frontmatter.order ?? 99))
 }
 
 export function getCaseStudyBySlug(slug: string): ContentItem<CaseStudyFrontmatter> | null {
   const filename = `${slug}.mdx`
-  const filePath = path.join(CONTENT_DIR, 'case-studies', filename)
+  const filePath = path.join(CONTENT_DIR, 'projects', filename)
   if (!fs.existsSync(filePath)) return null
-  return parseMDXFile<CaseStudyFrontmatter>('case-studies', filename)
+  return parseMDXFile<CaseStudyFrontmatter>('projects', filename)
 }
 
 export function getCaseStudySlugs(): string[] {
-  return getMDXFiles('case-studies').map((file) => file.replace('.mdx', ''))
+  return getMDXFiles('projects').map((file) => file.replace('.mdx', ''))
 }
 
 // Insights

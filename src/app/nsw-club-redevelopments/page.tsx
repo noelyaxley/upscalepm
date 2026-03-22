@@ -241,7 +241,7 @@ export default function NSWClubRedevelopmentsPage() {
                         {project.club}
                         {project.club === 'Granville Diggers Club' && (
                           <Link
-                            href="/case-studies/granville-diggers-club-development"
+                            href="/projects/granville-diggers-club-development"
                             className="ml-2 inline-flex items-center gap-1 text-xs text-primary hover:underline"
                           >
                             Our project

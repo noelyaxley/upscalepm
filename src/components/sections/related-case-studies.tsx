@@ -31,7 +31,7 @@ export function RelatedCaseStudies({ slugs }: RelatedCaseStudiesProps) {
           return (
             <Link
               key={cs.slug}
-              href={`/case-studies/${cs.slug}`}
+              href={`/projects/${cs.slug}`}
               className="group overflow-hidden rounded-xl border-2 border-primary/20 bg-background shadow-sm transition-all hover:border-primary/60 hover:shadow-md"
             >
               <div className="relative aspect-[4/3] overflow-hidden">

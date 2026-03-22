@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/case-studies`,
+      url: `${SITE_URL}/projects`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
@@ -92,7 +92,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Case study pages
   const caseStudyPages: MetadataRoute.Sitemap = getAllCaseStudies().map((cs) => ({
-    url: `${SITE_URL}/case-studies/${cs.slug}`,
+    url: `${SITE_URL}/projects/${cs.slug}`,
     lastModified: new Date(),
     changeFrequency: 'yearly' as const,
     priority: 0.6,

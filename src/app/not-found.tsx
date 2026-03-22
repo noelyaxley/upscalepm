@@ -4,7 +4,7 @@ import { Section } from '@/components/layout/section'
 
 const suggestedPages = [
   { href: '/services', label: 'Services' },
-  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/projects', label: 'Projects' },
   { href: '/insights', label: 'Insights' },
   { href: '/about', label: 'About' },
 ]
