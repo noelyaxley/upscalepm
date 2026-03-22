@@ -6,9 +6,9 @@ import { z } from 'zod'
 
 const schema = z.object({
   name: z.string().min(1, 'Please enter your name'),
-  phone: z.string().min(1, 'Please enter your phone number'),
+  phone: z.string().optional(),
   email: z.string().email('Please enter a valid email'),
-  siteAddress: z.string().optional(),
+  siteAddress: z.string().min(1, 'Please enter the site address'),
   utmSource: z.string().optional(),
   utmMedium: z.string().optional(),
   utmCampaign: z.string().optional(),
