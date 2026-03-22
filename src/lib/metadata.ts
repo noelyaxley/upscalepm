@@ -1,7 +1,7 @@
 import { type Metadata } from 'next'
 
 const SITE_URL = 'https://upscalepm.com.au'
-const SITE_NAME = 'UpScale PM | Club Development Advisory'
+const SITE_NAME = 'UpScale Project Management'
 const DEFAULT_DESCRIPTION =
   'Independent advisors for club and golf club redevelopments across NSW. Helping club boards and CEOs successfully deliver major capital projects — from feasibility to opening night.'
 
@@ -17,7 +17,8 @@ export function generatePageMetadata({
   ogImage?: string
 }): Metadata {
   const url = `${SITE_URL}${path}`
-  const image = ogImage ?? `${SITE_URL}/images/og-default.jpg`
+  const rawImage = ogImage ?? '/images/shared/logo/logo-64.png'
+  const image = rawImage.startsWith('http') ? rawImage : `${SITE_URL}${rawImage}`
 
   return {
     title,

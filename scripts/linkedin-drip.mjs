@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 /**
- * LinkedIn Drip Poster — posts one club redevelopment blog every 36 hours.
+ * LinkedIn Drip Poster — posts one club redevelopment blog every 18 hours.
+ * Uses the LinkedIn Posts API (v2, current) instead of the deprecated UGC API.
  *
  * Usage:
  *   node scripts/linkedin-drip.mjs              # Post next unposted blog
  *   node scripts/linkedin-drip.mjs --preview    # Preview next post without publishing
  *   node scripts/linkedin-drip.mjs --preview-all # Preview all unposted blogs
  *   node scripts/linkedin-drip.mjs --status     # Show what's been posted and what's queued
+ *   node scripts/linkedin-drip.mjs --force      # Skip cooldown and post now
  */
 
 import fs from "node:fs";
@@ -17,7 +19,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const INSIGHTS_DIR = path.join(ROOT, "content", "insights");
 const STATE_FILE = path.join(ROOT, "scripts", ".linkedin-drip-state.json");
+const LOG_FILE = path.join(ROOT, "scripts", "linkedin-drip.log");
 const SITE_URL = "https://upscalepm.com.au";
+const COOLDOWN_HOURS = 18;
 
 // Load .env.local
 const envPath = path.join(ROOT, ".env.local");
@@ -36,6 +40,14 @@ const PERSON_URN = env.LINKEDIN_PERSON_URN;
 if (!LINKEDIN_TOKEN || !ANTHROPIC_KEY || !ORG_URN || !PERSON_URN) {
   console.error("Missing required env vars in .env.local: LINKEDIN_ACCESS_TOKEN, ANTHROPIC_API_KEY, LINKEDIN_ORG_URN, LINKEDIN_PERSON_URN");
   process.exit(1);
+}
+
+// ─── Logging ───
+
+function log(message) {
+  const line = `[${new Date().toISOString()}] ${message}`;
+  console.log(message);
+  fs.appendFileSync(LOG_FILE, line + "\n");
 }
 
 // ─── Blog discovery ───
@@ -83,7 +95,7 @@ function saveState(state) {
 // ─── Claude: generate LinkedIn post text ───
 
 async function generateLinkedInPost(blog) {
-  const truncatedBody = blog.body.slice(0, 4000); // Keep context reasonable
+  const truncatedBody = blog.body.slice(0, 4000);
 
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
@@ -169,86 +181,87 @@ Return ONLY the single sentence, nothing else.`,
   return data.content[0].text.trim();
 }
 
-// ─── LinkedIn: create a post with article link ───
+// ─── LinkedIn Posts API: create a post with article link ───
 
-async function postToLinkedIn(text, articleUrl) {
+async function postToLinkedIn(text, articleUrl, authorUrn, blog = {}) {
   const postBody = {
-    author: ORG_URN,
-    lifecycleState: "PUBLISHED",
-    specificContent: {
-      "com.linkedin.ugc.ShareContent": {
-        shareCommentary: { text },
-        shareMediaCategory: "ARTICLE",
-        media: [
-          {
-            status: "READY",
-            originalUrl: articleUrl,
-          },
-        ],
+    author: authorUrn,
+    commentary: text,
+    visibility: "PUBLIC",
+    distribution: {
+      feedDistribution: "MAIN_FEED",
+      targetEntities: [],
+      thirdPartyDistributionChannels: [],
+    },
+    content: {
+      article: {
+        source: articleUrl,
+        title: blog.title,
+        description: blog.excerpt,
       },
     },
-    visibility: {
-      "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC",
-    },
+    lifecycleState: "PUBLISHED",
+    isReshareDisabledByAuthor: false,
   };
 
-  const res = await fetch("https://api.linkedin.com/v2/ugcPosts", {
+  const res = await fetch("https://api.linkedin.com/rest/posts", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${LINKEDIN_TOKEN}`,
       "Content-Type": "application/json",
+      "LinkedIn-Version": "202603",
       "X-Restli-Protocol-Version": "2.0.0",
     },
     body: JSON.stringify(postBody),
   });
 
-  const responseText = await res.text();
-
   if (!res.ok) {
-    throw new Error(`LinkedIn API error (${res.status}): ${responseText}`);
+    const responseText = await res.text();
+    throw new Error(`LinkedIn Posts API error (${res.status}): ${responseText}`);
   }
 
-  // LinkedIn returns the post URN in the id header or response
-  const postId = res.headers.get("x-restli-id") || responseText;
-  return postId;
+  // Post URN is returned in x-restli-id header
+  const postUrn = res.headers.get("x-restli-id");
+  return postUrn;
 }
 
-// ─── LinkedIn: reshare company post from personal profile ───
+// ─── LinkedIn Posts API: reshare company post from personal profile ───
 
 async function reshareToPersonal(comment, companyPostUrn) {
   const postBody = {
     author: PERSON_URN,
+    commentary: comment,
+    visibility: "PUBLIC",
+    distribution: {
+      feedDistribution: "MAIN_FEED",
+      targetEntities: [],
+      thirdPartyDistributionChannels: [],
+    },
+    reshareContext: {
+      parent: companyPostUrn,
+    },
     lifecycleState: "PUBLISHED",
-    specificContent: {
-      "com.linkedin.ugc.ShareContent": {
-        shareCommentary: { text: comment },
-        shareMediaCategory: "NONE",
-      },
-    },
-    visibility: {
-      "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC",
-    },
-    resharedPost: companyPostUrn,
+    isReshareDisabledByAuthor: false,
   };
 
-  const res = await fetch("https://api.linkedin.com/v2/ugcPosts", {
+  const res = await fetch("https://api.linkedin.com/rest/posts", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${LINKEDIN_TOKEN}`,
       "Content-Type": "application/json",
+      "LinkedIn-Version": "202603",
       "X-Restli-Protocol-Version": "2.0.0",
     },
     body: JSON.stringify(postBody),
   });
 
-  const responseText = await res.text();
-
   if (!res.ok) {
+    const responseText = await res.text();
     throw new Error(`LinkedIn reshare error (${res.status}): ${responseText}`);
   }
 
-  const reshareId = res.headers.get("x-restli-id") || responseText;
-  return reshareId;
+  const reshareUrn = res.headers.get("x-restli-id");
+  return reshareUrn;
 }
 
 // ─── Main ───
@@ -258,6 +271,7 @@ async function main() {
   const isPreview = args.includes("--preview");
   const isPreviewAll = args.includes("--preview-all");
   const isStatus = args.includes("--status");
+  const isForce = args.includes("--force");
 
   const blogs = getClubRedevelopmentBlogs();
   const state = loadState();
@@ -266,25 +280,32 @@ async function main() {
   const queued = blogs.filter((b) => !state.posted.includes(b.slug));
 
   if (isStatus) {
-    console.log(`\n📊 LinkedIn Drip Status`);
-    console.log(`─────────────────────────`);
+    console.log(`\nLinkedIn Drip Status`);
+    console.log(`${"─".repeat(25)}`);
     console.log(`Total club redevelopment blogs: ${blogs.length}`);
     console.log(`Posted: ${state.posted.length}`);
     console.log(`Queued: ${queued.length}`);
+    console.log(`Cooldown: ${COOLDOWN_HOURS}h`);
     if (state.lastPostedAt) {
       const last = new Date(state.lastPostedAt);
-      const nextDue = new Date(last.getTime() + 36 * 60 * 60 * 1000);
+      const nextDue = new Date(last.getTime() + COOLDOWN_HOURS * 60 * 60 * 1000);
+      const now = new Date();
       console.log(`Last posted: ${last.toLocaleString()}`);
-      console.log(`Next due: ${nextDue.toLocaleString()}`);
+      if (now < nextDue) {
+        const remaining = Math.round((nextDue.getTime() - now.getTime()) / (60 * 60 * 1000) * 10) / 10;
+        console.log(`Next due: ${nextDue.toLocaleString()} (${remaining}h remaining)`);
+      } else {
+        console.log(`Next due: NOW (cooldown elapsed)`);
+      }
     }
     console.log(`\nPosted:`);
     for (const slug of state.posted) {
       const blog = blogs.find((b) => b.slug === slug);
-      console.log(`  ✅ ${blog?.title || slug}`);
+      console.log(`  [done] ${blog?.title || slug}`);
     }
     console.log(`\nQueued:`);
     for (const blog of queued) {
-      console.log(`  ⏳ ${blog.title}`);
+      console.log(`  [next] ${blog.title}`);
     }
     return;
   }
@@ -294,13 +315,13 @@ async function main() {
     return;
   }
 
-  // Check 36-hour cooldown
-  if (!isPreview && !isPreviewAll && state.lastPostedAt) {
+  // Check cooldown
+  if (!isPreview && !isPreviewAll && !isForce && state.lastPostedAt) {
     const elapsed = Date.now() - new Date(state.lastPostedAt).getTime();
-    const cooldownMs = 36 * 60 * 60 * 1000;
+    const cooldownMs = COOLDOWN_HOURS * 60 * 60 * 1000;
     if (elapsed < cooldownMs) {
       const remaining = Math.round((cooldownMs - elapsed) / (60 * 60 * 1000) * 10) / 10;
-      console.log(`⏰ Cooldown active. Next post in ${remaining} hours.`);
+      console.log(`Cooldown active. Next post in ${remaining} hours. Use --force to skip.`);
       return;
     }
   }
@@ -308,9 +329,9 @@ async function main() {
   if (isPreviewAll) {
     for (const blog of queued) {
       const articleUrl = `${SITE_URL}/insights/${blog.slug}`;
-      console.log(`\n${"═".repeat(60)}`);
-      console.log(`📝 ${blog.title}`);
-      console.log(`🔗 ${articleUrl}`);
+      console.log(`\n${"=".repeat(60)}`);
+      console.log(`${blog.title}`);
+      console.log(`${articleUrl}`);
       console.log(`${"─".repeat(60)}`);
       const postText = await generateLinkedInPost(blog);
       console.log(postText);
@@ -322,13 +343,13 @@ async function main() {
   const blog = queued[0];
   const articleUrl = `${SITE_URL}/insights/${blog.slug}`;
 
-  console.log(`\nGenerating LinkedIn post for: ${blog.title}`);
-  console.log(`Article URL: ${articleUrl}\n`);
+  log(`Generating LinkedIn post for: ${blog.title}`);
+  log(`Article URL: ${articleUrl}`);
 
   const postText = await generateLinkedInPost(blog);
   const reshareComment = await generateReshareComment(blog);
 
-  console.log("─".repeat(50));
+  console.log("\n" + "─".repeat(50));
   console.log("COMPANY PAGE POST:");
   console.log(postText);
   console.log("─".repeat(50));
@@ -341,23 +362,30 @@ async function main() {
     return;
   }
 
-  console.log("\nPosting to company page...");
-  const postId = await postToLinkedIn(postText, articleUrl);
-  console.log(`✅ Company post: ${postId}`);
+  // Post to company page
+  log("Posting to company page...");
+  const postUrn = await postToLinkedIn(postText, articleUrl, ORG_URN, blog);
+  log(`Company post: ${postUrn}`);
 
-  console.log("Resharing to personal profile...");
-  const reshareId = await reshareToPersonal(reshareComment, postId);
-  console.log(`✅ Personal reshare: ${reshareId}`);
+  // Reshare to personal profile
+  log("Resharing to personal profile...");
+  try {
+    const reshareUrn = await reshareToPersonal(reshareComment, postUrn);
+    log(`Personal reshare: ${reshareUrn}`);
+  } catch (err) {
+    log(`Personal reshare failed: ${err.message}`);
+    console.error("Reshare failed but company post succeeded. Continuing.");
+  }
 
   // Update state
   state.posted.push(blog.slug);
   state.lastPostedAt = new Date().toISOString();
   saveState(state);
 
-  console.log(`\n${queued.length - 1} blogs remaining in queue.`);
+  log(`Done. ${queued.length - 1} blogs remaining in queue.`);
 }
 
 main().catch((err) => {
-  console.error("Error:", err.message);
+  log(`Error: ${err.message}`);
   process.exit(1);
 });
