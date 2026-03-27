@@ -407,7 +407,7 @@ export default function NSWClubRedevelopmentsPage() {
                 variant="outline"
                 className="border-neutral-400 bg-transparent text-white hover:bg-white/10 hover:text-white"
               >
-                <Link href="/for-club-boards">Advice for Club Boards</Link>
+                <Link href="/club-boards">Advice for Club Boards</Link>
               </Button>
             </div>
           </div>

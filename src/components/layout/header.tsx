@@ -17,7 +17,7 @@ import { Container } from './container'
 const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/projects', label: 'Projects' },
-  { href: '/for-club-boards', label: 'For Club Boards' },
+  { href: '/club-boards', label: 'Club Boards' },
   { href: '/insights', label: 'Insights' },
   { href: '/resources', label: 'Resources' },
   { href: '/about', label: 'About' },

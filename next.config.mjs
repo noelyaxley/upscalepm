@@ -47,16 +47,27 @@ const nextConfig = {
     ]
   },
   async redirects() {
+    const hardcoded = [
+      {
+        source: '/for-club-boards',
+        destination: '/club-boards',
+        permanent: true,
+      },
+    ]
+
     try {
       const data = readFileSync('./content/migration/redirects.json', 'utf-8')
       const redirects = JSON.parse(data)
-      return redirects.map(({ source, destination, statusCode }) => ({
-        source,
-        destination,
-        permanent: statusCode === 301,
-      }))
+      return [
+        ...redirects.map(({ source, destination, statusCode }) => ({
+          source,
+          destination,
+          permanent: statusCode === 301,
+        })),
+        ...hardcoded,
+      ]
     } catch {
-      return []
+      return hardcoded
     }
   },
 }

@@ -32,7 +32,7 @@ const socialLinks = [
 const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/projects', label: 'Projects' },
-  { href: '/for-club-boards', label: 'For Club Boards' },
+  { href: '/club-boards', label: 'Club Boards' },
   { href: '/framework', label: 'Our Framework' },
   { href: '/insights', label: 'Insights' },
   { href: '/resources', label: 'Resources' },

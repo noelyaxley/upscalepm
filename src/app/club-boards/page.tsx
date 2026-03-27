@@ -20,7 +20,7 @@ export const metadata: Metadata = generatePageMetadata({
   title: 'Advice for Club Boards Planning a Redevelopment',
   description:
     'What every club board and CEO should know before starting a redevelopment. The biggest risks, why projects go over budget, and how independent advice protects your club.',
-  path: '/for-club-boards',
+  path: '/club-boards',
 })
 
 const risks = [
@@ -102,7 +102,7 @@ export default function ForClubBoardsPage() {
       <PageHeader
         title="Advice for Club Boards Planning a Redevelopment"
         subtitle="What every club director should know before approving major capital works."
-        breadcrumbs={[{ label: 'For Club Boards' }]}
+        breadcrumbs={[{ label: 'Club Boards' }]}
       />
 
       {/* Intro */}

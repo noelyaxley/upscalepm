@@ -45,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/for-club-boards`,
+      url: `${SITE_URL}/club-boards`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
