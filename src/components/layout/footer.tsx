@@ -51,6 +51,9 @@ export function Footer() {
   const isLanding = pathname.startsWith('/landing/')
   const currentYear = new Date().getFullYear()
 
+  // Landing pages have their own footer — don't render the main one
+  if (isLanding) return null
+
   return (
     <footer className="border-t bg-muted">
       <Container>
