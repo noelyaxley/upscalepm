@@ -59,7 +59,20 @@ export default async function DraftPreviewPage({ params }: PageProps) {
 
   return (
     <div className="-mx-4 -mt-8 sm:-mx-6 lg:-mx-8">
-      <DraftPreviewBanner slug={slug} prNumber={draft.prNumber} />
+      <DraftPreviewBanner
+        slug={slug}
+        prNumber={draft.prNumber}
+        frontmatter={{
+          title: frontmatter.title,
+          excerpt: frontmatter.excerpt,
+          heroImage: frontmatter.heroImage,
+          author: frontmatter.author,
+          date: frontmatter.date,
+          tags: frontmatter.tags,
+          category: frontmatter.category,
+        }}
+        wordCount={wordCount}
+      />
 
       {/* Render using same components as live site */}
       <article>
