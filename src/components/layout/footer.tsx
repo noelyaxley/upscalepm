@@ -58,7 +58,7 @@ export function Footer() {
           {/* Company info */}
           <div>
             <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
-              <Image src="/images/shared/logo/logo-64.png" alt="" width={32} height={32} className="size-8" />
+              <Image src="/images/shared/logo/logo-64.png" alt="UpScale Project Management" width={32} height={32} className="size-8" />
               UpScale Project Management
             </Link>
             <p className="mt-2 text-sm text-muted-foreground">
@@ -156,6 +156,7 @@ export function Footer() {
         <div className="flex flex-col items-center gap-2 border-t py-6 sm:flex-row sm:justify-between">
           <p className="text-sm text-muted-foreground">
             &copy; {currentYear} UpScale Project Management. All rights reserved.
+            <span className="ml-2">ABN 48 655 894 286</span>
           </p>
           <nav aria-label="Legal" className="flex gap-4">
             {legalLinks.map((link) => (

@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { Container } from './container'
+import { JsonLd } from '@/components/seo/json-ld'
+import { breadcrumbSchema } from '@/components/seo/schemas'
 
 interface PageHeaderProps {
   title: string
@@ -8,8 +10,20 @@ interface PageHeaderProps {
 }
 
 export function PageHeader({ title, subtitle, breadcrumbs }: PageHeaderProps) {
+  // Build breadcrumb schema items from the UI breadcrumbs
+  const schemaItems = breadcrumbs && breadcrumbs.length > 0
+    ? [
+        { name: 'Home', url: '/' },
+        ...breadcrumbs.map((crumb) => ({
+          name: crumb.label,
+          url: crumb.href ?? '',
+        })),
+      ]
+    : null
+
   return (
     <div className="relative overflow-hidden border-b bg-neutral-950 py-16 text-white md:py-20 lg:py-24">
+      {schemaItems && <JsonLd data={breadcrumbSchema(schemaItems)} />}
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />

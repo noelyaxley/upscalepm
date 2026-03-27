@@ -2,23 +2,28 @@
 
 import { Client } from '@hubspot/api-client'
 import { FilterOperatorEnum } from '@hubspot/api-client/lib/codegen/crm/contacts/models/Filter'
+import { headers } from 'next/headers'
 import { z } from 'zod'
+import { rateLimit } from '@/lib/rate-limit'
+
+// 5 submissions per IP per 10-minute window
+const FORM_RATE_LIMIT = { windowMs: 10 * 60 * 1000, max: 5 }
 
 const contactSchema = z.object({
-  firstName: z.string().min(1, 'First name is required'),
-  lastName: z.string().min(1, 'Last name is required'),
-  email: z.string().email('Please enter a valid email'),
-  phone: z.string().optional(),
-  projectType: z.string().optional(),
-  message: z.string().min(1, 'Message is required'),
-  utmSource: z.string().optional(),
-  utmMedium: z.string().optional(),
-  utmCampaign: z.string().optional(),
-  utmTerm: z.string().optional(),
-  utmContent: z.string().optional(),
-  gclid: z.string().optional(),
-  pageUri: z.string().optional(),
-  pageName: z.string().optional(),
+  firstName: z.string().min(1, 'First name is required').max(100),
+  lastName: z.string().min(1, 'Last name is required').max(100),
+  email: z.string().email('Please enter a valid email').max(254),
+  phone: z.string().max(30).optional(),
+  projectType: z.string().max(200).optional(),
+  message: z.string().min(1, 'Message is required').max(5000),
+  utmSource: z.string().max(500).optional(),
+  utmMedium: z.string().max(500).optional(),
+  utmCampaign: z.string().max(500).optional(),
+  utmTerm: z.string().max(500).optional(),
+  utmContent: z.string().max(500).optional(),
+  gclid: z.string().max(500).optional(),
+  pageUri: z.string().max(2000).optional(),
+  pageName: z.string().max(500).optional(),
 })
 
 export type ContactFormState = {
@@ -29,6 +34,17 @@ export type ContactFormState = {
 export async function submitContactForm(
   data: Record<string, string>
 ): Promise<ContactFormState> {
+  // Rate limit by IP
+  const headersList = await headers()
+  const ip =
+    headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+    headersList.get('x-real-ip') ??
+    'unknown'
+  const rl = rateLimit(`contact:${ip}`, FORM_RATE_LIMIT)
+  if (!rl.success) {
+    return { success: false, error: 'Too many submissions. Please try again later.' }
+  }
+
   const parsed = contactSchema.safeParse(data)
   if (!parsed.success) {
     return { success: false, error: 'Invalid form data' }

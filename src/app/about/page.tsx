@@ -10,7 +10,7 @@ import { localBusinessSchema } from '@/components/seo/schemas'
 import { BlurFade } from '@/components/animation/blur-fade'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'About',
+  title: 'About Noel Yaxley - Club Redevelopment Advisor',
   description:
     'UpScale Project Management provides independent client-side advisory for club redevelopments across NSW. Founded by Noel Yaxley, with a background in architecture and project management across government, infrastructure, and commercial sectors.',
   path: '/about',

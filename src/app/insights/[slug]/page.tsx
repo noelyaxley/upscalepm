@@ -5,10 +5,27 @@ import { generatePageMetadata } from '@/lib/metadata'
 import { InsightHeader } from '@/components/insight-header'
 import { Container } from '@/components/layout/container'
 import { JsonLd } from '@/components/seo/json-ld'
-import { articleSchema } from '@/components/seo/schemas'
+import { articleSchema, breadcrumbSchema, faqSchema } from '@/components/seo/schemas'
+import { AuthorBio } from '@/components/author-bio'
 
 interface PageProps {
   params: Promise<{ slug: string }>
+}
+
+/** Extract FAQ Q&A pairs from MDX content by parsing ### headings after ## FAQ heading */
+function extractFaqs(content: string): Array<{ question: string; answer: string }> {
+  const faqMatch = content.match(/## (?:Frequently Asked Questions|FAQ)\s*\n([\s\S]*?)(?=\n## |\n---|\n\*UpScale|$)/)
+  if (!faqMatch) return []
+  const faqSection = faqMatch[1]
+  const faqs: Array<{ question: string; answer: string }> = []
+  const parts = faqSection.split(/\n### /).filter(Boolean)
+  for (const part of parts) {
+    const lines = part.trim().split('\n')
+    const question = lines[0]?.replace(/\*\*/g, '').replace(/\??\s*$/, '?').trim()
+    const answer = lines.slice(1).join(' ').replace(/\n/g, ' ').replace(/\s+/g, ' ').trim()
+    if (question && answer) faqs.push({ question, answer })
+  }
+  return faqs
 }
 
 export async function generateStaticParams() {
@@ -48,6 +65,8 @@ export default async function InsightPage({ params }: PageProps) {
   const insight = getInsightBySlug(slug)
   if (!insight) notFound()
 
+  const faqs = extractFaqs(insight.content)
+
   const { default: MDXContent } = await import(
     `../../../../content/insights/${slug}.mdx`
   )
@@ -64,6 +83,12 @@ export default async function InsightPage({ params }: PageProps) {
         heroImage: insight.frontmatter.heroImage,
         path: `/insights/${insight.slug}`,
       })} />
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Insights', url: '/insights' },
+        { name: insight.frontmatter.title, url: `/insights/${insight.slug}` },
+      ])} />
+      {faqs.length > 0 && <JsonLd data={faqSchema(faqs)} />}
       <InsightHeader
         frontmatter={insight.frontmatter}
         readingTime={insight.readingTime}
@@ -75,6 +100,9 @@ export default async function InsightPage({ params }: PageProps) {
           prose-img:rounded-lg prose-img:shadow-md
           py-12 md:py-16">
           <MDXContent />
+        </div>
+        <div className="mx-auto max-w-3xl pb-12 md:pb-16">
+          <AuthorBio />
         </div>
       </Container>
     </article>

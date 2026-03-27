@@ -7,6 +7,9 @@ export function ThankYouRedirect({ redirectTo = '/landing/sydney' }: { redirectT
   const router = useRouter()
   const [seconds, setSeconds] = useState(3)
 
+  // Validate redirect is a relative path (prevent open redirects)
+  const safeRedirect = redirectTo.startsWith('/') && !redirectTo.startsWith('//') ? redirectTo : '/landing/sydney'
+
   // Clear the form_submitted flag (conversion is tracked by GTM)
   useEffect(() => {
     sessionStorage.removeItem('form_submitted')
@@ -14,7 +17,7 @@ export function ThankYouRedirect({ redirectTo = '/landing/sydney' }: { redirectT
 
   useEffect(() => {
     if (seconds <= 0) {
-      router.push(redirectTo)
+      router.push(safeRedirect)
       return
     }
     const timer = setTimeout(() => {

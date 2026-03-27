@@ -5,7 +5,7 @@ import { generatePageMetadata } from '@/lib/metadata'
 import { CaseStudyHeader } from '@/components/case-study-header'
 import { Container } from '@/components/layout/container'
 import { JsonLd } from '@/components/seo/json-ld'
-import { articleSchema } from '@/components/seo/schemas'
+import { articleSchema, breadcrumbSchema } from '@/components/seo/schemas'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -23,12 +23,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const study = getCaseStudyBySlug(slug)
   if (!study) return { title: 'Not Found' }
 
-  return generatePageMetadata({
+  const base = generatePageMetadata({
     title: study.frontmatter.title,
     description: study.frontmatter.excerpt,
     path: `/projects/${slug}`,
     ogImage: study.frontmatter.heroImage,
   })
+
+  return {
+    ...base,
+    openGraph: {
+      ...base.openGraph,
+      type: 'article',
+    },
+  }
 }
 
 export default async function CaseStudyPage({ params }: PageProps) {
@@ -46,11 +54,16 @@ export default async function CaseStudyPage({ params }: PageProps) {
         title: study.frontmatter.title,
         excerpt: study.frontmatter.excerpt,
         slug: study.slug,
-        date: study.frontmatter.date ?? '2024-01-01',
+        date: study.frontmatter.date ?? '2024-06-15',
         author: 'Noel Yaxley',
         heroImage: study.frontmatter.heroImage,
         path: `/projects/${study.slug}`,
       })} />
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Projects', url: '/projects' },
+        { name: study.frontmatter.title, url: `/projects/${study.slug}` },
+      ])} />
       <CaseStudyHeader frontmatter={study.frontmatter} />
       <Container>
         <div className="prose prose-lg prose-neutral mx-auto max-w-3xl

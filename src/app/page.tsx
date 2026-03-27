@@ -11,7 +11,7 @@ import { HomepageCta } from '@/components/sections/homepage-cta'
 import { Section } from '@/components/layout/section'
 import { Button } from '@/components/ui/button'
 import { JsonLd } from '@/components/seo/json-ld'
-import { localBusinessSchema } from '@/components/seo/schemas'
+import { localBusinessSchema, websiteSchema } from '@/components/seo/schemas'
 import { GeometricShapes } from '@/components/animation/geometric-shapes'
 import { BlurFade } from '@/components/animation/blur-fade'
 
@@ -27,6 +27,7 @@ export default function Home() {
   return (
     <>
       <JsonLd data={localBusinessSchema()} />
+      <JsonLd data={websiteSchema()} />
       <Hero />
       <ClientLogos />
       <ValueProposition />

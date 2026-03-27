@@ -10,7 +10,8 @@ import { getSessionFromCookies } from '@/lib/draft-auth'
 
 export const dynamic = 'force-dynamic'
 
-const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif']
+// SVG excluded — can contain embedded JavaScript (XSS vector)
+const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.avif']
 const MAX_SIZE_BYTES = 10 * 1024 * 1024 // 10MB
 
 interface RouteParams {

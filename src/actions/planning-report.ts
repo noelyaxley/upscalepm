@@ -2,20 +2,25 @@
 
 import { Client } from '@hubspot/api-client'
 import { FilterOperatorEnum } from '@hubspot/api-client/lib/codegen/crm/contacts/models/Filter'
+import { headers } from 'next/headers'
 import { z } from 'zod'
+import { rateLimit } from '@/lib/rate-limit'
+
+// 5 submissions per IP per 10-minute window
+const FORM_RATE_LIMIT = { windowMs: 10 * 60 * 1000, max: 5 }
 
 const schema = z.object({
-  name: z.string().min(1, 'Please enter your name'),
-  phone: z.string().optional(),
-  email: z.string().email('Please enter a valid email'),
-  siteAddress: z.string().min(1, 'Please enter the site address'),
-  utmSource: z.string().optional(),
-  utmMedium: z.string().optional(),
-  utmCampaign: z.string().optional(),
-  utmTerm: z.string().optional(),
-  utmContent: z.string().optional(),
-  gclid: z.string().optional(),
-  pageUri: z.string().optional(),
+  name: z.string().min(1, 'Please enter your name').max(200),
+  phone: z.string().max(30).optional(),
+  email: z.string().email('Please enter a valid email').max(254),
+  siteAddress: z.string().min(1, 'Please enter the site address').max(500),
+  utmSource: z.string().max(500).optional(),
+  utmMedium: z.string().max(500).optional(),
+  utmCampaign: z.string().max(500).optional(),
+  utmTerm: z.string().max(500).optional(),
+  utmContent: z.string().max(500).optional(),
+  gclid: z.string().max(500).optional(),
+  pageUri: z.string().max(2000).optional(),
 })
 
 export type PlanningReportState = {
@@ -26,6 +31,17 @@ export type PlanningReportState = {
 export async function submitPlanningReport(
   data: Record<string, string>
 ): Promise<PlanningReportState> {
+  // Rate limit by IP
+  const headersList = await headers()
+  const ip =
+    headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+    headersList.get('x-real-ip') ??
+    'unknown'
+  const rl = rateLimit(`planning-report:${ip}`, FORM_RATE_LIMIT)
+  if (!rl.success) {
+    return { success: false, error: 'Too many submissions. Please try again later.' }
+  }
+
   const parsed = schema.safeParse(data)
   if (!parsed.success) {
     const firstError = parsed.error.issues[0]?.message ?? 'Invalid form data'

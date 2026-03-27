@@ -12,6 +12,18 @@ export async function syncCalendlyBooking(inviteeUri: string) {
     return { success: false }
   }
 
+  // Validate inviteeUri is a legitimate Calendly API URL to prevent SSRF
+  try {
+    const url = new URL(inviteeUri)
+    if (url.protocol !== 'https:' || !url.hostname.endsWith('calendly.com')) {
+      console.error('[calendly] Rejected non-Calendly invitee URI:', inviteeUri)
+      return { success: false }
+    }
+  } catch {
+    console.error('[calendly] Invalid invitee URI:', inviteeUri)
+    return { success: false }
+  }
+
   // Fetch invitee details from Calendly API
   const res = await fetch(inviteeUri, {
     headers: { Authorization: `Bearer ${calendlyToken}` },

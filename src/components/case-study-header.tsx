@@ -57,7 +57,7 @@ export function CaseStudyHeader({ frontmatter }: CaseStudyHeaderProps) {
       <div className="relative aspect-[21/9] w-full overflow-hidden bg-neutral-200">
         <Image
           src={frontmatter.heroImage}
-          alt={frontmatter.title}
+          alt={`${frontmatter.title} — ${frontmatter.location}`}
           fill
           priority
           className="object-cover"

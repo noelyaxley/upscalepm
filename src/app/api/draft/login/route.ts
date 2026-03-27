@@ -4,9 +4,26 @@ import {
   createSession,
   buildSessionCookie,
 } from '@/lib/draft-auth'
+import { rateLimit, getClientIp } from '@/lib/rate-limit'
+
+// 5 login attempts per IP per 15-minute window
+const LOGIN_RATE_LIMIT = { windowMs: 15 * 60 * 1000, max: 5 }
 
 export async function POST(request: Request) {
   try {
+    const ip = getClientIp(request)
+    const rl = rateLimit(`login:${ip}`, LOGIN_RATE_LIMIT)
+
+    if (!rl.success) {
+      return NextResponse.json(
+        { error: 'Too many login attempts. Please try again later.' },
+        {
+          status: 429,
+          headers: { 'Retry-After': String(Math.ceil(rl.resetMs / 1000)) },
+        }
+      )
+    }
+
     const body = await request.json()
     const { username, password } = body
 

@@ -117,7 +117,7 @@ export function InsightHeader({ frontmatter, readingTime }: InsightHeaderProps) 
         <div className="relative aspect-[21/9] w-full overflow-hidden bg-neutral-200">
           <Image
             src={heroImage}
-            alt={title}
+            alt={`Featured image for ${title}`}
             fill
             priority
             className="object-cover"

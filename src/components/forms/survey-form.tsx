@@ -186,7 +186,9 @@ export function SurveyForm({
         }).catch((err) => console.error('[n8n webhook]', err))
       }
 
-      router.push(thankYouPath)
+      // Validate redirect is a relative path (prevent open redirects)
+      const safePath = thankYouPath.startsWith('/') && !thankYouPath.startsWith('//') ? thankYouPath : '/landing/sydney/thank-you'
+      router.push(safePath)
     } else {
       trackFormError('survey_form_sydney', 'submit_failed')
       setStatus('error')

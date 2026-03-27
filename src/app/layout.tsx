@@ -49,6 +49,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://js.hs-scripts.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <GTMScript />
       </head>
       <body className="flex min-h-screen flex-col font-sans antialiased">

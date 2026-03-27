@@ -22,9 +22,15 @@ type FormValues = z.infer<typeof formSchema>
 
 interface LandingFormProps {
   variant?: 'dark' | 'light'
+  formName?: string
+  thankYouPath?: string
 }
 
-export function LandingForm({ variant = 'dark' }: LandingFormProps) {
+export function LandingForm({
+  variant = 'dark',
+  formName = 'landing_form_sydney',
+  thankYouPath = '/landing/sydney/thank-you',
+}: LandingFormProps) {
   const router = useRouter()
   const [status, setStatus] = useState<'idle' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
@@ -46,15 +52,15 @@ export function LandingForm({ variant = 'dark' }: LandingFormProps) {
   })
 
   useEffect(() => {
-    trackFormView('landing_form_sydney')
-  }, [])
+    trackFormView(formName)
+  }, [formName])
 
   async function onSubmit(data: FormValues) {
     setStatus('idle')
     const utmParams = getStoredUTMParams()
     const payload: Record<string, string> = {
       ...data,
-      message: data.message || 'Landing page enquiry — Sydney',
+      message: data.message || `Landing page enquiry — ${formName}`,
       phone: data.phone ?? '',
       projectType: '',
       pageUri: window.location.href,
@@ -71,12 +77,14 @@ export function LandingForm({ variant = 'dark' }: LandingFormProps) {
 
     const result = await submitContactForm(payload)
     if (result.success) {
-      trackFormSubmission('landing_form_sydney')
+      trackFormSubmission(formName)
       sessionStorage.setItem('form_submitted', '1')
-      router.push('/landing/sydney/thank-you')
+      // Validate redirect is a relative path
+      const safePath = thankYouPath.startsWith('/') && !thankYouPath.startsWith('//') ? thankYouPath : '/landing/sydney/thank-you'
+      router.push(safePath)
       return
     } else {
-      trackFormError('landing_form_sydney', 'submit_failed')
+      trackFormError(formName, 'submit_failed')
       setStatus('error')
       setErrorMessage(result.error ?? 'Something went wrong.')
     }
@@ -173,6 +181,13 @@ export function LandingForm({ variant = 'dark' }: LandingFormProps) {
           'Request A Call-Back'
         )}
       </button>
+
+      <p className="text-center text-[11px] text-neutral-500">
+        No spam. No obligation. Your details are protected under our{' '}
+        <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline hover:text-neutral-400">
+          Privacy Policy
+        </a>.
+      </p>
 
       {status === 'error' && (
         <p className={statusErrorClass}>{errorMessage}</p>

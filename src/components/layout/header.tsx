@@ -39,7 +39,7 @@ export function Header() {
           >
             <Image
               src="/images/shared/logo/logo-64.png"
-              alt=""
+              alt="UpScale Project Management"
               width={32}
               height={32}
               className="size-8"

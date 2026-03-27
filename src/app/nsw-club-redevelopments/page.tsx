@@ -6,6 +6,8 @@ import { Section } from '@/components/layout/section'
 import { Button } from '@/components/ui/button'
 import { BlurFade } from '@/components/animation/blur-fade'
 import { ExternalLink } from 'lucide-react'
+import { JsonLd } from '@/components/seo/json-ld'
+import { itemListSchema, breadcrumbSchema } from '@/components/seo/schemas'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Major Club Redevelopments in NSW',
@@ -170,8 +172,19 @@ const marketStats = [
 ]
 
 export default function NSWClubRedevelopmentsPage() {
+  const projectListItems = majorProjects.map((p, i) => ({
+    name: `${p.club} — ${p.value} ${p.type} (${p.status})`,
+    url: `/nsw-club-redevelopments`,
+    position: i + 1,
+  }))
+
   return (
     <>
+      <JsonLd data={itemListSchema('Major Club Redevelopments in NSW', projectListItems)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'NSW Club Redevelopments', url: '/nsw-club-redevelopments' },
+      ])} />
       <PageHeader
         title="Major Club Redevelopments in NSW"
         subtitle="Tracking significant club redevelopment projects across New South Wales — RSL, Leagues, Workers, Diggers, Bowling and Golf clubs."

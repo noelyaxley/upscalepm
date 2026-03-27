@@ -21,6 +21,31 @@ const nextConfig = {
       },
     ],
   },
+  async headers() {
+    // Content-Security-Policy — allows GTM, HubSpot, Calendly, YouTube, Instagram
+    const csp = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://js.hs-scripts.com https://assets.calendly.com https://www.instagram.com",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https://raw.githubusercontent.com https://*.google-analytics.com https://*.googletagmanager.com https://*.instagram.com",
+      "font-src 'self'",
+      "frame-src https://www.youtube.com https://www.instagram.com https://calendly.com https://www.googletagmanager.com",
+      "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://api.calendly.com https://js.hs-scripts.com https://*.hubspot.com https://*.hsforms.com",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "frame-ancestors 'none'",
+    ].join('; ')
+
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'Content-Security-Policy', value: csp },
+        ],
+      },
+    ]
+  },
   async redirects() {
     try {
       const data = readFileSync('./content/migration/redirects.json', 'utf-8')
