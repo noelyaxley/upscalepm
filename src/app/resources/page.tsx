@@ -5,12 +5,15 @@ import { PageHeader } from '@/components/layout/page-header'
 import { Section } from '@/components/layout/section'
 import { Button } from '@/components/ui/button'
 import { BlurFade } from '@/components/animation/blur-fade'
+import { JsonLd } from '@/components/seo/json-ld'
+import { breadcrumbSchema } from '@/components/seo/schemas'
 import {
   FileCheck,
   Calculator,
   HelpCircle,
   Clock,
   ClipboardList,
+  ArrowRight,
 } from 'lucide-react'
 
 export const metadata: Metadata = generatePageMetadata({
@@ -25,42 +28,46 @@ const resources = [
     icon: FileCheck,
     title: 'Club Redevelopment Risk Checklist',
     description:
-      'The most common risks that derail club redevelopments — and how to manage them. Essential reading for any board considering capital works.',
-    status: 'available' as const,
+      'The top 25 risks that derail club redevelopments — and how to manage them. Covering financial, governance, construction, planning, and operational risks.',
+    slug: 'risk-checklist',
   },
   {
     icon: Calculator,
     title: 'Club Capital Works Budget Template',
     description:
-      'A practical budget framework for club redevelopments, covering design fees, construction costs, staging allowances, FF&E, and contingency.',
-    status: 'coming-soon' as const,
+      'A comprehensive budget framework with 50+ line items across 9 categories. Includes cost ranges for a $12M project and adjustments for different project sizes.',
+    slug: 'budget-template',
   },
   {
     icon: HelpCircle,
-    title: 'Questions Every Director Should Ask Before Approving a Project',
+    title: '15 Questions Every Director Should Ask',
     description:
-      'A governance checklist for board members. The 15 critical questions to ask before voting on major capital expenditure.',
-    status: 'coming-soon' as const,
+      'A governance checklist for board members. The 15 critical questions to ask before voting on major capital expenditure — with red flags to watch for.',
+    slug: 'director-questions',
   },
   {
     icon: Clock,
     title: 'Club Redevelopment Timeline Guide',
     description:
-      'Realistic timelines for club redevelopments from feasibility through to opening. How long each phase takes and what drives delays.',
-    status: 'coming-soon' as const,
+      'Realistic timelines for each phase from feasibility to opening night. Includes durations for $5M, $10M, and $20M+ projects and common delay causes.',
+    slug: 'timeline-guide',
   },
   {
     icon: ClipboardList,
     title: 'Builder Tender Evaluation Template',
     description:
-      'A structured evaluation framework for assessing construction tenders. Covers price, program, methodology, capability, and risk.',
-    status: 'coming-soon' as const,
+      'A structured scoring framework for evaluating construction tenders. Covers price, program, methodology, capability, risk, and references with recommended weightings.',
+    slug: 'tender-evaluation',
   },
 ]
 
 export default function ResourcesPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Resources', url: '/resources' },
+      ])} />
       <PageHeader
         title="Club Redevelopment Resources"
         subtitle="Free guides, checklists, and templates to help club boards make better decisions on capital projects."
@@ -82,7 +89,10 @@ export default function ResourcesPage() {
         <div className="mx-auto mt-12 max-w-3xl space-y-6">
           {resources.map((resource, i) => (
             <BlurFade key={resource.title} delay={0.1 + i * 0.05}>
-              <div className="flex gap-5 rounded-xl border-2 border-primary/20 bg-background p-6 transition-all hover:border-primary/60">
+              <Link
+                href={`/resources/${resource.slug}`}
+                className="group flex gap-5 rounded-xl border-2 border-primary/20 bg-background p-6 transition-all hover:border-primary/60 hover:shadow-md"
+              >
                 <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary shadow-md shadow-primary/30">
                   <resource.icon
                     className="size-6 text-white"
@@ -90,25 +100,18 @@ export default function ResourcesPage() {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold">{resource.title}</h3>
+                  <h3 className="text-lg font-bold group-hover:text-primary transition-colors">
+                    {resource.title}
+                  </h3>
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     {resource.description}
                   </p>
-                  <div className="mt-4">
-                    {resource.status === 'available' ? (
-                      <Button asChild size="sm">
-                        <Link href="/contact?resource=risk-checklist">
-                          Request Download
-                        </Link>
-                      </Button>
-                    ) : (
-                      <span className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-                        Coming Soon
-                      </span>
-                    )}
+                  <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-primary">
+                    Read Guide & Download PDF
+                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
-              </div>
+              </Link>
             </BlurFade>
           ))}
         </div>
